@@ -1,13 +1,13 @@
-export * from './Accordion'
-export * from './Button';
-export * from './Checkbox';
-export * from './Divider';
-export * from './Hint';
-export * from './Modal';
-export * from './Navigation';
-export * from './Select';
-export * from './Spinner';
-export * from './TextAreaInput';
-export * from './TextInput';
-export * from './Toggle';
-export * from './Typography';
+export { BBBAccordion } from './Accordion';
+export { BBButton } from './Button';
+export { BBBCheckbox } from './Checkbox';
+export { BBBDivider } from './Divider';
+export { BBBHint } from './Hint';
+export { BBBModal } from './Modal';
+export { BBBNavigation } from './Navigation';
+export { BBBSelect } from './Select';
+export { BBBSpinner } from './Spinner';
+export { BBBTextAreaInput } from './TextAreaInput';
+export { BBBTextInput } from './TextInput';
+export { BBBToggle } from './Toggle';
+export { BBBTypography } from './Typography';
