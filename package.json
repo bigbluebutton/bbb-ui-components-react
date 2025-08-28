@@ -1,6 +1,6 @@
 {
   "name": "@bigbluebutton/bbb-ui-components-react",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "dist/index.ts",
   "types": "dist/types/index.d.ts",
   "files": [
@@ -12,8 +12,8 @@
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
     "start": "webpack serve --mode development"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Arthur Böckmann Grossi",
+  "license": "LGPL-3.0",
   "description": "",
   "browserslist": {
     "production": [
