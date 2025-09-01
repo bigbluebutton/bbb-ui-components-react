@@ -30,7 +30,7 @@ This library is under active development and has not yet been published on npm. 
 
 ```
 npm install
-npm run build-bundle
+npm run build
 ```
 
 ### Using npm link
