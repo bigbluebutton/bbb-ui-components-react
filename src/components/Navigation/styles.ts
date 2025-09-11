@@ -33,7 +33,7 @@ export const IconWrapper = styled.div<StyledIconWrapper>`
   justify-content: center;
   color: ${colorBrand1};
 
-  ${({ isCustomIcon }) => !isCustomIcon && css`
+  ${({ $isCustomIcon }) => !$isCustomIcon && css`
     transform: rotate(90deg);
     [dir="rtl"] & {
       transform: rotate(-90deg);

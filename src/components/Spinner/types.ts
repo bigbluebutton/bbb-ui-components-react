@@ -1,14 +1,14 @@
 export interface StyledWrapperProps {
-  size: number | string;
+  $size: number | string;
 }
 
 export interface StyledSvgProps {
-  animate: boolean;
+  $animate: boolean;
 }
 
 export interface StyledPathProps {
-  animate: boolean;
-  strokeWidth: number;
+  $animate: boolean;
+  $strokeWidth: number;
 }
 
 export interface SpinnerProps {

@@ -1,7 +1,7 @@
 import { TextFieldProps } from '@mui/material';
 
 export interface StyledTextProps {
-  error?: boolean;
+  $error?: boolean;
 }
 
 export interface TextInputProps extends Omit<TextFieldProps, 'label'> {

@@ -87,10 +87,10 @@ function Button(props: ButtonProps): JSX.Element {
           onClick={onClick}
           onKeyDown={onKeyDown}
           {...accessibilityProps}
-          color={color}
-          variant={variant}
-          size={size}
-          layout={layout}
+          $color={color}
+          $variant={variant}
+          $size={size}
+          $layout={layout}
           disabled={disabled}
         >
           {icon}
@@ -108,16 +108,16 @@ function Button(props: ButtonProps): JSX.Element {
       const testId = dataTest || `${LAYOUTS.STACKED}-button-${id || label || 'default'}`;
 
       return (
-        <Styled.ButtonWrapper data-test={testId} layout={layout}>
+        <Styled.ButtonWrapper data-test={testId} $layout={layout}>
           <Styled.Button
             id={id}
             onClick={onClick}
             onKeyDown={onKeyDown}
             {...accessibilityProps}
-            color={color}
-            variant={variant}
-            size={size}
-            layout={layout}
+            $color={color}
+            $variant={variant}
+            $size={size}
+            $layout={layout}
             disabled={disabled}
           >
             {!hideHelperIcon && (
@@ -126,9 +126,9 @@ function Button(props: ButtonProps): JSX.Element {
                 // It controls whether the auxiliary button is going to have an independent hover state.
                 {...(helperOnClick && { 'data-is-aux-icon': true })}
                 role="button"
-                hover={helperOnClick !== null}
-                color={color}
-                variant={variant}
+                $hover={helperOnClick !== null}
+                $color={color}
+                $variant={variant}
                 onClick={(event) => {
                   if (helperOnClick) {
                     helperOnClick(event);
@@ -157,10 +157,10 @@ function Button(props: ButtonProps): JSX.Element {
         onClick={onClick}
         onKeyDown={onKeyDown}
         {...accessibilityProps}
-        color={color}
-        variant={variant}
-        size={size}
-        layout={layout}
+        $color={color}
+        $variant={variant}
+        $size={size}
+        $layout={layout}
         disabled={disabled}
       >
         {iconStart && iconStart}

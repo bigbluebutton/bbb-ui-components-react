@@ -56,5 +56,5 @@ const variants = {
 export const TypographyStyled = styled.p<StyledTypography>`
   margin: 0;
   padding: 0;
-  ${({ variant }) => variants[variant]}
+  ${({ $variant }) => variants[$variant]}
 `;

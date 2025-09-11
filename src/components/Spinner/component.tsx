@@ -25,15 +25,15 @@ const Spinner: React.FC<SpinnerProps> = ({
   animate = false,
 }) => {
   return (
-    <Styled.Wrapper size={size} role="progressbar" aria-label="Loading" aria-busy={!animate}>
-      <Styled.StyledSvg viewBox="0 0 50 50" animate={!animate} focusable="false" aria-hidden="true">
+    <Styled.Wrapper $size={size} role="progressbar" aria-label="Loading" aria-busy={!animate}>
+      <Styled.StyledSvg viewBox="0 0 50 50" $animate={!animate} focusable="false" aria-hidden="true">
         <Styled.Path
           className="path"
           cx="25"
           cy="25"
           r="20"
-          animate={!animate}
-          strokeWidth={strokeWidth}
+          $animate={!animate}
+          $strokeWidth={strokeWidth}
         />
       </Styled.StyledSvg>
     </Styled.Wrapper>

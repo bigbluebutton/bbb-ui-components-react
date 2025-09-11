@@ -55,7 +55,7 @@ export const CloseButton = styled.button`
 
 export const ModalBody = styled.div<StyledModalBodyProps>`
   flex-grow: 1;
-  overflow-y: ${({ allowScroll }) => allowScroll ? 'auto' : 'hidden'};
+  overflow-y: ${({ $allowScroll }) => $allowScroll ? 'auto' : 'hidden'};
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -68,4 +68,12 @@ export const ModalFooter = styled.div<StyledModalFooterProps>`
   display: flex;
   justify-content: flex-end;
   gap: ${spacingMedium};
+  
+  ${({ $stickyFooter }) =>
+    $stickyFooter &&
+    `
+      position: sticky;
+      bottom: 0;
+      background-color: #fff;
+    `}
 `;

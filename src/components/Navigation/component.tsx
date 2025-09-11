@@ -44,7 +44,7 @@ function Navigation ({
       data-test={dataTest}
     >
       <Styled.IconTextWrapper>
-        <Styled.IconWrapper isCustomIcon={isCustomIcon}>
+        <Styled.IconWrapper $isCustomIcon={isCustomIcon}>
           {iconToRender}
         </Styled.IconWrapper>
         <BBBTypography variant="default">
