@@ -163,16 +163,22 @@ export const Button = styled.button<StyledButtonProps>`
   }}
 `;
 
-export const helperIconContainer = styled.div<StyledHelperIconContainer>`
-  ${({ $hover, $variant, $color }) => $hover && `
-    &&:hover,
-    &&:active,
-      background-color: ${CSS_COLOR_PROPERTIES[$variant][$color].hoverBackground};
-    }
-    &&:focus {
-      outline: 1px solid ${CSS_COLOR_PROPERTIES[$variant][$color].outline};
-    }
-  `}
+export const HelperIconContainer = styled.div<StyledHelperIconContainer>`
+  ${({ $hover, $variant, $color }) => {
+    if (!$hover) return null;
+
+    return css`
+      &&:hover,
+      &&:active {
+        ${CSS_COLOR_PROPERTIES[$variant][$color].hoverBackground &&
+        `background-color: ${CSS_COLOR_PROPERTIES[$variant][$color].hoverBackground};`}
+      }
+
+      &&:focus {
+        outline: 1px solid ${CSS_COLOR_PROPERTIES[$variant][$color].outline};
+      }
+    `;
+  }}
   border-radius: 50%;
   padding: 0.2rem;
   position: absolute;
@@ -183,7 +189,7 @@ export const helperIconContainer = styled.div<StyledHelperIconContainer>`
   }
 `;
 
-export const helperIcon = styled.div`
+export const HelperIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
