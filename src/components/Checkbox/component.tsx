@@ -7,17 +7,10 @@ import { RadioButtonUnchecked, RadioButtonChecked } from '@mui/icons-material';
 /**
  * A customizable Checkbox component.
  *
- * This component wraps the Material-UI Checkbox and provides additional features,
+ * This component provides a wrapper around the Material-UI Checkbox with additional features,
  * such as custom layouts and a round variant. It can be used with a label,
  * and clicking the label will toggle the checkbox state.
  *
- * @param {CheckboxProps} props The props for the Checkbox component. See {@link CheckboxProps} for more details.
- * @param {string} [props.label] The text to be displayed as the label for the checkbox.
- * @param {keyof typeof import('./constants')['LAYOUTS']} [props.layout=import('./constants').DEFAULT_LAYOUT] The position of the label relative to the checkbox.
- * @param {boolean} [props.round=false] If `true`, the checkbox will be rendered as a round radio-style button.
- * @param {string} [props.ariaLabel] The accessible name for the checkbox.
- * @param {any} ...props Any other props will be passed down to the underlying Material-UI Checkbox component.
- * @returns {JSX.Element} The rendered Checkbox component.
  */
 function Checkbox({
   label,

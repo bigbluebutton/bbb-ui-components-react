@@ -9,17 +9,6 @@ import { DEFAULT_TEXT_POSITION } from './constants';
  * This component provides a flexible toggle switch that can be used for binary state changes.
  * It supports labels (label and helperText) and various textPosition configurations.
  *
- * @param {ToggleProps} props - The props for the Toggle component. See {@link ToggleProps} for more details.
- * @param {string} [props.label] - The main label text displayed next to the toggle.
- * @param {string} [props.helperText] - The helperText text displayed below the label.
- * @param {keyof typeof import('./constants')['TEXT_POSITIONS']} [props.textPosition=import('./constants').DEFAULT_TEXT_POSITION] - The position of the text labels relative to the toggle switch.
- * @param {string} [props.ariaLabel] - The accessible name for the toggle.
- * @param {string} [props.ariaLabelledBy] - The ID of the element that labels the toggle.
- * @param {string} [props.ariaDescribedBy] - The ID of the element that describes the toggle.
- * @param {boolean} [props.disabled=false] - If `true`, the toggle will be disabled and unresponsive.
- * @param {(event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void} [props.onChange] - Callback function that is fired when the toggle state changes.
- * @param {any} ...toggleProps - Any other props will be passed down to the underlying Material-UI Switch component.
- * @returns {JSX.Element} The rendered Toggle component.
  */
 function Toggle ({
   label,

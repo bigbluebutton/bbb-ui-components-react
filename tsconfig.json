@@ -7,7 +7,7 @@
     "jsx": "react",
     "rootDir": "./src",
     "noImplicitAny": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "declaration": true,
     "skipLibCheck": true,
     "emitDeclarationOnly": false,

@@ -4,19 +4,11 @@ import { HintProps } from './types';
 import { MdClose, MdInfo } from 'react-icons/md';
 
 /**
- * A Hint component for displaying informational messages.
+ * A customizable hint component for displaying informational messages.
  *
- * This component can be used to show tips, warnings, or other information to the user.
+ * This component provides a small contextual hint used to surface tips, short help text or dismissible messages.
  * It can be displayed with a title, an icon, and a close button.
  *
- * @param {HintProps} props The props for the Hint component. See {@link HintProps} for more details.
- * @param {string} props.label The main text content of the hint.
- * @param {string} [props.title] An optional title for the hint. If provided, a close button will be displayed.
- * @param {React.ReactNode} [props.icon] An optional icon to be displayed next to the title or label.
- * @param {() => void} [props.onRequestClose] A callback function to be called when the close button is clicked.
- * @param {React.ReactNode} [props.children] Optional additional content to be displayed below the label.
- * @param {any} ...props Any other props will be passed down to the underlying container div.
- * @returns {JSX.Element} The rendered Hint component.
  */
 function Hint({
   title,

@@ -4,20 +4,10 @@ import { SpinnerProps } from './types';
 
 
 /**
- * BBBSpinner is a loading spinner component for indicating background activity or loading states.
+ * A customizable spinner component.
  *
- * @component
- * @param {number|string} [size=48] - The width and height of the spinner. Accepts a number (pixels) or a CSS string (e.g., '2rem', '24px').
- * @param {number} [strokeWidth=4] - The thickness of the spinner stroke.
- * @param {boolean} [animate=true] - If false, disables the animation.
- * @returns {JSX.Element} The rendered spinner component.
+ * This component provides a small, configurable loading indicator for background activity or loading states.
  *
- * @example
- * <BBBSpinner />
- * <BBBSpinner size={32} />
- * <BBBSpinner size="2rem" />
- * <BBBSpinner strokeWidth={2} />
- * <BBBSpinner animate />
  */
 const Spinner: React.FC<SpinnerProps> = ({
   size = 48,

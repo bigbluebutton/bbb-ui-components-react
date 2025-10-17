@@ -8,16 +8,6 @@ import * as Styled from './styles';
  * This component provides a styled, multi-line text input field that automatically
  * focuses on render and supports all standard textarea attributes.
  *
- * @param {TextAreaInputProps} props The props for the TextAreaInput component. See {@link TextAreaInputProps} for more details.
- * @param {string} [props.placeholder=''] The placeholder text to be displayed when the textarea is empty.
- * @param {number} [props.rows=1] The initial number of visible text lines.
- * @param {number} [props.maxLength=250] The maximum number of characters allowed in the textarea.
- * @param {boolean} [props.autoFocus=true] If `true`, the textarea will be focused on mount.
- * @param {React.Ref<HTMLTextAreaElement>} [props.inputRef] A ref to be forwarded to the underlying textarea element.
- * @param {(event: React.ChangeEvent<HTMLTextAreaElement>) => void} [props.onChange] Callback fired when the value is changed.
- * @param {(event: React.KeyboardEvent<HTMLTextAreaElement>) => void} [props.onKeyDown] Callback fired when a key is pressed.
- * @param {any} ...props Any other props will be passed down to the underlying textarea element.
- * @returns {JSX.Element} The rendered TextAreaInput component.
  */
 function TextAreaInput({
   placeholder = '',
