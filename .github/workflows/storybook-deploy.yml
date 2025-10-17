@@ -31,11 +31,23 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook
 
+      - name: Debug list Storybook output
+        run: |
+          echo "Working directory: $(pwd)"
+          echo "List repository root:"
+          ls -la
+          echo "Check for storybook-static directory:" 
+          if [ -d ./storybook-static ]; then
+            echo "storybook-static exists - listing contents:" 
+            ls -la ./storybook-static
+          else
+            echo "storybook-static does not exist at ./storybook-static"
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           publish_dir: ./storybook-static
-          # Use the GitHub token provided by Actions
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           keep_files: false
