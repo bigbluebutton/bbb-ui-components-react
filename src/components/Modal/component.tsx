@@ -8,25 +8,11 @@ import { ModalProps } from './types';
 import { BBButton } from '../..';
 
 /**
- * BBBModal component
+ * A versatile BBBModal component
  *
- * Displays a customizable modal with optional title, body, and footer.
- * Supports accessibility, dividers, scrollable body, and sticky footer.
+ * This component provides a customizable modal with optional title, body, and footer.
+ * It supports accessibility, dividers, scrollable body, and sticky footer.
  *
- * @param {ModalProps} props The props for the BBBModal component. See {@link ModalProps} for more details.
- * @param {boolean} isOpen - Controls whether the modal is open
- * @param {() => void} onRequestClose - Function called when requesting to close the modal
- * @param {HTMLElement | string} [appElement] - App element for accessibility
- * @param {string} [title] - Modal title
- * @param {string} [contentLabel] - Accessibility label for modal content
- * @param {boolean} [showDividers] - Shows dividers between header, body, and footer
- * @param {boolean} [shouldCloseOnOverlayClick] - Allows closing when clicking outside the modal
- * @param {boolean} [shouldCloseOnEsc] - Allows closing with ESC key
- * @param {boolean} [allowScroll] - Enables scroll in the modal body
- * @param {boolean} [noFooter] - Hides the modal footer
- * @param {React.ReactNode} [footerContent] - Custom content for the footer
- * @param {boolean} [stickyFooter] - Makes the footer sticky
- * @param {React.ReactNode} children - Modal content
  */
 const Modal: React.FC<ModalProps> = ({
   isOpen = true,
