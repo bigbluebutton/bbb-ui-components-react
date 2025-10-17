@@ -71,8 +71,10 @@ function Button(props: ButtonProps): JSX.Element {
     'aria-labelledby'?: string;
     'aria-describedby'?: string;
   } = {};
-  if (ariaLabel) accessibilityProps['aria-label'] = ariaLabel;
-  if (ariaLabelledBy) accessibilityProps['aria-labelledby'] = ariaLabelledBy;
+  const generatedId = useId();
+  const defaultLabelId = `${id || generatedId}-label`;
+  accessibilityProps['aria-label'] = ariaLabel || label;
+  accessibilityProps['aria-labelledby'] = ariaLabelledBy || defaultLabelId;
   if (ariaDescribedBy) accessibilityProps['aria-describedby'] = ariaDescribedBy;
 
   const buttonElement = (() => {
@@ -87,10 +89,10 @@ function Button(props: ButtonProps): JSX.Element {
           onClick={onClick}
           onKeyDown={onKeyDown}
           {...accessibilityProps}
-          color={color}
-          variant={variant}
-          size={size}
-          layout={layout}
+          $color={color}
+          $variant={variant}
+          $size={size}
+          $layout={layout}
           disabled={disabled}
         >
           {icon}
@@ -108,27 +110,28 @@ function Button(props: ButtonProps): JSX.Element {
       const testId = dataTest || `${LAYOUTS.STACKED}-button-${id || label || 'default'}`;
 
       return (
-        <Styled.ButtonWrapper data-test={testId} layout={layout}>
+        <Styled.ButtonWrapper data-test={testId} $layout={layout}>
           <Styled.Button
             id={id}
             onClick={onClick}
             onKeyDown={onKeyDown}
             {...accessibilityProps}
-            color={color}
-            variant={variant}
-            size={size}
-            layout={layout}
+            $color={color}
+            $variant={variant}
+            $size={size}
+            $layout={layout}
             disabled={disabled}
           >
             {!hideHelperIcon && (
-              <Styled.helperIconContainer
+              <Styled.HelperIconContainer
                 // Add this property only when there is a onClick function for the auxiliary icon.
                 // It controls whether the auxiliary button is going to have an independent hover state.
                 {...(helperOnClick && { 'data-is-aux-icon': true })}
-                role="button"
-                hover={helperOnClick !== null}
-                color={color}
-                variant={variant}
+                {...(helperOnClick && { 'aria-label': accessibilityProps['aria-label'] + ' helper' })}
+                {...(helperOnClick && { role: "button" })}
+                $hover={helperOnClick !== null}
+                $color={color}
+                $variant={variant}
                 onClick={(event) => {
                   if (helperOnClick) {
                     helperOnClick(event);
@@ -137,12 +140,12 @@ function Button(props: ButtonProps): JSX.Element {
                   }
                 }}
               >
-                <Styled.helperIcon>{helperIcon}</Styled.helperIcon>
-              </Styled.helperIconContainer>
+                <Styled.HelperIcon>{helperIcon}</Styled.HelperIcon>
+              </Styled.HelperIconContainer>
             )}
             {icon && <Styled.IconWrapper>{icon}</Styled.IconWrapper>}
           </Styled.Button>
-          <Styled.ButtonText>{label}</Styled.ButtonText>
+          <Styled.ButtonText id={defaultLabelId}>{label}</Styled.ButtonText>
         </Styled.ButtonWrapper>
       );
     }
@@ -157,14 +160,14 @@ function Button(props: ButtonProps): JSX.Element {
         onClick={onClick}
         onKeyDown={onKeyDown}
         {...accessibilityProps}
-        color={color}
-        variant={variant}
-        size={size}
-        layout={layout}
+        $color={color}
+        $variant={variant}
+        $size={size}
+        $layout={layout}
         disabled={disabled}
       >
         {iconStart && iconStart}
-        {label && <span>{label}</span>}
+        {label && <span id={defaultLabelId}>{label}</span>}
         {children}
         {iconEnd && iconEnd}
       </Styled.Button>

@@ -26,8 +26,8 @@ export const StyledTextField = styled(TextField)<StyledTextProps>`
       color: ${colorTextDefault};
     }
     
-    ${({ error }) =>
-      error &&
+    ${({ $error }) =>
+      $error &&
       css`
         border-color: ${colorBorderError};
     `}
@@ -59,8 +59,8 @@ export const HelperText = styled.div<StyledTextProps>`
   line-height: normal;
   padding: 0 ${spacingMedium}; 
 
-  ${({ error }) =>
-    error &&
+  ${({ $error }) =>
+    $error &&
     css`
       color: ${colorError};
   `}

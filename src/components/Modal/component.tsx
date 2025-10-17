@@ -72,7 +72,7 @@ const Modal: React.FC<ModalProps> = ({
       {showDividers && <BBBDivider />}
 
       <Styled.ModalBody
-        allowScroll={allowScroll}
+        $allowScroll={allowScroll}
       >
         {children}
       </Styled.ModalBody>
@@ -81,7 +81,7 @@ const Modal: React.FC<ModalProps> = ({
           {showDividers && (<BBBDivider />)}
 
           <Styled.ModalFooter
-            stickyFooter={stickyFooter}
+            $stickyFooter={stickyFooter}
           >
             {footerContent}
           </Styled.ModalFooter>

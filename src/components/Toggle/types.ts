@@ -5,12 +5,12 @@ export type LayoutType = typeof TEXT_POSITIONS_VALUES[number];
 export type LabelPlacement = 'top' | 'bottom' | 'start' | 'end';
 
 export interface StyledToggleWrapperProps {
-  textPosition: LayoutType;
+  $textPosition: LayoutType;
 }
 
 export interface StyledTextWrapperProps extends StyledToggleWrapperProps{
-  hasLabel: boolean;
-  hasHelperText: boolean;
+  $hasLabel: boolean;
+  $hasHelperText: boolean;
 }
 
 export interface ToggleProps {

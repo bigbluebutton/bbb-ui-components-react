@@ -8,8 +8,8 @@ import { fontSizeBig, fontSizeDefault } from '../../stylesheets/typography';
 
 export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
   display: flex;
-  ${({ textPosition }) => {
-    if (textPosition === TEXT_POSITIONS.TOP || textPosition === TEXT_POSITIONS.BOTTOM) {
+  ${({ $textPosition }) => {
+    if ($textPosition === TEXT_POSITIONS.TOP || $textPosition === TEXT_POSITIONS.BOTTOM) {
       return css`
         flex-direction: column;
         gap: .1rem;
@@ -19,7 +19,7 @@ export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
       flex-direction: row;
       gap: 1rem;
     `;
-    if (textPosition === TEXT_POSITIONS.LEFT) {
+    if ($textPosition === TEXT_POSITIONS.LEFT) {
       return css`
         ${horizontalStyles}
         justify-content: end; 
@@ -40,21 +40,21 @@ export const ToggleSwitchWrapper = styled.div`
 export const TextWrapper = styled.label<StyledTextWrapperProps>`
   display: flex;
   flex-direction: column;
-  order: ${({ textPosition }) => {
-    if (textPosition === TEXT_POSITIONS.LEFT || textPosition === TEXT_POSITIONS.TOP) {
+  order: ${({ $textPosition }) => {
+    if ($textPosition === TEXT_POSITIONS.LEFT || $textPosition === TEXT_POSITIONS.TOP) {
       return -1;
     }
     return 1;
   }};
   cursor: pointer;
-  ${({hasLabel, hasHelperText}) => (!hasLabel || !hasHelperText) && `justify-content: center;`}
-  ${({ textPosition }) => {
-    if (textPosition === TEXT_POSITIONS.TOP || textPosition === TEXT_POSITIONS.BOTTOM) {
+  ${({ $hasLabel, $hasHelperText }) => (!$hasLabel || !$hasHelperText) && `justify-content: center;`}
+  ${({ $textPosition }) => {
+    if ($textPosition === TEXT_POSITIONS.TOP || $textPosition === TEXT_POSITIONS.BOTTOM) {
       return css`
         align-items: center;
       `;
     }
-    if (textPosition === TEXT_POSITIONS.LEFT) return css`align-items: end;`;
+    if ($textPosition === TEXT_POSITIONS.LEFT) return css`align-items: end;`;
 
     return css`
       align-items: start;

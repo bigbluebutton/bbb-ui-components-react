@@ -9,7 +9,7 @@ const Typography: React.FC<TypographyProps> = ({
   ...props
 }) => {
   return (
-    <TypographyStyled as={as} variant={variant} {...props}>
+    <TypographyStyled as={as} $variant={variant} {...props}>
       {children}
     </TypographyStyled>
   );

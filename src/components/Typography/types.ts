@@ -4,7 +4,7 @@ import { TYPOGRAPHY_VARIANTS } from './constants';
 export type TypographyVariants = (typeof TYPOGRAPHY_VARIANTS)[number];
 
 export interface StyledTypography {
-  variant: TypographyVariants;
+  $variant: TypographyVariants;
 }
 
 export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface StyledIconWrapper {
-  isCustomIcon: boolean;
+  $isCustomIcon: boolean;
 }
 
 export interface NavigationProps {

@@ -27,8 +27,8 @@ function TextInput({
   return (
     <Styled.Container>
       {label && <Styled.Label>{label}</Styled.Label>}
-      <Styled.StyledTextField {...props} error={error} placeholder={placeholder} />
-      {helperText && <Styled.HelperText error={error}>{helperText}</Styled.HelperText>}
+      <Styled.StyledTextField {...props} $error={error} placeholder={placeholder} />
+      {helperText && <Styled.HelperText $error={error}>{helperText}</Styled.HelperText>}
     </Styled.Container>
   );
 }

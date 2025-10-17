@@ -36,13 +36,13 @@ function Toggle ({
   const helperTextId = helperText ? `${id}-helper` : undefined;
 
   return (
-    <Styled.ToggleWrapper textPosition={textPosition}>
+    <Styled.ToggleWrapper $textPosition={textPosition}>
       {(label || helperText) && (
         <Styled.TextWrapper
-          textPosition={textPosition}
+          $textPosition={textPosition}
           htmlFor={id}
-          hasLabel={!!label}
-          hasHelperText={!!helperText}
+          $hasLabel={!!label}
+          $hasHelperText={!!helperText}
         >
           {label && <Styled.Title id={labelId}>{label}</Styled.Title>}
           {helperText && <Styled.HelperText id={helperTextId}>{helperText}</Styled.HelperText>}

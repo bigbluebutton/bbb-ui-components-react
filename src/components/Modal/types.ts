@@ -1,11 +1,11 @@
 import React from 'react';
 
 export interface StyledModalBodyProps {
-  allowScroll: boolean;
+  $allowScroll: boolean;
 }
 
 export interface StyledModalFooterProps {
-  stickyFooter: boolean;
+  $stickyFooter: boolean;
 }
 
 export interface ModalProps {

@@ -42,21 +42,21 @@ type SizeType = typeof SIZE_VALUES[number];
 type LayoutType = typeof LAYOUT_VALUES[number];
 type TooltipPlacementType = typeof TOOLTIP_PLACEMENT_VALUES[number];
 
-export interface StyledhelperIconContainer {
-  hover: boolean;
-  variant: VariantType;
-  color: ColorType;
+export interface StyledHelperIconContainer {
+  $hover: boolean;
+  $variant: VariantType;
+  $color: ColorType;
 }
 
 export interface StyledButtonWrapperProps {
-  layout: LayoutType;
+  $layout: LayoutType;
 }
 
 export interface StyledButtonProps {
-  variant?: VariantType;
-  color?: ColorType;
-  size?: SizeType;
-  layout?: LayoutType;
+  $variant?: VariantType;
+  $color?: ColorType;
+  $size?: SizeType;
+  $layout?: LayoutType;
   disabled: boolean;
 }
 

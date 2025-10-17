@@ -10,7 +10,7 @@ import {
   LAYOUTS,
 } from './constants';
 import {
-  StyledhelperIconContainer, StyledButtonProps,
+  StyledHelperIconContainer, StyledButtonProps,
   StyledButtonWrapperProps,
 } from './type';
 import {
@@ -31,15 +31,15 @@ const commonButtonStyles = css<StyledButtonProps>`
   position: relative;
   transition: opacity 0.2s ease-in-out;
 
-  ${({ size }) => {
-    return CSS_SIZE_PROPERTIES[size]
-      ? `padding: ${CSS_SIZE_PROPERTIES[size].padding};`
+  ${({ $size }) => {
+    return CSS_SIZE_PROPERTIES[$size]
+      ? `padding: ${CSS_SIZE_PROPERTIES[$size].padding};`
       : `padding: ${CSS_SIZE_PROPERTIES[DEFAULT_SIZE].padding};`;
   }}
 
-  ${({ color, variant }) => {
-    const safeColor = color || DEFAULT_COLOR;
-    const safeVariant = variant || DEFAULT_VARIANT;
+  ${({ $color, $variant }) => {
+    const safeColor = $color || DEFAULT_COLOR;
+    const safeVariant = $variant || DEFAULT_VARIANT;
     const {
       color: contentColor,
       iconColor,
@@ -72,8 +72,8 @@ const commonButtonStyles = css<StyledButtonProps>`
     `;
   }}
 
-  ${({ variant }) =>
-    variant === VARIANTS.SUBTLE &&
+  ${({ $variant }) =>
+    $variant === VARIANTS.SUBTLE &&
     `
     text-decoration: underline;
   `}
@@ -139,7 +139,7 @@ const defaultLayoutStyles = css`
 `;
 
 export const ButtonWrapper = styled.div<StyledButtonWrapperProps>`
-  ${({ layout }) => layout === LAYOUTS.STACKED && `
+  ${({ $layout }) => $layout === LAYOUTS.STACKED && `
     width: 5rem;
     display: flex;
     flex-direction: column;
@@ -151,8 +151,8 @@ export const ButtonWrapper = styled.div<StyledButtonWrapperProps>`
 export const Button = styled.button<StyledButtonProps>`
   ${commonButtonStyles}
 
-  ${({ layout }) => {
-    switch (layout) {
+  ${({ $layout }) => {
+    switch ($layout) {
       case LAYOUTS.STACKED:
         return stackedLayoutStyles;
       case LAYOUTS.CIRCLE:
@@ -163,16 +163,22 @@ export const Button = styled.button<StyledButtonProps>`
   }}
 `;
 
-export const helperIconContainer = styled.div<StyledhelperIconContainer>`
-  ${({ hover, variant, color }) => hover && `
-    &&:hover,
-    &&:active,
-      background-color: ${CSS_COLOR_PROPERTIES[variant][color].hoverBackground};
-    }
-    &&:focus {
-      outline: 1px solid ${CSS_COLOR_PROPERTIES[variant][color].outline};
-    }
-  `}
+export const HelperIconContainer = styled.div<StyledHelperIconContainer>`
+  ${({ $hover, $variant, $color }) => {
+    if (!$hover) return null;
+
+    return css`
+      &&:hover,
+      &&:active {
+        ${CSS_COLOR_PROPERTIES[$variant][$color].hoverBackground &&
+        `background-color: ${CSS_COLOR_PROPERTIES[$variant][$color].hoverBackground};`}
+      }
+
+      &&:focus {
+        outline: 1px solid ${CSS_COLOR_PROPERTIES[$variant][$color].outline};
+      }
+    `;
+  }}
   border-radius: 50%;
   padding: 0.2rem;
   position: absolute;
@@ -183,7 +189,7 @@ export const helperIconContainer = styled.div<StyledhelperIconContainer>`
   }
 `;
 
-export const helperIcon = styled.div`
+export const HelperIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
