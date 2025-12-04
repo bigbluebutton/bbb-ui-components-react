@@ -11,6 +11,7 @@ import {
 } from './constants';
 import * as Styled from './styles';
 import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 /**
  * A versatile Button component.
