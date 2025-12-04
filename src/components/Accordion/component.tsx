@@ -3,6 +3,7 @@ import { AccordionProps } from './types';
 import * as Styled from './styles';
 import { MdExpandMore } from 'react-icons/md';
 import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 import { DEFAULT_TOOLTIP_PLACEMENT } from './constants';
 
 /**
