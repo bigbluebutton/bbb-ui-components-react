@@ -21,19 +21,18 @@ export default {
     path: path.resolve('./dist/components'),
     filename: '[name].js',
     library: {
-      type: 'module',
+      type: 'umd',
     },
-    module: true,
-    environment: { module: true },
-  },
-  experiments: {
-    outputModule: true,
+    globalObject: 'this',
   },
   externals: {
     react: 'react',
     'react-dom': 'react-dom',
     'styled-components': 'styled-components',
     'react-modal': 'react-modal',
+    'react-icons': 'react-icons',
+    '@tippyjs/react': '@tippyjs/react',
+    'tippy.js': 'tippy.js',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
