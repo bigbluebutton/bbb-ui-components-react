@@ -1,6 +1,6 @@
 {
   "name": "@bigbluebutton/bbb-ui-components-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/components/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
