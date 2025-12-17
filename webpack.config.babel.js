@@ -25,15 +25,19 @@ export default {
     },
     globalObject: 'this',
   },
-  externals: {
-    react: 'react',
-    'react-dom': 'react-dom',
-    'styled-components': 'styled-components',
-    'react-modal': 'react-modal',
-    'react-icons': 'react-icons',
-    '@tippyjs/react': '@tippyjs/react',
-    'tippy.js': 'tippy.js',
-  },
+  externals: [
+    {
+      react: 'react',
+      'react-dom': 'react-dom',
+      'styled-components': 'styled-components',
+      'react-modal': 'react-modal',
+      'react-icons': 'react-icons',
+      '@tippyjs/react': '@tippyjs/react',
+      'tippy.js': 'tippy.js',
+    },
+    /^@mui\/.+$/,
+    /^@emotion\/.+$/,
+  ],
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
     fallback: {
