@@ -60,9 +60,17 @@ react-modal >=3.16.1
 @mui/styles ^6.4.8
 prop-types ^15.8.1
 react-icons ^5.5.0
+@tippyjs/react ^4.2.6
+tippy.js ^6.3.7
 ```
 
 Make sure to install these dependencies to avoid runtime errors and ensure compatibility.
+
+You can install all of them with the following command:
+
+```bash
+npm install react react-dom styled-components react-modal @emotion/react @emotion/styled @mui/material @mui/styles prop-types react-icons @tippyjs/react tippy.js
+```
 
 ## Color Customization with CSS Variables
 
