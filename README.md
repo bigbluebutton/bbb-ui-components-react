@@ -20,31 +20,6 @@ Below is a list of the components available in this library. Each component has 
 - [BBBToggle](./src/components/Toggle/README.md)
 - [BBBTypography](./src/components/Typography/README.md)
 
-## Installation
-
-This library is under active development and has not yet been published on npm. For now, you can clone the repository and install it locally.
-
-### Building the bundle
-
-```
-npm install
-npm run build
-```
-
-### Using npm link
-
-When developing and testing locally with `npm link`, you may need to adjust your Webpack configuration to ensure compatibility with `styled-components` and `react`, which do not handle multiple instances well. Add the following alias configuration to the project that uses this library:
-
-```json
-resolve: {
-  alias: {
-    'styled-components': path.resolve('./node_modules/styled-components'),
-    react: path.resolve('./node_modules/react'),
-    'react-dom': path.resolve('./node_modules/react-dom'),
-  },
-}
-```
-
 ## Peer Dependencies
 
 This library requires the following peer dependencies to be installed in your project:
@@ -129,3 +104,36 @@ The following table lists the supported CSS variables for color overriding, extr
 ```
 
 If you need to override colors for specific components or add new variables, refer to the component's `styles.ts` file for implementation details.
+
+## Installation
+
+You can install the library directly from npm:
+
+```bash
+npm install @mconf/bbb-ui-components-react
+```
+
+## Local Development
+
+If you want to build the library locally or contribute:
+
+### Building the bundle
+
+```
+npm install
+npm run build
+```
+
+### Using npm link
+
+When developing and testing locally with `npm link`, you may need to adjust your Webpack configuration to ensure compatibility with `styled-components` and `react`, which do not handle multiple instances well. Add the following alias configuration to the project that uses this library:
+
+```json
+resolve: {
+  alias: {
+    'styled-components': path.resolve('./node_modules/styled-components'),
+    react: path.resolve('./node_modules/react'),
+    'react-dom': path.resolve('./node_modules/react-dom'),
+  },
+}
+```
