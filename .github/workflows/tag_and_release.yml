@@ -1,0 +1,48 @@
+name: Manual Tag & Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      create_github_release:
+        description: 'Create a GitHub Release?'
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to push commits and tags
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetches all history for accurate changelog generation
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate Changelog and Tag
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          git-user-name: 'github-actions[bot]'
+          git-user-email: 'github-actions[bot]@users.noreply.github.com'
+          git-message: 'chore(release): {version}'
+          skip-on-empty: 'false'
+          preset: 'conventionalcommits'
+          skip-ci: 'false'
+          tag-prefix: 'v'
+          version-file: './package.json, ./package-lock.json'
+
+      - name: Create GitHub Release
+        if: ${{ github.event.inputs.create_github_release == 'true' && steps.changelog.outputs.skipped == 'false' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
+          generate_release_notes: true
