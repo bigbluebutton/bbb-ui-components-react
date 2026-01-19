@@ -1,6 +1,10 @@
 {
   "name": "@mconf/bbb-ui-components-react",
   "version": "2.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigbluebutton/bbb-ui-components-react.git"
+  },
   "main": "dist/components/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
