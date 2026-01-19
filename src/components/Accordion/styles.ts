@@ -60,8 +60,8 @@ export const TitleText = styled.span`
 `;
 
 export const AccordionContent = styled.div<StyledAccordionContent>`
-  max-height: ${({ $expanded, scrollHeight }) =>
-    $expanded ? `${scrollHeight}px` : '0'};
+  max-height: ${({ $expanded, $scrollHeight }) =>
+    $expanded ? `${$scrollHeight}px` : '0'};
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
   padding: 0px 1rem;
