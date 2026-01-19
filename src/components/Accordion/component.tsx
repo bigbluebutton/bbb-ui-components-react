@@ -55,7 +55,7 @@ function Accordion({
       <Styled.AccordionContent
         ref={contentRef}
         $expanded={isExpanded}
-        scrollHeight={contentRef.current?.scrollHeight || 0}
+        $scrollHeight={contentRef.current?.scrollHeight || 0}
       >
         {children}
       </Styled.AccordionContent>

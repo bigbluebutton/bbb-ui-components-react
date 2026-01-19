@@ -1,4 +1,5 @@
 import { TOOLTIP_PLACEMENT_VALUES } from './constants';
+import * as React from 'react';
 
 export interface StyledExpandIcon {
   $expanded: boolean;
@@ -6,7 +7,7 @@ export interface StyledExpandIcon {
 
 export interface StyledAccordionContent {
   $expanded: boolean;
-  scrollHeight: number;
+  $scrollHeight: number;
 }
 
 type TooltipPlacementType = typeof TOOLTIP_PLACEMENT_VALUES[number];
