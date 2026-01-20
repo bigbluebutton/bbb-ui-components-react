@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v2.0.0...v2.0.1) (2026-01-20)
+
+
+### Bug Fixes
+
+* move '@mui/icons-material' to `peerDependencies` as intended in v2.0.0 ([035f426](https://github.com/bigbluebutton/bbb-ui-components-react/commit/035f426bfe780d560aa46f34d6e5e9372f24e951))
+
 ## [2.0.0](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v1.0.1...v2.0.0) (2026-01-19)
 
 
