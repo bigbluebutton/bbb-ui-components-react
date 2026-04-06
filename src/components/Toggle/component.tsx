@@ -18,9 +18,11 @@ function Toggle ({
   ariaLabel,
   ariaLabelledBy,
   ariaDescribedBy,
+  id: providedId,
   ...toggleProps
 }: ToggleProps): JSX.Element {
-  const id = useId();
+  const generatedUniqueId = useId();
+  const id = providedId ?? generatedUniqueId;
   const labelId = label ? `${id}-label` : undefined;
   const helperTextId = helperText ? `${id}-helper` : undefined;
 
