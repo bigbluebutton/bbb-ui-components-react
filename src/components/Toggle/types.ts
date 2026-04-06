@@ -1,3 +1,4 @@
+import React from 'react';
 import { TEXT_POSITIONS_VALUES } from './constants';
 
 export type LayoutType = typeof TEXT_POSITIONS_VALUES[number];
@@ -14,6 +15,7 @@ export interface StyledTextWrapperProps extends StyledToggleWrapperProps{
 }
 
 export interface ToggleProps {
+  id?: string;
   disabled?: boolean;
   label?: string;
   helperText?: string;
