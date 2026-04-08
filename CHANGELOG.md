@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v2.0.1...v2.0.2) (2026-04-08)
+
+
+### Bug Fixes
+
+* **toggle:** id mismatch between toggle and its label ([fa115e0](https://github.com/bigbluebutton/bbb-ui-components-react/commit/fa115e0175ce6f5f5de2a97a68355805657d046a))
+
 ## [2.0.1](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v2.0.0...v2.0.1) (2026-01-20)
 
 
