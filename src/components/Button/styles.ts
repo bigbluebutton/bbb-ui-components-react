@@ -32,9 +32,8 @@ const commonButtonStyles = css<StyledButtonProps>`
   transition: opacity 0.2s ease-in-out;
 
   ${({ $size }) => {
-    return CSS_SIZE_PROPERTIES[$size]
-      ? `padding: ${CSS_SIZE_PROPERTIES[$size].padding};`
-      : `padding: ${CSS_SIZE_PROPERTIES[DEFAULT_SIZE].padding};`;
+    const safeSize = $size ?? DEFAULT_SIZE;
+    return `padding: ${(CSS_SIZE_PROPERTIES[safeSize] ?? CSS_SIZE_PROPERTIES[DEFAULT_SIZE]).padding};`;
   }}
 
   ${({ $color, $variant }) => {
