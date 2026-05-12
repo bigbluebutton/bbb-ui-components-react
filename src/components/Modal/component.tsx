@@ -28,10 +28,12 @@ const Modal: React.FC<ModalProps> = ({
   footerContent = null,
   stickyFooter = true,
   children,
+  ...rest
 }) => {
 
   return (
     <ReactModal
+      {...rest}
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel={contentLabel}
