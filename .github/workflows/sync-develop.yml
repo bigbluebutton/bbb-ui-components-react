@@ -1,0 +1,70 @@
+name: Sync main into develop
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open PR from main to develop
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const tag = context.ref.replace('refs/tags/', '');
+            const { owner, repo } = context.repo;
+
+            // Check if develop branch exists
+            try {
+              await github.rest.repos.getBranch({ owner, repo, branch: 'develop' });
+            } catch (e) {
+              if (e.status === 404) {
+                core.warning('Branch "develop" not found. Skipping PR creation.');
+                return;
+              }
+              throw e;
+            }
+
+            // Check if branches are already in sync
+            const comparison = await github.rest.repos.compareCommitsWithBasehead({
+              owner,
+              repo,
+              basehead: 'develop...main',
+            });
+            if (comparison.data.ahead_by === 0) {
+              core.info('Branches are already in sync. No PR needed.');
+              return;
+            }
+
+            // Check if a PR from main to develop already exists
+            const existingPRs = await github.rest.pulls.list({
+              owner,
+              repo,
+              state: 'open',
+              head: `${owner}:main`,
+              base: 'develop',
+            });
+            if (existingPRs.data.length > 0) {
+              core.info(`PR already exists: ${existingPRs.data[0].html_url}`);
+              return;
+            }
+
+            await github.rest.pulls.create({
+              owner,
+              repo,
+              title: `chore: sync ${tag} from main into develop`,
+              head: 'main',
+              base: 'develop',
+              body: `Automated back-merge after release ${tag}.`,
+            });

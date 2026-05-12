@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactModal from 'react-modal';
 
 export interface StyledModalBodyProps {
   $allowScroll: boolean;
@@ -8,15 +9,11 @@ export interface StyledModalFooterProps {
   $stickyFooter: boolean;
 }
 
-export interface ModalProps {
-  isOpen?: boolean;
-  onRequestClose: () => void;
-  appElement?: HTMLElement | HTMLElement[] | HTMLCollection | NodeList | undefined;
+export interface ModalProps extends Omit<ReactModal.Props, 'style'> {
+  isOpen: boolean;
+  onRequestClose: NonNullable<ReactModal.Props['onRequestClose']>;
   title?: string;
-  contentLabel?: string;
   showDividers?: boolean;
-  shouldCloseOnOverlayClick?: boolean;
-  shouldCloseOnEsc?: boolean;
   allowScroll?: boolean;
   noFooter?: boolean;
   stickyFooter?: boolean;
