@@ -19,7 +19,7 @@ function Toggle ({
   ariaLabelledBy,
   ariaDescribedBy,
   id: providedId,
-  ...toggleProps
+  ...rest
 }: ToggleProps): JSX.Element {
   const generatedUniqueId = useId();
   const id = providedId ?? generatedUniqueId;
@@ -41,12 +41,12 @@ function Toggle ({
       )}
       <Styled.ToggleSwitchWrapper>
         <Styled.MaterialToggle
+          {...rest}
           id={id}
           onChange={onChange}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabel ? undefined : ariaLabelledBy || labelId}
           aria-describedby={ariaDescribedBy || helperTextId}
-          {...toggleProps}
         />
       </Styled.ToggleSwitchWrapper>
     </Styled.ToggleWrapper>
