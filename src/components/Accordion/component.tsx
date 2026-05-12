@@ -15,7 +15,7 @@ import { DEFAULT_TOOLTIP_PLACEMENT } from './constants';
  */
 function Accordion({
   title,
-  tooltipLabel = null,
+  tooltipLabel = undefined,
   tooltipPlacement = DEFAULT_TOOLTIP_PLACEMENT,
   ariaLabel,
   ariaLabelledBy,
