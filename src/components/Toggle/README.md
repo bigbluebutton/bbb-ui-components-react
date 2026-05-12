@@ -43,7 +43,7 @@ import { BBBToggle } from 'bbb-ui-components-react';
 | `textPosition`      | `keyof typeof TEXT_POSITIONS`                                       | `'right'` | The position of the text labels relative to the toggle switch.                 |
 | `disabled`          | `boolean`                                                           | `false`   | If `true`, the toggle will be disabled and unresponsive.                       |
 | `onChange`          | `(event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void` |           | Callback function that is fired when the toggle state changes.                 |
-| `aria-label`        | `string`                                                            |           | The accessible name for the toggle.                                            |
-| `aria-labelledby`   | `string`                                                            |           | The ID of the element that labels the toggle.                                  |
-| `aria-describedby`  | `string`                                                            |           | The ID of the element that describes the toggle.                               |
-| `...toggleProps`    | `any`                                                               |           | Any other props will be passed down to the underlying Material-UI Switch component. |
+| `ariaLabel`         | `string`                                                            |           | The accessible name for the toggle.                                            |
+| `ariaLabelledBy`    | `string`                                                            |           | The ID of the element that labels the toggle.                                  |
+| `ariaDescribedBy`   | `string`                                                            |           | The ID of the element that describes the toggle.                               |
+| `...props`          | `SwitchProps`                                                       |           | Any other props will be passed down to the underlying Material-UI Switch component. |
