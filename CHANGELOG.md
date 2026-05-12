@@ -1,3 +1,16 @@
+## [2.1.0](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v2.0.2...v2.1.0) (2026-05-12)
+
+
+### Features
+
+* expose underlying element props for BBBModal and BBBToggle ([9f67041](https://github.com/bigbluebutton/bbb-ui-components-react/commit/9f67041fe02339ee1bf5aa544f9ccd50bdc8583e))
+
+
+### Bug Fixes
+
+* **BBBAccordion:** set tooltipLabel default to undefined ([6aa276f](https://github.com/bigbluebutton/bbb-ui-components-react/commit/6aa276ff7926b46a7964276e0edbd251b18ce85f))
+* **BBButton:** prevent size change on hover for tertiary variant when focused ([62b3f8c](https://github.com/bigbluebutton/bbb-ui-components-react/commit/62b3f8ca71aa301038192d0bbe08d2153429a752))
+
 ## [2.0.2](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v2.0.1...v2.0.2) (2026-04-08)
 
 
@@ -45,25 +58,4 @@ application.
 * prevent props leaking to DOM ([cc174f3](https://github.com/bigbluebutton/bbb-ui-components-react/commit/cc174f3461e26dd49925935d32c899c57384550e))
 * **spinner:** wrong prop logic ([728b9cb](https://github.com/bigbluebutton/bbb-ui-components-react/commit/728b9cb1ee900c39d2366cbb833ae6a8ecfc2519))
 * **tooltips:** adds missing tippy styles ([44bd58c](https://github.com/bigbluebutton/bbb-ui-components-react/commit/44bd58c1a5f4b3ef832d3814bc3b7d64a85ef3df))
-
-## [1.0.0](https://github.com/bigbluebutton/bbb-ui-components-react/compare/50c8d884c6089d9dcf389ee4d8436bcfd3e739b5...v1.0.0) (2025-08-28)
-
-
-### Features
-
-* add Modal and Spinner ([0f0d11e](https://github.com/bigbluebutton/bbb-ui-components-react/commit/0f0d11e2876a7a6437b004347f34fd95f0449b78))
-* add Navigation component ([2b8b561](https://github.com/bigbluebutton/bbb-ui-components-react/commit/2b8b561a9bfacb8e1995ec4c6074a0abdbd852c8))
-* **build:** enable code splitting, optimize bundle, and export theme ([b7af4c6](https://github.com/bigbluebutton/bbb-ui-components-react/commit/b7af4c63ec7e9d54c9f866422f2113dc2cbf9be7))
-* **button:** add support for colors ([50c8d88](https://github.com/bigbluebutton/bbb-ui-components-react/commit/50c8d884c6089d9dcf389ee4d8436bcfd3e739b5))
-* **button:** add support for sizes ([980a052](https://github.com/bigbluebutton/bbb-ui-components-react/commit/980a0528395039f6f8cdef43200d3247f5af09cb))
-
-
-### Bug Fixes
-
-* add mapping to core css vars ([1c4a214](https://github.com/bigbluebutton/bbb-ui-components-react/commit/1c4a2141732116fd18e9aaab49de17a3c9bf1e44))
-* divider height ([5683cf2](https://github.com/bigbluebutton/bbb-ui-components-react/commit/5683cf20aaf16535bef4ca497d9cf125097b883c))
-* linter and pallete color vars ([825db5c](https://github.com/bigbluebutton/bbb-ui-components-react/commit/825db5c5d51813ea83fed5866f3c98571ee08908))
-* minor fixes on styles ([fbca8e1](https://github.com/bigbluebutton/bbb-ui-components-react/commit/fbca8e1f8ef37e6c33f0bbab456352614c0e96ef))
-* subtle button background color ([c11b0f8](https://github.com/bigbluebutton/bbb-ui-components-react/commit/c11b0f854c39990c7b0b5b4d9559707cbbc77219))
-* toggle title alignment ([7634d58](https://github.com/bigbluebutton/bbb-ui-components-react/commit/7634d584c6a954e0b0528410d14cba68eea3cdfb))
 
