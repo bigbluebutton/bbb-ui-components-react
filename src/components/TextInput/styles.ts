@@ -3,9 +3,9 @@ import { TextField } from '@mui/material';
 import {
   colorBorderDefault, colorBorderSelected,
   colorTextDefault, colorTextLight,
+  colorBorderError, colorError,
 } from '../../stylesheets/pallete';
 import { fontSizeSmall } from '../../stylesheets/typography';
-import { colorBorderError, colorError } from '../../stylesheets/pallete';
 import { borderRadiusDefault, spacingMedium, spacingSmall } from '../../stylesheets/sizing';
 import { StyledTextProps } from './types';
 
