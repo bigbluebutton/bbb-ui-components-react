@@ -1,0 +1,25 @@
+name: Typescript - compile code
+on: [pull_request]
+permissions:
+  contents: read
+jobs:
+  ts-code-compilation:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      # Merges the base branch (e.g. develop) into the PR branch so compilation
+      # runs against the integrated result, catching conflicts early.
+      - name: Merge branches
+        uses: ./.github/actions/merge-branches
+      - name: install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: run npm install
+        shell: bash
+        run: npm install
+      - name: typescript code compilation
+        shell: bash
+        run: npx tsc
