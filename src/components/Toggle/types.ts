@@ -1,4 +1,4 @@
-import React from 'react';
+import { SwitchProps } from '@mui/material';
 import { TEXT_POSITIONS_VALUES } from './constants';
 
 export type LayoutType = typeof TEXT_POSITIONS_VALUES[number];
@@ -14,15 +14,11 @@ export interface StyledTextWrapperProps extends StyledToggleWrapperProps{
   $hasHelperText: boolean;
 }
 
-export interface ToggleProps {
-  id?: string;
-  disabled?: boolean;
+export interface ToggleProps extends SwitchProps {
   label?: string;
   helperText?: string;
   textPosition?: LayoutType;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void;
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
-  [key: string]: unknown;
 };

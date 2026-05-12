@@ -30,8 +30,8 @@ import { BBBModal } from 'bbb-ui-components-react';
 | Prop                        | Type                           | Default   | Description                                                                 |
 |-----------------------------|--------------------------------|-----------|-----------------------------------------------------------------------------|
 | `isOpen`                    | `boolean`                      | `true`    | Controls whether the modal is open.                                         |
-| `onRequestClose`            | `() => void`                   | —         | Function called when requesting to close the modal.                         |
-| `appElement`                | `HTMLElement \| string`        | —         | App element for accessibility.                                              |
+| `onRequestClose`            | `(event: React.MouseEvent \| React.KeyboardEvent) => void` | — | Function called when requesting to close the modal.              |
+| `appElement`                | `HTMLElement \| HTMLElement[] \| HTMLCollection \| NodeList` | — | App element for accessibility (passed to `react-modal`).        |
 | `title`                     | `string`                       | —         | Modal title.                                                                |
 | `contentLabel`              | `string`                       | —         | Accessibility label for modal content.                                      |
 | `showDividers`              | `boolean`                      | `false`   | Shows dividers between header, body, and footer.                            |
@@ -42,6 +42,7 @@ import { BBBModal } from 'bbb-ui-components-react';
 | `footerContent`             | `React.ReactNode`              | `null`    | Custom content for the footer.                                              |
 | `stickyFooter`              | `boolean`                      | `true`    | Makes the footer sticky.                                                    |
 | `children`                  | `React.ReactNode`              | —         | Modal content.                                                              |
+| `...props`                  | `ReactModal.Props`             | —         | Any other props are passed down to the underlying `react-modal` instance.   |
 
 See [`ModalProps`](./types.ts) for full type definitions.
 
