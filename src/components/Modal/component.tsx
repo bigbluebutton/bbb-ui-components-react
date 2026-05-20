@@ -5,6 +5,7 @@ import { BBBTypography } from '../Typography';
 import { MdClose } from 'react-icons/md';
 import { BBBDivider } from '../Divider';
 import { ModalProps } from './types';
+import { MODAL_PRIORITY_Z_INDEX } from './constants';
 import { BBButton } from '../..';
 
 /**
@@ -13,6 +14,8 @@ import { BBButton } from '../..';
  * This component provides a customizable modal with optional title, body, and footer.
  * It supports accessibility, dividers, scrollable body, and sticky footer.
  *
+ * Use the `priority` prop to control z-index stacking when multiple modals
+ * coexist: `'low'` (1001), `'medium'` (1002), `'high'` (1003).
  */
 const Modal: React.FC<ModalProps> = ({
   isOpen = true,
@@ -28,8 +31,17 @@ const Modal: React.FC<ModalProps> = ({
   footerContent = null,
   stickyFooter = true,
   children,
+  priority,
   ...rest
 }) => {
+  const overlayStyle = priority
+    ? { ...Styled.modalStyles.overlay, zIndex: MODAL_PRIORITY_Z_INDEX[priority] }
+    : Styled.modalStyles.overlay;
+
+  const modalStyles = {
+    overlay: overlayStyle,
+    content: Styled.modalStyles.content,
+  };
 
   return (
     <ReactModal
@@ -37,7 +49,7 @@ const Modal: React.FC<ModalProps> = ({
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel={contentLabel}
-      style={Styled.modalStyles}
+      style={modalStyles}
       shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
       shouldCloseOnEsc={shouldCloseOnEsc}
       appElement={appElement}
