@@ -32,9 +32,8 @@ const commonButtonStyles = css<StyledButtonProps>`
   transition: opacity 0.2s ease-in-out;
 
   ${({ $size }) => {
-    return CSS_SIZE_PROPERTIES[$size]
-      ? `padding: ${CSS_SIZE_PROPERTIES[$size].padding};`
-      : `padding: ${CSS_SIZE_PROPERTIES[DEFAULT_SIZE].padding};`;
+    const safeSize = $size ?? DEFAULT_SIZE;
+    return `padding: ${(CSS_SIZE_PROPERTIES[safeSize] ?? CSS_SIZE_PROPERTIES[DEFAULT_SIZE]).padding};`;
   }}
 
   ${({ $color, $variant }) => {
@@ -57,13 +56,13 @@ const commonButtonStyles = css<StyledButtonProps>`
       }
       ${iconColor ? `color: ${iconColor}` : `color: ${contentColor}`};
       ${background && `background-color: ${background};`}
-      ${border ? `border: 1px solid ${border};` : 'border: none;'}
+      ${border ? `border: 1px solid ${border};` : 'border: 1px solid transparent;'}
 
       &&:hover:not(:has(> [data-is-aux-icon]:hover)),
       &&:active {
         color: ${hoverColor};
         ${hoverBackground && `background-color: ${hoverBackground};`}
-        ${hoverBorder ? `border: 1px solid ${hoverBorder};` : 'border: none;'}
+        ${hoverBorder ? `border: 1px solid ${hoverBorder};` : 'border: 1px solid transparent;'}
       }
       &&:focus {
         border: 1px solid transparent;

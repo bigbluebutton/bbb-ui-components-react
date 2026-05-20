@@ -45,6 +45,7 @@ const Modal: React.FC<ModalProps> = ({
 
   return (
     <ReactModal
+      {...rest}
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel={contentLabel}
