@@ -3,6 +3,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import BBBModal from './component';
 import { BBBTypography } from '../Typography';
 import { BBButton } from '../Button';
+import { BBBAccordion } from '../Accordion';
+import { BBBSelect } from '../Select';
+import { BBBCheckbox } from '../Checkbox';
+import { BBBTextInput } from '../TextInput';
+import { BBBHint } from '../Hint';
+import MenuItem from '@mui/material/MenuItem';
 
 const meta = {
   title: 'BBBModal',
@@ -94,6 +100,7 @@ const ModalStory: React.FC<React.ComponentProps<typeof BBBModal>> = (args) => {
         {...args}
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
+        footerContent={args.footerContent ?? <ModalFooter onClose={() => setIsOpen(false)} />}
         ariaHideApp={false}
       >
         {args.children}
@@ -101,6 +108,63 @@ const ModalStory: React.FC<React.ComponentProps<typeof BBBModal>> = (args) => {
     </>
   );
 };
+
+const LOREM = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
+
+const ModalFooter = ({ onClose }: { onClose: () => void }) => (
+  <>
+    <BBButton label="Cancel" variant="subtle" onClick={onClose} ariaLabel="Cancel" />
+    <BBButton label="Confirm" variant="primary" onClick={onClose} ariaLabel="Confirm" />
+  </>
+);
+
+const ModalBody = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <BBBTypography variant="header">Profile Settings</BBBTypography>
+    <BBBTypography>{LOREM}</BBBTypography>
+
+    <BBBTextInput label="Full name" placeholder="John Doe" />
+
+    <BBBSelect title="Role" value="admin">
+      <MenuItem value="admin">Admin</MenuItem>
+      <MenuItem value="moderator">Moderator</MenuItem>
+      <MenuItem value="viewer">Viewer</MenuItem>
+    </BBBSelect>
+
+    <BBBTypography>{LOREM}</BBBTypography>
+
+    <BBBAccordion title="Advanced options" ariaLabel="Advanced options">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <BBBCheckbox label="Enable notifications" ariaLabel="Enable notifications" />
+        <BBBCheckbox label="Allow data sharing" ariaLabel="Allow data sharing" />
+        <BBBCheckbox label="Show online status" ariaLabel="Show online status" />
+      </div>
+    </BBBAccordion>
+
+    <BBBHint label="Changes will take effect on the next session." />
+
+    <BBBTypography>{LOREM}</BBBTypography>
+
+    <BBBSelect title="Language" value="pt">
+      <MenuItem value="en">English</MenuItem>
+      <MenuItem value="pt">Português</MenuItem>
+      <MenuItem value="es">Español</MenuItem>
+    </BBBSelect>
+
+    <BBBAccordion title="Danger zone" ariaLabel="Danger zone">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <BBBTypography>{LOREM}</BBBTypography>
+        <BBButton label="Delete account" variant="primary" ariaLabel="Delete account" onClick={() => {}} />
+      </div>
+    </BBBAccordion>
+
+    <BBBTypography>{LOREM}</BBBTypography>
+  </div>
+);
 
 export const Default: Story = {
   args: {
@@ -113,9 +177,7 @@ export const Default: Story = {
     stickyFooter: true,
     shouldCloseOnOverlayClick: true,
     shouldCloseOnEsc: true,
-    children: (
-      <BBBTypography>Modal body content</BBBTypography>
-    ),
+    children: null,
   },
-  render: (args) => <ModalStory {...args} />,
+  render: (args) => <ModalStory {...args}><ModalBody /></ModalStory>,
 };
