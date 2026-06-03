@@ -64,7 +64,7 @@ const Modal: React.FC<ModalProps> = ({
       >
         {children}
       </Styled.ModalBody>
-      {(!noFooter || footerContent) && (
+      {!noFooter && (
         <>
           {showDividers && (<BBBDivider />)}
 
