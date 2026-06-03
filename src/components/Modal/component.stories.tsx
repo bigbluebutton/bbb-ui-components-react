@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import BBBModal from './component';
 import { BBBTypography } from '../Typography';
+import { BBButton } from '../Button';
 
 const meta = {
   title: 'BBBModal',
   component: BBBModal,
   tags: ['autodocs'],
+  parameters: {
+    // Prevent the fixed overlay from covering Storybook's own UI
+    layout: 'centered',
+  },
   argTypes: {
     isOpen: {
       control: 'boolean',
@@ -66,15 +71,51 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/**
+ * Wrapper component so hooks can be used inside Storybook's render function.
+ * The modal is controlled via a trigger button, keeping the controls panel
+ * accessible. Adjust args and re-open the modal to see the changes.
+ */
+const ModalStory: React.FC<React.ComponentProps<typeof BBBModal>> = (args) => {
+  const [isOpen, setIsOpen] = useState(args.isOpen);
+
+  // Sync with the Storybook "isOpen" control
+  React.useEffect(() => {
+    setIsOpen(args.isOpen);
+  }, [args.isOpen]);
+
+  return (
+    <>
+      <BBButton
+        label="Open Modal"
+        onClick={() => setIsOpen(true)}
+      />
+      <BBBModal
+        {...args}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+        ariaHideApp={false}
+      >
+        {args.children}
+      </BBBModal>
+    </>
+  );
+};
+
 export const Default: Story = {
   args: {
     title: 'Modal Title',
-    children: (
-      <div style={{ padding: '1rem' }}>
-        <BBBTypography>Modal body content</BBBTypography>
-      </div>
-    ),
-    isOpen: true,
+    isOpen: false,
     onRequestClose: () => {},
+    showDividers: false,
+    allowScroll: true,
+    noFooter: false,
+    stickyFooter: true,
+    shouldCloseOnOverlayClick: true,
+    shouldCloseOnEsc: true,
+    children: (
+      <BBBTypography>Modal body content</BBBTypography>
+    ),
   },
+  render: (args) => <ModalStory {...args} />,
 };
