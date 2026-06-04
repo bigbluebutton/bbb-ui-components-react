@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import ReactModal from 'react-modal';
 import * as Styled from './styles';
 import { BBBTypography } from '../Typography';
@@ -31,6 +31,15 @@ const Modal: React.FC<ModalProps> = ({
   ...rest
 }) => {
 
+  const renderFooter = useCallback((isSticky: boolean) => (
+    <>
+      {showDividers && <BBBDivider />}
+      <Styled.ModalFooter $stickyFooter={isSticky}>
+        {footerContent}
+      </Styled.ModalFooter>
+    </>
+  ), [footerContent, showDividers]);
+
   return (
     <ReactModal
       {...rest}
@@ -59,22 +68,13 @@ const Modal: React.FC<ModalProps> = ({
 
       {showDividers && <BBBDivider />}
 
-      <Styled.ModalBody
-        $allowScroll={allowScroll}
-      >
-        {children}
-      </Styled.ModalBody>
-      {!noFooter && (
-        <>
-          {showDividers && (<BBBDivider />)}
-
-          <Styled.ModalFooter
-            $stickyFooter={stickyFooter}
-          >
-            {footerContent}
-          </Styled.ModalFooter>
-        </>
-      )}
+      <Styled.ModalScrollArea $allowScroll={allowScroll}>
+        <Styled.ModalBodyContent>
+          {children}
+        </Styled.ModalBodyContent>
+        {!noFooter && !stickyFooter && renderFooter(stickyFooter)}
+        </Styled.ModalScrollArea>
+      {!noFooter && stickyFooter && renderFooter(stickyFooter)}
     </ReactModal>
   )
 }
