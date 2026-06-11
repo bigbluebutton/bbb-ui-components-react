@@ -5,6 +5,7 @@ export { BBBDivider } from './Divider';
 export { BBBHint } from './Hint';
 export { BBBModal } from './Modal';
 export { BBBNavigation } from './Navigation';
+export { BBBSearch } from './Search';
 export { BBBSelect } from './Select';
 export { BBBSpinner } from './Spinner';
 export { BBBTextAreaInput } from './TextAreaInput';
