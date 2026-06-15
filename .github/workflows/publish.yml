@@ -31,3 +31,10 @@ jobs:
 
       - name: Publish to NPM
         run: npm publish --provenance --access public
+
+  sync:
+    needs: publish
+    uses: ./.github/workflows/sync-develop.yml
+    permissions:
+      contents: write
+      pull-requests: write
