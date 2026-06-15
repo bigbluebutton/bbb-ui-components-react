@@ -13,5 +13,6 @@
     "emitDeclarationOnly": false,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-  }
+  },
+  "exclude": ["**/*.stories.tsx", "**/*.stories.ts", "node_modules"]
 }
