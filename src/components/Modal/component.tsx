@@ -27,9 +27,16 @@ const Modal: React.FC<ModalProps> = ({
   noFooter = false,
   footerContent = null,
   stickyFooter = true,
+  testId,
+  closeButtonDataTest,
   children,
   ...rest
 }) => {
+  let _closeButtonDataTest = closeButtonDataTest;
+  
+  if (testId && !closeButtonDataTest) {
+    _closeButtonDataTest = `${testId}-close-button`;
+  }
 
   const renderFooter = useCallback((isSticky: boolean) => (
     <>
@@ -50,6 +57,7 @@ const Modal: React.FC<ModalProps> = ({
       shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
       shouldCloseOnEsc={shouldCloseOnEsc}
       appElement={appElement}
+      testId={testId}
     >
       <Styled.ModalHeader>
         <BBBTypography
@@ -63,6 +71,7 @@ const Modal: React.FC<ModalProps> = ({
           onClick={onRequestClose}
           variant="subtle"
           ariaLabel="close"
+          {...(_closeButtonDataTest ? { dataTest: _closeButtonDataTest } : {})}
         />
       </Styled.ModalHeader>
 

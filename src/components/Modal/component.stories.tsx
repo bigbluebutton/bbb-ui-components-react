@@ -67,6 +67,14 @@ const meta = {
       control: 'boolean',
       description: 'When true, the footer is sticky to the bottom.',
     },
+    testId: {
+      control: 'text',
+      description: 'Test identifier applied to the modal element (native ReactModal prop).',
+    },
+    closeButtonDataTest: {
+      control: 'text',
+      description: 'Test identifier applied to the close button. Omitted if empty.',
+    },
     children: {
       control: false,
       description: 'Modal body content.',
