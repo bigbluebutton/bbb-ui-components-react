@@ -18,5 +18,7 @@ export interface ModalProps extends Omit<ReactModal.Props, 'style'> {
   noFooter?: boolean;
   stickyFooter?: boolean;
   footerContent?: React.ReactNode;
+  testId?: string;
+  closeButtonDataTest?: string;
   children: React.ReactNode;
 }
