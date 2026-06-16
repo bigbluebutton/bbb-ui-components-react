@@ -41,6 +41,8 @@ import { BBBModal } from 'bbb-ui-components-react';
 | `noFooter`                  | `boolean`                      | `false`   | Hides the modal footer.                                                     |
 | `footerContent`             | `React.ReactNode`              | `null`    | Custom content for the footer.                                              |
 | `stickyFooter`              | `boolean`                      | `true`    | Makes the footer sticky.                                                    |
+| `testId`                    | `string`                       | —         | Test identifier applied to the modal element (native `ReactModal` prop).    |
+| `closeButtonDataTest`       | `string`                       | —         | Test identifier applied to the close button. Omitted if empty.             |
 | `children`                  | `React.ReactNode`              | —         | Modal content.                                                              |
 | `...props`                  | `ReactModal.Props`             | —         | Any other props are passed down to the underlying `react-modal` instance.   |
 
