@@ -9,6 +9,7 @@ export default {
     Hint: './src/components/Hint/index.ts',
     Modal: './src/components/Modal/index.ts',
     Navigation: './src/components/Navigation/index.ts',
+    Search: './src/components/Search/index.ts',
     Select: './src/components/Select/index.ts',
     Spinner: './src/components/Spinner/index.ts',
     TextAreaInput: './src/components/TextAreaInput/index.ts',
