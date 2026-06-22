@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Styles } from 'react-modal';
 import * as React from 'react';
 import { spacingLarge, spacingMedium, spacingSmallMedium, borderRadiusDefault } from '../../stylesheets/sizing';
+import { colorWhite } from '../../stylesheets/pallete';
 import { StyledModalBodyProps, StyledModalFooterProps } from './types';
 
 export const modalStyles: Styles = {
@@ -24,7 +25,7 @@ export const modalStyles: Styles = {
     right: 'auto',
     bottom: 'auto',
     borderRadius: borderRadiusDefault,
-    background: '#fff',
+    background: colorWhite,
     overflow: 'hidden',
     WebkitOverflowScrolling: 'touch',
     outline: 'none',
@@ -53,13 +54,17 @@ export const CloseButton = styled.button`
   line-height: 1;
 `;
 
-export const ModalBody = styled.div<StyledModalBodyProps>`
+export const ModalScrollArea = styled.div<StyledModalBodyProps>`
   flex-grow: 1;
   overflow-y: ${({ $allowScroll }) => $allowScroll ? 'auto' : 'hidden'};
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  padding: 0 ${spacingLarge} 0;
+`;
+
+export const ModalBodyContent = styled.div`
+  flex-grow: 1;
+  padding: 0 ${spacingLarge};
   margin: ${spacingSmallMedium} 0 ${spacingSmallMedium};
 `;
 
@@ -74,6 +79,6 @@ export const ModalFooter = styled.div<StyledModalFooterProps>`
     `
       position: sticky;
       bottom: 0;
-      background-color: #fff;
+      background-color: ${colorWhite};
     `}
 `;

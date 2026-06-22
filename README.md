@@ -13,6 +13,7 @@ Below is a list of the components available in this library. Each component has 
 - [BBBHint](./src/components/Hint/README.md)
 - [BBBModal](./src/components/Modal//README.md)
 - [BBBNavigation](./src/components/Navigation/README.md)
+- [BBBSearch](./src/components/Search/README.md)
 - [BBBSelect](./src/components/Select/README.md)
 - [BBBSpinner](./src/components/Spinner//README.md)
 - [BBBTextAreaInput](./src/components/TextAreaInput/README.md)
@@ -25,13 +26,13 @@ Below is a list of the components available in this library. Each component has 
 This library requires the following peer dependencies to be installed in your project:
 
 ```
-react >=18.0.0
-react-dom >=18.0.0
+react ^18.2.0
+react-dom ^18.2.0
 styled-components >=5.3.0
 react-modal >=3.16.1
-@emotion/react ^11.14.0
-@emotion/styled ^11.14.1
-@mui/material ^7.3.1
+@emotion/react ^11.13.0
+@emotion/styled ^11.13.0
+@mui/material ^6.1.4
 @mui/styles ^6.4.8
 prop-types ^15.8.1
 react-icons ^5.5.0

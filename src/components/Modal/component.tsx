@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import ReactModal from 'react-modal';
 import * as Styled from './styles';
 import { BBBTypography } from '../Typography';
@@ -27,9 +27,25 @@ const Modal: React.FC<ModalProps> = ({
   noFooter = false,
   footerContent = null,
   stickyFooter = true,
+  testId,
+  closeButtonDataTest,
   children,
   ...rest
 }) => {
+  let _closeButtonDataTest = closeButtonDataTest;
+  
+  if (testId && !closeButtonDataTest) {
+    _closeButtonDataTest = `${testId}-close-button`;
+  }
+
+  const renderFooter = useCallback((isSticky: boolean) => (
+    <>
+      {showDividers && <BBBDivider />}
+      <Styled.ModalFooter $stickyFooter={isSticky}>
+        {footerContent}
+      </Styled.ModalFooter>
+    </>
+  ), [footerContent, showDividers]);
 
   return (
     <ReactModal
@@ -41,6 +57,7 @@ const Modal: React.FC<ModalProps> = ({
       shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
       shouldCloseOnEsc={shouldCloseOnEsc}
       appElement={appElement}
+      testId={testId}
     >
       <Styled.ModalHeader>
         <BBBTypography
@@ -54,27 +71,19 @@ const Modal: React.FC<ModalProps> = ({
           onClick={onRequestClose}
           variant="subtle"
           ariaLabel="close"
+          {...(_closeButtonDataTest ? { dataTest: _closeButtonDataTest } : {})}
         />
       </Styled.ModalHeader>
 
       {showDividers && <BBBDivider />}
 
-      <Styled.ModalBody
-        $allowScroll={allowScroll}
-      >
-        {children}
-      </Styled.ModalBody>
-      {(!noFooter || footerContent) && (
-        <>
-          {showDividers && (<BBBDivider />)}
-
-          <Styled.ModalFooter
-            $stickyFooter={stickyFooter}
-          >
-            {footerContent}
-          </Styled.ModalFooter>
-        </>
-      )}
+      <Styled.ModalScrollArea $allowScroll={allowScroll}>
+        <Styled.ModalBodyContent>
+          {children}
+        </Styled.ModalBodyContent>
+        {!noFooter && !stickyFooter && renderFooter(stickyFooter)}
+        </Styled.ModalScrollArea>
+      {!noFooter && stickyFooter && renderFooter(stickyFooter)}
     </ReactModal>
   )
 }
