@@ -1,6 +1,6 @@
 {
   "name": "@bigbluebutton/bbb-ui-components-react",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/bigbluebutton/bbb-ui-components-react.git"
@@ -78,8 +78,6 @@
     "globals": "^16.3.0",
     "path": "^0.12.7",
     "storybook": "^8.6.18",
-    "@storybook/addon-a11y": "^8.6.18",
-    "@storybook/addon-actions": "^8.6.18",
     "style-loader": "^4.0.0",
     "styled-components": "6.1.13",
     "ts-loader": "^9.5.1",
