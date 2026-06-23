@@ -121,6 +121,7 @@ If you want to build the library locally or contribute:
 ### Building the bundle
 
 ```
+nvm use
 npm install
 npm run build
 ```
