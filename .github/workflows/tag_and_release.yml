@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version-file: '.nvmrc'
 
       - name: Generate Changelog and Tag
         id: changelog
@@ -46,3 +46,10 @@ jobs:
           tag_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
           generate_release_notes: true
+
+  sync:
+    needs: release
+    uses: ./.github/workflows/sync-develop.yml
+    permissions:
+      contents: write
+      pull-requests: write
