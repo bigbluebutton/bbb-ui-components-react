@@ -5,7 +5,7 @@ import { BBBTypography } from '../Typography';
 import { MdClose } from 'react-icons/md';
 import { BBBDivider } from '../Divider';
 import { ModalProps } from './types';
-import { BBButton } from '../..';
+import { BBButton } from '../Button';
 
 /**
  * A versatile BBBModal component
