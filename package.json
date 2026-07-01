@@ -7,12 +7,206 @@
   },
   "main": "dist/components/index.js",
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "node": "./dist/components/index.js",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/components/index.js",
+      "default": "./dist/components/index.js"
+    },
+    "./Accordion": {
+      "types": "./dist/types/components/Accordion/index.d.ts",
+      "node": "./dist/components/Accordion.js",
+      "import": "./dist/esm/components/Accordion/index.js",
+      "require": "./dist/components/Accordion.js",
+      "default": "./dist/components/Accordion.js"
+    },
+    "./Button": {
+      "types": "./dist/types/components/Button/index.d.ts",
+      "node": "./dist/components/Button.js",
+      "import": "./dist/esm/components/Button/index.js",
+      "require": "./dist/components/Button.js",
+      "default": "./dist/components/Button.js"
+    },
+    "./Checkbox": {
+      "types": "./dist/types/components/Checkbox/index.d.ts",
+      "node": "./dist/components/Checkbox.js",
+      "import": "./dist/esm/components/Checkbox/index.js",
+      "require": "./dist/components/Checkbox.js",
+      "default": "./dist/components/Checkbox.js"
+    },
+    "./Divider": {
+      "types": "./dist/types/components/Divider/index.d.ts",
+      "node": "./dist/components/Divider.js",
+      "import": "./dist/esm/components/Divider/index.js",
+      "require": "./dist/components/Divider.js",
+      "default": "./dist/components/Divider.js"
+    },
+    "./Hint": {
+      "types": "./dist/types/components/Hint/index.d.ts",
+      "node": "./dist/components/Hint.js",
+      "import": "./dist/esm/components/Hint/index.js",
+      "require": "./dist/components/Hint.js",
+      "default": "./dist/components/Hint.js"
+    },
+    "./Modal": {
+      "types": "./dist/types/components/Modal/index.d.ts",
+      "node": "./dist/components/Modal.js",
+      "import": "./dist/esm/components/Modal/index.js",
+      "require": "./dist/components/Modal.js",
+      "default": "./dist/components/Modal.js"
+    },
+    "./Navigation": {
+      "types": "./dist/types/components/Navigation/index.d.ts",
+      "node": "./dist/components/Navigation.js",
+      "import": "./dist/esm/components/Navigation/index.js",
+      "require": "./dist/components/Navigation.js",
+      "default": "./dist/components/Navigation.js"
+    },
+    "./Search": {
+      "types": "./dist/types/components/Search/index.d.ts",
+      "node": "./dist/components/Search.js",
+      "import": "./dist/esm/components/Search/index.js",
+      "require": "./dist/components/Search.js",
+      "default": "./dist/components/Search.js"
+    },
+    "./Select": {
+      "types": "./dist/types/components/Select/index.d.ts",
+      "node": "./dist/components/Select.js",
+      "import": "./dist/esm/components/Select/index.js",
+      "require": "./dist/components/Select.js",
+      "default": "./dist/components/Select.js"
+    },
+    "./Spinner": {
+      "types": "./dist/types/components/Spinner/index.d.ts",
+      "node": "./dist/components/Spinner.js",
+      "import": "./dist/esm/components/Spinner/index.js",
+      "require": "./dist/components/Spinner.js",
+      "default": "./dist/components/Spinner.js"
+    },
+    "./TextAreaInput": {
+      "types": "./dist/types/components/TextAreaInput/index.d.ts",
+      "node": "./dist/components/TextAreaInput.js",
+      "import": "./dist/esm/components/TextAreaInput/index.js",
+      "require": "./dist/components/TextAreaInput.js",
+      "default": "./dist/components/TextAreaInput.js"
+    },
+    "./TextInput": {
+      "types": "./dist/types/components/TextInput/index.d.ts",
+      "node": "./dist/components/TextInput.js",
+      "import": "./dist/esm/components/TextInput/index.js",
+      "require": "./dist/components/TextInput.js",
+      "default": "./dist/components/TextInput.js"
+    },
+    "./Toggle": {
+      "types": "./dist/types/components/Toggle/index.d.ts",
+      "node": "./dist/components/Toggle.js",
+      "import": "./dist/esm/components/Toggle/index.js",
+      "require": "./dist/components/Toggle.js",
+      "default": "./dist/components/Toggle.js"
+    },
+    "./Typography": {
+      "types": "./dist/types/components/Typography/index.d.ts",
+      "node": "./dist/components/Typography.js",
+      "import": "./dist/esm/components/Typography/index.js",
+      "require": "./dist/components/Typography.js",
+      "default": "./dist/components/Typography.js"
+    },
+    "./dist/components": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/components/index.js",
+      "default": "./dist/components/index.js"
+    },
+    "./dist/components/index": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/components/index.js",
+      "default": "./dist/components/index.js"
+    },
+    "./dist/components/index.js": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/components/index.js",
+      "default": "./dist/components/index.js"
+    },
+    "./dist/components/*": {
+      "types": "./dist/types/components/*/index.d.ts",
+      "require": "./dist/components/*.js",
+      "default": "./dist/components/*.js"
+    },
+    "./dist/components/*.js": {
+      "types": "./dist/types/components/*/index.d.ts",
+      "require": "./dist/components/*.js",
+      "default": "./dist/components/*.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "dist/components": [
+        "dist/types/index.d.ts"
+      ],
+      "dist/components/index": [
+        "dist/types/index.d.ts"
+      ],
+      "dist/components/index.js": [
+        "dist/types/index.d.ts"
+      ],
+      "dist/components/*": [
+        "dist/types/components/*/index.d.ts"
+      ],
+      "dist/components/*.js": [
+        "dist/types/components/*/index.d.ts"
+      ],
+      "Accordion": [
+        "dist/types/components/Accordion/index.d.ts"
+      ],
+      "Button": [
+        "dist/types/components/Button/index.d.ts"
+      ],
+      "Checkbox": [
+        "dist/types/components/Checkbox/index.d.ts"
+      ],
+      "Divider": [
+        "dist/types/components/Divider/index.d.ts"
+      ],
+      "Hint": [
+        "dist/types/components/Hint/index.d.ts"
+      ],
+      "Modal": [
+        "dist/types/components/Modal/index.d.ts"
+      ],
+      "Navigation": [
+        "dist/types/components/Navigation/index.d.ts"
+      ],
+      "Search": [
+        "dist/types/components/Search/index.d.ts"
+      ],
+      "Select": [
+        "dist/types/components/Select/index.d.ts"
+      ],
+      "Spinner": [
+        "dist/types/components/Spinner/index.d.ts"
+      ],
+      "TextAreaInput": [
+        "dist/types/components/TextAreaInput/index.d.ts"
+      ],
+      "TextInput": [
+        "dist/types/components/TextInput/index.d.ts"
+      ],
+      "Toggle": [
+        "dist/types/components/Toggle/index.d.ts"
+      ],
+      "Typography": [
+        "dist/types/components/Typography/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "dist",
     "types"
   ],
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && tsc -p tsconfig.esm.json",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
     "start": "webpack serve --mode development",
     "storybook": "storybook dev -p 6006",
@@ -36,17 +230,14 @@
   "peerDependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.1.4",
-    "@mui/styles": "^6.4.8",
-    "@mui/icons-material": "^7.3.1",
-    "@tippyjs/react": "^4.2.6",
+    "@mui/material": "^6.1.4 || ^7.0.0",
+    "@mui/icons-material": "^6.1.4 || ^7.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-modal": ">=3.16.1",
-    "styled-components": ">=5.3.0",
-    "tippy.js": "^6.3.7"
+    "styled-components": ">=5.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.6",
@@ -88,7 +279,12 @@
     "webpack-dev-server": "5.0.4"
   },
   "dependencies": {
-    "@mui/icons-material": "^6.1.4",
-    "react-modal": ">=3.16.1"
-  }
+    "@tippyjs/react": "^4.2.6",
+    "react-modal": ">=3.16.1",
+    "tippy.js": "^6.3.7"
+  },
+  "module": "dist/esm/index.js",
+  "sideEffects": [
+    "**/*.css"
+  ]
 }
