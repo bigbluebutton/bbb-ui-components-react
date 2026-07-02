@@ -6,7 +6,7 @@ jobs:
   ts-code-compilation:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 1
       # Merges the base branch (e.g. develop) into the PR branch so compilation
@@ -14,7 +14,7 @@ jobs:
       - name: Merge branches
         uses: ./.github/actions/merge-branches
       - name: install node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version-file: '.nvmrc'
       - name: run npm install
