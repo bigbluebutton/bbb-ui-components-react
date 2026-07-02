@@ -1,3 +1,16 @@
+## [2.3.0](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v2.2.0...v2.3.0) (2026-07-02)
+
+
+### Features
+
+* add tree-shakeable package exports ([b3bf149](https://github.com/bigbluebutton/bbb-ui-components-react/commit/b3bf1497b9b022acdcd823ff1f07dd3df0924d5a))
+
+
+### Bug Fixes
+
+* **BBBModal:** import Button from its own module in Modal ([8890915](https://github.com/bigbluebutton/bbb-ui-components-react/commit/889091550f0a08c058d9d341992803ae4361b135))
+* **deps:** correct peer/direct dependency classification ([7153226](https://github.com/bigbluebutton/bbb-ui-components-react/commit/71532264d44842897b1a84379cacaa68f8169f64))
+
 ## [2.2.0](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v2.1.0...v2.2.0) (2026-06-22)
 
 
@@ -41,24 +54,4 @@
 ### Bug Fixes
 
 * move '@mui/icons-material' to `peerDependencies` as intended in v2.0.0 ([035f426](https://github.com/bigbluebutton/bbb-ui-components-react/commit/035f426bfe780d560aa46f34d6e5e9372f24e951))
-
-## [2.0.0](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v1.0.1...v2.0.0) (2026-01-19)
-
-
-### ⚠ BREAKING CHANGES
-
-* **deps:** @mui/icons-material has been moved from `dependencies` to
-`peerDependencies` to prevent version conflicts and reduced bundle size.
-Consumers must now install this package manually in their host
-application.
-
-### Bug Fixes
-
-* **BBBAccordion:** prevent `scrollHeight` prop leakage to DOM ([b77d979](https://github.com/bigbluebutton/bbb-ui-components-react/commit/b77d979a5e388da7c31afa3e2ba60c5888da54bb))
-* **ci:** use NPM access token instead ([36c7eee](https://github.com/bigbluebutton/bbb-ui-components-react/commit/36c7eee62dfc8a289d1ec791523a542a7fa1a735))
-
-
-### Miscellaneous Chores
-
-* **deps:** move dependencies to peer/dev and fix audit issues ([6009287](https://github.com/bigbluebutton/bbb-ui-components-react/commit/6009287fcd62570421d69dee1526ca5c721aaac2))
 
