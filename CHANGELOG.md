@@ -1,3 +1,33 @@
+## [2.3.0](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v2.2.0...v2.3.0) (2026-07-02)
+
+
+### Features
+
+* add tree-shakeable package exports ([b3bf149](https://github.com/bigbluebutton/bbb-ui-components-react/commit/b3bf1497b9b022acdcd823ff1f07dd3df0924d5a))
+
+
+### Bug Fixes
+
+* **BBBModal:** import Button from its own module in Modal ([8890915](https://github.com/bigbluebutton/bbb-ui-components-react/commit/889091550f0a08c058d9d341992803ae4361b135))
+* **deps:** correct peer/direct dependency classification ([7153226](https://github.com/bigbluebutton/bbb-ui-components-react/commit/71532264d44842897b1a84379cacaa68f8169f64))
+
+## [2.2.0](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v2.1.0...v2.2.0) (2026-06-22)
+
+
+### Features
+
+* **BBBModal:** add `testId` and `closeButtonDataTest` props ([062959a](https://github.com/bigbluebutton/bbb-ui-components-react/commit/062959a7f5e61ed152b3040798fa464154f1afef))
+* **BBBSearch:** add search component ([4182a58](https://github.com/bigbluebutton/bbb-ui-components-react/commit/4182a586ff38d4e0dbceb173522cef12701c8e93))
+
+
+### Bug Fixes
+
+* **BBBModal:** enforce footer hide when noFooter is true ([3af4bf9](https://github.com/bigbluebutton/bbb-ui-components-react/commit/3af4bf920b69279c5c419f9ca0a7f0004b7af0d8))
+* **BBBModal:** make stickyFooter: false position footer below ([109b745](https://github.com/bigbluebutton/bbb-ui-components-react/commit/109b745b846fbe2d7d8aec7a015ce529d567057e))
+* **BBBModal:** replace hardcoded [#fff](https://github.com/bigbluebutton/bbb-ui-components-react/issues/fff) with colorWhite CSS variable ([6cd4e43](https://github.com/bigbluebutton/bbb-ui-components-react/commit/6cd4e43c0e3fd632c49451890f6e3bac980c541d))
+* sync package-lock.json with package.json ([2ff2bbb](https://github.com/bigbluebutton/bbb-ui-components-react/commit/2ff2bbb617197a4af5495961d57c17ca11d13356))
+* sync package-lock.json with package.json again ([398bcb1](https://github.com/bigbluebutton/bbb-ui-components-react/commit/398bcb14f74c6ddddbeab0fae1684c9b52108788))
+
 ## [2.1.0](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v2.0.2...v2.1.0) (2026-05-12)
 
 
@@ -24,38 +54,4 @@
 ### Bug Fixes
 
 * move '@mui/icons-material' to `peerDependencies` as intended in v2.0.0 ([035f426](https://github.com/bigbluebutton/bbb-ui-components-react/commit/035f426bfe780d560aa46f34d6e5e9372f24e951))
-
-## [2.0.0](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v1.0.1...v2.0.0) (2026-01-19)
-
-
-### ⚠ BREAKING CHANGES
-
-* **deps:** @mui/icons-material has been moved from `dependencies` to
-`peerDependencies` to prevent version conflicts and reduced bundle size.
-Consumers must now install this package manually in their host
-application.
-
-### Bug Fixes
-
-* **BBBAccordion:** prevent `scrollHeight` prop leakage to DOM ([b77d979](https://github.com/bigbluebutton/bbb-ui-components-react/commit/b77d979a5e388da7c31afa3e2ba60c5888da54bb))
-* **ci:** use NPM access token instead ([36c7eee](https://github.com/bigbluebutton/bbb-ui-components-react/commit/36c7eee62dfc8a289d1ec791523a542a7fa1a735))
-
-
-### Miscellaneous Chores
-
-* **deps:** move dependencies to peer/dev and fix audit issues ([6009287](https://github.com/bigbluebutton/bbb-ui-components-react/commit/6009287fcd62570421d69dee1526ca5c721aaac2))
-
-## [1.0.1](https://github.com/bigbluebutton/bbb-ui-components-react/compare/v1.0.0...v1.0.1) (2025-12-17)
-
-
-### Bug Fixes
-
-* **BBButton:** ensure acessibility and stacked layout displacement ([ddd9cb5](https://github.com/bigbluebutton/bbb-ui-components-react/commit/ddd9cb599ca45dc21eb8e09fa696fa50f5d26714))
-* **BBButton:** missing import from last commit ([2cf2d3d](https://github.com/bigbluebutton/bbb-ui-components-react/commit/2cf2d3d071ebc7c4bac7ae768c1f9f34a7f661ec))
-* **build:** externalize mui and emotion dependencies ([7981a3a](https://github.com/bigbluebutton/bbb-ui-components-react/commit/7981a3a393a4ce273df892cb4293a94d97929dcc))
-* **build:** switch to UMD and externalize dependencies ([3009b1e](https://github.com/bigbluebutton/bbb-ui-components-react/commit/3009b1e38d0d84e32ae7c63448313e0bd48e0371))
-* main file entry point path ([d8546d4](https://github.com/bigbluebutton/bbb-ui-components-react/commit/d8546d4fd20ef1c5c32e1339a4b18c56f0d997b3))
-* prevent props leaking to DOM ([cc174f3](https://github.com/bigbluebutton/bbb-ui-components-react/commit/cc174f3461e26dd49925935d32c899c57384550e))
-* **spinner:** wrong prop logic ([728b9cb](https://github.com/bigbluebutton/bbb-ui-components-react/commit/728b9cb1ee900c39d2366cbb833ae6a8ecfc2519))
-* **tooltips:** adds missing tippy styles ([44bd58c](https://github.com/bigbluebutton/bbb-ui-components-react/commit/44bd58c1a5f4b3ef832d3814bc3b7d64a85ef3df))
 
