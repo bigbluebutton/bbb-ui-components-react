@@ -38,6 +38,7 @@ jobs:
           skip-ci: 'false'
           tag-prefix: 'v'
           version-file: './package.json, ./package-lock.json'
+          pre-commit: './.github/scripts/pre-commit.js'
 
       - name: Create GitHub Release
         if: ${{ github.event.inputs.create_github_release == 'true' && steps.changelog.outputs.skipped == 'false' }}
