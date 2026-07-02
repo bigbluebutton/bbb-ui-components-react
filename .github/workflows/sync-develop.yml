@@ -23,7 +23,8 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const tag = context.ref.replace('refs/tags/', '');
+            const isTag = context.ref.startsWith('refs/tags/');
+            const tag = isTag ? context.ref.replace('refs/tags/', '') : null;
             const { owner, repo } = context.repo;
 
             // Check if develop branch exists
@@ -64,8 +65,8 @@ jobs:
             await github.rest.pulls.create({
               owner,
               repo,
-              title: `chore: sync ${tag} from main into develop`,
+              title: tag ? `chore: sync ${tag} from main into develop` : 'chore: sync main into develop',
               head: 'main',
               base: 'develop',
-              body: `Automated back-merge after release ${tag}.`,
+              body: tag ? `Automated back-merge after release ${tag}.` : 'Automated back-merge from main into develop.',
             });

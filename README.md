@@ -32,12 +32,10 @@ styled-components >=5.3.0
 react-modal >=3.16.1
 @emotion/react ^11.13.0
 @emotion/styled ^11.13.0
-@mui/material ^6.1.4
-@mui/styles ^6.4.8
+@mui/material ^6.1.4 || ^7.0.0
+@mui/icons-material ^6.1.4 || ^7.0.0
 prop-types ^15.8.1
 react-icons ^5.5.0
-@tippyjs/react ^4.2.6
-tippy.js ^6.3.7
 ```
 
 Make sure to install these dependencies to avoid runtime errors and ensure compatibility.
@@ -45,8 +43,10 @@ Make sure to install these dependencies to avoid runtime errors and ensure compa
 You can install all of them with the following command:
 
 ```bash
-npm install react react-dom styled-components react-modal @emotion/react @emotion/styled @mui/material @mui/styles prop-types react-icons @tippyjs/react tippy.js
+npm install react react-dom styled-components react-modal @emotion/react @emotion/styled @mui/material @mui/icons-material prop-types react-icons
 ```
+
+**Note**: `@tippyjs/react` and `tippy.js` (used internally by the Tooltip) ship as regular dependencies of this library, so they're installed automatically — no need to add them yourself.
 
 ## Color Customization with CSS Variables
 
@@ -121,6 +121,7 @@ If you want to build the library locally or contribute:
 ### Building the bundle
 
 ```
+nvm use
 npm install
 npm run build
 ```
