@@ -46,6 +46,7 @@ const LAYOUTS = {
   DEFAULT: 'default',
   STACKED: 'stacked',
   CIRCLE: 'circle',
+  SQUARED: 'squared',
 } as const;
 const LAYOUT_VALUES = Object.values(LAYOUTS);
 const DEFAULT_LAYOUT = LAYOUT_VALUES[0];
