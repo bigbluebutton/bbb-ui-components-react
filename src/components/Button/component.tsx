@@ -48,8 +48,18 @@ function Button(props: ButtonProps): JSX.Element {
   } = {};
   const generatedId = useId();
   const defaultLabelId = `${id || generatedId}-label`;
+  // Only default aria-labelledby to defaultLabelId when an element with that id is
+  // actually rendered (stacked always renders ButtonText; default only when labeled).
+  // circle never renders a label element, so it must rely on aria-label instead —
+  // otherwise aria-labelledby would point at a non-existent id.
+  const hasRenderedLabelElement = layout === LAYOUTS.STACKED
+    || (layout === LAYOUTS.DEFAULT && Boolean(label));
   accessibilityProps['aria-label'] = ariaLabel || label;
-  accessibilityProps['aria-labelledby'] = ariaLabelledBy || defaultLabelId;
+  if (ariaLabelledBy) {
+    accessibilityProps['aria-labelledby'] = ariaLabelledBy;
+  } else if (hasRenderedLabelElement) {
+    accessibilityProps['aria-labelledby'] = defaultLabelId;
+  }
   if (ariaDescribedBy) accessibilityProps['aria-describedby'] = ariaDescribedBy;
 
   const buttonElement = (() => {
