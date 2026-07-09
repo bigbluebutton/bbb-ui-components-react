@@ -11,6 +11,7 @@ Below is a list of the components available in this library. Each component has 
 - [BBBCheckbox](./src/components/Checkbox/README.md)
 - [BBBDivider](./src/components/Divider/README.md)
 - [BBBHint](./src/components/Hint/README.md)
+- [BBBInput](./src/components/Input/README.md)
 - [BBBModal](./src/components/Modal//README.md)
 - [BBBNavigation](./src/components/Navigation/README.md)
 - [BBBSearch](./src/components/Search/README.md)

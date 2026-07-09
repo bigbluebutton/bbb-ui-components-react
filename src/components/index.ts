@@ -3,6 +3,7 @@ export { BBButton } from './Button';
 export { BBBCheckbox } from './Checkbox';
 export { BBBDivider } from './Divider';
 export { BBBHint } from './Hint';
+export { BBBInput } from './Input';
 export { BBBModal } from './Modal';
 export { BBBNavigation } from './Navigation';
 export { BBBSearch } from './Search';
