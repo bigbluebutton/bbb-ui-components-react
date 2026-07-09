@@ -50,6 +50,13 @@
       "require": "./dist/components/Hint.js",
       "default": "./dist/components/Hint.js"
     },
+    "./Input": {
+      "types": "./dist/types/components/Input/index.d.ts",
+      "node": "./dist/components/Input.js",
+      "import": "./dist/esm/components/Input/index.js",
+      "require": "./dist/components/Input.js",
+      "default": "./dist/components/Input.js"
+    },
     "./Modal": {
       "types": "./dist/types/components/Modal/index.d.ts",
       "node": "./dist/components/Modal.js",
@@ -171,6 +178,9 @@
       ],
       "Hint": [
         "dist/types/components/Hint/index.d.ts"
+      ],
+      "Input": [
+        "dist/types/components/Input/index.d.ts"
       ],
       "Modal": [
         "dist/types/components/Modal/index.d.ts"
