@@ -1,6 +1,6 @@
 # BBButton
 
-The `BBButton` component is a versatile button that supports multiple layouts and styles. It can be rendered as a standard inline button, a circular icon button, or a stacked button with an icon and a label.
+The `BBButton` component is a versatile button that supports multiple layouts and styles. It can be rendered as a standard inline button, a circular icon button, a compact squared icon button, or a stacked button with an icon and a label.
 
 ![Demo](assets/example.png)
 
@@ -33,6 +33,15 @@ import { MdFavorite } from 'react-icons/md';
 <BBButton layout="circle" icon={<MdFavorite />} tooltipLabel="Favorite" onClick={() => (console.log('clicked'))}/>
 ```
 
+### Squared Button
+
+```jsx
+import { BBButton } from 'bbb-ui-components-react';
+import { MdSend } from 'react-icons/md';
+
+<BBButton layout="squared" icon={<MdSend />} ariaLabel="Send" onClick={() => (console.log('clicked'))}/>
+```
+
 ### Stacked Button
 
 ```jsx
@@ -62,7 +71,7 @@ import { MdPlayArrow } from 'react-icons/md';
 | `layout`           | `keyof typeof LAYOUTS`                                            | `'default'`       | The layout of the button.                                              |
 | `disabled`         | `boolean`                                                         | `false`           | If `true`, the button will be disabled.                                |
 | `children`         | `React.ReactNode`                                                 |                   | The content of the button, typically used for the 'default' layout.    |
-| `icon`             | `React.ReactNode`                                                 |                   | The icon to be displayed. Used for 'circle' and 'stacked' layouts.     |
+| `icon`             | `React.ReactNode`                                                 |                   | The icon to be displayed. Used for 'circle', 'squared' and 'stacked' layouts. |
 | `iconStart`        | `React.ReactNode`                                                 |                   | The icon to be displayed at the start of the button. Used for 'default' layout.|
 | `iconEnd`          | `React.ReactNode`                                                 |                   | The icon to be displayed at the end of the button. Used for 'default' layout. |
 | `helperIcon`       | `React.ReactNode`                                                 |                   | The auxiliary icon to be displayed. Used for 'stacked' layout.         |

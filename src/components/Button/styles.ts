@@ -15,6 +15,7 @@ import {
 } from './type';
 import {
   borderRadiusDefault,
+  borderRadiusSmall,
   spacingSmall,
 } from '../../stylesheets/sizing';
 import { colorBorderDefault, colorTextDefault } from '../../stylesheets/pallete';
@@ -129,6 +130,18 @@ const circleLayoutStyles = css`
   align-items: center;
 `;
 
+// Icon-only, sized by its own (equal, non-text) padding rather than a fixed
+// box — stays compact next to a single line of text instead of forcing a
+// fixed height like circle/stacked do.
+const squaredLayoutStyles = css`
+  border-radius: ${borderRadiusSmall};
+  aspect-ratio: 1;
+  padding: ${spacingSmall};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const defaultLayoutStyles = css`
   display: inline-flex;
   justify-content: center;
@@ -156,6 +169,8 @@ export const Button = styled.button<StyledButtonProps>`
         return stackedLayoutStyles;
       case LAYOUTS.CIRCLE:
         return circleLayoutStyles;
+      case LAYOUTS.SQUARED:
+        return squaredLayoutStyles;
       default:
         return defaultLayoutStyles;
     }

@@ -2,7 +2,7 @@ import React, {
   JSX, useCallback, useEffect, useId, useRef, useState,
 } from 'react';
 import Button from '../Button/component';
-import { SIZES } from '../Button/constants';
+import { SIZES, LAYOUTS } from '../Button/constants';
 import * as Styled from './styles';
 import { BBBInputProps } from './types';
 
@@ -136,10 +136,11 @@ function Input({
   const helperElementId = showHelper ? `${fieldId}-helper` : undefined;
   const describedBy = [ariaDescribedBy, helperElementId].filter(Boolean).join(' ') || undefined;
 
-  // Default layout sizes itself from padding (size="sm"), so it fits a single-line
-  // row for both the icon-only and labeled cases — unlike the circle/stacked
-  // layouts, which are sized for standalone use.
-  const button = (
+  // Icon-only submissions (the common case) use Button's `squared` layout — a
+  // compact, icon-only button matching the real chat input's send button shape.
+  // When a text label is provided instead, fall back to the default layout,
+  // which is the one that actually renders a label.
+  const button = buttonLabel ? (
     <Button
       onClick={submit}
       disabled={disabled}
@@ -149,6 +150,16 @@ function Input({
       label={buttonLabel}
       ariaLabel={buttonAriaLabel}
       iconStart={buttonIcon}
+    />
+  ) : (
+    <Button
+      layout={LAYOUTS.SQUARED}
+      onClick={submit}
+      disabled={disabled}
+      variant={buttonVariant}
+      dataTest={buttonDataTest}
+      icon={buttonIcon}
+      ariaLabel={buttonAriaLabel}
     />
   );
 
