@@ -63,7 +63,7 @@ function Button(props: ButtonProps): JSX.Element {
   if (ariaDescribedBy) accessibilityProps['aria-describedby'] = ariaDescribedBy;
 
   const buttonElement = (() => {
-    if (props.layout === LAYOUTS.CIRCLE) {
+    if (props.layout === LAYOUTS.CIRCLE || props.layout === LAYOUTS.SQUARED) {
       const { icon } = props;
       const testId = dataTest || `button-${id || 'default'}`;
 
