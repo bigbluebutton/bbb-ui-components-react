@@ -69,7 +69,7 @@ const meta = {
     },
     icon: {
       control: false,
-      description: `Main icon for the button. Commonly used for icon-only buttons (layout 'circle') or in 'stacked' layout. When using a label, prefer \`iconStart\` or \`iconEnd\` in the 'default' layout.`,
+      description: `Main icon for the button. Commonly used for icon-only buttons (layouts 'circle' and 'squared') or in 'stacked' layout. When using a label, prefer \`iconStart\` or \`iconEnd\` in the 'default' layout.`,
       table: { defaultValue: { summary: 'null' } },
     },
     iconStart: {
@@ -241,6 +241,28 @@ export const Circle: Story = {
           key={color}
           color={color}
           tooltipLabel={`Circle ${color.charAt(0).toUpperCase() + color.slice(1)}`}
+        />
+      ))}
+    </div>
+  ),
+};
+
+export const Squared: Story = {
+  name: 'Squared',
+  args: {
+    tooltipPlacement: 'top',
+    variant: 'primary',
+    layout: 'squared',
+    icon: <MdFavorite size="1.25rem" />,
+  },
+  render: (args) => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      {COLOR_VALUES.map((color) => (
+        <BBButton
+          {...args}
+          key={color}
+          color={color}
+          tooltipLabel={`Squared ${color.charAt(0).toUpperCase() + color.slice(1)}`}
         />
       ))}
     </div>

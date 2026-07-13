@@ -7,6 +7,7 @@ export default {
     Checkbox: './src/components/Checkbox/index.ts',
     Divider: './src/components/Divider/index.ts',
     Hint: './src/components/Hint/index.ts',
+    Input: './src/components/Input/index.ts',
     Modal: './src/components/Modal/index.ts',
     Navigation: './src/components/Navigation/index.ts',
     Search: './src/components/Search/index.ts',

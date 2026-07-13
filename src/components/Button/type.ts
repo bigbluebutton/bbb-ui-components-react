@@ -97,4 +97,9 @@ type CircleLayoutProps = BaseButtonProps & {
   icon?: React.ReactNode;
 };
 
-export type ButtonProps = DefaultLayoutProps | StackedLayoutProps | CircleLayoutProps;
+type SquaredLayoutProps = BaseButtonProps & {
+  layout: typeof LAYOUTS.SQUARED;
+  icon?: React.ReactNode;
+};
+
+export type ButtonProps = DefaultLayoutProps | StackedLayoutProps | CircleLayoutProps | SquaredLayoutProps;
