@@ -25,10 +25,7 @@ export interface BBBInputProps {
   /** Text label rendered by the action button, instead of (or alongside) `buttonIcon`. */
   buttonLabel?: string;
 
-  /**
-   * Accessible name for the action button. Falls back to `buttonLabel` when set.
-   * Required for the button to be accessible when only `buttonIcon` is provided.
-   */
+  /** Accessible name for the action button. Falls back to `buttonLabel` when set. Required for the button to be accessible when only `buttonIcon` is provided. */
   buttonAriaLabel?: string;
 
   /** Visual variant of the action button (same variants as the shared `Button`). @default 'primary' */
@@ -46,18 +43,10 @@ export interface BBBInputProps {
   /** Extra content (icon, button, or any other element) rendered to the right of the action button. */
   afterButton?: React.ReactNode;
 
-  /**
-   * When `true`, pressing Enter submits the field (Shift+Enter still inserts a newline).
-   * When `false`, Enter always inserts a newline and only the button submits.
-   * @default true
-   */
+  /** When `true`, pressing Enter submits the field (Shift+Enter still inserts a newline). When `false`, Enter always inserts a newline and only the button submits. @default true */
   submitOnEnter?: boolean;
 
-  /**
-   * When `true`, shows `sentFeedbackContent` in place of `helperText` for `sentFeedbackDuration`
-   * after a successful submit.
-   * @default false
-   */
+  /** When `true`, shows `sentFeedbackContent` in place of `helperText` for `sentFeedbackDuration` after a successful submit. @default false */
   showSentFeedback?: boolean;
 
   /** Content rendered while the sent feedback is visible. @default 'Message sent' */
@@ -90,10 +79,13 @@ export interface BBBInputProps {
   /** Ref forwarded to the underlying `<textarea>` element. */
   inputRef?: React.Ref<HTMLTextAreaElement>;
 
+  /** HTML `id` for the underlying `<textarea>`. Auto-generated when omitted. */
   id?: string;
 
+  /** Accessible name set as `aria-label` on the underlying `<textarea>`. */
   'aria-label'?: string;
 
+  /** Additional `aria-describedby` id(s), merged with the helper text's id when it's visible. */
   'aria-describedby'?: string;
 }
 

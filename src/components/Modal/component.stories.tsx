@@ -174,6 +174,7 @@ const ModalBody = () => (
   </div>
 );
 
+/** Default modal setup with a title, dividers off, scrollable body, and a sticky footer. */
 export const Default: Story = {
   args: {
     title: 'Modal Title',

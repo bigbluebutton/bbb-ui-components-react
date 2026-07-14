@@ -32,5 +32,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Basic text input with a label and placeholder, and no error state. */
 export const Default: Story = { args: { label: 'Name', placeholder: 'Your name' } };
+/** Renders the input in an error state with helper text explaining the validation failure. */
 export const WithError: Story = { args: { label: 'Email', placeholder: 'you@example.com', error: true, helperText: 'Invalid email' } };

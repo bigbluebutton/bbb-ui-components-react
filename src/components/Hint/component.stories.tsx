@@ -32,6 +32,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Basic hint rendering with only a label and the default info icon. */
 export const Default: Story = {
   args: {
     label: 'Helpful hint',

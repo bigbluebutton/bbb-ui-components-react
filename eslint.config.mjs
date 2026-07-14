@@ -6,6 +6,7 @@ import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 import hooksPlugin from 'eslint-plugin-react-hooks';
 import importPlugin from 'eslint-plugin-import';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+import jsdocPlugin from 'eslint-plugin-jsdoc';
 import globals from 'globals';
 
 export default tseslint.config(
@@ -69,6 +70,24 @@ export default tseslint.config(
         typescript: true,
         node: true,
       },
+    },
+  },
+
+  {
+    // Prop JSDoc in component `types.ts`/`type.ts` files: single-line blocks only,
+    // each preceded by a blank line (but not the first prop right after `{`).
+    files: ['src/components/**/types.ts', 'src/components/**/type.ts'],
+    plugins: {
+      jsdoc: jsdocPlugin,
+    },
+    rules: {
+      'jsdoc/multiline-blocks': ['error', {
+        noMultilineBlocks: true,
+        allowMultipleTags: false,
+      }],
+      'jsdoc/lines-before-block': ['error', {
+        ignoreSingleLines: false,
+      }],
     },
   },
 );

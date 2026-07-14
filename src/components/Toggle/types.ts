@@ -15,10 +15,21 @@ export interface StyledTextWrapperProps extends StyledToggleWrapperProps{
 }
 
 export interface ToggleProps extends SwitchProps {
+  /** Main label text displayed next to the toggle. */
   label?: string;
+
+  /** Helper text displayed below the label. */
   helperText?: string;
+
+  /** Position of the label/helper text relative to the toggle. @default 'right' */
   textPosition?: LayoutType;
+
+  /** Accessible name for the toggle. */
   ariaLabel?: string;
+
+  /** ID of the element that labels the toggle; ignored when `ariaLabel` is set, and falls back to the rendered label's id when omitted. */
   ariaLabelledBy?: string;
+
+  /** ID of the element that describes the toggle; falls back to the rendered helper text's id when omitted. */
   ariaDescribedBy?: string;
 };

@@ -39,5 +39,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Basic toggle with only a main label. */
 export const Default: Story = { args: { label: 'Enable feature' } };
+/** Adds helper text below the label, with the label/helper positioned to the right of the toggle. */
 export const WithHelper: Story = { args: { label: 'Enable', helperText: 'Recommended', textPosition: 'right' } };

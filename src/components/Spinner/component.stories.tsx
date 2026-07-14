@@ -25,6 +25,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Renders the spinner with its default size, stroke width, and animation. */
 export const Default: Story = {};
 
+/** Renders the spinner at a smaller size by overriding the `size` prop. */
 export const Small: Story = { args: { size: 24 } };

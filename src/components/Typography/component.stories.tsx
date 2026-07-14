@@ -26,5 +26,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Renders text using the default typography variant. */
 export const Default: Story = { args: { children: 'Sample text' } };
+/** Renders text using the header variant. */
 export const Header: Story = { args: { variant: 'header', children: 'Header text' } };
