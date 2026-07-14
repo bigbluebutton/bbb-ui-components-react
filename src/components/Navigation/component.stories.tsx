@@ -48,6 +48,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Renders a basic navigation button with a label, default icon, and a click handler. */
 export const Default: Story = {
   args: {
     label: 'Navigate',

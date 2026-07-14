@@ -54,6 +54,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Basic accordion with a title and simple content, expanded/collapsed via the header. */
 export const Default: Story = {
   args: {
     title: 'Accordion Title',
@@ -65,6 +66,7 @@ export const Default: Story = {
   },
 };
 
+/** Shows the header tooltip enabled via `tooltipLabel` and `tooltipPlacement`. */
 export const WithTooltip: Story = {
   args: {
     title: 'With Tooltip',

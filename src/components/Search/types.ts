@@ -2,40 +2,22 @@ export interface BBBSearchProps {
   /** Placeholder text displayed inside the input field. */
   placeholder?: string;
 
-  /**
-   * Controlled value for the search input.
-   * When provided together with `onChange`, the component operates in controlled mode.
-   */
+  /** Controlled value for the search input. When provided together with `onChange`, the component operates in controlled mode. */
   value?: string;
 
-  /**
-   * Called on every keystroke with the current input value.
-   * Required when using controlled mode (`value` prop).
-   */
+  /** Called on every keystroke with the current input value. Required when using controlled mode (`value` prop). */
   onChange?: (value: string) => void;
 
-  /**
-   * Debounced callback fired after the user stops typing.
-   * Receives the current search term as argument.
-   */
+  /** Debounced callback fired after the user stops typing. Receives the current search term as argument. */
   onSearch?: (term: string) => void;
 
-  /**
-   * Called when the clear button is clicked.
-   * If not provided, the component clears the internal state and calls `onSearch('')`.
-   */
+  /** Called when the clear button is clicked. If not provided, the component clears the internal state and calls `onSearch('')`. */
   onClear?: () => void;
 
-  /**
-   * Debounce delay in milliseconds applied to `onSearch`.
-   * @default 500
-   */
+  /** Debounce delay in milliseconds applied to `onSearch`. @default 500 */
   debounce?: number;
 
-  /**
-   * When `true` and the input has a value, a loading spinner replaces the clear button.
-   * @default false
-   */
+  /** When `true` and the input has a value, a loading spinner replaces the clear button. @default false */
   isLoading?: boolean;
 
   /** Disables the search input. */

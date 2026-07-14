@@ -115,6 +115,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Renders the `primary` variant across all available colors. */
 export const Primary: Story = {
   name: 'Primary',
   args: {
@@ -134,6 +135,7 @@ export const Primary: Story = {
   ),
 };
 
+/** Renders the `secondary` variant across all available colors. */
 export const Secondary: Story = {
   name: 'Secondary',
   args: {
@@ -153,6 +155,7 @@ export const Secondary: Story = {
   ),
 };
 
+/** Renders the `tertiary` variant across all available colors. */
 export const Tertiary: Story = {
   name: 'Tertiary',
   args: {
@@ -172,6 +175,7 @@ export const Tertiary: Story = {
   ),
 };
 
+/** Renders the `subtle` variant across all available colors. */
 export const Subtle: Story = {
   name: 'Subtle',
   args: {
@@ -191,6 +195,7 @@ export const Subtle: Story = {
   ),
 };
 
+/** Renders the `stacked` layout with an icon and label across all available colors. */
 export const Stacked: Story = {
   name: 'Stacked',
   args: {
@@ -212,6 +217,7 @@ export const Stacked: Story = {
   ),
 };
 
+/** Demonstrates the `stacked` layout with a clickable helper icon separate from the main action. */
 export const StackedWithHelperClick: Story = {
   name: 'Stacked with Helper Click',
   args: {
@@ -225,6 +231,7 @@ export const StackedWithHelperClick: Story = {
   },
 };
 
+/** Renders the icon-only `circle` layout across all available colors, each with a tooltip. */
 export const Circle: Story = {
   name: 'Circle',
   args: {
@@ -247,6 +254,7 @@ export const Circle: Story = {
   ),
 };
 
+/** Renders the icon-only `squared` layout across all available colors, each with a tooltip. */
 export const Squared: Story = {
   name: 'Squared',
   args: {
@@ -269,6 +277,7 @@ export const Squared: Story = {
   ),
 };
 
+/** Shows a labeled button with a leading icon via `iconStart`. */
 export const WithIcon: Story = {
   args: {
     label: 'Like',
@@ -277,6 +286,7 @@ export const WithIcon: Story = {
   },
 };
 
+/** Renders every available `size` value side by side. */
 export const AllSizes: Story = {
   name: 'All Sizes',
   args: {
@@ -296,6 +306,7 @@ export const AllSizes: Story = {
   ),
 };
 
+/** Shows the button in its disabled state. */
 export const Disabled: Story = {
   args: {
     label: 'Disabled Button',
@@ -304,6 +315,7 @@ export const Disabled: Story = {
   },
 };
 
+/** Renders the same button with a tooltip in each of the available `tooltipPlacement` positions. */
 export const WithTooltip: Story = {
   name: 'With Tooltip (All Placements)',
   args: {
@@ -324,6 +336,7 @@ export const WithTooltip: Story = {
   ),
 };
 
+/** Compares buttons using `iconStart`, `iconEnd`, and both together. */
 export const WithStartAndEndIcons: Story = {
   name: 'With Start and End Icons',
   args: {
