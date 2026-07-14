@@ -36,6 +36,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Renders the textarea with a custom placeholder and a taller initial row count. */
 export const Default: Story = { args: { placeholder: 'Write something...', rows: 3 } };
 
+/** Demonstrates capping input length via the `maxLength` prop. */
 export const MaxLength: Story = { args: { placeholder: 'Max 100 chars', maxLength: 100 } };

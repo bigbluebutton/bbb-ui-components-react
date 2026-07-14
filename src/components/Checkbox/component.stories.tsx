@@ -31,12 +31,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Basic checkbox with a label, using the default layout. */
 export const Default: Story = {
   args: {
     label: 'Checkbox label',
   },
 };
 
+/** Renders the checkbox as a round radio-style control via the `round` prop. */
 export const Round: Story = {
   args: {
     label: 'Round Checkbox',

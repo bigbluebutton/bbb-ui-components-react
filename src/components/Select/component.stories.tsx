@@ -30,6 +30,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Renders a titled select populated with two selectable options. */
 export const Default: Story = {
   args: {
     title: 'Choose an option',

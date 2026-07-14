@@ -10,4 +10,5 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Renders the divider with its default styles and no custom props. */
 export const Default: Story = {};
