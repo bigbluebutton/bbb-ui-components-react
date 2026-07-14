@@ -220,6 +220,13 @@ export const IconWrapper = styled.div`
   }
 `;
 
+export const FeedbackContent = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${spacingSmall};
+`;
+
 export const ButtonText = styled.div`
   color: ${colorTextDefault};
   font-size: ${fontSizeSmall};
