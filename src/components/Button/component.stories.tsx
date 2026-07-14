@@ -2,7 +2,9 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import BBButton from './component';
-import { MdFavorite, MdMoreVert, MdSettings } from 'react-icons/md';
+import {
+  MdFavorite, MdMoreVert, MdSettings, MdCheckCircle, MdContentCopy,
+} from 'react-icons/md';
 import {
   VARIANT_VALUES,
   SIZE_VALUES,
@@ -101,6 +103,21 @@ const meta = {
       control: false,
       description: `Keyboard keydown event handler. Useful to handle custom keyboard interactions; receives the native keyboard event. Works across all layouts.`,
       table: { defaultValue: { summary: 'null' } },
+    },
+    showFeedback: {
+      control: 'boolean',
+      description: 'When `true`, temporarily shows `feedbackContent` in place of the button\'s own label/icon for `feedbackDuration` after `onClick` fires.',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    feedbackContent: {
+      control: false,
+      description: 'Content rendered while the click feedback is visible (e.g. a checkmark icon and "Copied"). Only relevant when `showFeedback` is `true`.',
+      table: { defaultValue: { summary: '<MdCheckCircle />' } },
+    },
+    feedbackDuration: {
+      control: { type: 'number', min: 0, step: 100 },
+      description: 'How long, in milliseconds, the click feedback stays visible. Only relevant when `showFeedback` is `true`.',
+      table: { defaultValue: { summary: '2000' } },
     },
   },
 
@@ -352,4 +369,20 @@ export const WithStartAndEndIcons: Story = {
       />
     </div>
   ),
+};
+
+/** Shows a transient "Copied" feedback in place of the label after clicking. */
+export const WithFeedback: Story = {
+  name: 'With Click Feedback',
+  args: {
+    label: 'Copy Link',
+    variant: 'primary',
+    iconStart: <MdContentCopy size="1.25rem" />,
+    showFeedback: true,
+    feedbackContent: (
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+        <MdCheckCircle /> Copied
+      </span>
+    ),
+  },
 };

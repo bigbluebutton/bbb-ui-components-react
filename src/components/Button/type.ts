@@ -76,6 +76,19 @@ type BaseButtonProps = {
   size?: SizeType;
   disabled?: boolean;
   children?: React.ReactNode;
+
+  /**
+   * When `true`, temporarily shows `feedbackContent` in place of the button's own
+   * label/icon for `feedbackDuration` after `onClick` fires.
+   * @default false
+   */
+  showFeedback?: boolean;
+
+  /** Content rendered while the click feedback is visible (e.g. a checkmark icon and "Copied"). @default <MdCheckCircle /> */
+  feedbackContent?: React.ReactNode;
+
+  /** How long, in milliseconds, the click feedback stays visible. @default 2000 */
+  feedbackDuration?: number;
 }
 
 type DefaultLayoutProps = BaseButtonProps & {

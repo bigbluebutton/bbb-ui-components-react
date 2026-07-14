@@ -77,3 +77,6 @@ import { MdPlayArrow } from 'react-icons/md';
 | `helperIcon`       | `React.ReactNode`                                                 |                   | The auxiliary icon to be displayed. Used for 'stacked' layout.         |
 | `hideHelperIcon`   | `boolean`                                                         | `false`           | If `true`, the auxiliary icon will be hidden. Used for 'stacked' layout.|
 | `helperOnClick`    | `(event: React.MouseEvent<HTMLDivElement>) => void`               |                   | The function to be called when the auxiliary icon is clicked.          |
+| `showFeedback`     | `boolean`                                                         | `false`           | If `true`, temporarily shows `feedbackContent` in place of the button's own label/icon for `feedbackDuration` after `onClick` fires. |
+| `feedbackContent`  | `React.ReactNode`                                                 | `<MdCheckCircle />` | Content rendered while the click feedback is visible (e.g. a checkmark icon and "Copied"). |
+| `feedbackDuration` | `number`                                                          | `2000`            | How long, in milliseconds, the click feedback stays visible.           |
