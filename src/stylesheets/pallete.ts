@@ -8,7 +8,10 @@ export const colorGray = 'var(--color-gray, #4E5A66)';
 export const colorDarkGray = 'var(--color-dark-gray, #393C48)';
 
 // Brand colors
-const colorBrand1_base = 'var(--color-brand-1, #1D65D4)';
+// Last-resort fallbacks mirror bigbluebutton-html5's palette so that a client
+// which doesn't override --color-primary renders library components with the
+// same brand color as its own (non-library) components.
+const colorBrand1_base = 'var(--color-brand-1, #0F70D7)';
 const colorBrandLight_base = 'var(--color-brand-light, #E5EFFB)';
 export const colorBrand1 = `var(--color-primary, ${colorBrand1_base})`;
 export const colorBrand2 = `var(--color-brand-2, ${colorBrand1_base})`;
@@ -19,8 +22,8 @@ export const colorBrandAux = `var(--color-brand-aux, ${colorBrandLight_base})`;
 
 
 // Semantic colors
-const colorError_base = 'var(--color-error, #D6232D)';
-const colorErrorDark_base = 'var(--color-error-dark, #B91C25)';
+const colorError_base = 'var(--color-error, #DF2721)';
+const colorErrorDark_base = 'var(--color-error-dark, #AE1010)';
 export const colorSuccess = 'var(--color-success, #2DD36F)';
 export const colorWarning = 'var(--color-warning, #F59240)';
 // Mapped to core css vars
@@ -52,6 +55,6 @@ export const colorIconBlue = `var(--color-icon-blue, ${colorBrand1_base})`;
 export const colorIconWhite = `var(--color-icon-white, ${colorWhite})`;
 
 //Hover colors
-export const colorHoverDark = 'var(--color-hover-dark, #1E53AF)';
+export const colorHoverDark = 'var(--color-hover-dark, #0C57A7)';
 export const colorHoverLight = 'var(--color-hover-light, #D4E5FA)';
 export const colorHoverNeutral = `var(--color-hover-neutral, ${colorNeutral4})`;
