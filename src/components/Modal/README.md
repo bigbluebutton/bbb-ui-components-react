@@ -39,6 +39,7 @@ import { BBBModal } from 'bbb-ui-components-react';
 | `shouldCloseOnEsc`          | `boolean`                      | `false`   | Allows closing with ESC key.                                                |
 | `allowScroll`               | `boolean`                      | `true`    | Enables scroll in the modal body.                                           |
 | `noFooter`                  | `boolean`                      | `false`   | Hides the modal footer.                                                     |
+| `hideCloseButton`           | `boolean`                      | `false`   | Hides the header close button.                                              |
 | `footerContent`             | `React.ReactNode`              | `null`    | Custom content for the footer.                                              |
 | `stickyFooter`              | `boolean`                      | `true`    | Makes the footer sticky.                                                    |
 | `testId`                    | `string`                       | —         | Test identifier applied to the modal element (native `ReactModal` prop).    |

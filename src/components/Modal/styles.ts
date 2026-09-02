@@ -45,15 +45,6 @@ export const ModalHeader = styled.div`
   align-items: center;
 `;
 
-export const CloseButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-`;
-
 export const ModalScrollArea = styled.div<StyledModalBodyProps>`
   flex-grow: 1;
   overflow-y: ${({ $allowScroll }) => $allowScroll ? 'auto' : 'hidden'};
