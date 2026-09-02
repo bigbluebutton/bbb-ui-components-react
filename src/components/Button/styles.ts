@@ -119,10 +119,15 @@ const stackedLayoutStyles = css`
   align-items: center;
 `;
 
-const circleLayoutStyles = css`
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
+// Shared by `circle` and `squared`: both are icon-only, fixed-box layouts that
+// must render at the same width/height for a given `size` — they differ only
+// in border-radius (round vs. slightly rounded square).
+const iconOnlyBoxStyles = css<StyledButtonProps>`
+  ${({ $size }) => {
+    const safeSize = $size ?? DEFAULT_SIZE;
+    const { iconBoxSize } = CSS_SIZE_PROPERTIES[safeSize] ?? CSS_SIZE_PROPERTIES[DEFAULT_SIZE];
+    return `width: ${iconBoxSize}; height: ${iconBoxSize};`;
+  }}
   aspect-ratio: 1;
   padding: 0;
   display: flex;
@@ -130,16 +135,14 @@ const circleLayoutStyles = css`
   align-items: center;
 `;
 
-// Icon-only, sized by its own (equal, non-text) padding rather than a fixed
-// box — stays compact next to a single line of text instead of forcing a
-// fixed height like circle/stacked do.
-const squaredLayoutStyles = css`
+const circleLayoutStyles = css<StyledButtonProps>`
+  ${iconOnlyBoxStyles}
+  border-radius: 50%;
+`;
+
+const squaredLayoutStyles = css<StyledButtonProps>`
+  ${iconOnlyBoxStyles}
   border-radius: ${borderRadiusSmall};
-  aspect-ratio: 1;
-  padding: ${spacingSmall};
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const defaultLayoutStyles = css`
