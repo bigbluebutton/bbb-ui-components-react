@@ -66,3 +66,6 @@ export const colorOverlay = 'var(--color-overlay, rgba(0, 0, 0, 0.75))';
 
 //Shadow colors
 export const colorShadowDefault = 'var(--color-shadow-default, rgb(0 35 11 / 20%))';
+
+// User colors
+export const colorUserYou = 'var(--color-user-you, #19237C)';

@@ -3,6 +3,7 @@ import path from 'path';
 export default {
   entry: {
     Accordion: './src/components/Accordion/index.ts',
+    Avatar: './src/components/Avatar/index.ts',
     Button: './src/components/Button/index.ts',
     Checkbox: './src/components/Checkbox/index.ts',
     Divider: './src/components/Divider/index.ts',
