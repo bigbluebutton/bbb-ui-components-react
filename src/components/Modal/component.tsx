@@ -25,6 +25,7 @@ const Modal: React.FC<ModalProps> = ({
   shouldCloseOnEsc = false,
   allowScroll = true,
   noFooter = false,
+  hideCloseButton = false,
   footerContent = null,
   stickyFooter = true,
   testId,
@@ -65,14 +66,16 @@ const Modal: React.FC<ModalProps> = ({
         >
           {title}
         </BBBTypography>
-        <BBButton
-          layout="circle"
-          icon={<MdClose size="1.5rem" />}
-          onClick={onRequestClose}
-          variant="subtle"
-          ariaLabel="close"
-          {...(_closeButtonDataTest ? { dataTest: _closeButtonDataTest } : {})}
-        />
+        {!hideCloseButton && (
+          <BBButton
+            layout="circle"
+            icon={<MdClose size="1.5rem" />}
+            onClick={onRequestClose}
+            variant="subtle"
+            ariaLabel="close"
+            {...(_closeButtonDataTest ? { dataTest: _closeButtonDataTest } : {})}
+          />
+        )}
       </Styled.ModalHeader>
 
       {showDividers && <BBBDivider />}

@@ -28,6 +28,9 @@ export interface ModalProps extends Omit<ReactModal.Props, 'style'> {
   /** Hide the footer section. @default false */
   noFooter?: boolean;
 
+  /** Hide the header close button. @default false */
+  hideCloseButton?: boolean;
+
   /** When true, the footer is sticky to the bottom instead of scrolling with the body. @default true */
   stickyFooter?: boolean;
 

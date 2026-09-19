@@ -59,6 +59,10 @@ const meta = {
       control: 'boolean',
       description: 'Hide the footer section.',
     },
+    hideCloseButton: {
+      control: 'boolean',
+      description: 'Hide the header close button.',
+    },
     footerContent: {
       control: false,
       description: 'Custom React node to render inside the footer.',
@@ -187,6 +191,15 @@ export const Default: Story = {
     shouldCloseOnOverlayClick: true,
     shouldCloseOnEsc: true,
     children: null,
+  },
+  render: (args) => <ModalStory {...args}><ModalBody /></ModalStory>,
+};
+
+/** Modal without a header close button, for mandatory-action or externally-controlled flows. */
+export const HideCloseButton: Story = {
+  args: {
+    ...Default.args,
+    hideCloseButton: true,
   },
   render: (args) => <ModalStory {...args}><ModalBody /></ModalStory>,
 };
