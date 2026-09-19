@@ -30,6 +30,7 @@ export type CSSColorPropertiesType = {
 
 export type SizeProperties = {
   padding: string;
+  iconBoxSize: string;
 }
 
 export type CSSSizePropertiesType = {
@@ -97,7 +98,7 @@ type BaseButtonProps = {
   /** Visual variant controlling emphasis and background/border styling. @default 'primary' */
   variant?: VariantType;
 
-  /** Button size; affects padding and, for the `circle` layout, the overall diameter. @default 'md' */
+  /** Button size; affects padding and, for the `circle`/`squared` layouts, the overall box size (both render at the same size). @default 'md' */
   size?: SizeType;
 
   /** Disables interaction and applies disabled styling. @default false */

@@ -8,6 +8,7 @@ export const spacingMedium = '1rem';          // 16px
 export const spacingMediumLarge = '1.25rem';  // 20px
 export const spacingLarge = '1.5rem';         // 24px
 export const spacingXLarge = '2rem';          // 32px
+export const spacingXXLarge = '3rem';         // 48px
 
 // Border sizes
 export const borderRadiusDefault = '1rem';    //16px

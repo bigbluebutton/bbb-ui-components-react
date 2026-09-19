@@ -55,7 +55,7 @@ const meta = {
     size: {
       control: 'select',
       options: SIZE_VALUES,
-      description: `Button size. Allowed values: ${SIZE_VALUES.join(', ')}. Note: size affects padding and, for \`circle\` layout, the overall diameter.`,
+      description: `Button size. Allowed values: ${SIZE_VALUES.join(', ')}. Note: size affects padding and, for \`circle\`/\`squared\` layouts, the overall box size (both render at the same size).`,
       table: { defaultValue: { summary: `${DEFAULT_SIZE}` } },
     },
     layout: {
@@ -319,6 +319,44 @@ export const AllSizes: Story = {
           label={`Size ${size.toUpperCase()}`}
         />
       ))}
+    </div>
+  ),
+};
+
+/** Renders the icon-only `circle` and `squared` layouts across every available `size`, showing that both render at the same box size for a given `size`. */
+export const IconOnlySizes: Story = {
+  name: 'Icon-Only Layout Sizes',
+  args: {
+    variant: 'primary',
+  },
+  render: (args) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        {SIZE_VALUES.map((size) => (
+          <BBButton
+            {...args}
+            key={`circle-${size}`}
+            layout="circle"
+            size={size}
+            icon={<MdFavorite size="1.25rem" />}
+            ariaLabel={`Circle ${size}`}
+            tooltipLabel={`Circle ${size}`}
+          />
+        ))}
+      </div>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        {SIZE_VALUES.map((size) => (
+          <BBButton
+            {...args}
+            key={`squared-${size}`}
+            layout="squared"
+            size={size}
+            icon={<MdFavorite size="1.25rem" />}
+            ariaLabel={`Squared ${size}`}
+            tooltipLabel={`Squared ${size}`}
+          />
+        ))}
+      </div>
     </div>
   ),
 };

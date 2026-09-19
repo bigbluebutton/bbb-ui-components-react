@@ -15,7 +15,9 @@ import {
   colorGray,
   colorBrandAux,
 } from '../../stylesheets/palette';
-import { spacingMedium, spacingSmall, spacingSmallMedium } from '../../stylesheets/sizing';
+import {
+  spacingSmall, spacingSmallMedium, spacingMedium, spacingXLarge, spacingXXLarge,
+} from '../../stylesheets/sizing';
 import { CSSColorPropertiesType, CSSSizePropertiesType, EssentialColorProperties } from './type';
 
 const VARIANTS = {
@@ -193,9 +195,11 @@ const CSS_COLOR_PROPERTIES_DISABLED: EssentialColorProperties = {
 const CSS_SIZE_PROPERTIES: CSSSizePropertiesType = {
   sm: {
     padding: `${spacingSmall} ${spacingSmallMedium}`,
+    iconBoxSize: spacingXLarge,
   },
   md: {
-    padding: spacingMedium
+    padding: spacingMedium,
+    iconBoxSize: spacingXXLarge,
   },
 };
 
