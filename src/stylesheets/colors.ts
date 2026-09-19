@@ -9,6 +9,7 @@ import {
   colorHoverDark, colorHoverLight, colorHoverNeutral,
   colorOverlay,
   colorShadowDefault,
+  colorUserYou,
 } from './palette';
 
 export const colors = {
@@ -65,6 +66,9 @@ export const colors = {
   },
   shadow: {
     default: colorShadowDefault,
+  },
+  user: {
+    you: colorUserYou,
   },
 } as const;
 

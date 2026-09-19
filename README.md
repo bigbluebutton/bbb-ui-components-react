@@ -7,6 +7,7 @@ This repository contains a library of reusable React components extracted from t
 Below is a list of the components available in this library. Each component has its own detailed documentation with usage examples and a complete list of props.
 
 - [BBBAccordion](./src/components/Accordion/README.md)
+- [BBBAvatar](./src/components/Avatar/README.md)
 - [BBButton](./src/components/Button/README.md)
 - [BBBCheckbox](./src/components/Checkbox/README.md)
 - [BBBDivider](./src/components/Divider/README.md)
@@ -101,6 +102,7 @@ The following table lists the supported CSS variables for color overriding, extr
 | `--color-icon-default-dark`| No                         | rgba(255, 255, 255, 0.35) |
 | `--color-overlay`          | No                         | rgba(0, 0, 0, 0.75) |
 | `--color-shadow-default`   | No                         | rgb(0 35 11 / 20%) |
+| `--color-user-you`         | No                         | #19237C      |
 
 **Example Usage**:
 ```css
@@ -132,7 +134,7 @@ const StyledDiv = styled.div`
 ```
 
 `colors` is grouped the same way as the table above: `neutral`, `brand`, `semantic`, `background`,
-`border`, `text`, `icon`, `hover`.
+`border`, `text`, `icon`, `hover`, `overlay`, `shadow`, `user`.
 
 ## Installation
 

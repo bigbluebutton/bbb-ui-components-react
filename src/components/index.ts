@@ -1,4 +1,5 @@
 export { BBBAccordion } from './Accordion';
+export { BBBAvatar } from './Avatar';
 export { BBButton } from './Button';
 export { BBBCheckbox } from './Checkbox';
 export { BBBDivider } from './Divider';

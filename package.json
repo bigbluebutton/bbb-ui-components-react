@@ -22,6 +22,13 @@
       "require": "./dist/components/Accordion.js",
       "default": "./dist/components/Accordion.js"
     },
+    "./Avatar": {
+      "types": "./dist/types/components/Avatar/index.d.ts",
+      "node": "./dist/components/Avatar.js",
+      "import": "./dist/esm/components/Avatar/index.js",
+      "require": "./dist/components/Avatar.js",
+      "default": "./dist/components/Avatar.js"
+    },
     "./Button": {
       "types": "./dist/types/components/Button/index.d.ts",
       "node": "./dist/components/Button.js",
@@ -180,6 +187,9 @@
       ],
       "Accordion": [
         "dist/types/components/Accordion/index.d.ts"
+      ],
+      "Avatar": [
+        "dist/types/components/Avatar/index.d.ts"
       ],
       "Button": [
         "dist/types/components/Button/index.d.ts"
