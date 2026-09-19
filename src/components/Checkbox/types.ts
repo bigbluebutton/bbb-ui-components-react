@@ -15,4 +15,7 @@ export interface CheckboxProps extends MuiCheckboxProps {
 
   /** Accessible name for the checkbox. */
   ariaLabel?: string;
+
+  /** `data-test` attribute on the underlying `<input>` element. */
+  dataTest?: string;
 }

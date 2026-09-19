@@ -17,16 +17,22 @@ function Checkbox({
   layout = DEFAULT_LAYOUT,
   round = false,
   ariaLabel,
+  id,
+  dataTest,
+  inputProps,
   ...props
 }: CheckboxProps): JSX.Element {
-  const id = useId();
+  const generatedId = useId();
+  const checkboxId = id ?? generatedId;
+  const mergedInputProps = { 'data-test': dataTest, ...inputProps };
   const checkbox = (
     <Styled.StyledCheckbox
       {...props}
-      id={id}
+      id={checkboxId}
       aria-label={ariaLabel}
       icon={round ? <RadioButtonUnchecked /> : undefined}
       checkedIcon={round ? <RadioButtonChecked /> : undefined}
+      inputProps={mergedInputProps}
     />
   );
 
@@ -36,9 +42,9 @@ function Checkbox({
 
   return (
     <Styled.Container>
-      {layout === LAYOUTS.LEFT && <Styled.Label htmlFor={id}>{label}</Styled.Label>}
+      {layout === LAYOUTS.LEFT && <Styled.Label htmlFor={checkboxId}>{label}</Styled.Label>}
       {checkbox}
-      {layout === LAYOUTS.RIGHT && <Styled.Label htmlFor={id}>{label}</Styled.Label>}
+      {layout === LAYOUTS.RIGHT && <Styled.Label htmlFor={checkboxId}>{label}</Styled.Label>}
     </Styled.Container>
   );
 }

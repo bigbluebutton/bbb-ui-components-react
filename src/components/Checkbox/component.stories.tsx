@@ -25,6 +25,10 @@ const meta = {
       control: 'text',
       description: 'Accessible name for the checkbox.',
     },
+    dataTest: {
+      control: 'text',
+      description: '`data-test` attribute on the underlying `<input>` element.',
+    },
   },
 } satisfies Meta<typeof BBBCheckbox>;
 
