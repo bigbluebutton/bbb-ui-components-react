@@ -92,6 +92,13 @@
       "require": "./dist/components/Select.js",
       "default": "./dist/components/Select.js"
     },
+    "./Slider": {
+      "types": "./dist/types/components/Slider/index.d.ts",
+      "node": "./dist/components/Slider.js",
+      "import": "./dist/esm/components/Slider/index.js",
+      "require": "./dist/components/Slider.js",
+      "default": "./dist/components/Slider.js"
+    },
     "./Spinner": {
       "types": "./dist/types/components/Spinner/index.d.ts",
       "node": "./dist/components/Spinner.js",
@@ -210,6 +217,9 @@
       ],
       "Select": [
         "dist/types/components/Select/index.d.ts"
+      ],
+      "Slider": [
+        "dist/types/components/Slider/index.d.ts"
       ],
       "Spinner": [
         "dist/types/components/Spinner/index.d.ts"

@@ -13,6 +13,7 @@ export default {
     ScrollArea: './src/components/ScrollArea/index.ts',
     Search: './src/components/Search/index.ts',
     Select: './src/components/Select/index.ts',
+    Slider: './src/components/Slider/index.ts',
     Spinner: './src/components/Spinner/index.ts',
     TextAreaInput: './src/components/TextAreaInput/index.ts',
     TextInput: './src/components/TextInput/index.ts',

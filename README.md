@@ -17,6 +17,7 @@ Below is a list of the components available in this library. Each component has 
 - [BBBScrollArea](./src/components/ScrollArea/README.md)
 - [BBBSearch](./src/components/Search/README.md)
 - [BBBSelect](./src/components/Select/README.md)
+- [BBBSlider](./src/components/Slider/README.md)
 - [BBBSpinner](./src/components/Spinner//README.md)
 - [BBBTextAreaInput](./src/components/TextAreaInput/README.md)
 - [BBBTextInput](./src/components/TextInput/README.md)
