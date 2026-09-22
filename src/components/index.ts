@@ -10,6 +10,7 @@ export { BBBNavigation } from './Navigation';
 export { BBBScrollArea } from './ScrollArea';
 export { BBBSearch } from './Search';
 export { BBBSelect } from './Select';
+export { BBBSlider } from './Slider';
 export { BBBSpinner } from './Spinner';
 export { BBBTextAreaInput } from './TextAreaInput';
 export { BBBTextInput } from './TextInput';
