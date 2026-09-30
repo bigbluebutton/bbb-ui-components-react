@@ -3,7 +3,7 @@ import { LAYOUTS } from './constants';
 
 type Layout = typeof LAYOUTS[keyof typeof LAYOUTS];
 
-export interface CheckboxProps extends MuiCheckboxProps {
+export interface CheckboxProps extends Omit<MuiCheckboxProps, 'inputProps'> {
   /** Text label displayed next to the checkbox. */
   label?: string;
 
