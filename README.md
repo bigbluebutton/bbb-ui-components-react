@@ -36,8 +36,8 @@ styled-components >=5.3.0
 react-modal >=3.16.1
 @emotion/react ^11.13.0
 @emotion/styled ^11.13.0
-@mui/material ^6.1.4 || ^7.0.0
-@mui/icons-material ^6.1.4 || ^7.0.0
+@mui/material ^6.4.9 || ^7.0.0
+@mui/icons-material ^6.4.9 || ^7.0.0
 prop-types ^15.8.1
 react-icons ^5.5.0
 ```
