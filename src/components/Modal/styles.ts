@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Styles } from 'react-modal';
+import ReactModal, { Styles } from 'react-modal';
 import * as React from 'react';
 import { spacingLarge, spacingMedium, spacingSmallMedium, borderRadiusDefault } from '../../stylesheets/sizing';
 import { colorWhite, colorOverlay } from '../../stylesheets/palette';
@@ -26,7 +26,6 @@ export const modalStyles: Styles = {
     right: 'auto',
     bottom: 'auto',
     borderRadius: borderRadiusDefault,
-    background: colorWhite,
     overflow: 'hidden',
     WebkitOverflowScrolling: 'touch',
     outline: 'none',
@@ -80,4 +79,9 @@ export const ModalFooter = styled.div<StyledModalFooterProps>`
       bottom: 0;
       background-color: ${colorWhite};
     `}
+`;
+
+// Background lives in a class instead of the inline `style` so the BBB dark theme and consumers can override it.
+export const Modal = styled(ReactModal)`
+  background: ${colorWhite};
 `;
