@@ -16,6 +16,8 @@ import {
   DEFAULT_VARIANT,
   DEFAULT_SIZE,
   DEFAULT_LAYOUT,
+  TYPE_VALUES,
+  DEFAULT_TYPE,
 } from './constants';
 
 const meta = {
@@ -63,6 +65,12 @@ const meta = {
       options: LAYOUT_VALUES,
       description: `Layout mode for the button. Allowed values: ${LAYOUT_VALUES.join(', ')}. Some props are layout-specific (see icon, iconStart/iconEnd, helperIcon).`,
       table: { defaultValue: { summary: `${DEFAULT_LAYOUT}` } },
+    },
+    type: {
+      control: 'select',
+      options: TYPE_VALUES,
+      description: `Native \`type\` attribute of the underlying \`<button>\`. Allowed values: ${TYPE_VALUES.join(', ')}. Defaults to \`button\` so it never submits an enclosing form unless \`submit\` is passed explicitly.`,
+      table: { defaultValue: { summary: `${DEFAULT_TYPE}` } },
     },
     disabled: {
       control: 'boolean',

@@ -6,6 +6,7 @@ import {
   VARIANT_VALUES,
   LAYOUTS,
   TOOLTIP_PLACEMENT_VALUES,
+  TYPE_VALUES,
 } from './constants';
 
 export type EssentialColorProperties = {
@@ -42,6 +43,7 @@ type ColorType = typeof COLOR_VALUES[number];
 type SizeType = typeof SIZE_VALUES[number];
 type LayoutType = typeof LAYOUT_VALUES[number];
 type TooltipPlacementType = typeof TOOLTIP_PLACEMENT_VALUES[number];
+type ButtonType = typeof TYPE_VALUES[number];
 
 export interface StyledHelperIconContainer {
   $hover: boolean;
@@ -100,6 +102,9 @@ type BaseButtonProps = {
 
   /** Button size; affects padding and, for the `circle`/`squared` layouts, the overall box size (both render at the same size). @default 'md' */
   size?: SizeType;
+
+  /** Native `type` attribute of the `<button>`; defaults to `'button'` so it never submits an enclosing form unless `'submit'` is passed explicitly. @default 'button' */
+  type?: ButtonType;
 
   /** Disables interaction and applies disabled styling. @default false */
   disabled?: boolean;

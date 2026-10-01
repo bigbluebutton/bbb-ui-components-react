@@ -51,6 +51,18 @@ import { MdPlayArrow } from 'react-icons/md';
 <BBButton layout="stacked" icon={<MdPlayArrow size={30} />} label="Settings" onClick={() => (console.log('clicked'))}/>
 ```
 
+### Submit Button
+
+`BBButton` renders `type="button"` by default, so it never submits an enclosing `<form>`. Pass `type="submit"` to opt in:
+
+```jsx
+import { BBButton } from 'bbb-ui-components-react';
+
+<form onSubmit={handleSubmit}>
+  <BBButton type="submit" label="Save" onClick={() => (console.log('clicked'))}/>
+</form>
+```
+
 ## Props
 
 | Property           | Type                                                              | Default           | Description                                                              |
@@ -69,6 +81,7 @@ import { MdPlayArrow } from 'react-icons/md';
 | `variant`          | `keyof typeof VARIANTS`                                           | `'primary'`       | The variant of the button.                                             |
 | `size`             | `keyof typeof SIZES`                                              | `'medium'`        | The size of the button.                                                |
 | `layout`           | `keyof typeof LAYOUTS`                                            | `'default'`       | The layout of the button.                                              |
+| `type`             | `'button' \| 'submit' \| 'reset'`                                 | `'button'`        | The native `type` attribute of the `<button>`. Defaults to `'button'` so it never submits an enclosing form unless `'submit'` is passed explicitly. |
 | `disabled`         | `boolean`                                                         | `false`           | If `true`, the button will be disabled.                                |
 | `children`         | `React.ReactNode`                                                 |                   | The content of the button, typically used for the 'default' layout.    |
 | `icon`             | `React.ReactNode`                                                 |                   | The icon to be displayed. Used for 'circle', 'squared' and 'stacked' layouts. |
