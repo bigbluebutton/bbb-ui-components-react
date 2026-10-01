@@ -195,6 +195,15 @@ export const Default: Story = {
   render: (args) => <ModalStory {...args}><ModalBody /></ModalStory>,
 };
 
+/** Long unbroken title that wraps while the close button stays inside the modal. */
+export const LongTitle: Story = {
+  args: {
+    ...Default.args,
+    title: 'Averyveryveryveryveryveryveryveryveryverylongwordwithoutspaces',
+  },
+  render: (args) => <ModalStory {...args}><ModalBody /></ModalStory>,
+};
+
 /** Modal without a header close button, for mandatory-action or externally-controlled flows. */
 export const HideCloseButton: Story = {
   args: {

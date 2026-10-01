@@ -3,6 +3,7 @@ import { Styles } from 'react-modal';
 import * as React from 'react';
 import { spacingLarge, spacingMedium, spacingSmallMedium, borderRadiusDefault } from '../../stylesheets/sizing';
 import { colorWhite, colorOverlay } from '../../stylesheets/palette';
+import { BBBTypography } from '../Typography';
 import { StyledModalBodyProps, StyledModalFooterProps } from './types';
 
 export const modalStyles: Styles = {
@@ -43,6 +44,13 @@ export const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: ${spacingMedium};
+`;
+
+export const ModalTitle = styled(BBBTypography)`
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
 `;
 
 export const ModalScrollArea = styled.div<StyledModalBodyProps>`

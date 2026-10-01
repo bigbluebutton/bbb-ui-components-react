@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import ReactModal from 'react-modal';
 import * as Styled from './styles';
-import { BBBTypography } from '../Typography';
 import { MdClose } from 'react-icons/md';
 import { BBBDivider } from '../Divider';
 import { ModalProps } from './types';
@@ -61,11 +60,11 @@ const Modal: React.FC<ModalProps> = ({
       testId={testId}
     >
       <Styled.ModalHeader>
-        <BBBTypography
+        <Styled.ModalTitle
           variant="header"
         >
           {title}
-        </BBBTypography>
+        </Styled.ModalTitle>
         {!hideCloseButton && (
           <BBButton
             layout="circle"
