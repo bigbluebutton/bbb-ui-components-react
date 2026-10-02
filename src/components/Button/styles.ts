@@ -90,13 +90,13 @@ const commonButtonStyles = css<StyledButtonProps>`
       }
       color: ${color};
       ${background ? `background-color: ${background}` : `background-color: none`};
-      border: ${border ? `1px solid ${border}` : 'none'};
+      border: ${border ? `1px solid ${border}` : '1px solid transparent'};
 
       &&:hover,
       &&:active {
         color: ${color};
         ${background ? `background-color: ${background}` : `background-color: none`};
-        border: ${border ? `1px solid ${border}` : 'none'};
+        border: ${border ? `1px solid ${border}` : '1px solid transparent'};
       }
       
       &&:focus {
