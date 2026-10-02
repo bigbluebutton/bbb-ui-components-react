@@ -89,13 +89,13 @@ const commonButtonStyles = css<StyledButtonProps>`
         color: ${color};
       }
       color: ${color};
-      ${background ? `background-color: ${background}` : `background-color: none`};
+      ${background ? `background-color: ${background}` : `background-color: transparent`};
       border: ${border ? `1px solid ${border}` : '1px solid transparent'};
 
       &&:hover,
       &&:active {
         color: ${color};
-        ${background ? `background-color: ${background}` : `background-color: none`};
+        ${background ? `background-color: ${background}` : `background-color: transparent`};
         border: ${border ? `1px solid ${border}` : '1px solid transparent'};
       }
       
