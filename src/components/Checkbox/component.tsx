@@ -1,4 +1,5 @@
 import React, { JSX, useId } from 'react';
+import { CheckboxOwnerState } from '@mui/material';
 import { CheckboxProps } from './types';
 import * as Styled from './styles';
 import { DEFAULT_LAYOUT, LAYOUTS } from './constants';
@@ -19,20 +20,23 @@ function Checkbox({
   ariaLabel,
   id,
   dataTest,
-  inputProps,
+  slotProps,
   ...props
 }: CheckboxProps): JSX.Element {
   const generatedId = useId();
   const checkboxId = id ?? generatedId;
-  const mergedInputProps = { 'data-test': dataTest, ...inputProps };
+  const ownInputProps = { 'aria-label': ariaLabel, 'data-test': dataTest };
+  const { input: consumerInputSlotProps, ...otherSlotProps } = slotProps ?? {};
+  const inputSlotProps = typeof consumerInputSlotProps === 'function'
+    ? (ownerState: CheckboxOwnerState) => ({ ...ownInputProps, ...consumerInputSlotProps(ownerState) })
+    : { ...ownInputProps, ...consumerInputSlotProps };
   const checkbox = (
     <Styled.StyledCheckbox
       {...props}
       id={checkboxId}
-      aria-label={ariaLabel}
       icon={round ? <RadioButtonUnchecked /> : undefined}
       checkedIcon={round ? <RadioButtonChecked /> : undefined}
-      inputProps={mergedInputProps}
+      slotProps={{ ...otherSlotProps, input: inputSlotProps }}
     />
   );
 
