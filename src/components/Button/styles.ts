@@ -145,8 +145,9 @@ const squaredLayoutStyles = css<StyledButtonProps>`
   border-radius: ${borderRadiusSmall};
 `;
 
-const defaultLayoutStyles = css`
-  display: inline-flex;
+const defaultLayoutStyles = css<StyledButtonProps>`
+  display: ${({ $fullWidth }) => ($fullWidth ? 'flex' : 'inline-flex')};
+  ${({ $fullWidth }) => $fullWidth && 'width: 100%;'}
   justify-content: center;
   align-items: center;
   gap: ${spacingSmall};

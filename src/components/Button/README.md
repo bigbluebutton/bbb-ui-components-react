@@ -63,6 +63,27 @@ import { BBButton } from 'bbb-ui-components-react';
 </form>
 ```
 
+### Full-width Button
+
+```jsx
+import { BBButton } from 'bbb-ui-components-react';
+
+<BBButton label="Share" fullWidth onClick={() => (console.log('clicked'))}/>
+```
+
+### Extending with `styled()`
+
+`className` is forwarded to the root element (the `<button>`, or the wrapper `<div>` in the `stacked` layout), so `BBButton` can be extended with `styled()`. This is an escape hatch while `BBButton` is being adopted: prefer native props such as `fullWidth`, and open an issue for any override you find yourself repeating, so it can become a prop.
+
+```jsx
+import styled from 'styled-components';
+import { BBButton } from 'bbb-ui-components-react';
+
+const FooterButton = styled(BBButton)`
+  min-width: 8.5rem;
+`;
+```
+
 ## Props
 
 | Property           | Type                                                              | Default           | Description                                                              |
@@ -83,6 +104,8 @@ import { BBButton } from 'bbb-ui-components-react';
 | `layout`           | `keyof typeof LAYOUTS`                                            | `'default'`       | The layout of the button.                                              |
 | `type`             | `'button' \| 'submit' \| 'reset'`                                 | `'button'`        | The native `type` attribute of the `<button>`. Defaults to `'button'` so it never submits an enclosing form unless `'submit'` is passed explicitly. |
 | `disabled`         | `boolean`                                                         | `false`           | If `true`, the button will be disabled.                                |
+| `fullWidth`        | `boolean`                                                         | `false`           | If `true`, the button fills the width of its container, keeping its content centered. Used for 'default' layout. |
+| `className`        | `string`                                                          |                   | Class name forwarded to the root element (the `<button>`, or the wrapper `<div>` in the 'stacked' layout), so `styled(BBButton)` works. Escape hatch while BBButton is being adopted; prefer native props and open an issue for recurring needs. |
 | `children`         | `React.ReactNode`                                                 |                   | The content of the button, typically used for the 'default' layout.    |
 | `icon`             | `React.ReactNode`                                                 |                   | The icon to be displayed. Used for 'circle', 'squared' and 'stacked' layouts. |
 | `iconStart`        | `React.ReactNode`                                                 |                   | The icon to be displayed at the start of the button. Used for 'default' layout.|

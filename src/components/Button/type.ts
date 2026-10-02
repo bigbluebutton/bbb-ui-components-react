@@ -60,6 +60,7 @@ export interface StyledButtonProps {
   $color?: ColorType;
   $size?: SizeType;
   $layout?: LayoutType;
+  $fullWidth?: boolean;
   disabled: boolean;
 }
 
@@ -124,6 +125,9 @@ type BaseButtonProps = {
 
   /** How long, in milliseconds, the click feedback stays visible. @default 2000 */
   feedbackDuration?: number;
+
+  /** Class name forwarded to the root element (the `<button>`, or the wrapper `<div>` in the `stacked` layout), so `styled(BBButton)` works. Escape hatch while BBButton is being adopted; prefer native props and open an issue for recurring needs. */
+  className?: string;
 }
 
 type DefaultLayoutProps = BaseButtonProps & {
@@ -135,6 +139,9 @@ type DefaultLayoutProps = BaseButtonProps & {
 
   /** Icon rendered after the label (right side); effective when a label is present. */
   iconEnd?: React.ReactNode;
+
+  /** Makes the button fill the width of its container, keeping its content centered. @default false */
+  fullWidth?: boolean;
 };
 
 type StackedLayoutProps = BaseButtonProps & {
