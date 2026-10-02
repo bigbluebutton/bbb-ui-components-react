@@ -46,4 +46,4 @@ import { BBBToggle } from 'bbb-ui-components-react';
 | `ariaLabel`         | `string`                                                            |           | The accessible name for the toggle.                                            |
 | `ariaLabelledBy`    | `string`                                                            |           | The ID of the element that labels the toggle.                                  |
 | `ariaDescribedBy`   | `string`                                                            |           | The ID of the element that describes the toggle.                               |
-| `...props`          | `SwitchProps`                                                       |           | Any other props will be passed down to the underlying Material-UI Switch component. |
+| `...props`          | `Omit<SwitchProps, 'inputProps'>`                                   |           | Any other props will be passed down to the underlying Material-UI Switch component. Use `slotProps.input` to set attributes on the `<input>`. |
