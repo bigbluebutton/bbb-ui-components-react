@@ -20,7 +20,7 @@ export const colorBrand2 = `var(--color-brand-2, ${colorBrand1_base})`;
 export const colorBrand3 = `var(--color-brand-3, ${colorBrand1_base})`;
 // Mapped to core css vars
 export const colorBrandLight = `var(--color-blue-aux, ${colorBrandLight_base})`;
-export const colorBrandAux = `var(--color-brand-aux, ${colorBrandLight_base})`;
+export const colorBrandAux = `var(--color-brand-aux, var(--color-hover-light, ${colorBrandLight_base}))`;
 
 
 // Semantic colors
