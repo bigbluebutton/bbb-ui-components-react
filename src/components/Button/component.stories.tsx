@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import BBButton from './component';
@@ -16,6 +17,8 @@ import {
   DEFAULT_VARIANT,
   DEFAULT_SIZE,
   DEFAULT_LAYOUT,
+  TYPE_VALUES,
+  DEFAULT_TYPE,
 } from './constants';
 
 const meta = {
@@ -64,10 +67,25 @@ const meta = {
       description: `Layout mode for the button. Allowed values: ${LAYOUT_VALUES.join(', ')}. Some props are layout-specific (see icon, iconStart/iconEnd, helperIcon).`,
       table: { defaultValue: { summary: `${DEFAULT_LAYOUT}` } },
     },
+    type: {
+      control: 'select',
+      options: TYPE_VALUES,
+      description: `Native \`type\` attribute of the underlying \`<button>\`. Allowed values: ${TYPE_VALUES.join(', ')}. Defaults to \`button\` so it never submits an enclosing form unless \`submit\` is passed explicitly.`,
+      table: { defaultValue: { summary: `${DEFAULT_TYPE}` } },
+    },
     disabled: {
       control: 'boolean',
       description: 'Disables interaction and applies disabled visuals. Works across all layouts.',
       table: { defaultValue: { summary: 'false' } },
+    },
+    fullWidth: {
+      control: 'boolean',
+      description: `Makes the button fill the width of its container, keeping its content centered. Only used in the 'default' layout.`,
+      table: { defaultValue: { summary: 'false' } },
+    },
+    className: {
+      control: false,
+      description: `Class name forwarded to the root element (the \`<button>\`, or the wrapper \`<div>\` in the 'stacked' layout), so \`styled(BBButton)\` works. Escape hatch while BBButton is being adopted; prefer native props and open an issue for recurring needs.`,
     },
     icon: {
       control: false,
@@ -368,6 +386,39 @@ export const Disabled: Story = {
     variant: 'primary',
     disabled: true,
   },
+};
+
+/** Shows a `fullWidth` button filling its container, with the label centered. */
+export const FullWidth: Story = {
+  args: {
+    label: 'Share',
+    fullWidth: true,
+  },
+  render: (args) => (
+    <div style={{ width: '20rem' }}>
+      <BBButton {...args} />
+    </div>
+  ),
+};
+
+const StyledFooterButton = styled(BBButton)`
+  min-width: 8.5rem;
+`;
+
+const StyledWrappingButton = styled(BBButton)`
+  width: 10rem;
+  white-space: normal;
+`;
+
+/** Customizes the button through `styled(BBButton)`: a minimum width for a short label, and a fixed width that lets a long label wrap. */
+export const StyledExtension: Story = {
+  name: 'Extended with styled()',
+  render: (args) => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <StyledFooterButton {...args} label="Yes" />
+      <StyledWrappingButton {...args} label="A long translated label that wraps" />
+    </div>
+  ),
 };
 
 /** Renders the same button with a tooltip in each of the available `tooltipPlacement` positions. */

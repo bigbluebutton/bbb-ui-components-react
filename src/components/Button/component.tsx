@@ -10,6 +10,7 @@ import {
   DEFAULT_LAYOUT,
   LAYOUTS,
   DEFAULT_TOOLTIP_PLACEMENT,
+  DEFAULT_TYPE,
 } from './constants';
 import * as Styled from './styles';
 import Tippy from '@tippyjs/react';
@@ -39,11 +40,13 @@ function Button(props: ButtonProps): JSX.Element {
     variant = DEFAULT_VARIANT,
     size = DEFAULT_SIZE,
     layout = DEFAULT_LAYOUT,
+    type = DEFAULT_TYPE,
     disabled = false,
     children,
     showFeedback = false,
     feedbackContent = <MdCheckCircle fontSize="small" />,
     feedbackDuration = 2000,
+    className,
   } = props;
 
   const feedbackTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -93,6 +96,8 @@ function Button(props: ButtonProps): JSX.Element {
       return (
         <Styled.Button
           id={id}
+          className={className}
+          type={type}
           data-test={testId}
           onClick={handleClick}
           onKeyDown={onKeyDown}
@@ -122,9 +127,14 @@ function Button(props: ButtonProps): JSX.Element {
       const testId = dataTest || `${LAYOUTS.STACKED}-button-${id || label || 'default'}`;
 
       return (
-        <Styled.ButtonWrapper data-test={testId} $layout={layout}>
+        <Styled.ButtonWrapper
+          className={className}
+          data-test={testId}
+          $layout={layout}
+        >
           <Styled.Button
             id={id}
+            type={type}
             onClick={handleClick}
             onKeyDown={onKeyDown}
             {...accessibilityProps}
@@ -168,12 +178,14 @@ function Button(props: ButtonProps): JSX.Element {
       );
     }
 
-    const { iconStart, iconEnd } = props;
+    const { iconStart, iconEnd, fullWidth = false } = props;
     const testId = dataTest || `button-${id || label || 'default'}`;
 
     return (
       <Styled.Button
         id={id}
+        className={className}
+        type={type}
         data-test={testId}
         onClick={handleClick}
         onKeyDown={onKeyDown}
@@ -182,6 +194,7 @@ function Button(props: ButtonProps): JSX.Element {
         $variant={variant}
         $size={size}
         $layout={layout}
+        $fullWidth={fullWidth}
         disabled={disabled}
       >
         {isFeedbackVisible ? (

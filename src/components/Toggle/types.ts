@@ -14,7 +14,7 @@ export interface StyledTextWrapperProps extends StyledToggleWrapperProps{
   $hasHelperText: boolean;
 }
 
-export interface ToggleProps extends SwitchProps {
+export interface ToggleProps extends Omit<SwitchProps, 'inputProps'> {
   /** Main label text displayed next to the toggle. */
   label?: string;
 
