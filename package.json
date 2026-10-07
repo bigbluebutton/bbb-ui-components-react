@@ -127,6 +127,13 @@
       "require": "./dist/components/TextInput.js",
       "default": "./dist/components/TextInput.js"
     },
+    "./Toast": {
+      "types": "./dist/types/components/Toast/index.d.ts",
+      "node": "./dist/components/Toast.js",
+      "import": "./dist/esm/components/Toast/index.js",
+      "require": "./dist/components/Toast.js",
+      "default": "./dist/components/Toast.js"
+    },
     "./Toggle": {
       "types": "./dist/types/components/Toggle/index.d.ts",
       "node": "./dist/components/Toggle.js",
@@ -239,6 +246,9 @@
       ],
       "TextInput": [
         "dist/types/components/TextInput/index.d.ts"
+      ],
+      "Toast": [
+        "dist/types/components/Toast/index.d.ts"
       ],
       "Toggle": [
         "dist/types/components/Toggle/index.d.ts"

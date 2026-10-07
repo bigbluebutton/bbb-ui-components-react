@@ -28,6 +28,10 @@ const colorError_base = 'var(--color-error, #DF2721)';
 const colorErrorDark_base = 'var(--color-error-dark, #AE1010)';
 export const colorSuccess = 'var(--color-success, #2DD36F)';
 export const colorWarning = 'var(--color-warning, #F59240)';
+// Darker shades of the two above, for fills that carry white text or icons - motivation: BBBToast
+// warning and success which lack of contrast for displaying white icons
+export const colorSuccessDark = 'var(--color-success-dark, #209B51)';
+export const colorWarningDark = 'var(--color-warning-dark, #D8680B)';
 // Mapped to core css vars
 export const colorError = `var(--color-danger, ${colorError_base})`;
 export const colorErrorDark = `var(--color-danger-dark, ${colorErrorDark_base})`;
