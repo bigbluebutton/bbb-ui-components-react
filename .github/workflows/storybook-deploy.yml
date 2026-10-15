@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop
   workflow_dispatch: {}
 
 permissions:
@@ -13,6 +14,13 @@ permissions:
 
 jobs:
   build-and-deploy:
+    if: ${{ github.ref_name == 'main' || github.ref_name == 'develop' }}
+    # Both branches push to gh-pages; overlapping runs would reject each other's
+    # push, and the default single pending slot would drop a queued deploy.
+    concurrency:
+      group: gh-pages-deploy
+      cancel-in-progress: false
+      queue: max
     runs-on: ubuntu-latest
 
     steps:
@@ -44,10 +52,20 @@ jobs:
             echo "storybook-static does not exist at ./storybook-static"
           fi
 
+      # The main deploy cleans the whole gh-pages root, develop/ included.
+      - name: Preserve the develop Storybook
+        if: ${{ github.ref_name == 'main' }}
+        run: |
+          git fetch --depth=1 origin gh-pages || exit 0
+          if git ls-tree -d --name-only FETCH_HEAD develop | grep -q .; then
+            git archive FETCH_HEAD develop | tar -x -C ./storybook-static
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           publish_dir: ./storybook-static
+          destination_dir: ${{ github.ref_name == 'develop' && 'develop' || '' }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           keep_files: false
