@@ -18,6 +18,7 @@ export default {
     Spinner: './src/components/Spinner/index.ts',
     TextAreaInput: './src/components/TextAreaInput/index.ts',
     TextInput: './src/components/TextInput/index.ts',
+    Toast: './src/components/Toast/index.ts',
     Toggle: './src/components/Toggle/index.ts',
     Typography: './src/components/Typography/index.ts',
     colors: './src/stylesheets/colors.ts',

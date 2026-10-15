@@ -14,5 +14,6 @@ export { BBBSlider } from './Slider';
 export { BBBSpinner } from './Spinner';
 export { BBBTextAreaInput } from './TextAreaInput';
 export { BBBTextInput } from './TextInput';
+export { BBBToast } from './Toast';
 export { BBBToggle } from './Toggle';
 export { BBBTypography } from './Typography';
