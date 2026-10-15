@@ -22,6 +22,7 @@ Below is a list of the components available in this library. Each component has 
 - [BBBSpinner](./src/components/Spinner//README.md)
 - [BBBTextAreaInput](./src/components/TextAreaInput/README.md)
 - [BBBTextInput](./src/components/TextInput/README.md)
+- [BBBToast](./src/components/Toast/README.md)
 - [BBBToggle](./src/components/Toggle/README.md)
 - [BBBTypography](./src/components/Typography/README.md)
 
