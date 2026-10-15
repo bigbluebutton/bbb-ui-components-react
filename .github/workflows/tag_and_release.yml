@@ -25,6 +25,9 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      - name: Ensure CHANGELOG.md exists
+        run: touch CHANGELOG.md
+
       - name: Generate Changelog and Tag
         id: changelog
         uses: TriPSs/conventional-changelog-action@v5
@@ -37,6 +40,8 @@ jobs:
           preset: 'conventionalcommits'
           skip-ci: 'false'
           tag-prefix: 'v'
+          input-file: './CHANGELOG.md'
+          output-file: './CHANGELOG.md'
           version-file: './package.json, ./package-lock.json'
           pre-commit: './.github/scripts/pre-commit.js'
 
