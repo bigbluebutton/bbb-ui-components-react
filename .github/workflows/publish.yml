@@ -2,9 +2,6 @@ name: Publish to NPM
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - 'v*'
 
 permissions:
   contents: read
@@ -16,6 +13,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+
+      - name: Require a release tag matching package.json
+        run: |
+          VERSION="v$(node -p "require('./package.json').version")"
+          if [ "${{ github.ref_type }}" != "tag" ] || [ "${{ github.ref_name }}" != "$VERSION" ]; then
+            echo "::error::Run this workflow from the release tag (expected $VERSION, got ${{ github.ref_type }} ${{ github.ref_name }})."
+            exit 1
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v5
