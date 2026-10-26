@@ -18,6 +18,7 @@ export const Wrapper = styled.div<StyledWrapperProps>`
   height: ${({ $size }) => typeof $size === 'number' ? `${$size}px` : $size};
   display: inline-grid;
   place-items: center;
+  overflow: hidden;
 `;
 
 export const StyledSvg = styled.svg<StyledSvgProps>`

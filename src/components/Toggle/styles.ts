@@ -30,6 +30,10 @@ export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
     }
     return horizontalStyles;
   }};
+  ${({ $fullWidth }) => $fullWidth && css`
+    width: 100%;
+    justify-content: space-between;
+  `}
 `;
 
 export const ToggleSwitchWrapper = styled.div`
@@ -51,13 +55,20 @@ export const TextWrapper = styled.label<StyledTextWrapperProps>`
   }};
   cursor: pointer;
   ${({ $hasLabel, $hasHelperText }) => (!$hasLabel || !$hasHelperText) && `justify-content: center;`}
-  ${({ $textPosition }) => {
+  ${({ $textPosition, $fullWidth }) => {
     if ($textPosition === TEXT_POSITIONS.TOP || $textPosition === TEXT_POSITIONS.BOTTOM) {
       return css`
         align-items: center;
       `;
     }
-    if ($textPosition === TEXT_POSITIONS.LEFT) return css`align-items: end;`;
+    // A full-width row aligns the text to the container's edge; otherwise it hugs the switch.
+    if ($fullWidth && $textPosition === TEXT_POSITIONS.RIGHT) {
+      return css`
+        align-items: end;
+        text-align: end;
+      `;
+    }
+    if ($textPosition === TEXT_POSITIONS.LEFT && !$fullWidth) return css`align-items: end;`;
 
     return css`
       align-items: start;

@@ -1,10 +1,25 @@
-name: Manual Tag & Release
+name: Tag & Release (Manual Trigger)
 
 on:
   workflow_dispatch:
     inputs:
       create_github_release:
         description: 'Create a GitHub Release?'
+        required: true
+        type: boolean
+        default: false
+      release_type:
+        description: 'Version bump: auto (infer from commits) or force patch/minor/major'
+        required: true
+        type: choice
+        default: 'auto'
+        options:
+          - auto
+          - patch
+          - minor
+          - major
+      generate_changelog:
+        description: 'Generate/update CHANGELOG.md for this release?'
         required: true
         type: boolean
         default: false
@@ -25,6 +40,24 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      # The conventionalcommits preset bumps breaking changes to major even on
+      # 0.x, so an inferred bump could ship 1.0.0 by accident.
+      - name: Require an explicit bump during initial development
+        if: ${{ inputs.release_type == 'auto' }}
+        run: |
+          if node -p "require('./package.json').version" | grep -q '^0\.'; then
+            echo "::error::release_type must be patch, minor or major while the version is 0.x."
+            exit 1
+          fi
+
+      - name: Ensure CHANGELOG.md exists
+        if: ${{ inputs.generate_changelog }}
+        run: touch CHANGELOG.md
+
+      - name: Force version bump
+        if: ${{ inputs.release_type != 'auto' }}
+        run: npm version ${{ inputs.release_type }} --no-git-tag-version
+
       - name: Generate Changelog and Tag
         id: changelog
         uses: TriPSs/conventional-changelog-action@v5
@@ -34,15 +67,18 @@ jobs:
           git-user-email: 'github-actions[bot]@users.noreply.github.com'
           git-message: 'chore(release): {version}'
           skip-on-empty: 'false'
+          skip-bump: ${{ inputs.release_type != 'auto' }}
           preset: 'conventionalcommits'
           skip-ci: 'false'
           tag-prefix: 'v'
+          input-file: ${{ inputs.generate_changelog && './CHANGELOG.md' || '' }}
+          output-file: ${{ inputs.generate_changelog && './CHANGELOG.md' || 'false' }}
           version-file: './package.json, ./package-lock.json'
           pre-commit: './.github/scripts/pre-commit.js'
 
       - name: Create GitHub Release
-        if: ${{ github.event.inputs.create_github_release == 'true' && steps.changelog.outputs.skipped == 'false' }}
-        uses: softprops/action-gh-release@v1
+        if: ${{ inputs.create_github_release && steps.changelog.outputs.skipped == 'false' }}
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}

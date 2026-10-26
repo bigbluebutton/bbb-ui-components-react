@@ -2,7 +2,7 @@ import React, { JSX, useId } from 'react';
 import { SwitchOwnerState } from '@mui/material';
 import { ToggleProps } from './types';
 import * as Styled from './styles';
-import { DEFAULT_TEXT_POSITION } from './constants';
+import { DEFAULT_TEXT_POSITION, TEXT_POSITIONS } from './constants';
 
 /**
  * A customizable Toggle switch component.
@@ -15,6 +15,7 @@ function Toggle ({
   label,
   helperText,
   textPosition =  DEFAULT_TEXT_POSITION, 
+  fullWidth = false,
   onChange,
   ariaLabel,
   ariaLabelledBy,
@@ -27,6 +28,7 @@ function Toggle ({
   const id = providedId ?? generatedUniqueId;
   const labelId = label ? `${id}-label` : undefined;
   const helperTextId = helperText ? `${id}-helper` : undefined;
+  const isFullWidth = fullWidth && (textPosition === TEXT_POSITIONS.LEFT || textPosition === TEXT_POSITIONS.RIGHT);
 
   const ariaLabelledByValue = ariaLabel ? undefined : ariaLabelledBy || labelId;
   // Without a name source, the <label htmlFor> names the input from the helper text,
@@ -44,10 +46,11 @@ function Toggle ({
     : { ...a11yInputProps, ...consumerInputSlotProps };
 
   return (
-    <Styled.ToggleWrapper $textPosition={textPosition}>
+    <Styled.ToggleWrapper $textPosition={textPosition} $fullWidth={isFullWidth}>
       {(label || helperText) && (
         <Styled.TextWrapper
           $textPosition={textPosition}
+          $fullWidth={isFullWidth}
           htmlFor={id}
           $hasLabel={!!label}
           $hasHelperText={!!helperText}
