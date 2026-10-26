@@ -27,6 +27,13 @@ import { BBBToggle } from 'bbb-ui-components-react';
 <BBBToggle label="Enable Notifications" helperText="This is a toggle to enable the notifications." textPosition="left" />
 ```
 
+### Full-width toggle with the label at the start and the switch at the end
+```jsx
+import { BBBToggle } from 'bbb-ui-components-react';
+
+<BBBToggle label="Join muted" helperText="Joining users are muted by default" textPosition="left" fullWidth />
+```
+
 ### Toggle with label and helper text on the top
 ```jsx
 import { BBBToggle } from 'bbb-ui-components-react';
@@ -41,6 +48,7 @@ import { BBBToggle } from 'bbb-ui-components-react';
 | `label`        | `string`                                                            |           | The main label text displayed next to the toggle.                              |
 | `helperText`   | `string`                                                            |           | The helper text displayed below the label.                                     |
 | `textPosition`      | `keyof typeof TEXT_POSITIONS`                                       | `'right'` | The position of the text labels relative to the toggle switch.                 |
+| `fullWidth`         | `boolean`                                                           | `false`   | If `true`, the toggle stretches to its container, putting the text and the switch at opposite ends. Only used with `textPosition` `'left'` (text at the start) or `'right'` (text at the end). |
 | `disabled`          | `boolean`                                                           | `false`   | If `true`, the toggle will be disabled and unresponsive.                       |
 | `onChange`          | `(event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void` |           | Callback function that is fired when the toggle state changes.                 |
 | `ariaLabel`         | `string`                                                            |           | The accessible name for the toggle.                                            |
