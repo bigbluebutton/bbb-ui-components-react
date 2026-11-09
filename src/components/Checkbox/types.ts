@@ -20,6 +20,10 @@ export interface CheckboxProps extends Omit<MuiCheckboxProps, 'inputProps'> {
   dataTest?: string;
 }
 
+export interface StyledLabelProps {
+  $disabled?: boolean;
+}
+
 export interface StyledCheckboxProps {
   $round: boolean;
 }

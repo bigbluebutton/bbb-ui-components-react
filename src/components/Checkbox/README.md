@@ -29,4 +29,5 @@ import { BBBCheckbox } from 'bbb-ui-components';
 | `round`      | `boolean`              | `false`   | If `true`, the checkbox will be rendered as a round radio-style button.     |
 | `ariaLabel`| `string`               |           | The accessible name for the checkbox.                                       |
 | `dataTest` | `string`               |           | The `data-test` attribute on the underlying `<input>` element.              |
+| `disabled` | `boolean`              | `false`   | If `true`, disables the checkbox and dims its label.                        |
 | `...props` | `Omit<CheckboxProps, 'inputProps'>` |  | Any other props will be passed down to the underlying Material-UI Checkbox component. Use `slotProps.input` to set attributes on the `<input>`. |

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Checkbox as MuiCheckbox } from '@mui/material';
-import { colorTextDefault, colorBrand1 } from '../../stylesheets/palette';
+import { colorTextDefault, colorBrand1, colorNeutral3 } from '../../stylesheets/palette';
 import { fontSizeDefault } from '../../stylesheets/typography';
 import { borderRadiusSmall, spacingSmall } from '../../stylesheets/sizing';
-import { StyledCheckboxProps } from './types';
+import { StyledCheckboxProps, StyledLabelProps } from './types';
 
 export const Container = styled.div`
   display: inline-flex;
@@ -11,13 +11,13 @@ export const Container = styled.div`
   gap: ${spacingSmall};
 `;
 
-export const Label = styled.label`
-  color: ${colorTextDefault};
+export const Label = styled.label<StyledLabelProps>`
+  color: ${({ $disabled }) => ($disabled ? colorNeutral3 : colorTextDefault)};
   font-size: ${fontSizeDefault};
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  cursor: pointer;
+  cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
 `;
 
 // The root has no padding, so MUI's focus ripple only tints the inside of the

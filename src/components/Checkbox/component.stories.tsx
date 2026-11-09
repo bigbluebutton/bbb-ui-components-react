@@ -21,6 +21,11 @@ const meta = {
       control: 'boolean',
       description: 'When true, renders the checkbox as a round radio-style control.',
     },
+    disabled: {
+      control: 'boolean',
+      description: 'When true, disables the checkbox and dims its label.',
+      table: { defaultValue: { summary: 'false' } },
+    },
     ariaLabel: {
       control: 'text',
       description: 'Accessible name for the checkbox.',
@@ -47,5 +52,13 @@ export const Round: Story = {
   args: {
     label: 'Round Checkbox',
     round: true,
+  },
+};
+
+/** Disabled checkbox: the box and the label are dimmed and the label shows a not-allowed cursor. */
+export const Disabled: Story = {
+  args: {
+    label: 'Disabled Checkbox',
+    disabled: true,
   },
 };

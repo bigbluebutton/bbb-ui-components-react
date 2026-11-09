@@ -21,6 +21,7 @@ function Checkbox({
   id,
   dataTest,
   slotProps,
+  disabled,
   ...props
 }: CheckboxProps): JSX.Element {
   const generatedId = useId();
@@ -34,6 +35,7 @@ function Checkbox({
     <Styled.StyledCheckbox
       {...props}
       id={checkboxId}
+      disabled={disabled}
       $round={round}
       icon={round ? <RadioButtonUnchecked /> : undefined}
       checkedIcon={round ? <RadioButtonChecked /> : undefined}
@@ -45,11 +47,15 @@ function Checkbox({
     return checkbox;
   }
 
+  const labelElement = (
+    <Styled.Label htmlFor={checkboxId} $disabled={disabled}>{label}</Styled.Label>
+  );
+
   return (
     <Styled.Container>
-      {layout === LAYOUTS.LEFT && <Styled.Label htmlFor={checkboxId}>{label}</Styled.Label>}
+      {layout === LAYOUTS.LEFT && labelElement}
       {checkbox}
-      {layout === LAYOUTS.RIGHT && <Styled.Label htmlFor={checkboxId}>{label}</Styled.Label>}
+      {layout === LAYOUTS.RIGHT && labelElement}
     </Styled.Container>
   );
 }
