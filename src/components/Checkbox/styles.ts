@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { Checkbox as MuiCheckbox } from '@mui/material';
 import { colorTextDefault, colorBrand1 } from '../../stylesheets/palette';
 import { fontSizeDefault } from '../../stylesheets/typography';
-import { spacingSmall } from '../../stylesheets/sizing';
+import { borderRadiusSmall, spacingSmall } from '../../stylesheets/sizing';
+import { StyledCheckboxProps } from './types';
 
 export const Container = styled.div`
   display: inline-flex;
@@ -19,12 +20,20 @@ export const Label = styled.label`
   cursor: pointer;
 `;
 
-export const StyledCheckbox = styled(MuiCheckbox)`
+// The root has no padding, so MUI's focus ripple only tints the inside of the
+// box; the outline is what makes keyboard focus visible.
+export const StyledCheckbox = styled(MuiCheckbox)<StyledCheckboxProps>`
   &.MuiCheckbox-root {
     padding: 0;
+    border-radius: ${({ $round }) => ($round ? '50%' : borderRadiusSmall)};
   }
 
   &.Mui-checked {
     color: ${colorBrand1};
+  }
+
+  &.Mui-focusVisible {
+    outline: 2px solid ${colorBrand1};
+    outline-offset: 2px;
   }
 `;

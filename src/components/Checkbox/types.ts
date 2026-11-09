@@ -19,3 +19,7 @@ export interface CheckboxProps extends Omit<MuiCheckboxProps, 'inputProps'> {
   /** `data-test` attribute on the underlying `<input>` element. */
   dataTest?: string;
 }
+
+export interface StyledCheckboxProps {
+  $round: boolean;
+}

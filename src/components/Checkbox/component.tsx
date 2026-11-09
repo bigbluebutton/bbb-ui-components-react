@@ -34,6 +34,7 @@ function Checkbox({
     <Styled.StyledCheckbox
       {...props}
       id={checkboxId}
+      $round={round}
       icon={round ? <RadioButtonUnchecked /> : undefined}
       checkedIcon={round ? <RadioButtonChecked /> : undefined}
       slotProps={{ ...otherSlotProps, input: inputSlotProps }}
