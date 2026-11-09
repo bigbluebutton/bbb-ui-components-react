@@ -21,7 +21,9 @@ export const Label = styled.label<StyledLabelProps>`
 `;
 
 // The root has no padding, so MUI's focus ripple only tints the inside of the
-// box; the outline is what makes keyboard focus visible.
+// box; the outline is what makes keyboard focus visible. MUI never sets
+// `Mui-focusVisible` while disabled, so a focusable disabled input (one with a
+// tooltip) is matched through `:has` instead.
 export const StyledCheckbox = styled(MuiCheckbox)<StyledCheckboxProps>`
   &.MuiCheckbox-root {
     padding: 0;
@@ -32,7 +34,8 @@ export const StyledCheckbox = styled(MuiCheckbox)<StyledCheckboxProps>`
     color: ${colorBrand1};
   }
 
-  &.Mui-focusVisible {
+  &.Mui-focusVisible,
+  &.Mui-disabled:has(input:focus-visible) {
     outline: 2px solid ${colorBrand1};
     outline-offset: 2px;
   }

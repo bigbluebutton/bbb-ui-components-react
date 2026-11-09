@@ -1,7 +1,8 @@
 import { CheckboxProps as MuiCheckboxProps } from '@mui/material';
-import { LAYOUTS } from './constants';
+import { LAYOUTS, TOOLTIP_PLACEMENT_VALUES } from './constants';
 
 type Layout = typeof LAYOUTS[keyof typeof LAYOUTS];
+type TooltipPlacement = typeof TOOLTIP_PLACEMENT_VALUES[number];
 
 export interface CheckboxProps extends Omit<MuiCheckboxProps, 'inputProps'> {
   /** Text label displayed next to the checkbox. */
@@ -18,6 +19,12 @@ export interface CheckboxProps extends Omit<MuiCheckboxProps, 'inputProps'> {
 
   /** `data-test` attribute on the underlying `<input>` element. */
   dataTest?: string;
+
+  /** Text shown in a tooltip on hover and keyboard focus; when set, a disabled checkbox stays focusable (`aria-disabled`) so the tooltip can be reached. */
+  tooltipLabel?: string;
+
+  /** Placement of the tooltip when `tooltipLabel` is provided. @default 'top' */
+  tooltipPlacement?: TooltipPlacement;
 }
 
 export interface StyledLabelProps {
