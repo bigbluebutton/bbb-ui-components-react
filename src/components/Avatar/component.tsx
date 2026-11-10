@@ -1,6 +1,7 @@
 import React, { JSX, useEffect, useState } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { TOOLTIP_PLUGINS } from '../../utils/tooltip';
 import * as Styled from './styles';
 import { AvatarProps } from './types';
 import { DEFAULT_AVATAR_SIZE, AVATAR_FALLBACK_COLORS } from './constants';
@@ -63,7 +64,7 @@ function Avatar({
   }
 
   return (
-    <Tippy content={name} placement="top">
+    <Tippy content={name} placement="top" plugins={TOOLTIP_PLUGINS}>
       {avatarElement}
     </Tippy>
   );
