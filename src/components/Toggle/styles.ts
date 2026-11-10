@@ -92,11 +92,18 @@ export const HelperText = styled.span`
   line-height: normal;
 `;
 
+// MUI's focus ripple only tints the small thumb, so the outline is what makes keyboard
+// focus visible. It goes on the root: the track is clipped by the root's overflow.
 export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
   width: '2.3rem',
   height: '1.2rem',
   padding: 0,
   display: 'flex',
+  '&:has(.Mui-focusVisible)': {
+    borderRadius: '0.6rem',
+    outline: `2px solid ${colorBrand1}`,
+    outlineOffset: '2px',
+  },
   '&:active': {
     '& .MuiSwitch-switchBase.Mui-checked': {
       transform: 'translateX(1.2rem)',
