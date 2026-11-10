@@ -158,6 +158,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Renders a single button driven entirely by the controls. */
+export const Default: Story = {
+  args: {
+    label: 'Button',
+  },
+};
+
 /** Renders the `primary` variant across all available colors. */
 export const Primary: Story = {
   name: 'Primary',
