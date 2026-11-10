@@ -19,6 +19,8 @@ import {
   DEFAULT_LAYOUT,
   TYPE_VALUES,
   DEFAULT_TYPE,
+  LABEL_OVERFLOW_VALUES,
+  DEFAULT_LABEL_OVERFLOW,
 } from './constants';
 
 const meta = {
@@ -82,6 +84,12 @@ const meta = {
       control: 'boolean',
       description: `Makes the button fill the width of its container, keeping its content centered. Only used in the 'default' layout.`,
       table: { defaultValue: { summary: 'false' } },
+    },
+    labelOverflow: {
+      control: 'select',
+      options: LABEL_OVERFLOW_VALUES,
+      description: `What happens when the label doesn't fit the button's available width. Allowed values: ${LABEL_OVERFLOW_VALUES.join(', ')}. \`nowrap\` keeps it on one line, widening the button or overflowing it, \`wrap\` breaks it onto more lines, \`ellipsis\` truncates it and shows the full label as a tooltip unless \`tooltipLabel\` is set. Has no visible effect while the label fits. Only used in the 'default' layout.`,
+      table: { defaultValue: { summary: `${DEFAULT_LABEL_OVERFLOW}` } },
     },
     className: {
       control: false,
@@ -401,22 +409,52 @@ export const FullWidth: Story = {
   ),
 };
 
+const RowActionButton = styled(BBButton)`
+  flex: 1 1 0;
+`;
+
+/** Compares every `labelOverflow` value in the same row of equal-width buttons, where the longer labels don't fit; with `ellipsis`, hovering or focusing a truncated button shows its full label. */
+export const LabelOverflow: Story = {
+  name: 'Label Overflow',
+  args: {
+    variant: 'secondary',
+    size: 'sm',
+    label: 'Call the moderator for help',
+  },
+  argTypes: {
+    labelOverflow: { control: false },
+  },
+  render: (args) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      {LABEL_OVERFLOW_VALUES.map((labelOverflow) => (
+        <div key={labelOverflow}>
+          <code>{`labelOverflow="${labelOverflow}"`}</code>
+          <div style={{ display: 'flex', gap: '0.5rem', width: '20rem', marginTop: '0.5rem' }}>
+            <RowActionButton {...args} labelOverflow={labelOverflow} label="Join room" />
+            <RowActionButton {...args} labelOverflow={labelOverflow} />
+            <RowActionButton {...args} labelOverflow={labelOverflow} label="Finish all breakout rooms" color="danger" />
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+};
+
 const StyledFooterButton = styled(BBButton)`
   min-width: 8.5rem;
 `;
 
-const StyledWrappingButton = styled(BBButton)`
+const StyledFixedWidthButton = styled(BBButton)`
   width: 10rem;
-  white-space: normal;
 `;
 
-/** Customizes the button through `styled(BBButton)`: a minimum width for a short label, and a fixed width that lets a long label wrap. */
+/** Customizes the button through `styled(BBButton)`: a minimum width for a short label, and a fixed width for a long label that wraps through `labelOverflow`. */
 export const StyledExtension: Story = {
   name: 'Extended with styled()',
   render: (args) => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
       <StyledFooterButton {...args} label="Yes" />
-      <StyledWrappingButton {...args} label="A long translated label that wraps" />
+      <StyledFixedWidthButton {...args} label="A long translated label that wraps" labelOverflow="wrap" />
     </div>
   ),
 };
