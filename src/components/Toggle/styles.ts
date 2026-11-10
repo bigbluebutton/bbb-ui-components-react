@@ -92,6 +92,9 @@ export const HelperText = styled.span<StyledTextProps>`
   line-height: normal;
 `;
 
+// The checked track's `opacity: 1` outranks MUI's disabled track opacity, so the disabled
+// opacity (MUI's light/dark values) is restated for a checked, disabled switch.
+//
 // MUI's focus ripple only tints the small thumb, so the outline is what makes keyboard
 // focus visible. It goes on the root: the track is clipped by the root's overflow.
 export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
@@ -119,6 +122,12 @@ export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
         backgroundColor: colorBrand1,
         ...theme.applyStyles('dark', {
           backgroundColor: colorBrand1,
+        }),
+      },
+      '&.Mui-disabled + .MuiSwitch-track': {
+        opacity: 0.12,
+        ...theme.applyStyles('dark', {
+          opacity: 0.2,
         }),
       },
     },

@@ -77,3 +77,12 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
+/** Disabled toggle in the on state: the checked track is dimmed like the unchecked one. */
+export const DisabledChecked: Story = {
+  args: {
+    label: 'Enable',
+    helperText: 'Recommended',
+    disabled: true,
+    defaultChecked: true,
+  },
+};
