@@ -13,6 +13,11 @@ export interface StyledToggleWrapperProps {
 export interface StyledTextWrapperProps extends StyledToggleWrapperProps{
   $hasLabel: boolean;
   $hasHelperText: boolean;
+  $disabled?: boolean;
+}
+
+export interface StyledTextProps {
+  $disabled?: boolean;
 }
 
 export interface ToggleProps extends Omit<SwitchProps, 'inputProps'> {

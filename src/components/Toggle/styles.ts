@@ -3,10 +3,10 @@ import { styled as materialStyled } from '@mui/material/styles';
 import styled, { css } from 'styled-components';
 import {
   colorBrand1, colorIconDefault, colorTextDefault, colorTextLight, colorWhite,
-  colorShadowDefault, colorIconDefaultDark,
+  colorShadowDefault, colorIconDefaultDark, colorNeutral3,
 } from '../../stylesheets/palette';
 import { TEXT_POSITIONS } from './constants';
-import { StyledTextWrapperProps, StyledToggleWrapperProps } from './types';
+import { StyledTextProps, StyledTextWrapperProps, StyledToggleWrapperProps } from './types';
 import { fontSizeBig, fontSizeDefault } from '../../stylesheets/typography';
 
 export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
@@ -53,7 +53,7 @@ export const TextWrapper = styled.label<StyledTextWrapperProps>`
     }
     return 1;
   }};
-  cursor: pointer;
+  cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
   ${({ $hasLabel, $hasHelperText }) => (!$hasLabel || !$hasHelperText) && `justify-content: center;`}
   ${({ $textPosition, $fullWidth }) => {
     if ($textPosition === TEXT_POSITIONS.TOP || $textPosition === TEXT_POSITIONS.BOTTOM) {
@@ -76,16 +76,16 @@ export const TextWrapper = styled.label<StyledTextWrapperProps>`
   }};
 `;
 
-export const Title = styled.span`
-  color: ${colorTextDefault};
+export const Title = styled.span<StyledTextProps>`
+  color: ${({ $disabled }) => ($disabled ? colorNeutral3 : colorTextDefault)};
   font-size: ${fontSizeBig};
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 `;
 
-export const HelperText = styled.span`
-  color: ${colorTextLight};
+export const HelperText = styled.span<StyledTextProps>`
+  color: ${({ $disabled }) => ($disabled ? colorNeutral3 : colorTextLight)};
   font-size: ${fontSizeDefault};
   font-style: normal;
   font-weight: 400;

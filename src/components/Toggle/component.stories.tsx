@@ -33,7 +33,8 @@ const meta = {
     },
     disabled: {
       control: 'boolean',
-      description: 'Disable the toggle when true.',
+      description: 'Disables the toggle and dims its label and helper text when true.',
+      table: { defaultValue: { summary: 'false' } },
     },
     onChange: {
       control: false,
@@ -67,4 +68,12 @@ export const FullWidth: Story = {
 export const FullWidthTextRight: Story = {
   ...FullWidth,
   args: { ...FullWidth.args, textPosition: 'right' },
+};
+/** Disabled toggle: the switch, label and helper text are dimmed and the text shows a not-allowed cursor. */
+export const Disabled: Story = {
+  args: {
+    label: 'Enable',
+    helperText: 'Recommended',
+    disabled: true,
+  },
 };

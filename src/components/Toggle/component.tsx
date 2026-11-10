@@ -16,6 +16,7 @@ function Toggle ({
   helperText,
   textPosition =  DEFAULT_TEXT_POSITION, 
   fullWidth = false,
+  disabled,
   onChange,
   ariaLabel,
   ariaLabelledBy,
@@ -54,15 +55,19 @@ function Toggle ({
           htmlFor={id}
           $hasLabel={!!label}
           $hasHelperText={!!helperText}
+          $disabled={disabled}
         >
-          {label && <Styled.Title id={labelId}>{label}</Styled.Title>}
-          {helperText && <Styled.HelperText id={helperTextId}>{helperText}</Styled.HelperText>}
+          {label && <Styled.Title id={labelId} $disabled={disabled}>{label}</Styled.Title>}
+          {helperText && (
+            <Styled.HelperText id={helperTextId} $disabled={disabled}>{helperText}</Styled.HelperText>
+          )}
         </Styled.TextWrapper>
       )}
       <Styled.ToggleSwitchWrapper>
         <Styled.MaterialToggle
           {...rest}
           id={id}
+          disabled={disabled}
           onChange={onChange}
           slotProps={{ ...otherSlotProps, input: inputSlotProps }}
         />
