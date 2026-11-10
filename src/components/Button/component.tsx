@@ -15,6 +15,7 @@ import {
 import * as Styled from './styles';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { TOOLTIP_PLUGINS } from '../../utils/tooltip';
 
 /**
  * A versatile Button component.
@@ -218,6 +219,7 @@ function Button(props: ButtonProps): JSX.Element {
       <Tippy
         content={tooltipLabel}
         placement={tooltipPlacement}
+        plugins={TOOLTIP_PLUGINS}
       >
         {buttonElement}
       </Tippy>
