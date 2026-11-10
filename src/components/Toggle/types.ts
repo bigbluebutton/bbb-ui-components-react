@@ -1,7 +1,9 @@
 import { SwitchProps } from '@mui/material';
-import { TEXT_POSITIONS_VALUES } from './constants';
+import { TEXT_POSITIONS_VALUES, TOOLTIP_PLACEMENT_VALUES } from './constants';
 
 export type LayoutType = typeof TEXT_POSITIONS_VALUES[number];
+
+type TooltipPlacement = typeof TOOLTIP_PLACEMENT_VALUES[number];
 
 export type LabelPlacement = 'top' | 'bottom' | 'start' | 'end';
 
@@ -41,4 +43,10 @@ export interface ToggleProps extends Omit<SwitchProps, 'inputProps'> {
 
   /** ID of the element that describes the toggle; falls back to the rendered helper text's id when omitted. */
   ariaDescribedBy?: string;
+
+  /** Text shown in a tooltip on hover and keyboard focus; when set, a disabled toggle stays focusable (`aria-disabled`) so the tooltip can be reached. */
+  tooltipLabel?: string;
+
+  /** Placement of the tooltip when `tooltipLabel` is provided. @default 'top' */
+  tooltipPlacement?: TooltipPlacement;
 };

@@ -41,6 +41,18 @@ import { BBBToggle } from 'bbb-ui-components-react';
 <BBBToggle label="Enable Notifications" helperText="This is a toggle to enable the notifications." textPosition="top" />
 ```
 
+### Toggle with Tooltip
+
+Useful to explain why a disabled toggle can't be changed. The tooltip shows on hover and keyboard focus, and its text is also exposed to screen readers as part of the toggle's description; when there is no `label`, `ariaLabel`, `ariaLabelledBy` or `helperText`, it names the toggle instead.
+
+A disabled toggle with a `tooltipLabel` stays in the tab order so keyboard users can reach the tooltip: the input gets `aria-disabled="true"` instead of the native `disabled` attribute, and clicks, label clicks and Space are ignored. Like a natively disabled input, it is left out of form submission and validation: its `name` and `required` are dropped while it is disabled.
+
+```jsx
+import { BBBToggle } from 'bbb-ui-components-react';
+
+<BBBToggle label="Share webcam" disabled tooltipLabel="Webcams are locked by a moderator" />
+```
+
 ## Props
 
 | Property       | Type                                                                | Default   | Description                                                                    |
@@ -54,4 +66,6 @@ import { BBBToggle } from 'bbb-ui-components-react';
 | `ariaLabel`         | `string`                                                            |           | The accessible name for the toggle.                                            |
 | `ariaLabelledBy`    | `string`                                                            |           | The ID of the element that labels the toggle.                                  |
 | `ariaDescribedBy`   | `string`                                                            |           | The ID of the element that describes the toggle.                               |
+| `tooltipLabel`      | `string`                                                            |           | Text shown in a tooltip on hover and keyboard focus. When set, a disabled toggle stays focusable (`aria-disabled`) so the tooltip can be reached. |
+| `tooltipPlacement`  | `keyof typeof TOOLTIP_PLACEMENTS`                                   | `'top'`   | The placement of the tooltip relative to the toggle.                           |
 | `...props`          | `Omit<SwitchProps, 'inputProps'>`                                   |           | Any other props will be passed down to the underlying Material-UI Switch component. Use `slotProps.input` to set attributes on the `<input>`. |

@@ -96,13 +96,15 @@ export const HelperText = styled.span<StyledTextProps>`
 // opacity (MUI's light/dark values) is restated for a checked, disabled switch.
 //
 // MUI's focus ripple only tints the small thumb, so the outline is what makes keyboard
-// focus visible. It goes on the root: the track is clipped by the root's overflow.
+// focus visible. It goes on the root: the track is clipped by the root's overflow. MUI
+// never sets `Mui-focusVisible` while disabled, so a focusable disabled input (one with
+// a tooltip) is matched through `:focus-visible` instead.
 export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
   width: '2.3rem',
   height: '1.2rem',
   padding: 0,
   display: 'flex',
-  '&:has(.Mui-focusVisible)': {
+  '&:has(.Mui-focusVisible), &:has(.Mui-disabled input:focus-visible)': {
     borderRadius: '0.6rem',
     outline: `2px solid ${colorBrand1}`,
     outlineOffset: '2px',

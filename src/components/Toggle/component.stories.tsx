@@ -1,7 +1,12 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import BBBToggle from './component';
-import { TEXT_POSITIONS_VALUES, DEFAULT_TEXT_POSITION } from './constants';
+import {
+  TEXT_POSITIONS_VALUES,
+  DEFAULT_TEXT_POSITION,
+  TOOLTIP_PLACEMENT_VALUES,
+  DEFAULT_TOOLTIP_PLACEMENT,
+} from './constants';
 
 const meta = {
   title: 'BBBToggle',
@@ -35,6 +40,16 @@ const meta = {
       control: 'boolean',
       description: 'Disables the toggle and dims its label and helper text when true.',
       table: { defaultValue: { summary: 'false' } },
+    },
+    tooltipLabel: {
+      control: 'text',
+      description: 'Text shown in a tooltip on hover and keyboard focus; when set, a disabled toggle stays focusable (`aria-disabled`) so the tooltip can be reached.',
+    },
+    tooltipPlacement: {
+      control: 'select',
+      options: TOOLTIP_PLACEMENT_VALUES,
+      description: 'Placement of the tooltip when `tooltipLabel` is provided.',
+      table: { defaultValue: { summary: `${DEFAULT_TOOLTIP_PLACEMENT}` } },
     },
     onChange: {
       control: false,
@@ -84,5 +99,21 @@ export const DisabledChecked: Story = {
     helperText: 'Recommended',
     disabled: true,
     defaultChecked: true,
+  },
+};
+/** Shows a tooltip on hover and keyboard focus via `tooltipLabel`. */
+export const WithTooltip: Story = {
+  args: {
+    label: 'Enable',
+    tooltipLabel: 'Extra information about this option',
+  },
+};
+/** Disabled toggle that stays keyboard-focusable so its tooltip can explain why the option is unavailable. */
+export const DisabledWithTooltip: Story = {
+  args: {
+    label: 'Enable',
+    helperText: 'Recommended',
+    disabled: true,
+    tooltipLabel: 'Only moderators can change this option',
   },
 };
