@@ -11,6 +11,9 @@ export interface CheckboxProps extends Omit<MuiCheckboxProps, 'inputProps'> {
   /** Position of the label relative to the checkbox. @default 'right' */
   layout?: Layout;
 
+  /** Secondary text displayed below the label; it is also exposed as the checkbox's accessible description. */
+  helperText?: string;
+
   /** When true, renders the checkbox as a round radio-style control. @default false */
   round?: boolean;
 
@@ -25,6 +28,12 @@ export interface CheckboxProps extends Omit<MuiCheckboxProps, 'inputProps'> {
 
   /** Placement of the tooltip when `tooltipLabel` is provided. @default 'top' */
   tooltipPlacement?: TooltipPlacement;
+}
+
+export interface StyledContainerProps {
+  $layout: Layout;
+  $hasLabel: boolean;
+  $hasHelperText: boolean;
 }
 
 export interface StyledLabelProps {

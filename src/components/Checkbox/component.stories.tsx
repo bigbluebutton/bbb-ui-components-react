@@ -22,6 +22,10 @@ const meta = {
       description: 'Position of the label relative to the checkbox.',
       table: { defaultValue: { summary: `${DEFAULT_LAYOUT}` } },
     },
+    helperText: {
+      control: 'text',
+      description: "Secondary text displayed below the label; it is also exposed as the checkbox's accessible description.",
+    },
     round: {
       control: 'boolean',
       description: 'When true, renders the checkbox as a round radio-style control.',
@@ -67,6 +71,23 @@ export const Round: Story = {
   args: {
     label: 'Round Checkbox',
     round: true,
+  },
+};
+
+/** Adds secondary text below the label via `helperText`. */
+export const WithHelperText: Story = {
+  args: {
+    label: 'Mirror my webcam',
+    helperText: 'Only you see the mirrored image',
+  },
+};
+
+/** Places the label and its helper text to the left of the checkbox. */
+export const WithHelperTextOnTheLeft: Story = {
+  args: {
+    label: 'Mirror my webcam',
+    helperText: 'Only you see the mirrored image',
+    layout: 'left',
   },
 };
 

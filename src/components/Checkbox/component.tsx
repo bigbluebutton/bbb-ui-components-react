@@ -23,6 +23,7 @@ const preventToggle = (event: React.MouseEvent<HTMLButtonElement>) => event.prev
 function Checkbox({
   label,
   layout = DEFAULT_LAYOUT,
+  helperText,
   round = false,
   ariaLabel,
   id,
@@ -36,12 +37,27 @@ function Checkbox({
   const generatedId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const checkboxId = id ?? generatedId;
+  const labelId = `${checkboxId}-label`;
+  const helperTextId = `${checkboxId}-helper`;
   const tooltipDescriptionId = `${checkboxId}-tooltip`;
-  const tooltipNamesCheckbox = Boolean(tooltipLabel && !ariaLabel && !label);
+  // The helper text is a second <label> so clicking it toggles the checkbox, but every
+  // associated <label> joins the accessible name. aria-labelledby keeps the name to the
+  // label alone, leaving the helper text as the description; with no other name source,
+  // the helper text names the checkbox and can't also describe it. The tooltip text
+  // follows the same rule when neither a label nor the helper text names the checkbox.
+  const hasNameSource = Boolean(ariaLabel || label);
+  const tooltipNamesCheckbox = Boolean(tooltipLabel && !hasNameSource && !helperText);
+  let ariaLabelledBy: string | undefined;
+  if (!ariaLabel && label) ariaLabelledBy = labelId;
+  else if (tooltipNamesCheckbox) ariaLabelledBy = tooltipDescriptionId;
+  const describedBy = [
+    hasNameSource && helperText && helperTextId,
+    tooltipLabel && !tooltipNamesCheckbox && tooltipDescriptionId,
+  ].filter(Boolean).join(' ');
   const ownInputProps = {
     'aria-label': ariaLabel,
-    'aria-labelledby': tooltipNamesCheckbox ? tooltipDescriptionId : undefined,
-    'aria-describedby': tooltipLabel && !tooltipNamesCheckbox ? tooltipDescriptionId : undefined,
+    'aria-labelledby': ariaLabelledBy,
+    'aria-describedby': describedBy || undefined,
     'data-test': dataTest,
   };
   // A natively disabled input leaves the tab order, so keyboard users could never reach the
@@ -78,12 +94,12 @@ function Checkbox({
     />
   );
 
-  if (!label && !tooltipLabel) {
+  if (!label && !helperText && !tooltipLabel) {
     return checkbox;
   }
 
   const labelElement = label && (
-    <Styled.Label htmlFor={checkboxId} $disabled={disabled}>{label}</Styled.Label>
+    <Styled.Label id={labelId} htmlFor={checkboxId} $disabled={disabled}>{label}</Styled.Label>
   );
 
   // Tippy sits beside the container instead of wrapping it, so toggling `tooltipLabel`
@@ -93,10 +109,13 @@ function Checkbox({
   // from the input; Tippy's `focus` would not.
   return (
     <>
-      <Styled.Container ref={containerRef}>
+      <Styled.Container ref={containerRef} $layout={layout} $hasLabel={!!label} $hasHelperText={!!helperText}>
         {layout === LAYOUTS.LEFT && labelElement}
         {checkbox}
         {layout === LAYOUTS.RIGHT && labelElement}
+        {helperText && (
+          <Styled.HelperText id={helperTextId} htmlFor={checkboxId} $disabled={disabled}>{helperText}</Styled.HelperText>
+        )}
         {/* aria-describedby needs the text at all times; Tippy mounts it only while shown. */}
         {tooltipLabel && (
           <span id={tooltipDescriptionId} hidden>{tooltipLabel}</span>
