@@ -5,6 +5,7 @@ import {
   SIZE_VALUES,
   VARIANT_VALUES,
   LAYOUTS,
+  LABEL_OVERFLOW_VALUES,
   TOOLTIP_PLACEMENT_VALUES,
   TYPE_VALUES,
 } from './constants';
@@ -42,6 +43,7 @@ type VariantType = typeof VARIANT_VALUES[number];
 type ColorType = typeof COLOR_VALUES[number];
 type SizeType = typeof SIZE_VALUES[number];
 type LayoutType = typeof LAYOUT_VALUES[number];
+type LabelOverflowType = typeof LABEL_OVERFLOW_VALUES[number];
 type TooltipPlacementType = typeof TOOLTIP_PLACEMENT_VALUES[number];
 type ButtonType = typeof TYPE_VALUES[number];
 
@@ -61,7 +63,12 @@ export interface StyledButtonProps {
   $size?: SizeType;
   $layout?: LayoutType;
   $fullWidth?: boolean;
+  $labelOverflow?: LabelOverflowType;
   disabled: boolean;
+}
+
+export interface StyledLabelProps {
+  $truncate: boolean;
 }
 
 type BaseButtonProps = {
@@ -142,6 +149,9 @@ type DefaultLayoutProps = BaseButtonProps & {
 
   /** Makes the button fill the width of its container, keeping its content centered. @default false */
   fullWidth?: boolean;
+
+  /** What happens when the label doesn't fit the button's available width: `nowrap` keeps it on one line, widening the button or overflowing it, `wrap` breaks it onto more lines, `ellipsis` truncates it and shows the full label as a tooltip unless `tooltipLabel` is set. @default 'nowrap' */
+  labelOverflow?: LabelOverflowType;
 };
 
 type StackedLayoutProps = BaseButtonProps & {
