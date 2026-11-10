@@ -4,6 +4,7 @@ import * as Styled from './styles';
 import { MdExpandMore } from 'react-icons/md';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { TOOLTIP_PLUGINS } from '../../utils/tooltip';
 import { DEFAULT_TOOLTIP_PLACEMENT, DEFAULT_BUTTON_HEADER_POSITION } from './constants';
 
 /**
@@ -49,7 +50,7 @@ function Accordion({
   return (
     <>
       {tooltipLabel ? (
-        <Tippy content={tooltipLabel} placement={tooltipPlacement}>
+        <Tippy content={tooltipLabel} placement={tooltipPlacement} plugins={TOOLTIP_PLUGINS}>
           {expandButton}
         </Tippy>
       ) : (
