@@ -99,6 +99,13 @@
       "require": "./dist/components/Search.js",
       "default": "./dist/components/Search.js"
     },
+    "./SegmentedControl": {
+      "types": "./dist/types/components/SegmentedControl/index.d.ts",
+      "node": "./dist/components/SegmentedControl.js",
+      "import": "./dist/esm/components/SegmentedControl/index.js",
+      "require": "./dist/components/SegmentedControl.js",
+      "default": "./dist/components/SegmentedControl.js"
+    },
     "./Select": {
       "types": "./dist/types/components/Select/index.d.ts",
       "node": "./dist/components/Select.js",
