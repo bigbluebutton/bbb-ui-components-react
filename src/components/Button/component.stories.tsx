@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import BBButton from './component';
 import {
-  MdFavorite, MdMoreVert, MdSettings, MdCheckCircle, MdContentCopy,
+  MdFavorite, MdMoreVert, MdSettings, MdCheckCircle, MdContentCopy, MdMic, MdMicOff,
 } from 'react-icons/md';
 import {
   VARIANT_VALUES,
@@ -79,6 +79,11 @@ const meta = {
       control: 'boolean',
       description: 'Disables interaction and applies disabled visuals. Works across all layouts.',
       table: { defaultValue: { summary: 'false' } },
+    },
+    pressed: {
+      control: 'boolean',
+      description: 'Makes the button a toggle: `true` or `false` renders `aria-pressed`, and `true` applies a selected fill, per `color`, that holds through hover and active and fades, rather than turning grey, when `disabled`. Leave it unset for a plain button.',
+      table: { defaultValue: { summary: 'undefined' } },
     },
     fullWidth: {
       control: 'boolean',
@@ -401,6 +406,55 @@ export const Disabled: Story = {
     variant: 'primary',
     disabled: true,
   },
+};
+
+/** Compares each `color` unpressed and pressed, showing that the pressed fill holds on hover, plus a disabled pair where the pressed fill fades instead of turning grey. */
+export const Pressed: Story = {
+  args: {
+    variant: 'secondary',
+  },
+  argTypes: {
+    pressed: { control: false },
+  },
+  render: (args) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      {COLOR_VALUES.map((color) => (
+        <div key={color} style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <BBButton {...args} color={color} pressed={false} label={`${color} unpressed`} />
+          <BBButton {...args} color={color} pressed label={`${color} pressed`} />
+        </div>
+      ))}
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <BBButton {...args} pressed={false} disabled label="disabled unpressed" />
+        <BBButton {...args} pressed disabled label="disabled pressed" />
+      </div>
+    </div>
+  ),
+};
+
+function MuteToggle(args: React.ComponentProps<typeof BBButton>) {
+  const [muted, setMuted] = useState(false);
+
+  return (
+    <BBButton
+      {...args}
+      layout="circle"
+      pressed={muted}
+      ariaLabel="Mute"
+      tooltipLabel={muted ? 'Unmute' : 'Mute'}
+      icon={muted ? <MdMicOff size="1.25rem" /> : <MdMic size="1.25rem" />}
+      onClick={() => setMuted((current) => !current)}
+    />
+  );
+}
+
+/** A standalone toggle: clicking flips `pressed`, and screen readers announce the button as pressed or not pressed. */
+export const PressedToggle: Story = {
+  name: 'Pressed Toggle',
+  args: {
+    variant: 'secondary',
+  },
+  render: (args) => <MuteToggle {...args} />,
 };
 
 /** Shows a `fullWidth` button filling its container, with the label centered. */

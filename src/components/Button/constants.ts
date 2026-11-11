@@ -18,7 +18,9 @@ import {
 import {
   spacingSmall, spacingSmallMedium, spacingMedium, spacingXLarge, spacingXXLarge,
 } from '../../stylesheets/sizing';
-import { CSSColorPropertiesType, CSSSizePropertiesType, EssentialColorProperties } from './type';
+import {
+  CSSColorPropertiesType, CSSPressedColorPropertiesType, CSSSizePropertiesType, EssentialColorProperties,
+} from './type';
 
 const VARIANTS = {
   PRIMARY: 'primary',
@@ -208,6 +210,26 @@ const CSS_COLOR_PROPERTIES_DISABLED: EssentialColorProperties = {
   outline: colorNeutral3,
 }
 
+// Shared by every variant: a pressed toggle must read as selected next to any
+// variant, so the fill comes from the color alone.
+const CSS_COLOR_PROPERTIES_PRESSED: CSSPressedColorPropertiesType = {
+  default: {
+    color: colorWhite,
+    background: colorHoverDark,
+    border: colorHoverDark,
+  },
+  danger: {
+    color: colorWhite,
+    background: colorErrorDark,
+    border: colorErrorDark,
+  },
+  neutral: {
+    color: colorWhite,
+    background: colorHoverDark,
+    border: colorHoverDark,
+  },
+};
+
 const CSS_SIZE_PROPERTIES: CSSSizePropertiesType = {
   sm: {
     padding: `${spacingSmall} ${spacingSmallMedium}`,
@@ -243,5 +265,6 @@ export {
   DEFAULT_TYPE,
   CSS_COLOR_PROPERTIES,
   CSS_COLOR_PROPERTIES_DISABLED,
+  CSS_COLOR_PROPERTIES_PRESSED,
   CSS_SIZE_PROPERTIES,
 };

@@ -45,6 +45,7 @@ function Button(props: ButtonProps): JSX.Element {
     layout = DEFAULT_LAYOUT,
     type = DEFAULT_TYPE,
     disabled = false,
+    pressed,
     children,
     showFeedback = false,
     feedbackContent = <MdCheckCircle fontSize="small" />,
@@ -94,6 +95,7 @@ function Button(props: ButtonProps): JSX.Element {
     'aria-label'?: string;
     'aria-labelledby'?: string;
     'aria-describedby'?: string;
+    'aria-pressed'?: boolean;
   } = {};
   const generatedId = useId();
   const defaultLabelId = `${id || generatedId}-label`;
@@ -111,6 +113,7 @@ function Button(props: ButtonProps): JSX.Element {
     accessibilityProps['aria-labelledby'] = defaultLabelId;
   }
   if (ariaDescribedBy) accessibilityProps['aria-describedby'] = ariaDescribedBy;
+  if (pressed !== undefined) accessibilityProps['aria-pressed'] = pressed;
 
   const buttonElement = (() => {
     if (props.layout === LAYOUTS.CIRCLE || props.layout === LAYOUTS.SQUARED) {
@@ -130,6 +133,7 @@ function Button(props: ButtonProps): JSX.Element {
           $variant={variant}
           $size={size}
           $layout={layout}
+          $pressed={pressed}
           disabled={disabled}
         >
           {isFeedbackVisible ? (
@@ -166,6 +170,7 @@ function Button(props: ButtonProps): JSX.Element {
             $variant={variant}
             $size={size}
             $layout={layout}
+            $pressed={pressed}
             disabled={disabled}
           >
             {!hideHelperIcon && (
@@ -220,6 +225,7 @@ function Button(props: ButtonProps): JSX.Element {
         $layout={layout}
         $fullWidth={fullWidth}
         $labelOverflow={labelOverflow}
+        $pressed={pressed}
         disabled={disabled}
       >
         {isFeedbackVisible ? (

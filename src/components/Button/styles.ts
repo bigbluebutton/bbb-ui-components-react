@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import {
   CSS_COLOR_PROPERTIES,
   CSS_COLOR_PROPERTIES_DISABLED,
+  CSS_COLOR_PROPERTIES_PRESSED,
   CSS_SIZE_PROPERTIES,
   DEFAULT_COLOR,
   DEFAULT_SIZE,
@@ -80,8 +81,36 @@ const commonButtonStyles = css<StyledButtonProps>`
     text-decoration: underline;
   `}
 
-  ${({ disabled }) => {
+  ${({ $pressed, $color }) => {
+    if (!$pressed) return null;
+    const { color, background, border } = CSS_COLOR_PROPERTIES_PRESSED[$color || DEFAULT_COLOR];
+
+    return css`
+      & span {
+        color: ${color};
+      }
+      color: ${color};
+      background-color: ${background};
+      border: 1px solid ${border};
+
+      &&:hover:not(:has(> [data-is-aux-icon]:hover)),
+      &&:active {
+        color: ${color};
+        background-color: ${background};
+        border: 1px solid ${border};
+      }
+    `;
+  }}
+
+  ${({ disabled, $pressed }) => {
     if (!disabled) return null;
+    if ($pressed) {
+      return css`
+        pointer-events: none;
+        cursor: not-allowed;
+        opacity: 0.5;
+      `;
+    }
     const { color, background, border, outline } = CSS_COLOR_PROPERTIES_DISABLED;
 
     return css`
