@@ -10,6 +10,7 @@ export { BBBModal } from './Modal';
 export { BBBNavigation } from './Navigation';
 export { BBBScrollArea } from './ScrollArea';
 export { BBBSearch } from './Search';
+export { BBBSegmentedControl } from './SegmentedControl';
 export { BBBSelect } from './Select';
 export { BBBSlider } from './Slider';
 export { BBBSpinner } from './Spinner';
