@@ -155,7 +155,7 @@ const defaultLayoutStyles = css<StyledButtonProps>`
       case LABEL_OVERFLOWS.WRAP:
         return `
           white-space: normal;
-          overflow-wrap: break-word;
+          overflow-wrap: anywhere;
         `;
       case LABEL_OVERFLOWS.ELLIPSIS:
         return `

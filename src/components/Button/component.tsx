@@ -251,7 +251,7 @@ function Button(props: ButtonProps): JSX.Element {
         content={tooltipLabel || label}
         placement={tooltipPlacement}
         disabled={showsTruncatedLabelTooltip && !isLabelTruncated}
-        {...(showsTruncatedLabelTooltip && { aria: { content: null } })}
+        aria={{ content: showsTruncatedLabelTooltip ? null : 'auto' }}
       >
         {buttonElement}
       </Tippy>
