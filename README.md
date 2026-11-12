@@ -9,6 +9,7 @@ Below is a list of the components available in this library. Each component has 
 - [BBBAccordion](./src/components/Accordion/README.md)
 - [BBBAvatar](./src/components/Avatar/README.md)
 - [BBButton](./src/components/Button/README.md)
+- [BBBButtonGroup](./src/components/ButtonGroup/README.md)
 - [BBBCheckbox](./src/components/Checkbox/README.md)
 - [BBBDivider](./src/components/Divider/README.md)
 - [BBBHint](./src/components/Hint/README.md)

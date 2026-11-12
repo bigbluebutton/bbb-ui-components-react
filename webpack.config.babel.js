@@ -5,6 +5,7 @@ export default {
     Accordion: './src/components/Accordion/index.ts',
     Avatar: './src/components/Avatar/index.ts',
     Button: './src/components/Button/index.ts',
+    ButtonGroup: './src/components/ButtonGroup/index.ts',
     Checkbox: './src/components/Checkbox/index.ts',
     Divider: './src/components/Divider/index.ts',
     Hint: './src/components/Hint/index.ts',
