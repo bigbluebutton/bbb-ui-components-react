@@ -11,6 +11,8 @@ import {
   LAYOUTS,
   DEFAULT_TOOLTIP_PLACEMENT,
   DEFAULT_TYPE,
+  DEFAULT_LABEL_OVERFLOW,
+  LABEL_OVERFLOWS,
 } from './constants';
 import * as Styled from './styles';
 import Tippy from '@tippyjs/react';
@@ -49,6 +51,10 @@ function Button(props: ButtonProps): JSX.Element {
     className,
   } = props;
 
+  const labelOverflow = (layout === LAYOUTS.DEFAULT && 'labelOverflow' in props && props.labelOverflow)
+    || DEFAULT_LABEL_OVERFLOW;
+  const truncatesLabel = labelOverflow === LABEL_OVERFLOWS.ELLIPSIS;
+
   const feedbackTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isFeedbackVisible, setFeedbackVisible] = useState(false);
 
@@ -65,6 +71,23 @@ function Button(props: ButtonProps): JSX.Element {
       feedbackTimeoutRef.current = setTimeout(() => setFeedbackVisible(false), feedbackDuration);
     }
   }, [onClick, showFeedback, feedbackDuration]);
+
+  const labelRef = useRef<HTMLSpanElement>(null);
+  const [isLabelTruncated, setLabelTruncated] = useState(false);
+
+  useEffect(() => {
+    const labelElement = labelRef.current;
+    if (!truncatesLabel || !labelElement || typeof ResizeObserver === 'undefined') {
+      setLabelTruncated(false);
+      return undefined;
+    }
+
+    const observer = new ResizeObserver(() => {
+      setLabelTruncated(labelElement.scrollWidth > labelElement.clientWidth);
+    });
+    observer.observe(labelElement);
+    return () => observer.disconnect();
+  }, [truncatesLabel, label, isFeedbackVisible]);
 
   const accessibilityProps: {
     'aria-label'?: string;
@@ -195,6 +218,7 @@ function Button(props: ButtonProps): JSX.Element {
         $size={size}
         $layout={layout}
         $fullWidth={fullWidth}
+        $labelOverflow={labelOverflow}
         disabled={disabled}
       >
         {isFeedbackVisible ? (
@@ -204,7 +228,11 @@ function Button(props: ButtonProps): JSX.Element {
         ) : (
           <>
             {iconStart && iconStart}
-            {label && <span id={defaultLabelId}>{label}</span>}
+            {label && (
+              <Styled.Label id={defaultLabelId} ref={labelRef} $truncate={truncatesLabel}>
+                {label}
+              </Styled.Label>
+            )}
             {children}
             {iconEnd && iconEnd}
           </>
@@ -213,11 +241,17 @@ function Button(props: ButtonProps): JSX.Element {
     );
   })();
 
-  if (tooltipLabel) {
+  // The truncated-label tooltip repeats text that is already the accessible name
+  // (via aria-labelledby), so it must not also be announced as a description.
+  const showsTruncatedLabelTooltip = !tooltipLabel && truncatesLabel && Boolean(label);
+
+  if (tooltipLabel || showsTruncatedLabelTooltip) {
     return (
       <Tippy
-        content={tooltipLabel}
+        content={tooltipLabel || label}
         placement={tooltipPlacement}
+        disabled={showsTruncatedLabelTooltip && !isLabelTruncated}
+        aria={{ content: showsTruncatedLabelTooltip ? null : 'auto' }}
       >
         {buttonElement}
       </Tippy>
