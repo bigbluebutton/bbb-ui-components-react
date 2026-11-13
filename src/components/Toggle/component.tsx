@@ -7,6 +7,7 @@ import * as Styled from './styles';
 import { DEFAULT_TEXT_POSITION, DEFAULT_TOOLTIP_PLACEMENT, TEXT_POSITIONS } from './constants';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { TOOLTIP_PLUGINS } from '../../utils/tooltip';
 
 // Cancelling the click (mouse, label or Space) keeps the switch unchanged, and MUI skips
 // `onChange` for a prevented click. It sits on the switch because MUI drops event handlers
@@ -168,6 +169,7 @@ function Toggle ({
           getReferenceClientRect={getTooltipAnchorRect}
           delay={TOOLTIP_DELAY}
           aria={{ content: null }}
+          plugins={TOOLTIP_PLUGINS}
         />
       )}
     </>
