@@ -8,10 +8,12 @@ import {
   DEFAULT_VARIANT,
   VARIANTS,
   LAYOUTS,
+  LABEL_OVERFLOWS,
 } from './constants';
 import {
   StyledHelperIconContainer, StyledButtonProps,
   StyledButtonWrapperProps,
+  StyledLabelProps,
 } from './type';
 import {
   borderRadiusDefault,
@@ -148,6 +150,22 @@ const squaredLayoutStyles = css<StyledButtonProps>`
 const defaultLayoutStyles = css<StyledButtonProps>`
   display: ${({ $fullWidth }) => ($fullWidth ? 'flex' : 'inline-flex')};
   ${({ $fullWidth }) => $fullWidth && 'width: 100%;'}
+  ${({ $labelOverflow }) => {
+    switch ($labelOverflow) {
+      case LABEL_OVERFLOWS.WRAP:
+        return `
+          white-space: normal;
+          overflow-wrap: anywhere;
+        `;
+      case LABEL_OVERFLOWS.ELLIPSIS:
+        return `
+          min-width: 0;
+          max-width: 100%;
+        `;
+      default:
+        return null;
+    }
+  }}
   justify-content: center;
   align-items: center;
   gap: ${spacingSmall};
@@ -229,6 +247,15 @@ export const FeedbackContent = styled.span`
   align-items: center;
   justify-content: center;
   gap: ${spacingSmall};
+`;
+
+export const Label = styled.span<StyledLabelProps>`
+  ${({ $truncate }) => $truncate && `
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  `}
 `;
 
 export const ButtonText = styled.div`

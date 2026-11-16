@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import { SliderProps } from './types';
 import * as Styled from './styles';
 import { DEFAULT_ANIMATE, DEFAULT_SHOW_MARK_TICKS, DEFAULT_VALUE_LABEL_DISPLAY } from './constants';
+import DismissibleValueLabel from './valueLabel';
 
 /**
  * A horizontal, single-thumb slider for picking a value inside a range.
@@ -26,6 +27,7 @@ function Slider ({
   ariaLabel,
   ariaLabelledBy,
   ariaDescribedBy,
+  slots,
   slotProps,
   ...rest
 }: SliderProps): JSX.Element {
@@ -90,6 +92,7 @@ function Slider ({
             aria-label={ariaLabel}
             aria-labelledby={ariaLabel ? undefined : ariaLabelledBy || labelId}
             data-test={dataTest}
+            slots={{ valueLabel: DismissibleValueLabel, ...slots }}
             slotProps={{
               ...slotProps,
               input: {

@@ -53,6 +53,14 @@ const LAYOUTS = {
 const LAYOUT_VALUES = Object.values(LAYOUTS);
 const DEFAULT_LAYOUT = LAYOUT_VALUES[0];
 
+const LABEL_OVERFLOWS = {
+  NOWRAP: 'nowrap',
+  WRAP: 'wrap',
+  ELLIPSIS: 'ellipsis',
+} as const;
+const LABEL_OVERFLOW_VALUES = Object.values(LABEL_OVERFLOWS);
+const DEFAULT_LABEL_OVERFLOW = LABEL_OVERFLOWS.NOWRAP;
+
 const TOOLTIP_PLACEMENTS = {
   TOP: 'top',
   BOTTOM: 'bottom',
@@ -182,12 +190,12 @@ const CSS_COLOR_PROPERTIES: CSSColorPropertiesType = {
     },
     neutral: {
       color: colorGray,
-      background: colorWhite,
+      background: 'transparent',
       border: false,
       hoverColor: colorGray,
-      hoverBackground: colorBrandAux,
+      hoverBackground: colorLightGray,
       hoverBorder: false,
-      outline: colorBrand1,
+      outline: colorIconDefault,
     },
   },
 };
@@ -224,6 +232,9 @@ export {
   LAYOUTS,
   LAYOUT_VALUES,
   DEFAULT_LAYOUT,
+  LABEL_OVERFLOWS,
+  LABEL_OVERFLOW_VALUES,
+  DEFAULT_LABEL_OVERFLOW,
   TOOLTIP_PLACEMENTS,
   TOOLTIP_PLACEMENT_VALUES,
   DEFAULT_TOOLTIP_PLACEMENT,

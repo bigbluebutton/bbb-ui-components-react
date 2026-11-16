@@ -3,10 +3,10 @@ import { styled as materialStyled } from '@mui/material/styles';
 import styled, { css } from 'styled-components';
 import {
   colorBrand1, colorIconDefault, colorTextDefault, colorTextLight, colorWhite,
-  colorShadowDefault, colorIconDefaultDark,
+  colorShadowDefault, colorIconDefaultDark, colorNeutral3,
 } from '../../stylesheets/palette';
 import { TEXT_POSITIONS } from './constants';
-import { StyledTextWrapperProps, StyledToggleWrapperProps } from './types';
+import { StyledTextProps, StyledTextWrapperProps, StyledToggleWrapperProps } from './types';
 import { fontSizeBig, fontSizeDefault } from '../../stylesheets/typography';
 
 export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
@@ -53,7 +53,7 @@ export const TextWrapper = styled.label<StyledTextWrapperProps>`
     }
     return 1;
   }};
-  cursor: pointer;
+  cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
   ${({ $hasLabel, $hasHelperText }) => (!$hasLabel || !$hasHelperText) && `justify-content: center;`}
   ${({ $textPosition, $fullWidth }) => {
     if ($textPosition === TEXT_POSITIONS.TOP || $textPosition === TEXT_POSITIONS.BOTTOM) {
@@ -76,27 +76,39 @@ export const TextWrapper = styled.label<StyledTextWrapperProps>`
   }};
 `;
 
-export const Title = styled.span`
-  color: ${colorTextDefault};
+export const Title = styled.span<StyledTextProps>`
+  color: ${({ $disabled }) => ($disabled ? colorNeutral3 : colorTextDefault)};
   font-size: ${fontSizeBig};
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 `;
 
-export const HelperText = styled.span`
-  color: ${colorTextLight};
+export const HelperText = styled.span<StyledTextProps>`
+  color: ${({ $disabled }) => ($disabled ? colorNeutral3 : colorTextLight)};
   font-size: ${fontSizeDefault};
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 `;
 
+// The checked track's `opacity: 1` outranks MUI's disabled track opacity, so the disabled
+// opacity (MUI's light/dark values) is restated for a checked, disabled switch.
+//
+// MUI's focus ripple only tints the small thumb, so the outline is what makes keyboard
+// focus visible. It goes on the root: the track is clipped by the root's overflow. MUI
+// never sets `Mui-focusVisible` while disabled, so a focusable disabled input (one with
+// a tooltip) is matched through `:focus-visible` instead.
 export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
   width: '2.3rem',
   height: '1.2rem',
   padding: 0,
   display: 'flex',
+  '&:has(.Mui-focusVisible), &:has(.Mui-disabled input:focus-visible)': {
+    borderRadius: '0.6rem',
+    outline: `2px solid ${colorBrand1}`,
+    outlineOffset: '2px',
+  },
   '&:active': {
     '& .MuiSwitch-switchBase.Mui-checked': {
       transform: 'translateX(1.2rem)',
@@ -112,6 +124,12 @@ export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
         backgroundColor: colorBrand1,
         ...theme.applyStyles('dark', {
           backgroundColor: colorBrand1,
+        }),
+      },
+      '&.Mui-disabled + .MuiSwitch-track': {
+        opacity: 0.12,
+        ...theme.applyStyles('dark', {
+          opacity: 0.2,
         }),
       },
     },
