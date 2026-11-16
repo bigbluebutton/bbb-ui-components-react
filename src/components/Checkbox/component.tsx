@@ -6,6 +6,7 @@ import { DEFAULT_LAYOUT, DEFAULT_TOOLTIP_PLACEMENT, LAYOUTS } from './constants'
 import { RadioButtonUnchecked, RadioButtonChecked } from '@mui/icons-material';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { TOOLTIP_PLUGINS } from '../../utils/tooltip';
 
 // Cancelling the click (mouse, label or Space) keeps the box unchanged, and MUI skips
 // `onChange` for a prevented click. It sits on the root because MUI drops event handlers
@@ -128,6 +129,7 @@ function Checkbox({
           placement={tooltipPlacement}
           trigger="mouseenter focusin"
           aria={{ content: null }}
+          plugins={TOOLTIP_PLUGINS}
         />
       )}
     </>
