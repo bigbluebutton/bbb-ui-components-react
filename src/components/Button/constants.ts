@@ -190,12 +190,12 @@ const CSS_COLOR_PROPERTIES: CSSColorPropertiesType = {
     },
     neutral: {
       color: colorGray,
-      background: colorWhite,
+      background: 'transparent',
       border: false,
       hoverColor: colorGray,
-      hoverBackground: colorBrandAux,
+      hoverBackground: colorLightGray,
       hoverBorder: false,
-      outline: colorBrand1,
+      outline: colorIconDefault,
     },
   },
 };
