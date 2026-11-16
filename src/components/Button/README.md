@@ -71,6 +71,26 @@ import { BBButton } from 'bbb-ui-components-react';
 <BBButton label="Share" fullWidth onClick={() => (console.log('clicked'))}/>
 ```
 
+### Long Labels
+
+`labelOverflow` sets what happens when the label doesn't fit the button's available width, for example a `fullWidth` button in a narrow container or a row of equal-width buttons. It has no visible effect while the label fits.
+
+- `nowrap` (default): the label stays on one line. The button grows to fit it, or the label overflows when the button can't grow.
+- `wrap`: the label breaks onto more lines, making the button taller.
+- `ellipsis`: the label is truncated with an ellipsis, and the button can shrink below its label's width as a flex item. While truncated, hovering or focusing the button shows the full label in a tooltip, unless `tooltipLabel` is set.
+
+```jsx
+import styled from 'styled-components';
+import { BBButton } from 'bbb-ui-components-react';
+
+const RoomActionButton = styled(BBButton)`
+  flex: 1 1 10rem;
+`;
+
+<BBButton label="Take presenter role" fullWidth labelOverflow="wrap" onClick={() => (console.log('clicked'))}/>
+<RoomActionButton label="Call the moderator for help" labelOverflow="ellipsis" onClick={() => (console.log('clicked'))}/>
+```
+
 ### Extending with `styled()`
 
 `className` is forwarded to the root element (the `<button>`, or the wrapper `<div>` in the `stacked` layout), so `BBButton` can be extended with `styled()`. This is an escape hatch while `BBButton` is being adopted: prefer native props such as `fullWidth`, and open an issue for any override you find yourself repeating, so it can become a prop.
@@ -105,6 +125,7 @@ const FooterButton = styled(BBButton)`
 | `type`             | `'button' \| 'submit' \| 'reset'`                                 | `'button'`        | The native `type` attribute of the `<button>`. Defaults to `'button'` so it never submits an enclosing form unless `'submit'` is passed explicitly. |
 | `disabled`         | `boolean`                                                         | `false`           | If `true`, the button will be disabled.                                |
 | `fullWidth`        | `boolean`                                                         | `false`           | If `true`, the button fills the width of its container, keeping its content centered. Used for 'default' layout. |
+| `labelOverflow`    | `'nowrap' \| 'wrap' \| 'ellipsis'`                                | `'nowrap'`        | What happens when the label doesn't fit the button's available width: `nowrap` keeps it on one line, widening the button or overflowing it, `wrap` breaks it onto more lines, `ellipsis` truncates it and shows the full label as a tooltip unless `tooltipLabel` is set. Used for 'default' layout. |
 | `className`        | `string`                                                          |                   | Class name forwarded to the root element (the `<button>`, or the wrapper `<div>` in the 'stacked' layout), so `styled(BBButton)` works. Escape hatch while BBButton is being adopted; prefer native props and open an issue for recurring needs. |
 | `children`         | `React.ReactNode`                                                 |                   | The content of the button, typically used for the 'default' layout.    |
 | `icon`             | `React.ReactNode`                                                 |                   | The icon to be displayed. Used for 'circle', 'squared' and 'stacked' layouts. |
