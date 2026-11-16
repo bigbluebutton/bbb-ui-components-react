@@ -54,13 +54,17 @@ export const HelperText = styled.label<StyledLabelProps>`
 // box; the outline is what makes keyboard focus visible. MUI never sets
 // `Mui-focusVisible` while disabled, so a focusable disabled input (one with a
 // tooltip) is matched through `:has` instead.
+// MUI's own checked/indeterminate color rule is as specific as `&.Mui-checked`
+// and can be injected after it (it is in BigBlueButton), so the brand color
+// doubles the class to win either way. A disabled box keeps MUI's disabled color.
 export const StyledCheckbox = styled(MuiCheckbox)<StyledCheckboxProps>`
   &.MuiCheckbox-root {
     padding: 0;
     border-radius: ${({ $round }) => ($round ? '50%' : borderRadiusSmall)};
   }
 
-  &.Mui-checked {
+  &&.Mui-checked:not(.Mui-disabled),
+  &&.MuiCheckbox-indeterminate:not(.Mui-disabled) {
     color: ${colorBrand1};
   }
 
