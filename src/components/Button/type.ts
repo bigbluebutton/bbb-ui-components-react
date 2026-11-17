@@ -64,7 +64,6 @@ export interface StyledButtonProps {
   $layout?: LayoutType;
   $fullWidth?: boolean;
   $labelOverflow?: LabelOverflowType;
-  disabled: boolean;
 }
 
 export interface StyledLabelProps {
@@ -81,7 +80,7 @@ type BaseButtonProps = {
   /** Text label for the button; rendered in layouts that display a label (e.g. `default`, `stacked`). */
   label?: string;
 
-  /** Text shown in a tooltip; the tooltip only renders when this is provided. */
+  /** Text shown in a tooltip on hover and keyboard focus; when set, a disabled button stays focusable (`aria-disabled`) so the tooltip can be reached. */
   tooltipLabel?: string;
 
   /** Placement of the tooltip relative to the button; only used when `tooltipLabel` is set. @default 'top' */

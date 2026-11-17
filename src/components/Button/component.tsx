@@ -63,7 +63,18 @@ function Button(props: ButtonProps): JSX.Element {
     if (feedbackTimeoutRef.current) clearTimeout(feedbackTimeoutRef.current);
   }, []);
 
+  // A natively disabled button leaves the tab order, so keyboard users could never reach the
+  // tooltip that explains why it is disabled. With a tooltip, the button stays focusable and is
+  // announced through aria-disabled instead, and its clicks (including Enter, Space and form
+  // submission) are cancelled here.
+  const focusableWhileDisabled = Boolean(disabled && tooltipLabel);
+
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
+    if (focusableWhileDisabled) {
+      event.preventDefault();
+      return;
+    }
+
     onClick(event);
 
     if (showFeedback) {
@@ -71,7 +82,7 @@ function Button(props: ButtonProps): JSX.Element {
       if (feedbackTimeoutRef.current) clearTimeout(feedbackTimeoutRef.current);
       feedbackTimeoutRef.current = setTimeout(() => setFeedbackVisible(false), feedbackDuration);
     }
-  }, [onClick, showFeedback, feedbackDuration]);
+  }, [focusableWhileDisabled, onClick, showFeedback, feedbackDuration]);
 
   const labelRef = useRef<HTMLSpanElement>(null);
   const [isLabelTruncated, setLabelTruncated] = useState(false);
@@ -97,6 +108,7 @@ function Button(props: ButtonProps): JSX.Element {
   } = {};
   const generatedId = useId();
   const defaultLabelId = `${id || generatedId}-label`;
+  const tooltipDescriptionId = `${id || generatedId}-tooltip`;
   // Only default aria-labelledby to defaultLabelId when an element with that id is
   // actually rendered (stacked always renders ButtonText; default when labeled, or
   // when the feedback content is taking the label's place). circle never renders a
@@ -110,7 +122,18 @@ function Button(props: ButtonProps): JSX.Element {
   } else if (hasRenderedLabelElement) {
     accessibilityProps['aria-labelledby'] = defaultLabelId;
   }
-  if (ariaDescribedBy) accessibilityProps['aria-describedby'] = ariaDescribedBy;
+  const describedBy = [ariaDescribedBy, tooltipLabel && tooltipDescriptionId].filter(Boolean).join(' ');
+  if (describedBy) accessibilityProps['aria-describedby'] = describedBy;
+
+  const disabledProps = {
+    disabled: disabled && !focusableWhileDisabled,
+    'aria-disabled': focusableWhileDisabled || undefined,
+  };
+
+  // aria-describedby needs the text at all times; Tippy mounts it only while shown.
+  const tooltipDescription = tooltipLabel && (
+    <span id={tooltipDescriptionId} hidden>{tooltipLabel}</span>
+  );
 
   const buttonElement = (() => {
     if (props.layout === LAYOUTS.CIRCLE || props.layout === LAYOUTS.SQUARED) {
@@ -130,13 +153,14 @@ function Button(props: ButtonProps): JSX.Element {
           $variant={variant}
           $size={size}
           $layout={layout}
-          disabled={disabled}
+          {...disabledProps}
         >
           {isFeedbackVisible ? (
             <Styled.FeedbackContent role="status" aria-live="polite">
               {feedbackContent}
             </Styled.FeedbackContent>
           ) : icon}
+          {tooltipDescription}
         </Styled.Button>
       );
     }
@@ -166,7 +190,7 @@ function Button(props: ButtonProps): JSX.Element {
             $variant={variant}
             $size={size}
             $layout={layout}
-            disabled={disabled}
+            {...disabledProps}
           >
             {!hideHelperIcon && (
               <Styled.HelperIconContainer
@@ -175,11 +199,11 @@ function Button(props: ButtonProps): JSX.Element {
                 {...(helperOnClick && { 'data-is-aux-icon': true })}
                 {...(helperOnClick && { 'aria-label': accessibilityProps['aria-label'] + ' helper' })}
                 {...(helperOnClick && { role: "button" })}
-                $hover={helperOnClick !== null}
+                $hover={helperOnClick !== null && !disabled}
                 $color={color}
                 $variant={variant}
                 onClick={(event) => {
-                  if (helperOnClick) {
+                  if (helperOnClick && !disabled) {
                     helperOnClick(event);
                     event.preventDefault();
                     event.stopPropagation();
@@ -196,6 +220,7 @@ function Button(props: ButtonProps): JSX.Element {
                 </Styled.FeedbackContent>
               </Styled.IconWrapper>
             ) : (icon && <Styled.IconWrapper>{icon}</Styled.IconWrapper>)}
+            {tooltipDescription}
           </Styled.Button>
           <Styled.ButtonText id={defaultLabelId}>{label}</Styled.ButtonText>
         </Styled.ButtonWrapper>
@@ -220,7 +245,7 @@ function Button(props: ButtonProps): JSX.Element {
         $layout={layout}
         $fullWidth={fullWidth}
         $labelOverflow={labelOverflow}
-        disabled={disabled}
+        {...disabledProps}
       >
         {isFeedbackVisible ? (
           <Styled.FeedbackContent id={defaultLabelId} role="status" aria-live="polite">
@@ -238,12 +263,11 @@ function Button(props: ButtonProps): JSX.Element {
             {iconEnd && iconEnd}
           </>
         )}
+        {tooltipDescription}
       </Styled.Button>
     );
   })();
 
-  // The truncated-label tooltip repeats text that is already the accessible name
-  // (via aria-labelledby), so it must not also be announced as a description.
   const showsTruncatedLabelTooltip = !tooltipLabel && truncatesLabel && Boolean(label);
 
   if (tooltipLabel || showsTruncatedLabelTooltip) {
@@ -253,7 +277,12 @@ function Button(props: ButtonProps): JSX.Element {
         placement={tooltipPlacement}
         plugins={TOOLTIP_PLUGINS}
         disabled={showsTruncatedLabelTooltip && !isLabelTruncated}
-        aria={{ content: showsTruncatedLabelTooltip ? null : 'auto' }}
+        // In the 'stacked' layout the reference is the wrapper, which focus never lands on;
+        // `focusin` bubbles up from the button, Tippy's `focus` would not.
+        trigger="mouseenter focusin"
+        // The button is already described by `tooltipDescription`, and the truncated-label
+        // tooltip repeats its accessible name, so Tippy must not add aria-describedby.
+        aria={{ content: null }}
       >
         {buttonElement}
       </Tippy>

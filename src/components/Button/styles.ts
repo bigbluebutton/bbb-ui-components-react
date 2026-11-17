@@ -23,6 +23,16 @@ import {
 import { colorBorderDefault, colorTextDefault } from '../../stylesheets/palette';
 import { fontSizeSmall } from '../../stylesheets/typography';
 
+const {
+  color: disabledColor,
+  background: disabledBackground,
+  border: disabledBorder,
+  outline: disabledOutline,
+} = CSS_COLOR_PROPERTIES_DISABLED;
+
+// A disabled button with a tooltip is `aria-disabled` instead of natively disabled. It gets the
+// same disabled look, but keeps pointer events so the tooltip opens on hover and the
+// not-allowed cursor shows.
 const commonButtonStyles = css<StyledButtonProps>`
   cursor: pointer;
   user-select: none;
@@ -61,11 +71,13 @@ const commonButtonStyles = css<StyledButtonProps>`
       ${background && `background-color: ${background};`}
       ${border ? `border: 1px solid ${border};` : 'border: 1px solid transparent;'}
 
-      &&:hover:not(:has(> [data-is-aux-icon]:hover)),
-      &&:active {
-        color: ${hoverColor};
-        ${hoverBackground && `background-color: ${hoverBackground};`}
-        ${hoverBorder ? `border: 1px solid ${hoverBorder};` : 'border: 1px solid transparent;'}
+      &&:not(:disabled):not([aria-disabled='true']) {
+        &:hover:not(:has(> [data-is-aux-icon]:hover)),
+        &:active {
+          color: ${hoverColor};
+          ${hoverBackground && `background-color: ${hoverBackground};`}
+          ${hoverBorder ? `border: 1px solid ${hoverBorder};` : 'border: 1px solid transparent;'}
+        }
       }
       &&:focus {
         border: 1px solid transparent;
@@ -80,32 +92,22 @@ const commonButtonStyles = css<StyledButtonProps>`
     text-decoration: underline;
   `}
 
-  ${({ disabled }) => {
-    if (!disabled) return null;
-    const { color, background, border, outline } = CSS_COLOR_PROPERTIES_DISABLED;
-
-    return css`
-      pointer-events: none;
-      cursor: not-allowed;
-      & span {
-        color: ${color};
-      }
-      color: ${color};
-      ${background ? `background-color: ${background}` : `background-color: transparent`};
-      border: ${border ? `1px solid ${border}` : '1px solid transparent'};
-
-      &&:hover,
-      &&:active {
-        color: ${color};
-        ${background ? `background-color: ${background}` : `background-color: transparent`};
-        border: ${border ? `1px solid ${border}` : '1px solid transparent'};
-      }
-      
-      &&:focus {
-        outline: 2px solid ${outline};
-      }
-    `;
-  }}
+  &:disabled,
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    & span {
+      color: ${disabledColor};
+    }
+    color: ${disabledColor};
+    ${disabledBackground ? `background-color: ${disabledBackground}` : 'background-color: transparent'};
+    border: ${disabledBorder ? `1px solid ${disabledBorder}` : '1px solid transparent'};
+  }
+  &:disabled {
+    pointer-events: none;
+  }
+  &&[aria-disabled='true']:focus {
+    outline: 2px solid ${disabledOutline};
+  }
 `;
 
 const stackedLayoutStyles = css`

@@ -36,7 +36,7 @@ const meta = {
     },
     tooltipLabel: {
       control: 'text',
-      description: 'Text shown inside a tooltip. Tooltip appears only when this prop is provided.',
+      description: 'Text shown in a tooltip on hover and keyboard focus; when set, a disabled button stays focusable (`aria-disabled`) so the tooltip can be reached.',
       table: { defaultValue: { summary: "''" } },
     },
     tooltipPlacement: {
@@ -77,7 +77,7 @@ const meta = {
     },
     disabled: {
       control: 'boolean',
-      description: 'Disables interaction and applies disabled visuals. Works across all layouts.',
+      description: 'Disables interaction and applies disabled visuals. Works across all layouts. With `tooltipLabel`, the button stays focusable and is announced through `aria-disabled` instead of the native `disabled` attribute.',
       table: { defaultValue: { summary: 'false' } },
     },
     fullWidth: {
@@ -400,6 +400,16 @@ export const Disabled: Story = {
     label: 'Disabled Button',
     variant: 'primary',
     disabled: true,
+  },
+};
+
+/** Disabled button that stays keyboard-focusable so its tooltip can explain why it is unavailable. */
+export const DisabledWithTooltip: Story = {
+  args: {
+    label: 'Start',
+    variant: 'primary',
+    disabled: true,
+    tooltipLabel: 'Pick a response type first',
   },
 };
 
