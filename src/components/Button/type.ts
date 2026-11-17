@@ -30,6 +30,16 @@ export type CSSColorPropertiesType = {
   };
 };
 
+export type PressedColorProperties = {
+  color: string;
+  background: string;
+  border: string;
+};
+
+export type CSSPressedColorPropertiesType = {
+  [key: string]: PressedColorProperties;
+};
+
 export type SizeProperties = {
   padding: string;
   iconBoxSize: string;
@@ -64,6 +74,7 @@ export interface StyledButtonProps {
   $layout?: LayoutType;
   $fullWidth?: boolean;
   $labelOverflow?: LabelOverflowType;
+  $pressed?: boolean;
   disabled: boolean;
 }
 
@@ -116,6 +127,9 @@ type BaseButtonProps = {
 
   /** Disables interaction and applies disabled styling. @default false */
   disabled?: boolean;
+
+  /** Makes the button a toggle: `true` or `false` renders `aria-pressed`, and `true` applies a selected fill, per `color`, that holds through hover and active and fades, rather than turning grey, when `disabled`. Leave it unset for a plain button. */
+  pressed?: boolean;
 
   /** Additional content rendered inside the button, after the label (only used in the `default` layout). */
   children?: React.ReactNode;
