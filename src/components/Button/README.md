@@ -63,6 +63,18 @@ import { BBButton } from 'bbb-ui-components-react';
 </form>
 ```
 
+### Disabled Button with Tooltip
+
+Useful to explain why a button is disabled. The tooltip shows on hover and keyboard focus, and its text is also exposed to screen readers as the button's description.
+
+A disabled button with a `tooltipLabel` stays in the tab order so keyboard users can reach the tooltip: it gets `aria-disabled="true"` instead of the native `disabled` attribute, keeps the disabled look, and ignores clicks, Enter and Space, without submitting its form when `type="submit"`. Without a `tooltipLabel`, a disabled button is natively disabled.
+
+```jsx
+import { BBButton } from 'bbb-ui-components-react';
+
+<BBButton label="Start" disabled tooltipLabel="Pick a response type first" onClick={() => (console.log('clicked'))}/>
+```
+
 ### Full-width Button
 
 ```jsx
@@ -111,7 +123,7 @@ const FooterButton = styled(BBButton)`
 | `id`               | `string`                                                          | `''`              | The unique identifier for the button.                                  |
 | `dataTest`         | `string`                                                          |                   | The 'data-test' attribute for testing purposes.                        |
 | `label`            | `string`                                                          |                   | The text to be displayed on the button.                                |
-| `tooltipLabel`     | `string`                                                          |                   | The text to be displayed in a tooltip on hover.                        |
+| `tooltipLabel`     | `string`                                                          |                   | Text shown in a tooltip on hover and keyboard focus. When set, a disabled button stays focusable (`aria-disabled`) so the tooltip can be reached. |
 | `tooltipPlacement` | `keyof typeof TOOLTIP_PLACEMENTS`                                 | `'top'`           | The placement of the tooltip.                                          |
 | `onClick`          | `() => void`                                                      |                   | The function to be called when the button is clicked.                  |
 | `onKeyDown`        | `(event: React.KeyboardEvent<HTMLButtonElement>) => void`         |                   | The function to be called when a key is pressed.                       |
@@ -123,7 +135,7 @@ const FooterButton = styled(BBButton)`
 | `size`             | `keyof typeof SIZES`                                              | `'medium'`        | The size of the button.                                                |
 | `layout`           | `keyof typeof LAYOUTS`                                            | `'default'`       | The layout of the button.                                              |
 | `type`             | `'button' \| 'submit' \| 'reset'`                                 | `'button'`        | The native `type` attribute of the `<button>`. Defaults to `'button'` so it never submits an enclosing form unless `'submit'` is passed explicitly. |
-| `disabled`         | `boolean`                                                         | `false`           | If `true`, the button will be disabled.                                |
+| `disabled`         | `boolean`                                                         | `false`           | If `true`, the button will be disabled. With a `tooltipLabel`, it uses `aria-disabled` instead of the native `disabled` attribute, so it stays focusable. |
 | `fullWidth`        | `boolean`                                                         | `false`           | If `true`, the button fills the width of its container, keeping its content centered. Used for 'default' layout. |
 | `labelOverflow`    | `'nowrap' \| 'wrap' \| 'ellipsis'`                                | `'nowrap'`        | What happens when the label doesn't fit the button's available width: `nowrap` keeps it on one line, widening the button or overflowing it, `wrap` breaks it onto more lines, `ellipsis` truncates it and shows the full label as a tooltip unless `tooltipLabel` is set. Used for 'default' layout. |
 | `className`        | `string`                                                          |                   | Class name forwarded to the root element (the `<button>`, or the wrapper `<div>` in the 'stacked' layout), so `styled(BBButton)` works. Escape hatch while BBButton is being adopted; prefer native props and open an issue for recurring needs. |
