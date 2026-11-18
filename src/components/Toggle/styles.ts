@@ -6,7 +6,9 @@ import {
   colorShadowDefault, colorIconDefaultDark, colorNeutral3,
 } from '../../stylesheets/palette';
 import { TEXT_POSITIONS } from './constants';
-import { StyledTextProps, StyledTextWrapperProps, StyledToggleWrapperProps } from './types';
+import {
+  StyledTextProps, StyledTextWrapperProps, StyledToggleSwitchWrapperProps, StyledToggleWrapperProps,
+} from './types';
 import { fontSizeBig, fontSizeDefault } from '../../stylesheets/typography';
 import { spacingMedium, spacingSmall } from '../../stylesheets/sizing';
 
@@ -38,13 +40,26 @@ export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
   `}
 `;
 
+// The wrapper spans the row and centers the switch in it, as the text wrapper does with the
+// text. Beside a label and a helper text, it spans only the label's line instead (`1lh` in
+// the label's font size and line height), so the switch follows the label.
+export const ToggleSwitchWrapper = styled.div<StyledToggleSwitchWrapperProps>`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  ${({ $alignToLabel }) => $alignToLabel && css`
+    align-self: flex-start;
+    height: 1lh;
+    font-size: ${fontSizeBig};
+    line-height: normal;
+  `}
+`;
+
 // The focus outline goes here, sized to the switch, instead of on the switch root, whose
 // disabled opacity would fade it. MUI never sets `Mui-focusVisible` while disabled, so a
 // focusable disabled input (one with a tooltip) is matched through `:focus-visible`.
-export const ToggleSwitchWrapper = styled.div`
+export const SwitchFocusRing = styled.span`
   display: flex;
-  width: fit-content;
-  height: fit-content;
   border-radius: 0.6rem;
 
   &:has(.Mui-focusVisible), &:has(.Mui-disabled input:focus-visible) {
@@ -63,8 +78,8 @@ export const TextWrapper = styled.label<StyledTextWrapperProps>`
     }
     return 1;
   }};
+  justify-content: center;
   cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
-  ${({ $hasLabel, $hasHelperText }) => (!$hasLabel || !$hasHelperText) && `justify-content: center;`}
   ${({ $textPosition, $fullWidth }) => {
     if ($textPosition === TEXT_POSITIONS.TOP || $textPosition === TEXT_POSITIONS.BOTTOM) {
       return css`

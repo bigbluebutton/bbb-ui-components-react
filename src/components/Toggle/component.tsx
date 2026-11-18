@@ -82,7 +82,8 @@ function Toggle ({
   const labelId = label ? `${id}-label` : undefined;
   const helperTextId = helperText ? `${id}-helper` : undefined;
   const tooltipDescriptionId = tooltipLabel ? `${id}-tooltip` : undefined;
-  const isFullWidth = fullWidth && (textPosition === TEXT_POSITIONS.LEFT || textPosition === TEXT_POSITIONS.RIGHT);
+  const isSideBySide = textPosition === TEXT_POSITIONS.LEFT || textPosition === TEXT_POSITIONS.RIGHT;
+  const isFullWidth = fullWidth && isSideBySide;
 
   const explicitLabelledBy = ariaLabel ? undefined : ariaLabelledBy || labelId;
   // Without a name source, the <label htmlFor> names the input from the helper text,
@@ -134,8 +135,6 @@ function Toggle ({
             $textPosition={textPosition}
             $fullWidth={isFullWidth}
             htmlFor={id}
-            $hasLabel={!!label}
-            $hasHelperText={!!helperText}
             $disabled={disabled}
           >
             {label && <Styled.Title ref={titleRef} id={labelId} $disabled={disabled}>{label}</Styled.Title>}
@@ -144,15 +143,17 @@ function Toggle ({
             )}
           </Styled.TextWrapper>
         )}
-        <Styled.ToggleSwitchWrapper ref={switchWrapperRef}>
-          <Styled.MaterialToggle
-            {...rest}
-            id={id}
-            disabled={disabled}
-            {...(focusableWhileDisabled && { onClick: preventToggle })}
-            onChange={onChange}
-            slotProps={{ ...otherSlotProps, input: inputSlotProps }}
-          />
+        <Styled.ToggleSwitchWrapper ref={switchWrapperRef} $alignToLabel={isSideBySide && !!label && !!helperText}>
+          <Styled.SwitchFocusRing>
+            <Styled.MaterialToggle
+              {...rest}
+              id={id}
+              disabled={disabled}
+              {...(focusableWhileDisabled && { onClick: preventToggle })}
+              onChange={onChange}
+              slotProps={{ ...otherSlotProps, input: inputSlotProps }}
+            />
+          </Styled.SwitchFocusRing>
         </Styled.ToggleSwitchWrapper>
         {/* aria-describedby needs the text at all times; Tippy mounts it only while shown. */}
         {tooltipLabel && (
