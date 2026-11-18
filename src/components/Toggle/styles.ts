@@ -16,6 +16,7 @@ export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
     if ($textPosition === TEXT_POSITIONS.TOP || $textPosition === TEXT_POSITIONS.BOTTOM) {
       return css`
         flex-direction: column;
+        align-items: center;
         gap: ${spacingMedium};
       `;
     }
@@ -37,11 +38,19 @@ export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
   `}
 `;
 
+// The focus outline goes here, sized to the switch, instead of on the switch root, whose
+// disabled opacity would fade it. MUI never sets `Mui-focusVisible` while disabled, so a
+// focusable disabled input (one with a tooltip) is matched through `:focus-visible`.
 export const ToggleSwitchWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.6rem;
+
+  &:has(.Mui-focusVisible), &:has(.Mui-disabled input:focus-visible) {
+    outline: 2px solid ${colorBrand1};
+    outline-offset: 2px;
+  }
 `;
 
 export const TextWrapper = styled.label<StyledTextWrapperProps>`
@@ -93,22 +102,15 @@ export const HelperText = styled.span<StyledTextProps>`
   line-height: normal;
 `;
 
-// The checked track's `opacity: 1` outranks MUI's disabled track opacity, so the disabled
-// opacity (MUI's light/dark values) is restated for a checked, disabled switch.
-//
-// MUI's focus ripple only tints the small thumb, so the outline is what makes keyboard
-// focus visible. It goes on the root: the track is clipped by the root's overflow. MUI
-// never sets `Mui-focusVisible` while disabled, so a focusable disabled input (one with
-// a tooltip) is matched through `:focus-visible` instead.
+// A disabled switch fades as a whole, so the track and the thumb keep their enabled colors
+// instead of MUI's disabled track opacity and thumb colors.
 export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
   width: '2.3rem',
   height: '1.2rem',
   padding: 0,
   display: 'flex',
-  '&:has(.Mui-focusVisible), &:has(.Mui-disabled input:focus-visible)': {
-    borderRadius: '0.6rem',
-    outline: `2px solid ${colorBrand1}`,
-    outlineOffset: '2px',
+  '&:has(.Mui-disabled)': {
+    opacity: 0.4,
   },
   '& .MuiSwitch-switchBase': {
     padding: '0.3rem',
@@ -125,11 +127,11 @@ export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
           backgroundColor: colorBrand1,
         }),
       },
-      '&.Mui-disabled + .MuiSwitch-track': {
-        opacity: 0.12,
-        ...theme.applyStyles('dark', {
-          opacity: 0.2,
-        }),
+    },
+    '&.Mui-disabled, &.Mui-checked.Mui-disabled': {
+      color: colorWhite,
+      '& + .MuiSwitch-track': {
+        opacity: 1,
       },
     },
   },
