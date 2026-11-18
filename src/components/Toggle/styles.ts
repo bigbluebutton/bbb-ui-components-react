@@ -109,15 +109,13 @@ export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
     outline: `2px solid ${colorBrand1}`,
     outlineOffset: '2px',
   },
-  '&:active': {
-    '& .MuiSwitch-switchBase.Mui-checked': {
-      transform: 'translateX(1.2rem)',
-    },
-  },
   '& .MuiSwitch-switchBase': {
-    padding: '0.2rem',
+    padding: '0.3rem',
+    '&:hover, &.Mui-checked:hover': {
+      backgroundColor: 'transparent',
+    },
     '&.Mui-checked': {
-      transform: 'translateX(1.2rem)',
+      transform: 'translateX(1.1rem)',
       color: colorWhite,
       '& + .MuiSwitch-track': {
         opacity: 1,
@@ -142,7 +140,6 @@ export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
     transition: theme.transitions.create(['width'], {
       duration: 200,
     }),
-    transform: 'translateY(1px)',
   },
   '& .MuiSwitch-track': {
     borderRadius: '0.6rem',
