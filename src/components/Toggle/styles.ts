@@ -8,6 +8,7 @@ import {
 import { TEXT_POSITIONS } from './constants';
 import { StyledTextProps, StyledTextWrapperProps, StyledToggleWrapperProps } from './types';
 import { fontSizeBig, fontSizeDefault } from '../../stylesheets/typography';
+import { spacingMedium, spacingSmall } from '../../stylesheets/sizing';
 
 export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
   display: flex;
@@ -15,12 +16,12 @@ export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
     if ($textPosition === TEXT_POSITIONS.TOP || $textPosition === TEXT_POSITIONS.BOTTOM) {
       return css`
         flex-direction: column;
-        gap: .1rem;
+        gap: ${spacingMedium};
       `;
     }
     const horizontalStyles = css`
       flex-direction: row;
-      gap: 1rem;
+      gap: ${spacingMedium};
     `;
     if ($textPosition === TEXT_POSITIONS.LEFT) {
       return css`
@@ -41,12 +42,12 @@ export const ToggleSwitchWrapper = styled.div`
   flex-direction: row;
   align-items: start;
   justify-content: center;
-  padding: 0.3rem 0px;
 `;
 
 export const TextWrapper = styled.label<StyledTextWrapperProps>`
   display: flex;
   flex-direction: column;
+  gap: ${spacingSmall};
   order: ${({ $textPosition }) => {
     if ($textPosition === TEXT_POSITIONS.LEFT || $textPosition === TEXT_POSITIONS.TOP) {
       return -1;
