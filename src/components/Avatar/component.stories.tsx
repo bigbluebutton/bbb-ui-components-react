@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBAvatar from './component';
 import { AVATAR_SIZE_VALUES, DEFAULT_AVATAR_SIZE } from './constants';
 

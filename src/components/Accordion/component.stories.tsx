@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBAccordion from './component';
 import {
   TOOLTIP_PLACEMENT_VALUES,
