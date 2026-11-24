@@ -36,6 +36,13 @@
       "require": "./dist/components/Button.js",
       "default": "./dist/components/Button.js"
     },
+    "./ButtonGroup": {
+      "types": "./dist/types/components/ButtonGroup/index.d.ts",
+      "node": "./dist/components/ButtonGroup.js",
+      "import": "./dist/esm/components/ButtonGroup/index.js",
+      "require": "./dist/components/ButtonGroup.js",
+      "default": "./dist/components/ButtonGroup.js"
+    },
     "./Checkbox": {
       "types": "./dist/types/components/Checkbox/index.d.ts",
       "node": "./dist/components/Checkbox.js",
@@ -91,6 +98,13 @@
       "import": "./dist/esm/components/Search/index.js",
       "require": "./dist/components/Search.js",
       "default": "./dist/components/Search.js"
+    },
+    "./SegmentedControl": {
+      "types": "./dist/types/components/SegmentedControl/index.d.ts",
+      "node": "./dist/components/SegmentedControl.js",
+      "import": "./dist/esm/components/SegmentedControl/index.js",
+      "require": "./dist/components/SegmentedControl.js",
+      "default": "./dist/components/SegmentedControl.js"
     },
     "./Select": {
       "types": "./dist/types/components/Select/index.d.ts",

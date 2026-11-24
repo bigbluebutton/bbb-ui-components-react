@@ -71,6 +71,25 @@ import { BBButton } from 'bbb-ui-components-react';
 <BBButton label="Share" fullWidth onClick={() => (console.log('clicked'))}/>
 ```
 
+### Toggle Button
+
+Set `pressed` to make the button a toggle. It renders `aria-pressed`, and while `true` the button keeps a selected fill through hover and press. Leave it unset for a plain button. For a set of options where exactly one is selected, use [`BBBSegmentedControl`](../SegmentedControl/README.md).
+
+```jsx
+import { BBButton } from 'bbb-ui-components-react';
+import { MdMic, MdMicOff } from 'react-icons/md';
+
+const [muted, setMuted] = useState(false);
+
+<BBButton
+  layout="circle"
+  ariaLabel="Mute"
+  pressed={muted}
+  icon={muted ? <MdMicOff /> : <MdMic />}
+  onClick={() => setMuted(!muted)}
+/>
+```
+
 ### Long Labels
 
 `labelOverflow` sets what happens when the label doesn't fit the button's available width, for example a `fullWidth` button in a narrow container or a row of equal-width buttons. It has no visible effect while the label fits.
@@ -124,6 +143,7 @@ const FooterButton = styled(BBButton)`
 | `layout`           | `keyof typeof LAYOUTS`                                            | `'default'`       | The layout of the button.                                              |
 | `type`             | `'button' \| 'submit' \| 'reset'`                                 | `'button'`        | The native `type` attribute of the `<button>`. Defaults to `'button'` so it never submits an enclosing form unless `'submit'` is passed explicitly. |
 | `disabled`         | `boolean`                                                         | `false`           | If `true`, the button will be disabled.                                |
+| `pressed`          | `boolean`                                                         |                   | Makes the button a toggle: `true` or `false` renders `aria-pressed`, and `true` applies a selected fill, per `color`, that holds through hover and active and fades, rather than turning grey, when `disabled`. Leave it unset for a plain button. |
 | `fullWidth`        | `boolean`                                                         | `false`           | If `true`, the button fills the width of its container, keeping its content centered. Used for 'default' layout. |
 | `labelOverflow`    | `'nowrap' \| 'wrap' \| 'ellipsis'`                                | `'nowrap'`        | What happens when the label doesn't fit the button's available width: `nowrap` keeps it on one line, widening the button or overflowing it, `wrap` breaks it onto more lines, `ellipsis` truncates it and shows the full label as a tooltip unless `tooltipLabel` is set. Used for 'default' layout. |
 | `className`        | `string`                                                          |                   | Class name forwarded to the root element (the `<button>`, or the wrapper `<div>` in the 'stacked' layout), so `styled(BBButton)` works. Escape hatch while BBButton is being adopted; prefer native props and open an issue for recurring needs. |
