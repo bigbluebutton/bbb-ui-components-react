@@ -138,6 +138,10 @@ const StyledDiv = styled.div`
 `colors` is grouped the same way as the table above: `neutral`, `brand`, `semantic`, `background`,
 `border`, `text`, `icon`, `hover`, `overlay`, `shadow`, `user`.
 
+## Toward a design system
+
+This library is growing into the BigBlueButton design system, starting with the BigBlueButton client: the code and its Storybook are the source of truth for components and their usage rules.
+
 ## Installation
 
 You can install the library directly from npm:
