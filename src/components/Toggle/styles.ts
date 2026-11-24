@@ -6,8 +6,11 @@ import {
   colorShadowDefault, colorIconDefaultDark, colorNeutral3,
 } from '../../stylesheets/palette';
 import { TEXT_POSITIONS } from './constants';
-import { StyledTextProps, StyledTextWrapperProps, StyledToggleWrapperProps } from './types';
+import {
+  StyledTextProps, StyledTextWrapperProps, StyledToggleSwitchWrapperProps, StyledToggleWrapperProps,
+} from './types';
 import { fontSizeBig, fontSizeDefault } from '../../stylesheets/typography';
+import { spacingMedium, spacingSmall } from '../../stylesheets/sizing';
 
 export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
   display: flex;
@@ -15,12 +18,13 @@ export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
     if ($textPosition === TEXT_POSITIONS.TOP || $textPosition === TEXT_POSITIONS.BOTTOM) {
       return css`
         flex-direction: column;
-        gap: .1rem;
+        align-items: center;
+        gap: ${spacingMedium};
       `;
     }
     const horizontalStyles = css`
       flex-direction: row;
-      gap: 1rem;
+      gap: ${spacingMedium};
     `;
     if ($textPosition === TEXT_POSITIONS.LEFT) {
       return css`
@@ -36,25 +40,46 @@ export const ToggleWrapper = styled.div<StyledToggleWrapperProps>`
   `}
 `;
 
-export const ToggleSwitchWrapper = styled.div`
+// The wrapper spans the row and centers the switch in it, as the text wrapper does with the
+// text. Beside a label and a helper text, it spans only the label's line instead (`1lh` in
+// the label's font size and line height), so the switch follows the label.
+export const ToggleSwitchWrapper = styled.div<StyledToggleSwitchWrapperProps>`
   display: flex;
-  flex-direction: row;
-  align-items: start;
+  flex-direction: column;
   justify-content: center;
-  padding: 0.3rem 0px;
+  ${({ $alignToLabel }) => $alignToLabel && css`
+    align-self: flex-start;
+    height: 1lh;
+    font-size: ${fontSizeBig};
+    line-height: normal;
+  `}
+`;
+
+// The focus outline goes here, sized to the switch, instead of on the switch root, whose
+// disabled opacity would fade it. MUI never sets `Mui-focusVisible` while disabled, so a
+// focusable disabled input (one with a tooltip) is matched through `:focus-visible`.
+export const SwitchFocusRing = styled.span`
+  display: flex;
+  border-radius: 0.6rem;
+
+  &:has(.Mui-focusVisible), &:has(.Mui-disabled input:focus-visible) {
+    outline: 2px solid ${colorBrand1};
+    outline-offset: 2px;
+  }
 `;
 
 export const TextWrapper = styled.label<StyledTextWrapperProps>`
   display: flex;
   flex-direction: column;
+  gap: ${spacingSmall};
   order: ${({ $textPosition }) => {
     if ($textPosition === TEXT_POSITIONS.LEFT || $textPosition === TEXT_POSITIONS.TOP) {
       return -1;
     }
     return 1;
   }};
+  justify-content: center;
   cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
-  ${({ $hasLabel, $hasHelperText }) => (!$hasLabel || !$hasHelperText) && `justify-content: center;`}
   ${({ $textPosition, $fullWidth }) => {
     if ($textPosition === TEXT_POSITIONS.TOP || $textPosition === TEXT_POSITIONS.BOTTOM) {
       return css`
@@ -92,32 +117,23 @@ export const HelperText = styled.span<StyledTextProps>`
   line-height: normal;
 `;
 
-// The checked track's `opacity: 1` outranks MUI's disabled track opacity, so the disabled
-// opacity (MUI's light/dark values) is restated for a checked, disabled switch.
-//
-// MUI's focus ripple only tints the small thumb, so the outline is what makes keyboard
-// focus visible. It goes on the root: the track is clipped by the root's overflow. MUI
-// never sets `Mui-focusVisible` while disabled, so a focusable disabled input (one with
-// a tooltip) is matched through `:focus-visible` instead.
+// A disabled switch fades as a whole, so the track and the thumb keep their enabled colors
+// instead of MUI's disabled track opacity and thumb colors.
 export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
   width: '2.3rem',
   height: '1.2rem',
   padding: 0,
   display: 'flex',
-  '&:has(.Mui-focusVisible), &:has(.Mui-disabled input:focus-visible)': {
-    borderRadius: '0.6rem',
-    outline: `2px solid ${colorBrand1}`,
-    outlineOffset: '2px',
-  },
-  '&:active': {
-    '& .MuiSwitch-switchBase.Mui-checked': {
-      transform: 'translateX(1.2rem)',
-    },
+  '&:has(.Mui-disabled)': {
+    opacity: 0.4,
   },
   '& .MuiSwitch-switchBase': {
-    padding: '0.2rem',
+    padding: '0.3rem',
+    '&:hover, &.Mui-checked:hover': {
+      backgroundColor: 'transparent',
+    },
     '&.Mui-checked': {
-      transform: 'translateX(1.2rem)',
+      transform: 'translateX(1.1rem)',
       color: colorWhite,
       '& + .MuiSwitch-track': {
         opacity: 1,
@@ -126,11 +142,11 @@ export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
           backgroundColor: colorBrand1,
         }),
       },
-      '&.Mui-disabled + .MuiSwitch-track': {
-        opacity: 0.12,
-        ...theme.applyStyles('dark', {
-          opacity: 0.2,
-        }),
+    },
+    '&.Mui-disabled, &.Mui-checked.Mui-disabled': {
+      color: colorWhite,
+      '& + .MuiSwitch-track': {
+        opacity: 1,
       },
     },
   },
@@ -142,7 +158,6 @@ export const MaterialToggle = materialStyled(Switch)(({ theme }) => ({
     transition: theme.transitions.create(['width'], {
       duration: 200,
     }),
-    transform: 'translateY(1px)',
   },
   '& .MuiSwitch-track': {
     borderRadius: '0.6rem',

@@ -12,9 +12,11 @@ export interface StyledToggleWrapperProps {
   $fullWidth: boolean;
 }
 
+export interface StyledToggleSwitchWrapperProps {
+  $alignToLabel: boolean;
+}
+
 export interface StyledTextWrapperProps extends StyledToggleWrapperProps{
-  $hasLabel: boolean;
-  $hasHelperText: boolean;
   $disabled?: boolean;
 }
 
