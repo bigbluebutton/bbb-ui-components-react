@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import BBButton from './component';
 import {
   MdFavorite, MdMoreVert, MdSettings, MdCheckCircle, MdContentCopy,
