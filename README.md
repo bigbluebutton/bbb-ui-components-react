@@ -69,6 +69,7 @@ The following table lists the supported CSS variables for color overriding, extr
 
 | Variable Name              | Maps to BBB Core Variable  | Default Value |
 |----------------------------|----------------------------|---------------|
+| `--color-neutral-1`        | No                         | #616C80      |
 | `--color-neutral-2`        | No                         | #717C91      |
 | `--color-neutral-3`        | No                         | #B0BDC9      |
 | `--color-neutral-4`        | No                         | #DCE4EC      |
@@ -93,7 +94,7 @@ The following table lists the supported CSS variables for color overriding, extr
 | `--color-border-error`     | No                         | #DF2721      |
 | `--color-border-default`   | Yes (`--default-border`)   | #B0BDC9      |
 | `--color-text-default`     | No                         | #393C48      |
-| `--color-text-secondary`   | No                         | #717C91      |
+| `--color-text-secondary`   | No                         | #616C80      |
 | `--color-icon-default`     | No                         | #717C91      |
 | `--color-icon-blue`        | No                         | #0F70D7      |
 | `--color-icon-white`       | No                         | #FFFFFF      |

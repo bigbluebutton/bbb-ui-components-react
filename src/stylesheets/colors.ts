@@ -1,5 +1,5 @@
 import {
-  colorNeutral2, colorNeutral3, colorNeutral4, colorWhite, colorLightGray, colorGray, colorDarkGray,
+  colorNeutral1, colorNeutral2, colorNeutral3, colorNeutral4, colorWhite, colorLightGray, colorGray, colorDarkGray,
   colorBrand1, colorBrand2, colorBrand3, colorBrandLight, colorBrandAux,
   colorSuccess, colorWarning, colorError, colorErrorDark,
   colorBackgroundWhite, colorBackgroundLight, colorBackgroundBlue,
@@ -14,6 +14,7 @@ import {
 
 export const colors = {
   neutral: {
+    neutral1: colorNeutral1,
     neutral2: colorNeutral2,
     neutral3: colorNeutral3,
     neutral4: colorNeutral4,
