@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBSpinner from './component';
 
 const meta = {
-  title: 'BBBSpinner',
+  title: 'Components/Feedback/BBBSpinner',
+  id: 'bbbspinner',
   component: BBBSpinner,
   tags: ['autodocs'],
   argTypes: {

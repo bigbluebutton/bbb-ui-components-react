@@ -11,7 +11,8 @@ import { BBBHint } from '../Hint';
 import MenuItem from '@mui/material/MenuItem';
 
 const meta = {
-  title: 'BBBModal',
+  title: 'Components/Overlay/BBBModal',
+  id: 'bbbmodal',
   component: BBBModal,
   tags: ['autodocs'],
   parameters: {

@@ -8,7 +8,8 @@ import {
 } from './constants';
 
 const meta = {
-  title: 'BBBCheckbox',
+  title: 'Components/Form/BBBCheckbox',
+  id: 'bbbcheckbox',
   component: BBBCheckbox,
   tags: ['autodocs'],
   argTypes: {

@@ -24,7 +24,8 @@ import {
 } from './constants';
 
 const meta = {
-  title: 'BBButton',
+  title: 'Components/Action/BBButton',
+  id: 'bbbutton',
   component: BBButton,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

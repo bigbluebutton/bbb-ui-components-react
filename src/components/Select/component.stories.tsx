@@ -4,7 +4,8 @@ import BBBSelect from './component';
 import MenuItem from '@mui/material/MenuItem';
 
 const meta = {
-  title: 'BBBSelect',
+  title: 'Components/Form/BBBSelect',
+  id: 'bbbselect',
   component: BBBSelect,
   tags: ['autodocs'],
   argTypes: {

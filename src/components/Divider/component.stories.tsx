@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBDivider from './component';
 
 const meta = {
-  title: 'BBBDivider',
+  title: 'Foundation/BBBDivider',
+  id: 'bbbdivider',
   component: BBBDivider,
   tags: ['autodocs'],
 } satisfies Meta<typeof BBBDivider>;

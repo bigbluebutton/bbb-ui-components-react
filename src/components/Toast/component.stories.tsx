@@ -6,7 +6,8 @@ import { BBButton } from '../Button';
 import { TOAST_VARIANT_VALUES } from './constants';
 
 const meta = {
-  title: 'BBBToast',
+  title: 'Components/Feedback/BBBToast',
+  id: 'bbbtoast',
   component: BBBToast,
   tags: ['autodocs'],
   argTypes: {

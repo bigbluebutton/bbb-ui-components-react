@@ -19,7 +19,7 @@ Component folder/file names are **raw** PascalCase (`Button`, `Input`, `Navigati
 | `component.tsx` | always | Component implementation. |
 | `styles.ts` | always | styled-components, using `$`-prefixed transient props (internal, not part of the public API). |
 | `index.ts` | always | `export { default as BBB<Name> } from './component';` |
-| `component.stories.tsx` | always | Storybook stories: `title: 'BBB<Name>'`, `tags: ['autodocs']`, an `argTypes` entry with a `description` per public prop, and a one-line JSDoc comment above every named story export describing what that story demonstrates. |
+| `component.stories.tsx` | always | Storybook stories: `title: '<Group>/BBB<Name>'` with a group from `docs/decisions/0004-*`, `id: 'bbb<name>'` (the export name in lowercase, so links survive a regroup), `tags: ['autodocs']`, an `argTypes` entry with a `description` per public prop, and a one-line JSDoc comment above every named story export describing what that story demonstrates. |
 | `README.md` | always | Usage examples + a Props table (`Property \| Type \| Default \| Description`). |
 | `assets/example.png` | conventional | Demo screenshot referenced by the README as `![Demo](assets/example.png)`. Most components have one; add it when you can. |
 | `types.ts` | if the component takes props | The public `<Name>Props` type/interface. Document every field with a single-line JSDoc comment (see "Prop JSDoc conventions" below). Internal styled-components prop interfaces (`Styled*Props`, `$`-prefixed fields) don't need JSDoc — they aren't public API. |

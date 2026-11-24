@@ -9,7 +9,8 @@ import {
 } from './constants';
 
 const meta = {
-  title: 'BBBToggle',
+  title: 'Components/Form/BBBToggle',
+  id: 'bbbtoggle',
   component: BBBToggle,
   tags: ['autodocs'],
   argTypes: {

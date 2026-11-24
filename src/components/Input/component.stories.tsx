@@ -17,7 +17,8 @@ const plainIconButtonStyle: React.CSSProperties = {
 };
 
 const meta = {
-  title: 'BBBInput',
+  title: 'Components/Form/BBBInput',
+  id: 'bbbinput',
   component: BBBInput,
   tags: ['autodocs'],
   argTypes: {

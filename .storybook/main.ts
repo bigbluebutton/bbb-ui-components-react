@@ -9,6 +9,15 @@ const config: StorybookConfig = {
     "@storybook/addon-mcp",
     "@storybook/addon-vitest"
   ],
+  storySorts: [
+    {
+      order: [
+        'Foundation',
+        'Components',
+        ['Action', 'Form', 'Display', 'Feedback', 'Navigation', 'Overlay'],
+      ],
+    },
+  ],
   framework: {
     name: "@storybook/react-vite",
     options: {},
