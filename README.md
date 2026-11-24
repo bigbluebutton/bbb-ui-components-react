@@ -142,6 +142,8 @@ const StyledDiv = styled.div`
 
 This library is growing into the BigBlueButton design system, starting with the BigBlueButton client: the code and its Storybook are the source of truth for components and their usage rules. See [0001](docs/decisions/0001-code-and-storybook-are-the-source-of-truth.md).
 
+Designers work with it through their agents, in a clone of this repo: the `design-pull` skill brings the design system into a design tool to prototype with, and `design-propose` turns a change to tokens, components or docs into a pull request (both in `.agents/skills/`).
+
 ## Installation
 
 You can install the library directly from npm:
