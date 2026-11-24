@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { MdBrightnessLow, MdBrightnessHigh } from 'react-icons/md';
 import BBBSlider from './component';
 import { VALUE_LABEL_DISPLAY_VALUES, DEFAULT_VALUE_LABEL_DISPLAY } from './constants';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { MdCampaign } from 'react-icons/md';
 import BBBToast from './component';
 import { BBButton } from '../Button';

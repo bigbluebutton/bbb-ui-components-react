@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { MdSend, MdCheckCircle, MdEmojiEmotions } from 'react-icons/md';
 import { VARIANT_VALUES, DEFAULT_VARIANT } from '../Button/constants';
 import BBBInput from './component';
