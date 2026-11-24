@@ -1,10 +1,10 @@
 import {
-  colorNeutral2, colorNeutral3, colorNeutral4, colorWhite, colorLightGray, colorGray, colorDarkGray,
+  colorNeutral1, colorNeutral2, colorNeutral3, colorNeutral4, colorWhite, colorLightGray, colorGray, colorDarkGray,
   colorBrand1, colorBrand2, colorBrand3, colorBrandLight, colorBrandAux,
   colorSuccess, colorWarning, colorError, colorErrorDark,
   colorBackgroundWhite, colorBackgroundLight, colorBackgroundBlue,
   colorBorderDefault, colorBorderSelected, colorBorderError, colorBorderFocusRing,
-  colorTextDefault, colorTextLight,
+  colorTextDefault, colorTextSecondary,
   colorIconDefault, colorIconBlue, colorIconWhite, colorIconDefaultDark,
   colorHoverDark, colorHoverLight, colorHoverNeutral,
   colorOverlay,
@@ -14,6 +14,7 @@ import {
 
 export const colors = {
   neutral: {
+    neutral1: colorNeutral1,
     neutral2: colorNeutral2,
     neutral3: colorNeutral3,
     neutral4: colorNeutral4,
@@ -48,7 +49,9 @@ export const colors = {
   },
   text: {
     default: colorTextDefault,
-    light: colorTextLight,
+    secondary: colorTextSecondary,
+    /** @deprecated Use colors.text.secondary. */
+    light: colorTextSecondary,
   },
   icon: {
     default: colorIconDefault,
