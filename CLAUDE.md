@@ -43,6 +43,10 @@ Component folder/file names are **raw** PascalCase (`Button`, `Input`, `Navigati
 
 A new prop does **not** require changes to the root `README.md`, `package.json` `exports`, or `webpack.config.babel.js` — those only change when adding a whole new component.
 
+## Decisions
+
+Before changing how something looks or behaves, read `docs/decisions/` and the component's `## Decisions` section, if it has one. When a change makes or reverses a design decision, record it in the same pull request (see `docs/decisions/README.md` for what counts).
+
 ## Commit conventions
 
 Commits follow Conventional Commits: `type(scope): subject`.
