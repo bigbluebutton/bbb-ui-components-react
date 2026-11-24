@@ -140,7 +140,7 @@ const StyledDiv = styled.div`
 
 ## Toward a design system
 
-This library is growing into the BigBlueButton design system, starting with the BigBlueButton client: the code and its Storybook are the source of truth for components and their usage rules.
+This library is growing into the BigBlueButton design system, starting with the BigBlueButton client: the code and its Storybook are the source of truth for components and their usage rules. See [0001](docs/decisions/0001-code-and-storybook-are-the-source-of-truth.md).
 
 ## Installation
 
