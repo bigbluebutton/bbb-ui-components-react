@@ -15,7 +15,7 @@ Props, defaults and examples are generated from the code: read them with `npx st
 
 - Never hard-code a color. Use the exported tokens (`colors.text.default`, `colors.brand.brand1`, `spacingMedium`, `borderRadiusSmall`…).
 - Token values are CSS strings (`var(--color-brand-1, #0F70D7)`), so the host page can re-theme them. They do not work where JavaScript parses a color (canvas, chart libraries); read the computed CSS variable there.
-- They are defined in `src/stylesheets/`.
+- They are generated from `tokens/tokens.json` into `src/stylesheets/`.
 
 ## Common mistakes
 

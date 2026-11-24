@@ -43,6 +43,10 @@ Component folder/file names are **raw** PascalCase (`Button`, `Input`, `Navigati
 
 A new prop does **not** require changes to the root `README.md`, `package.json` `exports`, or `webpack.config.babel.js` — those only change when adding a whole new component.
 
+## Design tokens
+
+Tokens live in `tokens/tokens.json`; `src/stylesheets/*.ts` is generated from it by `npm run tokens`. Edit the JSON, run the script and commit both (see `tokens/README.md`).
+
 ## Decisions
 
 Before changing how something looks or behaves, read `docs/decisions/` and the component's `## Decisions` section, if it has one. When a change makes or reverses a design decision, record it in the same pull request (see `docs/decisions/README.md` for what counts).

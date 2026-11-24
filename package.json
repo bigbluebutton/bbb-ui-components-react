@@ -270,7 +270,9 @@
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
     "start": "webpack serve --mode development",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "tokens": "node tokens/build.mjs",
+    "tokens:check": "npm run tokens && git diff --exit-code -- src/stylesheets"
   },
   "author": "Arthur Böckmann Grossi",
   "license": "LGPL-3.0",
@@ -336,6 +338,7 @@
     "path": "^0.12.7",
     "playwright": "1.65.1",
     "storybook": "11.0.0-beta.5",
+    "style-dictionary": "5.8.0",
     "style-loader": "^4.0.0",
     "styled-components": "6.1.13",
     "ts-loader": "^9.5.1",
