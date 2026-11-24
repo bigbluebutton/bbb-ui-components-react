@@ -54,7 +54,10 @@ export const colorBorderFocusRing = 'var(--color-border-focus-ring, rgba(29, 101
 
 // Text colors
 export const colorTextDefault = `var(--color-text-default, ${colorDarkGray})`;
-export const colorTextLight = `var(--color-text-light, ${colorNeutral2})`;
+// Falls back to --color-text-light, its name before the rename, so existing overrides still apply.
+export const colorTextSecondary = `var(--color-text-secondary, var(--color-text-light, ${colorNeutral2}))`;
+/** @deprecated Use colorTextSecondary. */
+export const colorTextLight = colorTextSecondary;
 
 //Icon colors
 export const colorIconDefault = `var(--color-icon-default, ${colorNeutral2})`;

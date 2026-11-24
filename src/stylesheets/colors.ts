@@ -4,7 +4,7 @@ import {
   colorSuccess, colorWarning, colorError, colorErrorDark,
   colorBackgroundWhite, colorBackgroundLight, colorBackgroundBlue,
   colorBorderDefault, colorBorderSelected, colorBorderError, colorBorderFocusRing,
-  colorTextDefault, colorTextLight,
+  colorTextDefault, colorTextSecondary,
   colorIconDefault, colorIconBlue, colorIconWhite, colorIconDefaultDark,
   colorHoverDark, colorHoverLight, colorHoverNeutral,
   colorOverlay,
@@ -48,7 +48,9 @@ export const colors = {
   },
   text: {
     default: colorTextDefault,
-    light: colorTextLight,
+    secondary: colorTextSecondary,
+    /** @deprecated Use colors.text.secondary. */
+    light: colorTextSecondary,
   },
   icon: {
     default: colorIconDefault,

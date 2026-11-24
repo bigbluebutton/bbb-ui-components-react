@@ -10,7 +10,7 @@ import {
   colorNeutral3,
   colorBackgroundLight,
   colorBorderSelected,
-  colorTextLight,
+  colorTextSecondary,
   colorIconDefault,
   colorGray,
   colorBrandAux,
@@ -170,11 +170,11 @@ const CSS_COLOR_PROPERTIES: CSSColorPropertiesType = {
   },
   subtle: {
     default: {
-      color: colorTextLight,
+      color: colorTextSecondary,
       iconColor: colorIconDefault,
       background: 'transparent',
       border: false,
-      hoverColor: colorTextLight,
+      hoverColor: colorTextSecondary,
       hoverBackground: colorLightGray,
       hoverBorder: false,
       outline: colorIconDefault,
