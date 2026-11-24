@@ -7,7 +7,7 @@ A search input component with built-in debounce, clear button, and optional load
 ### Uncontrolled (simplest)
 
 ```tsx
-import { BBBSearch } from 'bbb-ui-components-react';
+import { BBBSearch } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBSearch
   placeholder="Search participants..."
