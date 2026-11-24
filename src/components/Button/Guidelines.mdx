@@ -1,0 +1,59 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBButton guidelines
+
+## When to use
+
+Use BBButton when a person triggers an action, such as sending, saving, joining or closing.
+
+Use something else when:
+
+- The person turns a setting on or off: use BBBToggle.
+- The person selects an option in a list or form: use BBBCheckbox or BBBSelect.
+- The person opens a page or an external address: use a link.
+- The person moves to another view inside the app: use BBBNavigation.
+
+## Variants
+
+- `primary`: the main action in a view or dialog.
+- `secondary`: an alternative to the main action, such as Cancel.
+- `tertiary`: a lower-emphasis action that still needs a filled background.
+- `subtle`: the lowest emphasis, such as a close button.
+
+<Canvas of={Stories.Primary} />
+
+## Layouts
+
+- `default`: a label, with optional icons before or after it. Use it unless space or the surrounding pattern calls for another.
+- `circle` and `squared`: an icon with no visible label, for familiar actions in tight spaces.
+- `stacked`: an icon with the label below it, with an optional helper icon for a second action.
+
+## Do
+
+- Use one `primary` button per view or dialog.
+- Start the label with a verb that names the result, such as "Save changes".
+- Use `color="danger"` for actions that remove or end something.
+- Set `type="submit"` on the button that submits a form.
+- Set `hideHelperIcon` on a `stacked` button that has no second action. The helper icon shows by default.
+- Use `fullWidth` and `labelOverflow` before overriding styles with `className`.
+
+## Don't
+
+- Don't use `variant="tertiary"` with `color="danger"`. Its colors are placeholders and have not been designed.
+- Don't rely on `variant` to separate `neutral` buttons. `primary`, `secondary` and `tertiary` look the same in that color.
+- Don't put the reason a button is disabled in its tooltip. A disabled button cannot be hovered or focused.
+- Don't use `helperOnClick` for an action available nowhere else. The helper icon cannot be reached by keyboard.
+
+## Accessibility
+
+- Always pass `ariaLabel` to `circle` and `squared` buttons. They have no visible label, and `tooltipLabel` does not name the button.
+- Don't pass `ariaLabel` to replace a visible label. The visible label is what is announced.
+- Use `ariaLabelledBy` to name the button from another element, and `ariaDescribedBy` to add a description.
+- Click feedback (`showFeedback`) is announced as a status message. Include text in `feedbackContent`, because an icon alone announces nothing useful.
+
+## Decisions
+
+- **The button type defaults to `button`.** A button inside a form must not submit it by accident. Rejected: the browser default of `submit`, because it submits the enclosing form.
