@@ -1,6 +1,6 @@
 // Generated from tokens/tokens.json by `npm run tokens`. Do not edit.
 import {
-  colorBackgroundBlue, colorBackgroundLight, colorBackgroundWhite, colorBackgroundInverse, colorBackgroundRoom, colorBackgroundRoomOverlay, colorBackgroundRoomOverlayStrong, colorBackgroundVideo, colorBorderDefault, colorBorderError, colorBorderFocusRing, colorBorderSelected, colorBorderSubtle, colorBrand1, colorBrand2, colorBrand3, colorBrandAux, colorBrandLight, colorDarkGray, colorError, colorErrorDark, colorGray, colorHoverDark, colorHoverLight, colorHoverNeutral, colorIconBlue, colorIconDefault, colorIconDefaultDark, colorIconWhite, colorLightGray, colorNeutral2, colorNeutral3, colorNeutral4, colorOverlay, colorShadowDefault, colorShadowStrong, colorSuccess, colorTextDefault, colorTextLight, colorTextOnBrand, colorTextOnDark, colorUserYou, colorUserOthers, colorWarning, colorWhite, colorAvatarBackground, colorNotificationDot, colorNotificationDotBorder, colorSidebarBackground, colorSidebarIcon, colorSidebarDivider, colorSidebarHover, colorSidebarCounter, colorSidebarNotificationBorder, colorVideoSurface, colorVideoOverlay, colorWhiteboardSelected,
+  colorBackgroundBlue, colorBackgroundLight, colorBackgroundWhite, colorBackgroundInverse, colorBackgroundRoom, colorBackgroundRoomOverlay, colorBackgroundRoomOverlayStrong, colorBackgroundVideo, colorBorderDefault, colorBorderError, colorBorderFocusRing, colorBorderSelected, colorBorderSubtle, colorBrand1, colorBrand2, colorBrand3, colorBrandAux, colorBrandLight, colorDarkGray, colorError, colorErrorDark, colorGray, colorHoverDark, colorHoverLight, colorHoverNeutral, colorIconBlue, colorIconDefault, colorIconDefaultDark, colorIconWhite, colorLightGray, colorNeutral1, colorNeutral2, colorNeutral3, colorNeutral4, colorOverlay, colorShadowDefault, colorShadowStrong, colorSuccess, colorTextDefault, colorTextSecondary, colorTextLight, colorTextOnBrand, colorTextOnDark, colorUserYou, colorUserOthers, colorWarning, colorWhite, colorAvatarBackground, colorNotificationDot, colorNotificationDotBorder, colorSidebarBackground, colorSidebarIcon, colorSidebarDivider, colorSidebarHover, colorSidebarCounter, colorSidebarNotificationBorder, colorVideoSurface, colorVideoOverlay, colorWhiteboardSelected,
 } from './palette';
 
 export const colors = {
@@ -32,6 +32,7 @@ export const colors = {
     darkGray: colorDarkGray,
     gray: colorGray,
     lightGray: colorLightGray,
+    neutral1: colorNeutral1,
     neutral2: colorNeutral2,
     neutral3: colorNeutral3,
     neutral4: colorNeutral4,
@@ -63,6 +64,8 @@ export const colors = {
   },
   text: {
     default: colorTextDefault,
+    secondary: colorTextSecondary,
+    /** @deprecated Use colors.text.secondary. */
     light: colorTextLight,
     onBrand: colorTextOnBrand,
     onDark: colorTextOnDark,

@@ -81,12 +81,13 @@ StyleDictionary.registerTransform({
 });
 
 const header = '// Generated from tokens/tokens.json by `npm run tokens`. Do not edit.\n';
+const deprecated = (t, indent = '') => (t.$deprecated ? `${indent}/** @deprecated ${t.$deprecated} */\n` : '');
 const quote = (v) => `'${v.replaceAll("'", "\\'")}'`;
 
 StyleDictionary.registerFormat({
   name: 'bbb/ts/module',
   format: ({ dictionary }) => header + dictionary.allTokens
-    .map((t) => `export const ${t.name} = ${quote(t.$value)};`).join('\n') + '\n',
+    .map((t) => `${deprecated(t)}export const ${t.name} = ${quote(t.$value)};`).join('\n') + '\n',
 });
 
 // colors.ts is a curated, grouped view over palette exports; the grouping is token metadata.
@@ -97,7 +98,7 @@ StyleDictionary.registerFormat({
     const used = dictionary.allTokens.filter((t) => ext(t).colorsKey);
     for (const t of used) {
       const [group, key] = ext(t).colorsKey.split('.');
-      (groups[group] ??= []).push(`    ${key}: ${t.name},`);
+      (groups[group] ??= []).push(`${deprecated(t, '    ')}    ${key}: ${t.name},`);
     }
     const body = Object.entries(groups).map(([g, lines]) => `  ${g}: {\n${lines.join('\n')}\n  },`).join('\n');
     return `${header}import {\n  ${used.map((t) => t.name).join(', ')},\n} from './palette';\n\n`
@@ -198,6 +199,7 @@ const ROLES = {
   text: 'Text', icon: 'Icon', surface: 'Background', border: 'Border', action: 'Action', feedback: 'Feedback', shadow: 'Shadow',
 };
 const rolesOf = (t) => {
+  if (t.$deprecated) return [];
   if (ext(t).figma) return [...new Set(ext(t).figma.map((f) => f.split('/')[0]))];
   const group = ext(t).colorsKey?.split('.')[0];
   return t.$description && group in ROLES ? [group] : [];

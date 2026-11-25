@@ -147,7 +147,7 @@ The lists are by role, so a color with two roles is in both, and a name can star
 
 <TokenTable kind="color" caption="Text colors" rows={[
   { name: 'colors.text.default', value: '#393C48', pointsTo: 'colors.neutral.darkGray', purpose: 'Main text.', figma: ['text/primary'], cssVars: ['--color-text-default', '--color-dark-gray'] },
-  { name: 'colors.text.light', value: '#717C91', pointsTo: 'colors.neutral.neutral2', purpose: 'Supporting text and captions.', figma: ['text/secondary'], cssVars: ['--color-text-light', '--color-neutral-2'] },
+  { name: 'colors.text.secondary', value: '#616C80', pointsTo: 'colors.neutral.neutral1', purpose: 'Supporting text and captions.', figma: ['text/secondary'], cssVars: ['--color-text-secondary', '--color-text-light', '--color-neutral-1'] },
   { name: 'colors.text.onBrand', value: '#FFFFFF', pointsTo: 'colors.neutral.white', purpose: 'Text on the brand color.', figma: ['text/on-brand'], cssVars: ['--color-text-on-brand', '--color-white', '--color-neutral-white'] },
   { name: 'colors.text.onDark', value: '#FFFFFF', pointsTo: 'palette.white', purpose: 'Text on the dark room background.', figma: ['text/on-dark'], cssVars: ['--color-text-on-dark'] },
   { name: 'colors.brand.brand1', value: '#0F70D7', pointsTo: 'palette.blue.500', purpose: 'Main actions, links and highlighted text.', figma: ['text/brand'], cssVars: ['--color-primary', '--color-brand-1'] },
@@ -283,9 +283,11 @@ Don't choose these for new work. They stay so that apps that use them keep worki
   { name: 'colors.neutral.darkGray', value: '#393C48', pointsTo: 'palette.gray.500', purpose: 'Base value. Prefer colors.text.default for text.', cssVars: ['--color-dark-gray'] },
   { name: 'colors.neutral.gray', value: '#4E5A66', pointsTo: 'palette.gray.350', cssVars: ['--color-gray'] },
   { name: 'colors.neutral.lightGray', value: '#F4F6FA', pointsTo: 'palette.gray.25', purpose: 'Base value. Prefer colors.background.light for backgrounds.', cssVars: ['--color-light-gray'] },
-  { name: 'colors.neutral.neutral2', value: '#717C91', pointsTo: 'palette.gray.200', purpose: 'Base value. Prefer colors.text.light or colors.icon.default.', cssVars: ['--color-neutral-2'] },
+  { name: 'colors.neutral.neutral1', value: '#616C80', pointsTo: 'palette.gray.300', purpose: 'Base value. Prefer colors.text.secondary.', cssVars: ['--color-neutral-1'] },
+  { name: 'colors.neutral.neutral2', value: '#717C91', pointsTo: 'palette.gray.200', purpose: 'Base value. Prefer colors.icon.default.', cssVars: ['--color-neutral-2'] },
   { name: 'colors.neutral.neutral3', value: '#B0BDC9', pointsTo: 'palette.gray.100', purpose: 'Base value. Prefer colors.border.default for outlines.', cssVars: ['--color-neutral-3'] },
   { name: 'colors.neutral.neutral4', value: '#DCE4EC', pointsTo: 'palette.gray.50', purpose: 'Base value. Prefer colors.hover.neutral for hover.', cssVars: ['--color-neutral-4'] },
+  { name: 'colors.text.light', value: '#616C80', pointsTo: 'colors.text.secondary', purpose: 'Deprecated. Use colors.text.secondary.', cssVars: ['--color-text-secondary', '--color-text-light', '--color-neutral-1'] },
   { name: 'colors.neutral.white', value: '#FFFFFF', pointsTo: 'palette.white', purpose: 'Base value. Prefer colors.background.white for backgrounds and colors.icon.white for icons.', cssVars: ['--color-white', '--color-neutral-white'] },
 ]} />
 

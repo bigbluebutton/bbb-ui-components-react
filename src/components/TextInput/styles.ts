@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { TextField } from '@mui/material';
 import {
   colorBorderDefault, colorBorderSelected,
-  colorTextDefault, colorTextLight,
+  colorTextDefault, colorTextSecondary,
   colorBorderError, colorError,
 } from '../../stylesheets/palette';
 import { fontSizeSmall } from '../../stylesheets/typography';
@@ -19,7 +19,7 @@ export const StyledTextField = styled(TextField)<StyledTextProps>`
     align-self: stretch;
     border-radius: ${borderRadiusDefault};
     border: 1px solid ${colorBorderDefault};
-    color: ${colorTextLight};
+    color: ${colorTextSecondary};
 
     &.Mui-focused {
       border-color: ${colorBorderSelected};
