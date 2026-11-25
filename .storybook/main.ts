@@ -14,6 +14,7 @@ const config: StorybookConfig = {
       order: [
         'Introduction',
         'Foundation',
+        ['Color', 'Spacing', 'Radius', 'Type'],
         'Components',
         ['Action', 'Form', 'Display', 'Feedback', 'Navigation', 'Overlay'],
       ],

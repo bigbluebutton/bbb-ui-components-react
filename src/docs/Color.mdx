@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { colors } from '../stylesheets/colors';
+import { ColorTable, OtherColorTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Color" id="color" />
+
+# Color
+
+Use a color token instead of a fixed value, so that a change to the token, or a host page's theme, reaches every screen.
+
+```jsx
+import { colors } from '@bigbluebutton/bbb-ui-components-react/colors';
+
+const Card = styled.div`
+  color: ${colors.text.default};
+  background: ${colors.background.white};
+`;
+```
+
+To change a color in a host page, set one of its CSS variables. The samples below show the colors in use now. The default value applies when none of the variables is set.
+
+{Object.keys(colors).map((group) => (
+  <section key={group}>
+    <h2 id={group}>{group[0].toUpperCase() + group.slice(1)}</h2>
+    <ColorTable group={group} />
+  </section>
+))}
+
+## Other
+
+These colors are not in the `colors` object. Import them by name from `@bigbluebutton/bbb-ui-components-react`.
+
+<OtherColorTable />
