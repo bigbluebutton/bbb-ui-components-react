@@ -148,32 +148,69 @@ const usage = (t) => ({
   ...(ext(t).figma ? { figma: ext(t).figma } : {}),
 });
 
-const colorRow = (name) => (t) => ({
-  name: name(t), value: fallbackOf(t.$value), ...usage(t), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
-});
 const sizeRow = (t) => ({ name: t.name, value: withPx(t.$value), ...usage(t) });
 const sized = (prefix) => allTokens.filter((t) => t.name.startsWith(prefix)).sort(bySize).map(sizeRow);
 
+// The Color page follows the layers: primitives, then colors with a role, then colors for one component.
 const colorTokens = allTokens.filter((t) => t.path[0] === 'color');
-const grouped = colorTokens.filter((t) => ext(t).colorsKey);
-const groups = [...new Set(grouped.map((t) => ext(t).colorsKey.split('.')[0]))];
+const colorName = (t) => (ext(t).colorsKey ? `colors.${ext(t).colorsKey}` : t.name);
+const docName = (t) => (t.path[0] === 'palette' ? t.path.join('.') : colorName(t));
+const tokenOf = new Map(allTokens.map((t) => [t.path.join('.'), t]));
+const target = (t) => tokenOf.get(/^\{(.+)\}$/.exec(t.original.$value)?.[1]);
+
+const colorRow = (figma) => (t) => ({
+  name: colorName(t), value: fallbackOf(t.$value), pointsTo: docName(target(t)),
+  ...usage(t), ...(figma && ext(t).figma ? { figma: ext(t).figma.filter(figma) } : {}), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
+});
+
+// A color's roles are the groups of its names in Figma. One with no name there keeps the group it has in `colors`,
+// when that is a role too.
+const ROLES = {
+  text: 'Text', icon: 'Icon', surface: 'Background', border: 'Border', action: 'Action', feedback: 'Feedback', shadow: 'Shadow',
+};
+const rolesOf = (t) => {
+  if (ext(t).figma) return [...new Set(ext(t).figma.map((f) => f.split('/')[0]))];
+  const group = ext(t).colorsKey?.split('.')[0];
+  return t.$description && group in ROLES ? [group] : [];
+};
+// The colors named after the role come first in its list.
+const namedFirst = (role) => (a, b) => Number(isNamed(b, role)) - Number(isNamed(a, role));
+const isNamed = (t, role) => [role, ROLES[role].toLowerCase()].includes(t.path[1]);
+const isComponent = (t) => rolesOf(t).includes('component');
+const componentGroups = [...new Set(colorTokens.filter(isComponent).map((t) => t.path[1]))].sort();
+
+const chain = [];
+for (let t = tokenOf.get('color.whiteboard.selected'); t; t = target(t)) chain.unshift(t);
+
+const ramps = [];
+for (const t of allTokens.filter((x) => x.path[0] === 'palette')) {
+  // White and black are one value each, so they share a row.
+  const name = t.path.length > 2 ? t.path[1] : 'white and black';
+  let ramp = ramps.find((r) => r.name === name);
+  if (!ramp) ramps.push(ramp = { name, tokens: [] });
+  ramp.tokens.push(t);
+}
 
 const literal = (row) => `{ ${Object.entries(row)
   .map(([key, v]) => `${key}: ${Array.isArray(v) ? `[${v.map(quote).join(', ')}]` : quote(v)}`).join(', ')} }`;
 const table = (kind, caption, rows) => (
   `<TokenTable kind="${kind}" caption="${caption}" rows={[\n${rows.map((r) => `  ${literal(r)},`).join('\n')}\n]} />`
 );
+const swatches = (rows, caption) => (
+  `<Swatches caption="${caption}" rows={[\n${rows.map((r) => `  ${literal(r)},`).join('\n')}\n]} />`
+);
+const swatch = (t) => ({ name: docName(t), value: fallbackOf(t.$value), ...(ext(t).figma ? { figma: ext(t).figma } : {}) });
 const title = (s) => s[0].toUpperCase() + s.slice(1);
 
 const lists = {
   'Color.mdx': {
-    colors: groups.map((g) => `## ${title(g)}\n\n${table('color', `${title(g)} colors`, grouped
-      .filter((t) => ext(t).colorsKey.startsWith(`${g}.`))
-      .map(colorRow((t) => `colors.${ext(t).colorsKey}`)))}`).join('\n\n'),
-    other: table('color', 'Other colors', colorTokens.filter((t) => !ext(t).colorsKey).map(colorRow((t) => t.name))),
-    palette: table('color', 'Primitives', allTokens.filter((t) => t.path[0] === 'palette').map((t) => ({
-      name: t.path.join('.'), value: t.$value, ...usage(t),
-    }))),
+    chain: `<ColorChain steps={[\n${chain.map((t) => `  ${literal({ name: docName(t), value: fallbackOf(t.$value), purpose: t.$description ?? '' })},`).join('\n')}\n]} />`,
+    primitives: ramps.map((r) => swatches(r.tokens.map(swatch), title(r.name))).join('\n\n'),
+    semantic: Object.entries(ROLES).map(([role, label]) => `### ${label}\n\n${table('color', `${label} colors`, colorTokens
+      .filter((t) => rolesOf(t).includes(role)).sort(namedFirst(role)).map(colorRow((f) => f.startsWith(`${role}/`))))}`).join('\n\n'),
+    component: componentGroups.map((g) => `### ${title(g)}\n\n${table('color', `${title(g)} colors`, colorTokens
+      .filter((t) => isComponent(t) && t.path[1] === g).map(colorRow()))}`).join('\n\n'),
+    kept: table('color', 'Kept for existing apps', colorTokens.filter((t) => !rolesOf(t).length).map(colorRow())),
   },
   'Spacing.mdx': { spacing: table('spacing', 'Spacing', sized('spacing')) },
   'Radius.mdx': { radius: table('radius', 'Border radius', sized('borderRadius')) },
@@ -191,8 +228,8 @@ const lists = {
 };
 
 for (const [file, blocks] of Object.entries(lists)) {
-  const target = path.join(here, '../src/docs', file);
-  let mdx = fs.readFileSync(target, 'utf8');
+  const page = path.join(here, '../src/docs', file);
+  let mdx = fs.readFileSync(page, 'utf8');
   for (const [name, body] of Object.entries(blocks)) {
     const begin = `{/* BEGIN ${name}: generated from tokens/tokens.json by npm run tokens. Do not edit. */}`;
     const end = `{/* END ${name} */}`;
@@ -200,5 +237,5 @@ for (const [file, blocks] of Object.entries(lists)) {
     if (from < 0 || to < from) throw new Error(`${file}: the "${name}" BEGIN and END comments are missing`);
     mdx = `${mdx.slice(0, from + begin.length)}\n\n${body}\n\n${mdx.slice(to)}`;
   }
-  fs.writeFileSync(target, mdx);
+  fs.writeFileSync(page, mdx);
 }
