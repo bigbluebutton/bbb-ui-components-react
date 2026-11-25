@@ -24,6 +24,6 @@ The Figma file has more tokens than this library, so people and agents cannot te
 ## Consequences
 
 - Dark values are not included. The client sets them today (issue 87).
-- Figma's secondary text color is `colors.text.secondary`, with the names from pull request 137. `colors.text.light` and `--color-text-light` still work, but `colors.text.light` is deprecated.
+- Figma's secondary text color is `colors.text.secondary`, as in pull request 137. It keeps the CSS variable `--color-text-light`, because the client's dark theme sets `--color-text-secondary` to another color. `colors.text.light` still works, but is deprecated.
 - A change of name in Figma has to be made here by hand.
 - `shadowWhiteboard` has no CSS variable of its own. It reads `--tl-shadow-2`, as Figma does, so that it follows tldraw. The tldraw version BigBlueButton uses today calls it `--shadow-2`, so the default value (tldraw's light shadow) applies until it is upgraded.

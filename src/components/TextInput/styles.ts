@@ -36,6 +36,12 @@ export const StyledTextField = styled(TextField)<StyledTextProps>`
   .MuiInputBase-input {
     padding: 0;
     height: auto;
+
+    /* MUI fades the placeholder. */
+    &::placeholder {
+      color: ${colorTextSecondary};
+      opacity: 1;
+    }
   }
 
   .MuiOutlinedInput-notchedOutline {

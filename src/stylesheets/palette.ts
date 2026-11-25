@@ -39,9 +39,9 @@ export const colorShadowStrong = 'var(--color-shadow-strong, rgba(0, 0, 0, 0.2))
 export const colorSuccess = 'var(--color-success, #2DD36F)';
 export const colorSuccessDark = 'var(--color-success-dark, #209B51)';
 export const colorTextDefault = 'var(--color-text-default, var(--color-dark-gray, #393C48))';
-export const colorTextSecondary = 'var(--color-text-secondary, var(--color-text-light, var(--color-neutral-1, #616C80)))';
+export const colorTextSecondary = 'var(--color-text-light, var(--color-neutral-1, #616C80))';
 /** @deprecated Use colors.text.secondary. */
-export const colorTextLight = 'var(--color-text-secondary, var(--color-text-light, var(--color-neutral-1, #616C80)))';
+export const colorTextLight = 'var(--color-text-light, var(--color-neutral-1, #616C80))';
 export const colorTextOnBrand = 'var(--color-text-on-brand, var(--color-white, var(--color-neutral-white, #FFFFFF)))';
 export const colorTextOnDark = 'var(--color-text-on-dark, #FFFFFF)';
 export const colorUserYou = 'var(--color-user-you, #19237C)';
