@@ -1,0 +1,8 @@
+/* As in the client's normalize.css: form controls take the font of the page. */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}

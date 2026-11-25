@@ -1,0 +1,37 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBToggle guidelines
+
+## When to use
+
+Use BBBToggle to turn one setting on or off, when the change takes effect right away.
+
+Use something else when:
+
+- The choice applies when a form is sent, or people pick several options: use BBBCheckbox.
+- People pick one option from a list: use BBBSelect.
+- The person triggers an action: use BBButton.
+
+## Structure
+
+- **Switch:** shows whether the setting is on or off.
+- **Label:** the name of the setting. Clicking it changes the switch.
+- **Helper text:** optional, below the label.
+- **Tooltip:** optional, on hover and keyboard focus.
+
+<Canvas of={Stories.WithHelper} />
+
+## Choose a toggle
+
+- **Label:** name the setting, such as "Mute on join". It should still be true when the switch is on.
+- **Text position:** the same for every toggle in a group.
+- **Full width:** use it in lists of settings, so that the switches line up.
+- **Disabled:** add a `tooltipLabel` that says why. The switch then stays reachable by keyboard.
+
+## Accessibility
+
+- It is announced as a switch. The label names it, and the helper text describes it. Without a label, pass `ariaLabel`.
+- Known gap: in right-to-left languages the switch itself does not mirror.

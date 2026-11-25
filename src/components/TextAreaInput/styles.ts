@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {
-  colorBorderDefault, colorBrand1, colorBrand2, colorTextDefault, colorTextLight, colorWhite,
+  colorBorderDefault, colorBrand1, colorBrand2, colorTextDefault, colorTextSecondary, colorWhite,
 } from '../../stylesheets/palette';
 import { borderRadiusDefault } from '../../stylesheets/sizing';
 
@@ -24,7 +24,7 @@ export const TextAreaInput = styled.textarea`
   margin: 0.3em;
 
   &::placeholder {
-    color: ${colorTextLight};
+    color: ${colorTextSecondary};
   }
 
   &:focus {

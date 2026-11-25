@@ -1,0 +1,37 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBSelect guidelines
+
+## When to use
+
+Use BBBSelect to let people pick one option from a list that would take too much space if it were always open.
+
+Use something else when:
+
+- There are two options, on and off: use BBBToggle.
+- People pick any number of options: use BBBCheckbox for each.
+- People look for something in a long list: use BBBSearch above it.
+
+## Structure
+
+- **Title:** optional, above the field.
+- **Icon:** optional, before the field.
+- **Field:** shows the selected option and an arrow.
+- **Options:** a list that opens below the field.
+
+<Canvas of={Stories.Default} />
+
+## Choose the content
+
+- **Title:** name what is being chosen, such as "Language". Keep it visible wherever there is room.
+- **Options:** keep them short, and put them in an order people expect, such as alphabetical.
+- **Starting value:** set one when there is a sensible choice. Without one the field is empty, because there is no placeholder.
+
+## Accessibility
+
+- The title names the field. Without a title, pass `ariaLabel`.
+- Known gap: there is no helper text, so show errors and instructions next to it.
+- Known gap: in right-to-left languages the arrow stays on the right.

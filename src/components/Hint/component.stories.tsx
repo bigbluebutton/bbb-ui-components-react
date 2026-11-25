@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBHint from './component';
 import { BBButton } from '../Button';
 
 const meta = {
-  title: 'BBBHint',
+  title: 'Components/Feedback/BBBHint',
+  id: 'bbbhint',
   component: BBBHint,
   tags: ['autodocs'],
   argTypes: {
