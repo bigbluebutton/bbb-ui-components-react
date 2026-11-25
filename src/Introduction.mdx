@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# BigBlueButton Design System
+
+The design system is the shared foundation for designing and building [BigBlueButton](https://github.com/bigbluebutton/bigbluebutton). It brings together design tokens, components, and guidelines on how to use them, to help keep every screen consistent and accessible.
+
+Designers and developers work from the same source: the components here are the ones used in the product.
+
+## Find a component
+
+The sidebar has two sections:
+
+- **Foundation:** the basics that components build on, such as color, spacing and type.
+- **Components:** grouped by purpose.
+  - **Action:** start an action.
+  - **Form:** enter or choose something.
+  - **Display:** show or organize content.
+  - **Feedback:** tell people what is happening.
+  - **Navigation:** move between views.
+  - **Overlay:** show content on top of the page.
+
+Open a component to see:
+
+- **Guidelines:** when to use it, what to avoid and why. BBBDivider and BBBTypography do not have them yet.
+- **Docs:** its props, with examples.
+- **Stories:** each state on its own. Change the props in the Controls panel.
+
+## Install
+
+```bash
+npm install @bigbluebutton/bbb-ui-components-react
+```
+
+The library also needs React and a few other packages in your project. See [peer dependencies](https://github.com/bigbluebutton/bbb-ui-components-react#peer-dependencies) for the list.
+
+## Use a component
+
+```jsx
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react';
+
+function SaveButton({ onSave }) {
+  return <BBButton label="Save changes" onClick={onSave} />;
+}
+```
+
+To load only one component, import it from its own path, which uses its name without the prefix:
+
+```jsx
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react/Button';
+```
+
+To match your own brand, override the colors with [CSS variables](https://github.com/bigbluebutton/bbb-ui-components-react#color-customization-with-css-variables).
+
+## Propose a change
+
+Every change starts as a pull request, from designers and developers alike.
+
+- **Read first:** the [design decisions](https://github.com/bigbluebutton/bbb-ui-components-react/tree/develop/docs/decisions) explain why things are the way they are.
+- **Report a problem or ask for something new:** [open an issue](https://github.com/bigbluebutton/bbb-ui-components-react/issues).

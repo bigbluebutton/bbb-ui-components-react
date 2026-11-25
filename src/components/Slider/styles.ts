@@ -7,7 +7,7 @@ import {
   colorWhite,
   colorShadowDefault,
   colorTextDefault,
-  colorTextLight,
+  colorTextSecondary,
   colorIconDefault,
   colorBorderFocusRing,
 } from '../../stylesheets/palette';
@@ -54,7 +54,7 @@ export const Title = styled.span`
 `;
 
 export const HelperText = styled.span`
-  color: ${colorTextLight};
+  color: ${colorTextSecondary};
   font-size: ${fontSizeDefault};
   font-weight: ${fontWeightLight};
 `;
@@ -141,7 +141,7 @@ export const MaterialSlider = materialStyled(Slider)({
     },
   },
   '& .MuiSlider-markLabel': {
-    color: colorTextLight,
+    color: colorTextSecondary,
     fontSize: fontSizeXSmall,
     // RTL: resolve each label's own direction so a leading minus sign doesn't get reordered
     unicodeBidi: 'plaintext',

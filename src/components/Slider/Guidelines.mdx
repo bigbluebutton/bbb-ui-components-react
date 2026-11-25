@@ -1,0 +1,42 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBSlider guidelines
+
+## When to use
+
+Use BBBSlider to let people pick a value in a range when seeing the effect matters more than the exact number, such as a volume.
+
+Use something else when:
+
+- The exact value matters: use BBBTextInput.
+- The options have no natural order: use BBBSelect.
+- It only turns on or off: use BBBToggle.
+
+## Structure
+
+- **Label:** optional, above the track.
+- **Helper text:** optional, below the label.
+- **Track and thumb:** the range and the current value. It is always horizontal, with one thumb.
+- **Icons:** optional, at each end of the track.
+- **Marks:** optional points on the track, with or without dots.
+- **Value label:** the current value, near the thumb.
+
+<Canvas of={Stories.WithMarks} />
+
+## Choose a slider
+
+- **Label:** name the value being changed.
+- **Marks:** use them when only some values matter, or to name the ends of the range.
+- **Icons:** use them to show what each end means, such as quiet and loud.
+- **Value label:** it shows while the thumb is in use. Keep it on when people compare values, and format it with its unit.
+- **Saving:** use `onChangeCommitted` for updates that are slow, so they run once at the end.
+
+## Accessibility
+
+- The label names the slider, and the helper text describes it. Without a label, pass `ariaLabel`.
+- The icons are not announced, so don't let them be the only explanation.
+- The direction follows the page, so it works in right-to-left languages.
+- Known gap: the animations do not follow the person's reduced motion setting. Set `animate={false}` in the app when that setting is on.
