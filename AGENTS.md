@@ -2,7 +2,16 @@
 
 How to use `@bigbluebutton/bbb-ui-components-react` when building a BigBlueButton plugin or client screen. To contribute to the library itself, read `CLAUDE.md`.
 
-Props, defaults and examples are generated from the code: read them with `npx storybook tools docs show --id <component>` (for example `bbbutton`), or from the published Storybook's `manifests/components.json`. Do not rely on the component READMEs for props; some are out of date.
+## Where to look
+
+Props, defaults, examples and Guidelines (when to use a component, and what to avoid) come from the code:
+
+- **In this repository:** `npx storybook tools docs list` for every id, then `npx storybook tools docs show --id <id>` (for example `bbbutton`, or `color--docs`).
+- **Anywhere else:** the manifests of the published Storybook, https://bigbluebutton.github.io/bbb-ui-components-react/. They are indexes: a `$ref` is the path of another file, relative to the one it is in, and the part after `#` is the place inside it.
+  - `manifests/components.json` lists the components. Each points to its props (`docgen`), examples (`stories`) and Guidelines (`docs`).
+  - `manifests/docs.json` lists the pages that are not about one component: Introduction, Color, Spacing, Radius, Shadow and Type.
+
+Read a component's Guidelines before you choose it, and the Color, Spacing and Type pages before you style a screen. Do not rely on the component READMEs for props; some are out of date.
 
 ## Package and imports
 
@@ -13,7 +22,7 @@ Props, defaults and examples are generated from the code: read them with `npx st
 
 ## Tokens
 
-- Never hard-code a color. Use the exported tokens (`colors.text.default`, `colors.brand.brand1`, `spacingMedium`, `borderRadiusSmall`…).
+- Never hard-code a color. Use the exported tokens (`colors.text.default`, `colors.brand.brand1`, `spacingMedium`, `borderRadiusSmall`…), imported from the package root (`colors` also from its `/colors` path).
 - Token values are CSS strings (`var(--color-brand-1, #0F70D7)`), so the host page can re-theme them. They do not work where JavaScript parses a color (canvas, chart libraries); read the computed CSS variable there.
 - They are generated from `tokens/tokens.json` into `src/stylesheets/`.
 
