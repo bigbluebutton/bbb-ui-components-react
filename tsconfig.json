@@ -14,5 +14,5 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
   },
-  "exclude": ["**/*.stories.tsx", "**/*.stories.ts", "node_modules", "dist"]
+  "exclude": ["**/*.stories.tsx", "**/*.stories.ts", "node_modules", "dist", "vitest.config.mts", "vitest.shims.d.ts", "tokens"]
 }

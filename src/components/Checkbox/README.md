@@ -7,7 +7,7 @@ The `BBBCheckbox` component is a customizable checkbox that wraps the Material-U
 ## Usage Example
 
 ```jsx
-import { BBBCheckbox } from 'bbb-ui-components';
+import { BBBCheckbox } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBCheckbox label="I accept the terms" />
 ```
@@ -15,7 +15,7 @@ import { BBBCheckbox } from 'bbb-ui-components';
 ### Round Checkbox
 
 ```jsx
-import { BBBCheckbox } from 'bbb-ui-components';
+import { BBBCheckbox } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBCheckbox label="Round Selection" round />
 ```
@@ -25,7 +25,7 @@ import { BBBCheckbox } from 'bbb-ui-components';
 The helper text is shown below the label, and clicking it toggles the checkbox like the label does. Screen readers announce it as the checkbox's description; when there is no `label` or `ariaLabel`, it names the checkbox instead.
 
 ```jsx
-import { BBBCheckbox } from 'bbb-ui-components';
+import { BBBCheckbox } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBCheckbox label="Mirror my webcam" helperText="Only you see the mirrored image" />
 ```
@@ -37,7 +37,7 @@ Useful to explain why a disabled checkbox can't be changed. The tooltip shows on
 A disabled checkbox with a `tooltipLabel` stays in the tab order so keyboard users can reach the tooltip: the input gets `aria-disabled="true"` instead of the native `disabled` attribute, and clicks, label clicks and Space are ignored. Like a natively disabled input, it is left out of form submission and validation: its `name` and `required` are dropped while it is disabled.
 
 ```jsx
-import { BBBCheckbox } from 'bbb-ui-components';
+import { BBBCheckbox } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBCheckbox label="Share webcam" disabled tooltipLabel="Webcams are locked by a moderator" />
 ```

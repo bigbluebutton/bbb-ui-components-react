@@ -5,7 +5,7 @@ The `BBBTextAreaInput` component provides a styled, multi-line text input field 
 ## Usage Example
 
 ```jsx
-import { BBBTextAreaInput } from 'bbb-ui-components';
+import { BBBTextAreaInput } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBTextAreaInput placeholder="Type your text here..." />
 ```
