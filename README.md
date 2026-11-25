@@ -69,6 +69,7 @@ The following table lists the supported CSS variables for color overriding, extr
 
 | Variable Name              | Maps to BBB Core Variable  | Default Value |
 |----------------------------|----------------------------|---------------|
+| `--color-neutral-1`        | No                         | #616C80      |
 | `--color-neutral-2`        | No                         | #717C91      |
 | `--color-neutral-3`        | No                         | #B0BDC9      |
 | `--color-neutral-4`        | No                         | #DCE4EC      |
@@ -93,7 +94,7 @@ The following table lists the supported CSS variables for color overriding, extr
 | `--color-border-error`     | No                         | #DF2721      |
 | `--color-border-default`   | Yes (`--default-border`)   | #B0BDC9      |
 | `--color-text-default`     | No                         | #393C48      |
-| `--color-text-light`       | No                         | #717C91      |
+| `--color-text-light`       | No                         | #616C80      |
 | `--color-icon-default`     | No                         | #717C91      |
 | `--color-icon-blue`        | No                         | #0F70D7      |
 | `--color-icon-white`       | No                         | #FFFFFF      |
@@ -105,6 +106,15 @@ The following table lists the supported CSS variables for color overriding, extr
 | `--color-overlay`          | No                         | rgba(0, 0, 0, 0.75) |
 | `--color-shadow-default`   | No                         | rgb(0 35 11 / 20%) |
 | `--color-user-you`         | No                         | #19237C      |
+| `--color-background-inverse` | No                         | #393C48 |
+| `--color-background-room` | No                         | #181A23 |
+| `--color-background-room-overlay` | No                         | rgba(255, 255, 255, 0.15) |
+| `--color-background-room-overlay-strong` | No                         | #334150 |
+| `--color-background-video` | No                         | #001428 |
+| `--color-border-subtle` | No                         | #DCE4EC |
+| `--color-shadow-strong` | No                         | rgba(0, 0, 0, 0.2) |
+| `--color-text-on-brand` | No                         | #FFFFFF |
+| `--color-text-on-dark` | No                         | #FFFFFF |
 
 **Example Usage**:
 ```css
@@ -137,6 +147,12 @@ const StyledDiv = styled.div`
 
 `colors` is grouped the same way as the table above: `neutral`, `brand`, `semantic`, `background`,
 `border`, `text`, `icon`, `hover`, `overlay`, `shadow`, `user`.
+
+## Toward a design system
+
+This library is growing into the BigBlueButton design system, starting with the BigBlueButton client: the code and its Storybook are the source of truth for components and their usage rules. See [0001](docs/decisions/0001-code-and-storybook-are-the-source-of-truth.md).
+
+Designers work with it through their agents, in a clone of this repo: the `design-pull` skill brings the design system into a design tool to prototype with, and `design-propose` turns a change to tokens, components or docs into a pull request (both in `.agents/skills/`).
 
 ## Installation
 
