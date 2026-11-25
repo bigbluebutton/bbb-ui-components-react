@@ -1,10 +1,11 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBScrollArea from './component';
 import { colorWhite } from '../../stylesheets/palette';
 
 const meta = {
-  title: 'BBBScrollArea',
+  title: 'Components/Display/BBBScrollArea',
+  id: 'bbbscrollarea',
   component: BBBScrollArea,
   tags: ['autodocs'],
   argTypes: {

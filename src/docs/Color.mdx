@@ -1,0 +1,128 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TokenTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Color" id="color" />
+
+# Color
+
+Use a color token instead of a fixed value, so that a change to the token, or a host page's theme, reaches every screen.
+
+```jsx
+import { colors } from '@bigbluebutton/bbb-ui-components-react/colors';
+
+const Card = styled.div`
+  color: ${colors.text.default};
+  background: ${colors.background.white};
+`;
+```
+
+To change a color in a host page, set one of its CSS variables. The samples below show the colors in use now. The default value applies when none of the variables is set.
+
+Choose a color by what it is for, not by how it looks. A color with no purpose listed has no agreed use yet, so don't choose it for new work.
+
+{/* BEGIN colors: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+## Background
+
+<TokenTable kind="color" caption="Background colors" rows={[
+  { name: 'colors.background.blue', value: '#E5EFFB', purpose: 'Light highlight, such as a selected item.', cssVars: ['--color-background-blue', '--color-brand-light'] },
+  { name: 'colors.background.light', value: '#F4F6FA', purpose: 'Secondary areas, such as action bars and fields.', cssVars: ['--color-background-light', '--color-light-gray'] },
+  { name: 'colors.background.white', value: '#FFFFFF', purpose: 'Panels, cards and modals.', cssVars: ['--color-background-white', '--color-white', '--color-neutral-white'] },
+]} />
+
+## Border
+
+<TokenTable kind="color" caption="Border colors" rows={[
+  { name: 'colors.border.default', value: '#B0BDC9', purpose: 'Outline of fields and controls.', cssVars: ['--default-border', '--color-border-default', '--color-neutral-3'] },
+  { name: 'colors.border.error', value: '#DF2721', purpose: 'Outline of a field with an error.', cssVars: ['--color-border-error', '--color-error'] },
+  { name: 'colors.border.focusRing', value: 'rgba(29, 101, 212, 0.15)', purpose: 'Ring around a focused field. Use it together with colors.border.selected, never instead of it.', cssVars: ['--color-border-focus-ring'] },
+  { name: 'colors.border.selected', value: '#0F70D7', purpose: 'Outline of a focused or selected item.', cssVars: ['--color-border-selected', '--color-primary', '--color-brand-1'] },
+]} />
+
+## Brand
+
+<TokenTable kind="color" caption="Brand colors" rows={[
+  { name: 'colors.brand.brand1', value: '#0F70D7', purpose: 'Main actions, links and highlighted text.', cssVars: ['--color-primary', '--color-brand-1'] },
+  { name: 'colors.brand.brand2', value: '#0F70D7', cssVars: ['--color-brand-2', '--color-brand-1'] },
+  { name: 'colors.brand.brand3', value: '#0F70D7', cssVars: ['--color-brand-3', '--color-brand-1'] },
+  { name: 'colors.brand.aux', value: '#E5EFFB', cssVars: ['--color-brand-aux', '--color-hover-light', '--color-brand-light'] },
+  { name: 'colors.brand.light', value: '#E5EFFB', cssVars: ['--color-blue-aux', '--color-brand-light'] },
+]} />
+
+## Neutral
+
+<TokenTable kind="color" caption="Neutral colors" rows={[
+  { name: 'colors.neutral.darkGray', value: '#393C48', purpose: 'Base value. Prefer colors.text.default for text.', cssVars: ['--color-dark-gray'] },
+  { name: 'colors.neutral.gray', value: '#4E5A66', cssVars: ['--color-gray'] },
+  { name: 'colors.neutral.lightGray', value: '#F4F6FA', purpose: 'Base value. Prefer colors.background.light for backgrounds.', cssVars: ['--color-light-gray'] },
+  { name: 'colors.neutral.neutral2', value: '#717C91', purpose: 'Base value. Prefer colors.text.light or colors.icon.default.', cssVars: ['--color-neutral-2'] },
+  { name: 'colors.neutral.neutral3', value: '#B0BDC9', purpose: 'Base value. Prefer colors.border.default for outlines.', cssVars: ['--color-neutral-3'] },
+  { name: 'colors.neutral.neutral4', value: '#DCE4EC', purpose: 'Base value. Prefer colors.hover.neutral for hover.', cssVars: ['--color-neutral-4'] },
+  { name: 'colors.neutral.white', value: '#FFFFFF', purpose: 'Base value. Prefer colors.background.white for backgrounds and colors.icon.white for icons.', cssVars: ['--color-white', '--color-neutral-white'] },
+]} />
+
+## Semantic
+
+<TokenTable kind="color" caption="Semantic colors" rows={[
+  { name: 'colors.semantic.error', value: '#DF2721', purpose: 'Errors and destructive actions, such as leaving or ending.', cssVars: ['--color-danger', '--color-error'] },
+  { name: 'colors.semantic.errorDark', value: '#AE1010', purpose: 'Hover on a destructive action.', cssVars: ['--color-danger-dark', '--color-error-dark'] },
+  { name: 'colors.semantic.success', value: '#2DD36F', purpose: 'Success, such as a good connection.', cssVars: ['--color-success'] },
+  { name: 'colors.semantic.warning', value: '#F59240', purpose: 'Warnings.', cssVars: ['--color-warning'] },
+]} />
+
+## Hover
+
+<TokenTable kind="color" caption="Hover colors" rows={[
+  { name: 'colors.hover.dark', value: '#0C57A7', purpose: 'Hover on a main action filled with the brand color.', cssVars: ['--color-hover-dark'] },
+  { name: 'colors.hover.light', value: '#D4E5FA', purpose: 'Hover on an item with a light brand background.', cssVars: ['--color-hover-light'] },
+  { name: 'colors.hover.neutral', value: '#DCE4EC', purpose: 'Neutral hover on a surface.', cssVars: ['--color-hover-neutral', '--color-neutral-4'] },
+]} />
+
+## Icon
+
+<TokenTable kind="color" caption="Icon colors" rows={[
+  { name: 'colors.icon.blue', value: '#0F70D7', purpose: 'Icons in the brand color.', cssVars: ['--color-icon-blue', '--color-brand-1'] },
+  { name: 'colors.icon.default', value: '#717C91', purpose: 'Icons on a light background.', cssVars: ['--color-icon-default', '--color-neutral-2'] },
+  { name: 'colors.icon.defaultDark', value: 'rgba(255, 255, 255, 0.35)', purpose: 'Icons on a dark background.', cssVars: ['--color-icon-default-dark'] },
+  { name: 'colors.icon.white', value: '#FFFFFF', purpose: 'Icons on the brand color.', cssVars: ['--color-icon-white', '--color-white', '--color-neutral-white'] },
+]} />
+
+## Overlay
+
+<TokenTable kind="color" caption="Overlay colors" rows={[
+  { name: 'colors.overlay.default', value: 'rgba(0, 0, 0, 0.75)', purpose: 'Layer behind a modal.', cssVars: ['--color-overlay'] },
+]} />
+
+## Shadow
+
+<TokenTable kind="color" caption="Shadow colors" rows={[
+  { name: 'colors.shadow.default', value: 'rgba(0, 35, 11, 0.2)', purpose: 'Shadow of elements that sit above the page, such as menus.', cssVars: ['--color-shadow-default'] },
+]} />
+
+## Text
+
+<TokenTable kind="color" caption="Text colors" rows={[
+  { name: 'colors.text.default', value: '#393C48', purpose: 'Main text.', cssVars: ['--color-text-default', '--color-dark-gray'] },
+  { name: 'colors.text.light', value: '#717C91', purpose: 'Supporting text and captions.', cssVars: ['--color-text-light', '--color-neutral-2'] },
+]} />
+
+## User
+
+<TokenTable kind="color" caption="User colors" rows={[
+  { name: 'colors.user.you', value: '#19237C', purpose: 'Avatar of the person using the app.', cssVars: ['--color-user-you'] },
+]} />
+
+{/* END colors */}
+
+## Other
+
+These colors are not in the `colors` object. Import them by name from `@bigbluebutton/bbb-ui-components-react`.
+
+{/* BEGIN other: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="color" caption="Other colors" rows={[
+  { name: 'colorSuccessDark', value: '#209B51', purpose: 'Fill behind a white icon or text that reports success.', cssVars: ['--color-success-dark'] },
+  { name: 'colorWarningDark', value: '#D8680B', purpose: 'Fill behind a white icon or text that reports a warning.', cssVars: ['--color-warning-dark'] },
+]} />
+
+{/* END other */}
