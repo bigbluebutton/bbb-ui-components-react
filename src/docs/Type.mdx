@@ -51,7 +51,9 @@ Choose a style by what the text is for, not by its size:
 
 {/* END font family */}
 
-The components do not set the font. They take it from the app, except for some fields.
+The components do not set the font. They take it from the app, except BBBTextInput and BBBSelect. Buttons and most fields take it only when the app's styles make form controls inherit the font, as in the BigBlueButton client and in Storybook.
+
+Storybook loads Nunito Sans, as in Figma. The client uses Source Sans Pro and does not load Nunito Sans, so don't set `fontFamily` there: let the app's font apply.
 
 ### Size
 

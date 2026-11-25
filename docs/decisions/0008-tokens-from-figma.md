@@ -26,4 +26,5 @@ The Figma file has more tokens than this library, so people and agents cannot te
 - Dark values are not included. The client sets them today (issue 87).
 - Figma's secondary text color is `colors.text.secondary`, as in pull request 137. It keeps the CSS variable `--color-text-light`, because the client's dark theme sets `--color-text-secondary` to another color. `colors.text.light` still works, but is deprecated.
 - A change of name in Figma has to be made here by hand.
+- Storybook loads Nunito Sans from a package, so that stories match Figma, offline too. The client uses Source Sans Pro, so it does not look the same there until the teams agree on one font.
 - `shadowWhiteboard` has no CSS variable of its own. It reads `--tl-shadow-2`, as Figma does, so that it follows tldraw. The tldraw version BigBlueButton uses today calls it `--shadow-2`, so the default value (tldraw's light shadow) applies until it is upgraded.
