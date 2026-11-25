@@ -60,15 +60,17 @@ StyleDictionary.registerTransform({
   transform: (token) => ext(token).cssVars.reduceRight((acc, v) => `var(${v}, ${acc})`, token.$value),
 });
 
-// The color is already a CSS value, with its own var() chain.
+// One shadow, or a list of layers. The color is already a CSS value, with its own var() chain.
+const shadowLayer = ({ offsetX, offsetY, blur, spread, color, inset }) => (
+  `${inset ? 'inset ' : ''}${[offsetX, offsetY, blur, spread].map((d) => (d.value ? `${d.value}${d.unit}` : '0')).join(' ')} ${color}`
+);
+
 StyleDictionary.registerTransform({
   name: 'bbb/shadow',
   type: 'value',
   transitive: true,
   filter: (token) => token.$type === 'shadow' && typeof token.$value === 'object',
-  transform: ({ $value: { offsetX, offsetY, blur, spread, color } }) => (
-    `${[offsetX, offsetY, blur, spread].map((d) => (d.value ? `${d.value}${d.unit}` : '0')).join(' ')} ${color}`
-  ),
+  transform: (token) => [token.$value].flat().map(shadowLayer).join(', '),
 });
 
 const header = '// Generated from tokens/tokens.json by `npm run tokens`. Do not edit.\n';
@@ -96,7 +98,7 @@ StyleDictionary.registerFormat({
   },
 });
 
-const valueTransforms = ['bbb/color/css', 'bbb/dimension', 'bbb/fontWeight', 'bbb/css-var-chain', 'bbb/shadow'];
+const valueTransforms = ['bbb/color/css', 'bbb/dimension', 'bbb/fontWeight', 'bbb/shadow', 'bbb/css-var-chain'];
 
 const sd = new StyleDictionary({
   source: [path.join(here, 'tokens.json')],
