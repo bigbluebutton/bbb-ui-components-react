@@ -139,7 +139,7 @@ const CSS_COLOR_PROPERTIES: CSSColorPropertiesType = {
   },
   tertiary: {
     default: {
-      color: colorBrand1,
+      color: colorHoverDark,
       background: colorBackgroundBlue,
       border: false,
       hoverColor: colorHoverDark,
@@ -181,7 +181,7 @@ const CSS_COLOR_PROPERTIES: CSSColorPropertiesType = {
     },
     danger: {
       color: colorError,
-      background: false,
+      background: 'transparent',
       border: false,
       hoverColor: colorErrorDark,
       hoverBackground: colorLightGray,

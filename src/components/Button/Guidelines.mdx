@@ -155,3 +155,4 @@ Use `fullWidth` in narrow containers, such as a side panel. When a label may not
 ## Decisions
 
 - **The button type defaults to `button`.** A button inside a form must not submit it by accident. Rejected: the browser default of `submit`, because it submits the enclosing form.
+- **Tertiary text is `colors.hover.dark`, not the brand color.** On the light blue fill the brand color is 4.18:1, below the 4.5:1 that text needs. Rejected: the default text color, because the button no longer reads as a brand action.
