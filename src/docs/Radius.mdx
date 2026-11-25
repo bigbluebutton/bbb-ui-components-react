@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TokenTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Radius" id="radius" />
+
+# Radius
+
+Use a radius token to round the corners of an element, instead of a fixed value.
+
+```jsx
+import { borderRadiusSmall } from '@bigbluebutton/bbb-ui-components-react';
+
+const Card = styled.div`
+  border-radius: ${borderRadiusSmall};
+`;
+```
+
+Unlike colors, a host page cannot override the radius. Pixel values assume the browser's default text size.
+
+{/* BEGIN radius: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="radius" caption="Border radius" rows={[
+  { name: 'borderRadiusSmall', value: '0.5rem (8px)', purpose: 'Elements up to about 40px, such as list items, tooltips and square icon buttons.' },
+  { name: 'borderRadiusDefault', value: '1rem (16px)', purpose: 'Medium controls and containers, about 40 to 600px, such as buttons, fields, cards and modals.' },
+  { name: 'borderRadiusXLarge', value: '3rem (48px)', purpose: 'Containers as tall as the screen, such as a sidebar.' },
+  { name: 'borderRadiusFull', value: '9999px', purpose: 'Circles and pills, such as avatars, badges and circular buttons. Use it instead of half the size.' },
+]} />
+
+{/* END radius */}

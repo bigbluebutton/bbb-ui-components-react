@@ -24,3 +24,7 @@ jobs:
       - name: typescript code validation with eslint
         shell: bash
         run: npm run lint
+      # src/stylesheets is generated from tokens/tokens.json; fail if someone edited one without the other.
+      - name: check generated tokens
+        shell: bash
+        run: npm run tokens:check
