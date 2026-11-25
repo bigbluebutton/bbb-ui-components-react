@@ -1,0 +1,40 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBModal guidelines
+
+## When to use
+
+Use BBBModal when the person must make a decision or finish a short task before going on. It covers the page, so use it sparingly.
+
+Use something else when:
+
+- The message only reports what just happened: use BBBToast.
+- The message explains something in the page: use BBBHint.
+- The extra content can open in place: use BBBAccordion.
+
+## Structure
+
+- **Overlay:** covers the page behind the modal.
+- **Title:** what the modal is about, at the top.
+- **Close button:** on the same line as the title.
+- **Body:** the content. It scrolls when it is too tall.
+- **Footer:** the actions. It stays in view while the body scrolls.
+- **Dividers:** optional lines between the title, body and footer.
+
+<Canvas of={Stories.Default} />
+
+## Choose a modal
+
+- **Footer:** put the actions here, with one `primary` button. Set `noFooter` when there are none, because an empty footer still takes up space.
+- **Ways to close:** Escape and clicking outside are both off by default. Turn on Escape unless the person must choose an action. Turn on clicking outside only when nothing they entered can be lost.
+- **No close button:** remove it only when the person must choose an action, and make sure the footer has a way out.
+- **Dividers:** add them when the body scrolls and its edges are hard to see.
+
+## Accessibility
+
+- Always pass `contentLabel`. The title is not used as the name of the dialog.
+- Pass `appElement`, so that screen readers ignore the page behind the modal.
+- Known gap: the close button's name is always "close", in English, and cannot be translated.

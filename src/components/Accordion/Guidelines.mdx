@@ -1,0 +1,40 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBAccordion guidelines
+
+## When to use
+
+Use BBBAccordion to hide content that only some people need, such as advanced options, and let them open it in place.
+
+Use something else when:
+
+- Most people need the content: show it.
+- The person must respond before going on: use BBBModal.
+- The content is another view: use BBBNavigation.
+
+## Structure
+
+- **Header:** a button that opens and closes the content.
+- **Arrow:** at the start of the header. It turns over when the content is open.
+- **Title:** what is inside.
+- **Extra header content:** optional, after the title.
+- **Content:** shown below the header when open.
+
+<Canvas of={Stories.Default} />
+
+## Choose the content
+
+- **Title:** name what is inside, such as "Advanced options", rather than "More".
+- **Extra header content:** use it for something to look at, such as an icon. Don't put buttons or links in it, because the whole header is a button.
+- **Tooltip:** use it to add to the title, not to replace it.
+- **Important content:** keep it out. The accordion always starts closed, and the app cannot open it.
+
+## Accessibility
+
+- The title names the header. Pass `ariaLabel` only when that is not enough, and start it with the title.
+- Known gap: whether it is open or closed is not announced.
+- Known gap: closed content can still be reached by keyboard and screen readers.
+- Known gap: inside a form the header submits the form.

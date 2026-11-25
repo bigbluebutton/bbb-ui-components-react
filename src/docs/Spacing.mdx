@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TokenTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Spacing" id="spacing" />
+
+# Spacing
+
+Use a spacing token for the space around and between elements, instead of a fixed value.
+
+```jsx
+import { spacingMedium } from '@bigbluebutton/bbb-ui-components-react';
+
+const Card = styled.div`
+  padding: ${spacingMedium};
+`;
+```
+
+Unlike colors, a host page cannot override spacing. Pixel values assume the browser's default text size.
+
+{/* BEGIN spacing: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="spacing" caption="Spacing" rows={[
+  { name: 'spacing0', value: '0px', purpose: 'No space.', figma: ['spacing/0'] },
+  { name: 'spacingXSmall', value: '0.25rem (4px)', purpose: 'Minimum space, such as between a short icon and its text, or the vertical padding of pills and tooltips.', figma: ['spacing/xsmall'] },
+  { name: 'spacingSmall', value: '0.5rem (8px)', purpose: 'Between related items, such as list items, menu items and icons in a group.', figma: ['spacing/small'] },
+  { name: 'spacingSmallMedium', value: '0.75rem (12px)', purpose: 'Between a title and its content inside a section.', figma: ['spacing/small-medium'] },
+  { name: 'spacingMedium', value: '1rem (16px)', purpose: 'Padding of medium components, such as fields and cards, and the default space between elements.', figma: ['spacing/medium'] },
+  { name: 'spacingMediumLarge', value: '1.25rem (20px)', purpose: 'Occasional use. Prefer spacingMedium or spacingLarge.', figma: ['spacing/medium-large'] },
+  { name: 'spacingLarge', value: '1.5rem (24px)', purpose: 'Padding of panels and modals, and the space between sections.', figma: ['spacing/large'] },
+  { name: 'spacingXLarge', value: '2rem (32px)', purpose: 'Between large groups.', figma: ['spacing/xlarge'] },
+  { name: 'spacingXXLarge', value: '3rem (48px)', purpose: 'Between page blocks.', figma: ['spacing/xxlarge'] },
+]} />
+
+{/* END spacing */}
+
+## Padding
+
+Use these for what you build yourself. The library's components set their own padding, so don't change it.
+
+- **Panel:** `spacingLarge` on all sides.
+- **Card:** `spacingMedium`.
+- **Actions bar:** `spacingMedium`.
+- **Menu item:** no vertical padding, and `spacingMedium` (compact) or `spacingLarge` (large) at the sides.
+- **Tooltip:** `spacingXSmall` vertical, `spacingSmall` at the sides.
+- **Badge:** no vertical padding, `spacingSmallMedium` at the sides.
+
+The larger the surface, the larger its padding. Use the same padding on all sides unless the element is listed above with different ones, and the same padding every time an element is repeated.
+
+## Gaps
+
+The gap shows how closely things are related: the less related, the larger the gap. Don't use one gap for items and for the groups they belong to, because people can no longer see the groups.
+
+- **Short icon and its text:** `spacingXSmall`.
+- **Items of one list or group, such as options:** `spacingSmall`.
+- **Section title and its content:** `spacingSmallMedium`.
+- **Buttons in an actions bar or a modal footer:** `spacingMedium`.
+- **Groups, and panels side by side:** `spacingMedium`.
+- **Sections inside a panel or modal:** `spacingLarge`.
+- **Page blocks:** `spacingXXLarge`.
+
+When nothing here fits, use `spacingMedium`. When two values fit, prefer a multiple of 8px.

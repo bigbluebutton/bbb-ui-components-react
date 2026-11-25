@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TokenTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Type" id="type" />
+
+# Type
+
+Use these tokens inside the library to size and weigh text. They are not exported from the package. In a product screen, use [BBBTypography](?path=/docs/bbbtypography--docs), which applies them for you. Pixel values assume the browser's default text size.
+
+## Family
+
+{/* BEGIN font family: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="fontFamily" caption="Font family" rows={[
+  { name: 'fontFamily', value: '"Nunito Sans", sans-serif', purpose: 'All interface text.', figma: ['font/family'] },
+]} />
+
+{/* END font family */}
+
+The components do not set the font. They take it from the app, except for some fields.
+
+## Size
+
+{/* BEGIN font size: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="fontSize" caption="Font size" rows={[
+  { name: 'fontSizeXSmall', value: '0.75rem (12px)', purpose: 'Minimum supporting text and small labels. Nothing smaller.', figma: ['font/size/xsmall'] },
+  { name: 'fontSizeSmall', value: '0.875rem (14px)', purpose: 'Labels, descriptions and secondary text.', figma: ['font/size/small'] },
+  { name: 'fontSizeDefault', value: '1rem (16px)', purpose: 'Default text, panel titles and buttons.', figma: ['font/size/default'] },
+  { name: 'fontSizeBig', value: '1.125rem (18px)', purpose: 'Used by BBBToggle, BBBSlider and BBBToast. Elsewhere prefer fontSizeDefault.', figma: ['font/size/big'] },
+  { name: 'fontSizeLarge', value: '1.25rem (20px)', purpose: 'Live only in Figma. Large menus and captions over video.', figma: ['font/size/large'] },
+  { name: 'fontSizeXLarge', value: '1.5rem (24px)', purpose: 'Live only in Figma. Highlight titles, such as in empty states.', figma: ['font/size/xlarge'] },
+  { name: 'fontSizeDisplay', value: '2rem (32px)', purpose: 'Live only in Figma. Large numbers, such as timers. Not for text.', figma: ['font/size/display'] },
+]} />
+
+{/* END font size */}
+
+## Weight
+
+{/* BEGIN font weight: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="fontWeight" caption="Font weight" rows={[
+  { name: 'fontWeightLight', value: '400', purpose: 'Running text.', figma: ['font/weight/regular'] },
+  { name: 'fontWeightDefault', value: '600', purpose: 'Buttons, section titles and labels.', figma: ['font/weight/semibold'] },
+  { name: 'fontWeightHard', value: '700', purpose: 'Panel titles and selected items. Not for emphasis inside running text.', figma: ['font/weight/bold'] },
+]} />
+
+{/* END font weight */}
+
+## Text styles in Figma
+
+A style sets the size and weight together. Use the BBBTypography variant where there is one, and don't adjust its size or weight.
+
+- **Heading/Panel:** 16px, bold, uppercase. Panel and modal headers. BBBTypography `header`.
+- **Heading/Section:** 16px, semibold. Groups inside panels and modals. No variant yet.
+- **Body/Default:** 16px, regular. Default text, list and navigation items. BBBTypography `default`.
+- **Body/Selected:** 16px, bold. Active items and card titles. BBBTypography `selected`.
+- **Body/Text 2:** 14px, regular, secondary text color. Labels, descriptions and chat messages. BBBTypography `text2`.
+- **Body/Text 3:** 12px, regular, secondary text color. Times and marks. BBBTypography `text3`.
+- **Label/Button:** 16px, semibold. Buttons and tabs. BBBTypography `button`.
+- **Label/Small:** 12px, semibold. Names on video tiles, small badges and counters. No variant yet.
+- **Heading/Display:** 32px, semibold. Timers and durations, numbers only. Live only, no variant.
+- **Heading/Highlight:** 24px, bold. Empty states and highlight titles, one per screen. Live only, no variant.
+- **Body/Large:** 20px, regular. Large menus and captions over video. Live only, no variant.
+
+The line height is automatic. When in doubt, start with Body/Default.
