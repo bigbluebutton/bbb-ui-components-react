@@ -1,6 +1,6 @@
 // Generated from tokens/tokens.json by `npm run tokens`. Do not edit.
 import {
-  colorBackgroundBlue, colorBackgroundLight, colorBackgroundWhite, colorBackgroundInverse, colorBackgroundRoom, colorBackgroundRoomOverlay, colorBackgroundRoomOverlayStrong, colorBackgroundVideo, colorBorderDefault, colorBorderError, colorBorderFocusRing, colorBorderSelected, colorBorderSubtle, colorBrand1, colorBrand2, colorBrand3, colorBrandAux, colorBrandLight, colorDarkGray, colorError, colorErrorDark, colorGray, colorHoverDark, colorHoverLight, colorHoverNeutral, colorIconBlue, colorIconDefault, colorIconDefaultDark, colorIconWhite, colorLightGray, colorNeutral2, colorNeutral3, colorNeutral4, colorOverlay, colorShadowDefault, colorShadowStrong, colorSuccess, colorTextDefault, colorTextLight, colorTextOnBrand, colorTextOnDark, colorUserYou, colorWarning, colorWhite,
+  colorBackgroundBlue, colorBackgroundLight, colorBackgroundWhite, colorBackgroundInverse, colorBackgroundRoom, colorBackgroundRoomOverlay, colorBackgroundRoomOverlayStrong, colorBackgroundVideo, colorBorderDefault, colorBorderError, colorBorderFocusRing, colorBorderSelected, colorBorderSubtle, colorBrand1, colorBrand2, colorBrand3, colorBrandAux, colorBrandLight, colorDarkGray, colorError, colorErrorDark, colorGray, colorHoverDark, colorHoverLight, colorHoverNeutral, colorIconBlue, colorIconDefault, colorIconDefaultDark, colorIconWhite, colorLightGray, colorNeutral2, colorNeutral3, colorNeutral4, colorOverlay, colorShadowDefault, colorShadowStrong, colorSuccess, colorTextDefault, colorTextLight, colorTextOnBrand, colorTextOnDark, colorUserYou, colorUserOthers, colorWarning, colorWhite, colorAvatarBackground, colorNotificationDot, colorNotificationDotBorder, colorSidebarBackground, colorSidebarIcon, colorSidebarDivider, colorSidebarHover, colorSidebarCounter, colorSidebarNotificationBorder, colorVideoSurface, colorVideoOverlay, colorWhiteboardSelected,
 } from './palette';
 
 export const colors = {
@@ -69,6 +69,29 @@ export const colors = {
   },
   user: {
     you: colorUserYou,
+    others: colorUserOthers,
+  },
+  avatar: {
+    background: colorAvatarBackground,
+  },
+  notification: {
+    dot: colorNotificationDot,
+    dotBorder: colorNotificationDotBorder,
+  },
+  sidebar: {
+    background: colorSidebarBackground,
+    icon: colorSidebarIcon,
+    divider: colorSidebarDivider,
+    hover: colorSidebarHover,
+    counter: colorSidebarCounter,
+    notificationBorder: colorSidebarNotificationBorder,
+  },
+  video: {
+    surface: colorVideoSurface,
+    overlay: colorVideoOverlay,
+  },
+  whiteboard: {
+    selected: colorWhiteboardSelected,
   },
 } as const;
 

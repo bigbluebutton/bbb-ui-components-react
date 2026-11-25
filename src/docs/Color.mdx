@@ -18,7 +18,7 @@ const Card = styled.div`
 
 To change a color in a host page, set one of its CSS variables. The samples below show the colors in use now. The default value applies when none of the variables is set.
 
-Choose a color by what it is for, not by how it looks. A color with no purpose listed has no agreed use yet, so don't choose it for new work.
+Choose a color by what it is for, not by how it looks. A color with no purpose listed has no agreed use yet, so don't choose it for new work. Use the Avatar, Notification, Sidebar, User, Video and Whiteboard colors only for those parts of the app.
 
 {/* BEGIN colors: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
 
@@ -118,7 +118,45 @@ Choose a color by what it is for, not by how it looks. A color with no purpose l
 ## User
 
 <TokenTable kind="color" caption="User colors" rows={[
-  { name: 'colors.user.you', value: '#19237C', purpose: 'Avatar of the person using the app.', figma: ['user/you'], cssVars: ['--color-user-you'] },
+  { name: 'colors.user.you', value: '#19237C', purpose: 'Avatar of the person using the app.', figma: ['component/user/you'], cssVars: ['--color-user-you'] },
+  { name: 'colors.user.others', value: '#0F70D7', purpose: 'Avatar of other people.', figma: ['component/user/others'], cssVars: ['--color-user-others', '--color-primary', '--color-brand-1'] },
+]} />
+
+## Avatar
+
+<TokenTable kind="color" caption="Avatar colors" rows={[
+  { name: 'colors.avatar.background', value: '#0F70D7', purpose: 'Background of an avatar.', figma: ['component/avatar/background'], cssVars: ['--color-avatar-background', '--color-primary', '--color-brand-1'] },
+]} />
+
+## Notification
+
+<TokenTable kind="color" caption="Notification colors" rows={[
+  { name: 'colors.notification.dot', value: '#FF3939', purpose: 'Dot that shows there is something new.', figma: ['component/notification/dot'], cssVars: ['--color-notification-dot'] },
+  { name: 'colors.notification.dotBorder', value: '#FFFFFF', purpose: 'Border of the notification dot.', figma: ['component/notification/dot-border'], cssVars: ['--color-notification-dot-border'] },
+]} />
+
+## Sidebar
+
+<TokenTable kind="color" caption="Sidebar colors" rows={[
+  { name: 'colors.sidebar.background', value: '#FFFFFF', purpose: 'Background of the sidebar.', figma: ['component/sidebar/background'], cssVars: ['--color-sidebar-background', '--color-background-white', '--color-white', '--color-neutral-white'] },
+  { name: 'colors.sidebar.icon', value: '#717C91', purpose: 'Icons in the sidebar.', figma: ['component/sidebar/icon'], cssVars: ['--color-sidebar-icon', '--color-icon-default', '--color-neutral-2'] },
+  { name: 'colors.sidebar.divider', value: '#DCE4EC', purpose: 'Dividers in the sidebar.', figma: ['component/sidebar/divider'], cssVars: ['--color-sidebar-divider', '--color-border-subtle', '--color-neutral-4'] },
+  { name: 'colors.sidebar.hover', value: '#DCE4EC', purpose: 'Hover on a sidebar item.', figma: ['component/sidebar/hover'], cssVars: ['--color-sidebar-hover', '--color-hover-neutral', '--color-neutral-4'] },
+  { name: 'colors.sidebar.counter', value: '#393C48', purpose: 'Counter in the sidebar.', figma: ['component/sidebar/counter'], cssVars: ['--color-sidebar-counter', '--color-text-default', '--color-dark-gray'] },
+  { name: 'colors.sidebar.notificationBorder', value: '#FFFFFF', purpose: 'Border of a notification in the sidebar.', figma: ['component/sidebar/notification-border'], cssVars: ['--color-sidebar-notification-border', '--color-background-white', '--color-white', '--color-neutral-white'] },
+]} />
+
+## Video
+
+<TokenTable kind="color" caption="Video colors" rows={[
+  { name: 'colors.video.surface', value: '#F4F6FA', purpose: 'Light surface of a video. For the area behind a video, use colors.background.video.', figma: ['component/video/surface'], cssVars: ['--color-video-surface'] },
+  { name: 'colors.video.overlay', value: '#000000', purpose: 'Layer over a video.', figma: ['component/video/overlay'], cssVars: ['--color-video-overlay'] },
+]} />
+
+## Whiteboard
+
+<TokenTable kind="color" caption="Whiteboard colors" rows={[
+  { name: 'colors.whiteboard.selected', value: '#0F70D7', purpose: 'Selected item in the whiteboard.', figma: ['component/whiteboard/selected'], cssVars: ['--color-whiteboard-selected', '--color-primary', '--color-brand-1'] },
 ]} />
 
 {/* END colors */}
@@ -135,3 +173,62 @@ These colors are not in the `colors` object. Import them by name from `@bigblueb
 ]} />
 
 {/* END other */}
+
+## Primitives
+
+The values behind the colors above. They are not exported and do not follow a host page's theme, so don't use them directly: choose a color from the lists above. The steps are the same as in Figma.
+
+{/* BEGIN palette: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="color" caption="Primitives" rows={[
+  { name: 'palette.white', value: '#FFFFFF', figma: ['white'] },
+  { name: 'palette.black', value: '#000000', figma: ['black'] },
+  { name: 'palette.gray.25', value: '#F4F6FA', figma: ['gray/25'] },
+  { name: 'palette.gray.50', value: '#DCE4EC', figma: ['gray/50'] },
+  { name: 'palette.gray.100', value: '#B0BDC9', figma: ['gray/100'] },
+  { name: 'palette.gray.150', value: '#909CAF', figma: ['gray/150'] },
+  { name: 'palette.gray.200', value: '#717C91', figma: ['gray/200'] },
+  { name: 'palette.gray.300', value: '#616C80', figma: ['gray/300'] },
+  { name: 'palette.gray.350', value: '#4E5A66', figma: ['gray/350'] },
+  { name: 'palette.gray.400', value: '#3E495E', figma: ['gray/400'] },
+  { name: 'palette.gray.500', value: '#393C48', figma: ['gray/500'] },
+  { name: 'palette.gray.600', value: '#242731', figma: ['gray/600'] },
+  { name: 'palette.gray.700', value: '#14161D', figma: ['gray/700'] },
+  { name: 'palette.night.500', value: '#384B5B', figma: ['night/500'] },
+  { name: 'palette.night.600', value: '#334150', figma: ['night/600'] },
+  { name: 'palette.night.700', value: '#2D2F38', figma: ['night/700'] },
+  { name: 'palette.night.800', value: '#181A23', figma: ['night/800'] },
+  { name: 'palette.night.900', value: '#001428', figma: ['night/900'] },
+  { name: 'palette.blue.25', value: '#E5EFFB', figma: ['blue/25'] },
+  { name: 'palette.blue.50', value: '#D4E5FA', figma: ['blue/50'] },
+  { name: 'palette.blue.100', value: '#C5E0FF', figma: ['blue/100'] },
+  { name: 'palette.blue.200', value: '#A4C5F9', figma: ['blue/200'] },
+  { name: 'palette.blue.300', value: '#7AA9F2', figma: ['blue/300'] },
+  { name: 'palette.blue.400', value: '#4C89E6', figma: ['blue/400'] },
+  { name: 'palette.blue.500', value: '#0F70D7', figma: ['blue/500'] },
+  { name: 'palette.blue.600', value: '#0C57A7', figma: ['blue/600'] },
+  { name: 'palette.blue.700', value: '#0B316E', figma: ['blue/700'] },
+  { name: 'palette.green.400', value: '#2DD36F', figma: ['green/400'] },
+  { name: 'palette.green.600', value: '#209B51', figma: ['green/600'] },
+  { name: 'palette.orange.400', value: '#F59240', figma: ['orange/400'] },
+  { name: 'palette.orange.600', value: '#D8680B', figma: ['orange/600'] },
+  { name: 'palette.indigo.700', value: '#19237C', figma: ['indigo/700'] },
+  { name: 'palette.red.400', value: '#FF3939', figma: ['red/400'] },
+  { name: 'palette.red.500', value: '#DF2721', figma: ['red/500'] },
+  { name: 'palette.red.600', value: '#AE1010', figma: ['red/600'] },
+  { name: 'palette.red.700', value: '#B91C25', figma: ['red/700'] },
+  { name: 'palette.alpha.white-8', value: 'rgba(255, 255, 255, 0.08)', figma: ['white/alpha-8'] },
+  { name: 'palette.alpha.white-15', value: 'rgba(255, 255, 255, 0.15)', figma: ['white/alpha-15'] },
+  { name: 'palette.alpha.white-35', value: 'rgba(255, 255, 255, 0.35)', figma: ['white/alpha-35'] },
+  { name: 'palette.alpha.black-10', value: 'rgba(0, 0, 0, 0.1)' },
+  { name: 'palette.alpha.black-16', value: 'rgba(0, 0, 0, 0.16)', figma: ['black/alpha-16'] },
+  { name: 'palette.alpha.black-20', value: 'rgba(0, 0, 0, 0.2)', figma: ['black/alpha-20'] },
+  { name: 'palette.alpha.black-24', value: 'rgba(0, 0, 0, 0.24)' },
+  { name: 'palette.alpha.black-30', value: 'rgba(0, 0, 0, 0.3)', figma: ['black/alpha-30'] },
+  { name: 'palette.alpha.black-50', value: 'rgba(0, 0, 0, 0.5)', figma: ['black/alpha-50'] },
+  { name: 'palette.alpha.black-75', value: 'rgba(0, 0, 0, 0.75)', figma: ['black/alpha-75'] },
+  { name: 'palette.alpha.shadow-20', value: 'rgba(0, 35, 11, 0.2)', figma: ['shadow/base'] },
+  { name: 'palette.alpha.blue-15', value: 'rgba(29, 101, 212, 0.15)' },
+]} />
+
+{/* END palette */}

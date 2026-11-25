@@ -171,6 +171,9 @@ const lists = {
       .filter((t) => ext(t).colorsKey.startsWith(`${g}.`))
       .map(colorRow((t) => `colors.${ext(t).colorsKey}`)))}`).join('\n\n'),
     other: table('color', 'Other colors', colorTokens.filter((t) => !ext(t).colorsKey).map(colorRow((t) => t.name))),
+    palette: table('color', 'Primitives', allTokens.filter((t) => t.path[0] === 'palette').map((t) => ({
+      name: t.path.join('.'), value: t.$value, ...usage(t),
+    }))),
   },
   'Spacing.mdx': { spacing: table('spacing', 'Spacing', sized('spacing')) },
   'Radius.mdx': { radius: table('radius', 'Border radius', sized('borderRadius')) },

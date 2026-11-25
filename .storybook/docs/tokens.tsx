@@ -18,6 +18,7 @@ const cell: React.CSSProperties = {
 const text: React.CSSProperties = { fontFamily: 'sans-serif', fontSize: '0.875rem', color: '#393C48' };
 
 function Table({ caption, rows }: { caption: string; rows: Row[] }) {
+  const hasPurpose = rows.some((row) => row.purpose);
   const hasFigma = rows.some((row) => row.figma);
   const hasVars = rows.some((row) => row.cssVars);
   return (
@@ -29,7 +30,7 @@ function Table({ caption, rows }: { caption: string; rows: Row[] }) {
               <th scope="col" style={cell}>Sample</th>
               <th scope="col" style={cell}>Token</th>
               <th scope="col" style={cell}>{hasVars ? 'Default value' : 'Value'}</th>
-              <th scope="col" style={cell}>Use it for</th>
+              {hasPurpose && <th scope="col" style={cell}>Use it for</th>}
               {hasFigma && <th scope="col" style={cell}>Figma name</th>}
               {hasVars && <th scope="col" style={cell}>CSS variables, first one set wins</th>}
             </tr>
@@ -40,7 +41,7 @@ function Table({ caption, rows }: { caption: string; rows: Row[] }) {
                 <td style={cell}>{row.sample}</td>
                 <td style={cell}><code>{row.name}</code></td>
                 <td style={cell}>{row.value}</td>
-                <td style={cell}>{row.purpose ?? 'Not decided yet'}</td>
+                {hasPurpose && <td style={cell}>{row.purpose ?? 'Not decided yet'}</td>}
                 {hasFigma && <td style={cell}>{row.figma?.map((name) => <div key={name}>{name}</div>)}</td>}
                 {hasVars && (
                   <td style={cell}>{row.cssVars?.map((v) => <div key={v}><code>{v}</code></div>)}</td>
@@ -58,7 +59,8 @@ const checkerboard = 'repeating-conic-gradient(#B0BDC9 0% 25%, #FFFFFF 0% 50%) 0
 
 // The value of a token, with its CSS variables, so that the sample shows what is in use now.
 const tokens: Record<string, string> = { ...palette, ...sizing, ...shadows, ...typography };
-const currentValue = (name: string): string => {
+// A primitive is not exported, so it has none.
+const currentValue = (name: string): string | undefined => {
   const [, group, key] = /^colors\.(\w+)\.(\w+)$/.exec(name) ?? [];
   return group ? (colors as Record<string, Record<string, string>>)[group][key] : tokens[name];
 };
@@ -79,5 +81,5 @@ const samples: Record<Kind, (value: string) => React.ReactNode> = {
 
 /** A list of tokens. `npm run tokens` writes the rows into the page, where agents can read them. */
 export function TokenTable({ kind, caption, rows }: { kind: Kind; caption: string; rows: TokenRow[] }) {
-  return <Table caption={caption} rows={rows.map((row) => ({ ...row, sample: samples[kind](currentValue(row.name)) }))} />;
+  return <Table caption={caption} rows={rows.map((row) => ({ ...row, sample: samples[kind](currentValue(row.name) ?? row.value) }))} />;
 }
