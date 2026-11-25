@@ -7,7 +7,7 @@
 ### Basic usage
 
 ```jsx
-import { BBBScrollArea } from 'bbb-ui-components-react';
+import { BBBScrollArea } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBScrollArea maxHeight="400px" fadeColor="#FFFFFF">
   <MessageList />
@@ -17,7 +17,7 @@ import { BBBScrollArea } from 'bbb-ui-components-react';
 ### Horizontal scroll
 
 ```jsx
-import { BBBScrollArea } from 'bbb-ui-components-react';
+import { BBBScrollArea } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBScrollArea verticalScroll={false} horizontalScroll maxWidth="600px" fadeColor="#FFFFFF">
   <CardRow />
@@ -27,7 +27,7 @@ import { BBBScrollArea } from 'bbb-ui-components-react';
 ### Without edge fade
 
 ```jsx
-import { BBBScrollArea } from 'bbb-ui-components-react';
+import { BBBScrollArea } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBScrollArea maxHeight="400px" fadeEdges={false}>
   <MessageList />
@@ -37,7 +37,7 @@ import { BBBScrollArea } from 'bbb-ui-components-react';
 ### With edge padding
 
 ```jsx
-import { BBBScrollArea } from 'bbb-ui-components-react';
+import { BBBScrollArea } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBScrollArea maxHeight="400px" fadeColor="#FFFFFF" paddingTop="1rem" paddingBottom="1rem">
   <MessageList />

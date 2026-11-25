@@ -1,77 +1,47 @@
-// Neutral colors
+// Generated from tokens/tokens.json by `npm run tokens`. Do not edit.
+export const colorBackgroundBlue = 'var(--color-background-blue, var(--color-brand-light, #E5EFFB))';
+export const colorBackgroundLight = 'var(--color-background-light, var(--color-light-gray, #F4F6FA))';
+export const colorBackgroundWhite = 'var(--color-background-white, var(--color-white, var(--color-neutral-white, #FFFFFF)))';
+export const colorBackgroundInverse = 'var(--color-background-inverse, #393C48)';
+export const colorBackgroundRoom = 'var(--color-background-room, #181A23)';
+export const colorBackgroundRoomOverlay = 'var(--color-background-room-overlay, rgba(255, 255, 255, 0.15))';
+export const colorBackgroundRoomOverlayStrong = 'var(--color-background-room-overlay-strong, #334150)';
+export const colorBackgroundVideo = 'var(--color-background-video, #001428)';
+export const colorBorderDefault = 'var(--default-border, var(--color-border-default, var(--color-neutral-3, #B0BDC9)))';
+export const colorBorderError = 'var(--color-border-error, var(--color-error, #DF2721))';
+export const colorBorderFocusRing = 'var(--color-border-focus-ring, rgba(29, 101, 212, 0.15))';
+export const colorBorderSelected = 'var(--color-border-selected, var(--color-primary, var(--color-brand-1, #0F70D7)))';
+export const colorBorderSubtle = 'var(--color-border-subtle, var(--color-neutral-4, #DCE4EC))';
+export const colorBrand1 = 'var(--color-primary, var(--color-brand-1, #0F70D7))';
+export const colorBrand2 = 'var(--color-brand-2, var(--color-brand-1, #0F70D7))';
+export const colorBrand3 = 'var(--color-brand-3, var(--color-brand-1, #0F70D7))';
+export const colorBrandAux = 'var(--color-brand-aux, var(--color-hover-light, var(--color-brand-light, #E5EFFB)))';
+export const colorBrandLight = 'var(--color-blue-aux, var(--color-brand-light, #E5EFFB))';
+export const colorDarkGray = 'var(--color-dark-gray, #393C48)';
+export const colorError = 'var(--color-danger, var(--color-error, #DF2721))';
+export const colorErrorDark = 'var(--color-danger-dark, var(--color-error-dark, #AE1010))';
+export const colorGray = 'var(--color-gray, #4E5A66)';
+export const colorHoverDark = 'var(--color-hover-dark, #0C57A7)';
+export const colorHoverLight = 'var(--color-hover-light, #D4E5FA)';
+export const colorHoverNeutral = 'var(--color-hover-neutral, var(--color-neutral-4, #DCE4EC))';
+export const colorIconBlue = 'var(--color-icon-blue, var(--color-brand-1, #0F70D7))';
+export const colorIconDefault = 'var(--color-icon-default, var(--color-neutral-2, #717C91))';
+export const colorIconDefaultDark = 'var(--color-icon-default-dark, rgba(255, 255, 255, 0.35))';
+export const colorIconWhite = 'var(--color-icon-white, var(--color-white, var(--color-neutral-white, #FFFFFF)))';
+export const colorLightGray = 'var(--color-light-gray, #F4F6FA)';
 export const colorNeutral2 = 'var(--color-neutral-2, #717C91)';
 export const colorNeutral3 = 'var(--color-neutral-3, #B0BDC9)';
 export const colorNeutral4 = 'var(--color-neutral-4, #DCE4EC)';
-export const colorLightGray = 'var(--color-light-gray, #F4F6FA)';
-export const colorGray = 'var(--color-gray, #4E5A66)';
-export const colorDarkGray = 'var(--color-dark-gray, #393C48)';
-const colorWhite_base = 'var(--color-neutral-white, #FFFFFF)';
-// Mapped to core css vars
-export const colorWhite = `var(--color-white, ${colorWhite_base})`;
-
-// Brand colors
-// Last-resort fallbacks mirror bigbluebutton-html5's palette so that a client
-// which doesn't override --color-primary renders library components with the
-// same brand color as its own (non-library) components.
-const colorBrand1_base = 'var(--color-brand-1, #0F70D7)';
-const colorBrandLight_base = 'var(--color-brand-light, #E5EFFB)';
-export const colorBrand1 = `var(--color-primary, ${colorBrand1_base})`;
-export const colorBrand2 = `var(--color-brand-2, ${colorBrand1_base})`;
-export const colorBrand3 = `var(--color-brand-3, ${colorBrand1_base})`;
-// Mapped to core css vars
-export const colorBrandLight = `var(--color-blue-aux, ${colorBrandLight_base})`;
-export const colorBrandAux = `var(--color-brand-aux, var(--color-hover-light, ${colorBrandLight_base}))`;
-
-
-// Semantic colors
-const colorError_base = 'var(--color-error, #DF2721)';
-const colorErrorDark_base = 'var(--color-error-dark, #AE1010)';
-export const colorSuccess = 'var(--color-success, #2DD36F)';
-export const colorWarning = 'var(--color-warning, #F59240)';
-// Darker shades of the two above, for fills that carry white text or icons - motivation: BBBToast
-// warning and success which lack of contrast for displaying white icons
-export const colorSuccessDark = 'var(--color-success-dark, #209B51)';
-export const colorWarningDark = 'var(--color-warning-dark, #D8680B)';
-// Mapped to core css vars
-export const colorError = `var(--color-danger, ${colorError_base})`;
-export const colorErrorDark = `var(--color-danger-dark, ${colorErrorDark_base})`;
-
-
-// Background colors
-export const colorBackgroundWhite = `var(--color-background-white, ${colorWhite})`;
-export const colorBackgroundLight = `var(--color-background-light, ${colorLightGray})`;
-export const colorBackgroundBlue = `var(--color-background-blue, ${colorBrandLight_base})`;
-
-
-// Border colors
-const colorBorderDefault_base = `var(--color-border-default, ${colorNeutral3})`;
-export const colorBorderSelected = `var(--color-border-selected, ${colorBrand1})`;
-export const colorBorderError = `var(--color-border-error, ${colorError_base})`;
-// Mapped to core css vars
-export const colorBorderDefault = `var(--default-border, ${colorBorderDefault_base})`;
-export const colorBorderFocusRing = 'var(--color-border-focus-ring, rgba(29, 101, 212, 0.15))';
-
-
-// Text colors
-export const colorTextDefault = `var(--color-text-default, ${colorDarkGray})`;
-export const colorTextLight = `var(--color-text-light, ${colorNeutral2})`;
-
-//Icon colors
-export const colorIconDefault = `var(--color-icon-default, ${colorNeutral2})`;
-export const colorIconBlue = `var(--color-icon-blue, ${colorBrand1_base})`;
-export const colorIconWhite = `var(--color-icon-white, ${colorWhite})`;
-export const colorIconDefaultDark = 'var(--color-icon-default-dark, rgba(255, 255, 255, 0.35))';
-
-//Hover colors
-export const colorHoverDark = 'var(--color-hover-dark, #0C57A7)';
-export const colorHoverLight = 'var(--color-hover-light, #D4E5FA)';
-export const colorHoverNeutral = `var(--color-hover-neutral, ${colorNeutral4})`;
-
-//Overlay colors
 export const colorOverlay = 'var(--color-overlay, rgba(0, 0, 0, 0.75))';
-
-//Shadow colors
-export const colorShadowDefault = 'var(--color-shadow-default, rgb(0 35 11 / 20%))';
-
-// User colors
+export const colorShadowDefault = 'var(--color-shadow-default, rgba(0, 35, 11, 0.2))';
+export const colorShadowStrong = 'var(--color-shadow-strong, rgba(0, 0, 0, 0.2))';
+export const colorSuccess = 'var(--color-success, #2DD36F)';
+export const colorSuccessDark = 'var(--color-success-dark, #209B51)';
+export const colorTextDefault = 'var(--color-text-default, var(--color-dark-gray, #393C48))';
+export const colorTextLight = 'var(--color-text-light, var(--color-neutral-2, #717C91))';
+export const colorTextOnBrand = 'var(--color-text-on-brand, var(--color-white, var(--color-neutral-white, #FFFFFF)))';
+export const colorTextOnDark = 'var(--color-text-on-dark, #FFFFFF)';
 export const colorUserYou = 'var(--color-user-you, #19237C)';
+export const colorWarning = 'var(--color-warning, #F59240)';
+export const colorWarningDark = 'var(--color-warning-dark, #D8680B)';
+export const colorWhite = 'var(--color-white, var(--color-neutral-white, #FFFFFF))';

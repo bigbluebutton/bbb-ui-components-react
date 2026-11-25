@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBTextAreaInput guidelines
+
+## When to use
+
+Use BBBTextAreaInput for an answer that may need several lines in a form.
+
+Use something else when:
+
+- The answer fits on one line: use BBBTextInput.
+- The text is sent from the field itself, such as a chat message: use BBBInput.
+
+## Structure
+
+A single part: the field, with an optional placeholder. It has no label or helper text of its own.
+
+## Choose the settings
+
+- **Rows:** show about as many as the expected answer needs.
+- **Length:** it stops at 250 characters unless you change `maxLength`. Say so near the field.
+- **Focus:** it takes the focus as soon as it appears. Turn off `autoFocus` unless it is the only thing to do.
+
+## Accessibility
+
+- Add a visible label in the app and connect it with `id`, or pass `aria-label`.
+- Known gap: the limit is not shown or announced.
+- Known gap: the field does not grow, and text past its visible rows is hidden with no scrollbar.

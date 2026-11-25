@@ -1,10 +1,11 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBTypography from './component';
 import { TYPOGRAPHY_VARIANTS } from './constants';
 
 const meta = {
-  title: 'BBBTypography',
+  title: 'Foundation/BBBTypography',
+  id: 'bbbtypography',
   component: BBBTypography,
   tags: ['autodocs'],
   argTypes: {
