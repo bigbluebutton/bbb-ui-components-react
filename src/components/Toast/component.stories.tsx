@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { MdCampaign } from 'react-icons/md';
 import BBBToast from './component';
 import { BBButton } from '../Button';
 import { TOAST_VARIANT_VALUES } from './constants';
 
 const meta = {
-  title: 'BBBToast',
+  title: 'Components/Feedback/BBBToast',
+  id: 'bbbtoast',
   component: BBBToast,
   tags: ['autodocs'],
   argTypes: {

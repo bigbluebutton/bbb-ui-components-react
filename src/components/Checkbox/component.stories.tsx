@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBCheckbox from './component';
 import {
   LAYOUT_VALUES,
@@ -8,7 +8,8 @@ import {
 } from './constants';
 
 const meta = {
-  title: 'BBBCheckbox',
+  title: 'Components/Form/BBBCheckbox',
+  id: 'bbbcheckbox',
   component: BBBCheckbox,
   tags: ['autodocs'],
   argTypes: {

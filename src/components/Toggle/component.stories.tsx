@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBToggle from './component';
 import {
   TEXT_POSITIONS_VALUES,
@@ -9,7 +9,8 @@ import {
 } from './constants';
 
 const meta = {
-  title: 'BBBToggle',
+  title: 'Components/Form/BBBToggle',
+  id: 'bbbtoggle',
   component: BBBToggle,
   tags: ['autodocs'],
   argTypes: {
