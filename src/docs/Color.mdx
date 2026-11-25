@@ -1,0 +1,302 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ColorChain, Swatches, TokenTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Color" id="color" />
+
+# Color
+
+Use a color token instead of a fixed value, so that a change to the token, or a host page's theme, reaches every screen.
+
+```jsx
+import { colors } from '@bigbluebutton/bbb-ui-components-react/colors';
+
+const Card = styled.div`
+  color: ${colors.text.default};
+  background: ${colors.background.white};
+`;
+```
+
+## How color works
+
+Colors come in three layers, and a color points to one in an earlier layer.
+
+1. **Primitives** are the values, such as a blue. They have no role, and are not exported.
+2. **Semantic colors** give a value a role, such as main actions. These are the colors to use.
+3. **Component colors** give one part of the app its own color, such as the sidebar.
+
+In this example, a change to the semantic color also changes the component color.
+
+{/* BEGIN chain: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<ColorChain steps={[
+  { name: 'palette.blue.500', value: '#0F70D7', purpose: '' },
+  { name: 'colors.brand.brand1', value: '#0F70D7', purpose: 'Main actions, links and highlighted text.' },
+  { name: 'colors.whiteboard.selected', value: '#0F70D7', purpose: 'Selected item in the whiteboard.' },
+]} />
+
+{/* END chain */}
+
+Choose a color by what it is for, not by how it looks:
+
+- Start with a semantic color.
+- Use a component color only for the part of the app it is named after.
+- Never use a primitive, or copy its value.
+
+Some semantic colors reach their primitive through one of the colors kept for existing apps, such as `colors.neutral.neutral3`. Use the semantic color, not the one in between.
+
+## Primitives
+
+Don't use these directly. They are listed to show where the other colors come from, and they do not follow a host page's theme. The steps are the same as in Figma, where `palette.gray.25` is `gray/25`.
+
+{/* BEGIN primitives: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<Swatches caption="White and black" rows={[
+  { name: 'palette.white', value: '#FFFFFF', figma: ['white'] },
+  { name: 'palette.black', value: '#000000', figma: ['black'] },
+]} />
+
+<Swatches caption="Gray" rows={[
+  { name: 'palette.gray.25', value: '#F4F6FA', figma: ['gray/25'] },
+  { name: 'palette.gray.50', value: '#DCE4EC', figma: ['gray/50'] },
+  { name: 'palette.gray.100', value: '#B0BDC9', figma: ['gray/100'] },
+  { name: 'palette.gray.150', value: '#909CAF', figma: ['gray/150'] },
+  { name: 'palette.gray.200', value: '#717C91', figma: ['gray/200'] },
+  { name: 'palette.gray.300', value: '#616C80', figma: ['gray/300'] },
+  { name: 'palette.gray.350', value: '#4E5A66', figma: ['gray/350'] },
+  { name: 'palette.gray.400', value: '#3E495E', figma: ['gray/400'] },
+  { name: 'palette.gray.500', value: '#393C48', figma: ['gray/500'] },
+  { name: 'palette.gray.600', value: '#242731', figma: ['gray/600'] },
+  { name: 'palette.gray.700', value: '#14161D', figma: ['gray/700'] },
+]} />
+
+<Swatches caption="Night" rows={[
+  { name: 'palette.night.500', value: '#384B5B', figma: ['night/500'] },
+  { name: 'palette.night.600', value: '#334150', figma: ['night/600'] },
+  { name: 'palette.night.700', value: '#2D2F38', figma: ['night/700'] },
+  { name: 'palette.night.800', value: '#181A23', figma: ['night/800'] },
+  { name: 'palette.night.900', value: '#001428', figma: ['night/900'] },
+]} />
+
+<Swatches caption="Blue" rows={[
+  { name: 'palette.blue.25', value: '#E5EFFB', figma: ['blue/25'] },
+  { name: 'palette.blue.50', value: '#D4E5FA', figma: ['blue/50'] },
+  { name: 'palette.blue.100', value: '#C5E0FF', figma: ['blue/100'] },
+  { name: 'palette.blue.200', value: '#A4C5F9', figma: ['blue/200'] },
+  { name: 'palette.blue.300', value: '#7AA9F2', figma: ['blue/300'] },
+  { name: 'palette.blue.400', value: '#4C89E6', figma: ['blue/400'] },
+  { name: 'palette.blue.500', value: '#0F70D7', figma: ['blue/500'] },
+  { name: 'palette.blue.600', value: '#0C57A7', figma: ['blue/600'] },
+  { name: 'palette.blue.700', value: '#0B316E', figma: ['blue/700'] },
+]} />
+
+<Swatches caption="Green" rows={[
+  { name: 'palette.green.400', value: '#2DD36F', figma: ['green/400'] },
+  { name: 'palette.green.600', value: '#209B51', figma: ['green/600'] },
+]} />
+
+<Swatches caption="Orange" rows={[
+  { name: 'palette.orange.400', value: '#F59240', figma: ['orange/400'] },
+  { name: 'palette.orange.600', value: '#D8680B', figma: ['orange/600'] },
+]} />
+
+<Swatches caption="Indigo" rows={[
+  { name: 'palette.indigo.700', value: '#19237C', figma: ['indigo/700'] },
+]} />
+
+<Swatches caption="Red" rows={[
+  { name: 'palette.red.400', value: '#FF3939', figma: ['red/400'] },
+  { name: 'palette.red.500', value: '#DF2721', figma: ['red/500'] },
+  { name: 'palette.red.600', value: '#AE1010', figma: ['red/600'] },
+  { name: 'palette.red.700', value: '#B91C25', figma: ['red/700'] },
+]} />
+
+<Swatches caption="Alpha" rows={[
+  { name: 'palette.alpha.white-8', value: 'rgba(255, 255, 255, 0.08)', figma: ['white/alpha-8'] },
+  { name: 'palette.alpha.white-15', value: 'rgba(255, 255, 255, 0.15)', figma: ['white/alpha-15'] },
+  { name: 'palette.alpha.white-35', value: 'rgba(255, 255, 255, 0.35)', figma: ['white/alpha-35'] },
+  { name: 'palette.alpha.black-10', value: 'rgba(0, 0, 0, 0.1)' },
+  { name: 'palette.alpha.black-16', value: 'rgba(0, 0, 0, 0.16)', figma: ['black/alpha-16'] },
+  { name: 'palette.alpha.black-20', value: 'rgba(0, 0, 0, 0.2)', figma: ['black/alpha-20'] },
+  { name: 'palette.alpha.black-24', value: 'rgba(0, 0, 0, 0.24)' },
+  { name: 'palette.alpha.black-30', value: 'rgba(0, 0, 0, 0.3)', figma: ['black/alpha-30'] },
+  { name: 'palette.alpha.black-50', value: 'rgba(0, 0, 0, 0.5)', figma: ['black/alpha-50'] },
+  { name: 'palette.alpha.black-75', value: 'rgba(0, 0, 0, 0.75)', figma: ['black/alpha-75'] },
+  { name: 'palette.alpha.shadow-20', value: 'rgba(0, 35, 11, 0.2)', figma: ['shadow/base'] },
+  { name: 'palette.alpha.blue-15', value: 'rgba(29, 101, 212, 0.15)' },
+]} />
+
+{/* END primitives */}
+
+## Semantic colors
+
+What are you coloring?
+
+- **Text:** see [Text](#text).
+- **An icon:** see [Icon](#icon).
+- **A page, panel, field or other area, or its hover:** see [Background](#background).
+- **An outline or a divider:** see [Border](#border).
+- **A button or other control that does something:** see [Action](#action).
+- **A message or status, such as success or an error:** see [Feedback](#feedback).
+- **A shadow:** see [Shadow](#shadow). For a complete shadow, use a token from the Shadow page.
+
+The lists are by role, so a color with two roles is in both, and a name can start with another word than its list. Import a name that starts with `colors.` from the `colors` object, and any other by itself from `@bigbluebutton/bbb-ui-components-react`.
+
+{/* BEGIN semantic: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+### Text
+
+<TokenTable kind="color" caption="Text colors" rows={[
+  { name: 'colors.text.default', value: '#393C48', pointsTo: 'colors.neutral.darkGray', purpose: 'Main text.', figma: ['text/primary'], cssVars: ['--color-text-default', '--color-dark-gray'] },
+  { name: 'colors.text.secondary', value: '#616C80', pointsTo: 'colors.neutral.neutral1', purpose: 'Supporting text and captions.', figma: ['text/secondary'], cssVars: ['--color-text-light', '--color-neutral-1'] },
+  { name: 'colors.text.onBrand', value: '#FFFFFF', pointsTo: 'colors.neutral.white', purpose: 'Text on the brand color.', figma: ['text/on-brand'], cssVars: ['--color-text-on-brand', '--color-white', '--color-neutral-white'] },
+  { name: 'colors.text.onDark', value: '#FFFFFF', pointsTo: 'palette.white', purpose: 'Text on the dark room background.', figma: ['text/on-dark'], cssVars: ['--color-text-on-dark'] },
+  { name: 'colors.brand.brand1', value: '#0F70D7', pointsTo: 'palette.blue.500', purpose: 'Main actions, links and highlighted text.', figma: ['text/brand'], cssVars: ['--color-primary', '--color-brand-1'] },
+  { name: 'colors.semantic.error', value: '#DF2721', pointsTo: 'palette.red.500', purpose: 'Errors and destructive actions, such as leaving or ending.', figma: ['text/danger'], cssVars: ['--color-danger', '--color-error'] },
+]} />
+
+### Icon
+
+<TokenTable kind="color" caption="Icon colors" rows={[
+  { name: 'colors.icon.blue', value: '#0F70D7', pointsTo: 'palette.blue.500', purpose: 'Icons in the brand color.', figma: ['icon/brand'], cssVars: ['--color-icon-blue', '--color-brand-1'] },
+  { name: 'colors.icon.default', value: '#717C91', pointsTo: 'colors.neutral.neutral2', purpose: 'Icons on a light background.', figma: ['icon/default'], cssVars: ['--color-icon-default', '--color-neutral-2'] },
+  { name: 'colors.icon.defaultDark', value: 'rgba(255, 255, 255, 0.35)', pointsTo: 'palette.alpha.white-35', purpose: 'Icons on a dark background.', cssVars: ['--color-icon-default-dark'] },
+  { name: 'colors.icon.white', value: '#FFFFFF', pointsTo: 'colors.neutral.white', purpose: 'Icons on the brand color.', figma: ['icon/on-brand'], cssVars: ['--color-icon-white', '--color-white', '--color-neutral-white'] },
+]} />
+
+### Background
+
+<TokenTable kind="color" caption="Background colors" rows={[
+  { name: 'colors.background.blue', value: '#E5EFFB', pointsTo: 'palette.blue.25', purpose: 'Light highlight, such as a selected item.', figma: ['surface/brand-subtle'], cssVars: ['--color-background-blue', '--color-brand-light'] },
+  { name: 'colors.background.light', value: '#F4F6FA', pointsTo: 'colors.neutral.lightGray', purpose: 'Secondary areas, such as action bars and fields.', figma: ['surface/subtle'], cssVars: ['--color-background-light', '--color-light-gray'] },
+  { name: 'colors.background.white', value: '#FFFFFF', pointsTo: 'colors.neutral.white', purpose: 'Panels, cards and modals.', figma: ['surface/default'], cssVars: ['--color-background-white', '--color-white', '--color-neutral-white'] },
+  { name: 'colors.background.inverse', value: '#393C48', pointsTo: 'palette.gray.500', purpose: 'Tooltips and labels over video.', figma: ['surface/inverse'], cssVars: ['--color-background-inverse'] },
+  { name: 'colors.background.room', value: '#181A23', pointsTo: 'palette.night.800', purpose: 'The dark background of the meeting room.', figma: ['surface/room'], cssVars: ['--color-background-room'] },
+  { name: 'colors.background.roomOverlay', value: 'rgba(255, 255, 255, 0.15)', pointsTo: 'palette.alpha.white-15', purpose: 'Translucent layer on the room background.', figma: ['surface/overlay'], cssVars: ['--color-background-room-overlay'] },
+  { name: 'colors.background.roomOverlayStrong', value: '#334150', pointsTo: 'palette.night.600', purpose: 'Solid, stronger layer on the room background.', figma: ['surface/overlay-strong'], cssVars: ['--color-background-room-overlay-strong'] },
+  { name: 'colors.background.video', value: '#001428', pointsTo: 'palette.night.900', purpose: 'Behind a video.', figma: ['surface/video'], cssVars: ['--color-background-video'] },
+  { name: 'colors.hover.light', value: '#D4E5FA', pointsTo: 'palette.blue.50', purpose: 'Hover on an item with a light brand background.', figma: ['surface/brand-hover'], cssVars: ['--color-hover-light'] },
+  { name: 'colors.hover.neutral', value: '#DCE4EC', pointsTo: 'colors.neutral.neutral4', purpose: 'Neutral hover on a surface.', figma: ['surface/hover'], cssVars: ['--color-hover-neutral', '--color-neutral-4'] },
+  { name: 'colors.overlay.default', value: 'rgba(0, 0, 0, 0.75)', pointsTo: 'palette.alpha.black-75', purpose: 'Layer behind a modal.', figma: ['surface/modal-overlay'], cssVars: ['--color-overlay'] },
+]} />
+
+### Border
+
+<TokenTable kind="color" caption="Border colors" rows={[
+  { name: 'colors.border.default', value: '#B0BDC9', pointsTo: 'colors.neutral.neutral3', purpose: 'Outline of fields and controls.', figma: ['border/default'], cssVars: ['--default-border', '--color-border-default', '--color-neutral-3'] },
+  { name: 'colors.border.error', value: '#DF2721', pointsTo: 'palette.red.500', purpose: 'Outline of a field with an error.', figma: ['border/danger'], cssVars: ['--color-border-error', '--color-error'] },
+  { name: 'colors.border.selected', value: '#0F70D7', pointsTo: 'colors.brand.brand1', purpose: 'Outline of a focused or selected item.', figma: ['border/focus'], cssVars: ['--color-border-selected', '--color-primary', '--color-brand-1'] },
+  { name: 'colors.border.subtle', value: '#DCE4EC', pointsTo: 'colors.neutral.neutral4', purpose: 'Dividers.', figma: ['border/subtle'], cssVars: ['--color-border-subtle', '--color-neutral-4'] },
+]} />
+
+### Action
+
+<TokenTable kind="color" caption="Action colors" rows={[
+  { name: 'colors.brand.brand1', value: '#0F70D7', pointsTo: 'palette.blue.500', purpose: 'Main actions, links and highlighted text.', figma: ['action/primary'], cssVars: ['--color-primary', '--color-brand-1'] },
+  { name: 'colors.semantic.error', value: '#DF2721', pointsTo: 'palette.red.500', purpose: 'Errors and destructive actions, such as leaving or ending.', figma: ['action/danger'], cssVars: ['--color-danger', '--color-error'] },
+  { name: 'colors.semantic.errorDark', value: '#AE1010', pointsTo: 'palette.red.600', purpose: 'Hover on a destructive action.', figma: ['action/danger-hover'], cssVars: ['--color-danger-dark', '--color-error-dark'] },
+  { name: 'colors.hover.dark', value: '#0C57A7', pointsTo: 'palette.blue.600', purpose: 'Hover on a main action filled with the brand color.', figma: ['action/primary-hover'], cssVars: ['--color-hover-dark'] },
+]} />
+
+### Feedback
+
+<TokenTable kind="color" caption="Feedback colors" rows={[
+  { name: 'colors.semantic.error', value: '#DF2721', pointsTo: 'palette.red.500', purpose: 'Errors and destructive actions, such as leaving or ending.', figma: ['feedback/danger'], cssVars: ['--color-danger', '--color-error'] },
+  { name: 'colors.semantic.success', value: '#2DD36F', pointsTo: 'palette.green.400', purpose: 'Success, such as a good connection.', figma: ['feedback/success'], cssVars: ['--color-success'] },
+  { name: 'colorSuccessDark', value: '#209B51', pointsTo: 'palette.green.600', purpose: 'Fill behind a white icon or text that reports success.', figma: ['feedback/success-dark'], cssVars: ['--color-success-dark'] },
+  { name: 'colors.semantic.warning', value: '#F59240', pointsTo: 'palette.orange.400', purpose: 'Warnings.', figma: ['feedback/warning'], cssVars: ['--color-warning'] },
+  { name: 'colorWarningDark', value: '#D8680B', pointsTo: 'palette.orange.600', purpose: 'Fill behind a white icon or text that reports a warning.', figma: ['feedback/warning-dark'], cssVars: ['--color-warning-dark'] },
+]} />
+
+### Shadow
+
+<TokenTable kind="color" caption="Shadow colors" rows={[
+  { name: 'colors.shadow.default', value: 'rgba(0, 35, 11, 0.2)', pointsTo: 'palette.alpha.shadow-20', purpose: 'Shadow of elements that sit above the page, such as menus.', figma: ['shadow/default'], cssVars: ['--color-shadow-default'] },
+  { name: 'colors.shadow.strong', value: 'rgba(0, 0, 0, 0.2)', pointsTo: 'palette.alpha.black-20', purpose: 'Shadow of toolbars and modals.', figma: ['shadow/strong'], cssVars: ['--color-shadow-strong'] },
+  { name: 'colors.border.focusRing', value: 'rgba(29, 101, 212, 0.15)', pointsTo: 'palette.alpha.blue-15', purpose: 'Ring around a focused field. Use it together with colors.border.selected, never instead of it.', figma: ['shadow/focus'], cssVars: ['--color-border-focus-ring'] },
+]} />
+
+{/* END semantic */}
+
+## Component colors
+
+Each one is for a single part of the app. For anything else, use a semantic color.
+
+{/* BEGIN component: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+### Avatar
+
+<TokenTable kind="color" caption="Avatar colors" rows={[
+  { name: 'colors.avatar.background', value: '#0F70D7', pointsTo: 'colors.brand.brand1', purpose: 'Background of an avatar.', figma: ['component/avatar/background'], cssVars: ['--color-avatar-background', '--color-primary', '--color-brand-1'] },
+]} />
+
+### Notification
+
+<TokenTable kind="color" caption="Notification colors" rows={[
+  { name: 'colors.notification.dot', value: '#FF3939', pointsTo: 'palette.red.400', purpose: 'Dot that shows there is something new.', figma: ['component/notification/dot'], cssVars: ['--color-notification-dot'] },
+  { name: 'colors.notification.dotBorder', value: '#FFFFFF', pointsTo: 'palette.white', purpose: 'Border of the notification dot.', figma: ['component/notification/dot-border'], cssVars: ['--color-notification-dot-border'] },
+]} />
+
+### Sidebar
+
+<TokenTable kind="color" caption="Sidebar colors" rows={[
+  { name: 'colors.sidebar.background', value: '#FFFFFF', pointsTo: 'colors.background.white', purpose: 'Background of the sidebar.', figma: ['component/sidebar/background'], cssVars: ['--color-sidebar-background', '--color-background-white', '--color-white', '--color-neutral-white'] },
+  { name: 'colors.sidebar.icon', value: '#717C91', pointsTo: 'colors.icon.default', purpose: 'Icons in the sidebar.', figma: ['component/sidebar/icon'], cssVars: ['--color-sidebar-icon', '--color-icon-default', '--color-neutral-2'] },
+  { name: 'colors.sidebar.divider', value: '#DCE4EC', pointsTo: 'colors.border.subtle', purpose: 'Dividers in the sidebar.', figma: ['component/sidebar/divider'], cssVars: ['--color-sidebar-divider', '--color-border-subtle', '--color-neutral-4'] },
+  { name: 'colors.sidebar.hover', value: '#DCE4EC', pointsTo: 'colors.hover.neutral', purpose: 'Hover on a sidebar item.', figma: ['component/sidebar/hover'], cssVars: ['--color-sidebar-hover', '--color-hover-neutral', '--color-neutral-4'] },
+  { name: 'colors.sidebar.counter', value: '#393C48', pointsTo: 'colors.text.default', purpose: 'Counter in the sidebar.', figma: ['component/sidebar/counter'], cssVars: ['--color-sidebar-counter', '--color-text-default', '--color-dark-gray'] },
+  { name: 'colors.sidebar.notificationBorder', value: '#FFFFFF', pointsTo: 'colors.background.white', purpose: 'Border of a notification in the sidebar.', figma: ['component/sidebar/notification-border'], cssVars: ['--color-sidebar-notification-border', '--color-background-white', '--color-white', '--color-neutral-white'] },
+]} />
+
+### User
+
+<TokenTable kind="color" caption="User colors" rows={[
+  { name: 'colors.user.you', value: '#19237C', pointsTo: 'palette.indigo.700', purpose: 'Avatar of the person using the app.', figma: ['component/user/you'], cssVars: ['--color-user-you'] },
+  { name: 'colors.user.others', value: '#0F70D7', pointsTo: 'colors.brand.brand1', purpose: 'Avatar of other people.', figma: ['component/user/others'], cssVars: ['--color-user-others', '--color-primary', '--color-brand-1'] },
+]} />
+
+### Video
+
+<TokenTable kind="color" caption="Video colors" rows={[
+  { name: 'colors.video.surface', value: '#F4F6FA', pointsTo: 'palette.gray.25', purpose: 'Light surface of a video. For the area behind a video, use colors.background.video.', figma: ['component/video/surface'], cssVars: ['--color-video-surface'] },
+  { name: 'colors.video.overlay', value: '#000000', pointsTo: 'palette.black', purpose: 'Layer over a video.', figma: ['component/video/overlay'], cssVars: ['--color-video-overlay'] },
+]} />
+
+### Whiteboard
+
+<TokenTable kind="color" caption="Whiteboard colors" rows={[
+  { name: 'colors.whiteboard.selected', value: '#0F70D7', pointsTo: 'colors.brand.brand1', purpose: 'Selected item in the whiteboard.', figma: ['component/whiteboard/selected'], cssVars: ['--color-whiteboard-selected', '--color-primary', '--color-brand-1'] },
+]} />
+
+{/* END component */}
+
+## Kept for existing apps
+
+Don't choose these for new work. They stay so that apps that use them keep working. Where a purpose names another color, use that one. The others have no agreed role yet.
+
+{/* BEGIN kept: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="color" caption="Kept for existing apps" rows={[
+  { name: 'colors.brand.brand2', value: '#0F70D7', pointsTo: 'palette.blue.500', cssVars: ['--color-brand-2', '--color-brand-1'] },
+  { name: 'colors.brand.brand3', value: '#0F70D7', pointsTo: 'palette.blue.500', cssVars: ['--color-brand-3', '--color-brand-1'] },
+  { name: 'colors.brand.aux', value: '#E5EFFB', pointsTo: 'palette.blue.25', cssVars: ['--color-brand-aux', '--color-hover-light', '--color-brand-light'] },
+  { name: 'colors.brand.light', value: '#E5EFFB', pointsTo: 'palette.blue.25', cssVars: ['--color-blue-aux', '--color-brand-light'] },
+  { name: 'colors.neutral.darkGray', value: '#393C48', pointsTo: 'palette.gray.500', purpose: 'Base value. Prefer colors.text.default for text.', cssVars: ['--color-dark-gray'] },
+  { name: 'colors.neutral.gray', value: '#4E5A66', pointsTo: 'palette.gray.350', cssVars: ['--color-gray'] },
+  { name: 'colors.neutral.lightGray', value: '#F4F6FA', pointsTo: 'palette.gray.25', purpose: 'Base value. Prefer colors.background.light for backgrounds.', cssVars: ['--color-light-gray'] },
+  { name: 'colors.neutral.neutral1', value: '#616C80', pointsTo: 'palette.gray.300', purpose: 'Base value. Prefer colors.text.secondary.', cssVars: ['--color-neutral-1'] },
+  { name: 'colors.neutral.neutral2', value: '#717C91', pointsTo: 'palette.gray.200', purpose: 'Base value. Prefer colors.icon.default.', cssVars: ['--color-neutral-2'] },
+  { name: 'colors.neutral.neutral3', value: '#B0BDC9', pointsTo: 'palette.gray.100', purpose: 'Base value. Prefer colors.border.default for outlines.', cssVars: ['--color-neutral-3'] },
+  { name: 'colors.neutral.neutral4', value: '#DCE4EC', pointsTo: 'palette.gray.50', purpose: 'Base value. Prefer colors.hover.neutral for hover.', cssVars: ['--color-neutral-4'] },
+  { name: 'colors.text.light', value: '#616C80', pointsTo: 'colors.text.secondary', purpose: 'Deprecated. Use colors.text.secondary.', cssVars: ['--color-text-light', '--color-neutral-1'] },
+  { name: 'colors.neutral.white', value: '#FFFFFF', pointsTo: 'palette.white', purpose: 'Base value. Prefer colors.background.white for backgrounds and colors.icon.white for icons.', cssVars: ['--color-white', '--color-neutral-white'] },
+]} />
+
+{/* END kept */}
+
+## Theming
+
+To change a color in a host page, set one of its CSS variables. The first one that is set wins, and the default value applies when none is. A color that points to another follows it, unless its own variable is set.
+
+The samples in the semantic and component lists show the colors in use now. The primitives always show their fixed value.
+
+The library has no dark values. The BigBlueButton client sets its own.

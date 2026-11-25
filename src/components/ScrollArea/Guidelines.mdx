@@ -1,0 +1,37 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBScrollArea guidelines
+
+## When to use
+
+Use BBBScrollArea when one part of the page scrolls by itself, such as a chat, a list or a side panel.
+
+Use something else when:
+
+- The whole page can scroll: let it.
+- The content is in a modal: BBBModal already scrolls its body.
+
+## Structure
+
+- **Content:** whatever scrolls.
+- **Scrollbar:** thin and rounded.
+- **Edge fade:** optional, where there is more content to scroll to.
+- **Edge padding:** optional space between the content and the edges.
+
+<Canvas of={Stories.Default} />
+
+## Choose a scroll area
+
+- **Direction:** scroll one way only where possible. Vertical is the default.
+- **Limit:** set `maxHeight` or `maxWidth`, unless the container already limits it.
+- **Fade:** keep it when the cut-off content is not obvious. Set `fadeColor` to the background color, because without it there is no fade.
+- **Padding:** add it when the first or last item should clear the fade.
+
+## Accessibility
+
+- It can be focused, so that people can scroll it with the keyboard. Known gap: this is true even when there is nothing to scroll.
+- Known gap: it has no role or name, and neither can be set. Put a heading before it.
+- Known gap: the scrollbar styling is not applied in Firefox.

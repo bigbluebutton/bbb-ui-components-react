@@ -4,7 +4,7 @@ import {
   colorBorderSelected,
   colorBorderFocusRing,
   colorTextDefault,
-  colorTextLight,
+  colorTextSecondary,
   colorIconDefault,
   colorIconBlue,
   colorBrand1,
@@ -71,7 +71,7 @@ export const StyledInput = styled.input`
   padding: 0;
 
   &::placeholder {
-    color: ${colorTextLight};
+    color: ${colorTextSecondary};
   }
 
   &:disabled {
