@@ -96,7 +96,7 @@ export const Colors: Story = {
       <BBBAvatar {...args} name="Gustavo Rocha" />
       <BBBAvatar {...args} name="Isabela Torres" />
       <BBBAvatar {...args} name="Arthur Kaminski" color="#0F70D7" />
-      <BBBAvatar {...args} name="Beatriz Nunes" color="#2DD36F" />
+      <BBBAvatar {...args} name="Beatriz Nunes" color="#00695C" />
       <BBBAvatar {...args} name="Arthur Kaminski" isYou />
     </div>
   ),

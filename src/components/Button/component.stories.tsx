@@ -299,6 +299,7 @@ export const Circle: Story = {
           key={color}
           color={color}
           tooltipLabel={`Circle ${color.charAt(0).toUpperCase() + color.slice(1)}`}
+          ariaLabel={`Circle ${color.charAt(0).toUpperCase() + color.slice(1)}`}
         />
       ))}
     </div>
@@ -322,6 +323,7 @@ export const Squared: Story = {
           key={color}
           color={color}
           tooltipLabel={`Squared ${color.charAt(0).toUpperCase() + color.slice(1)}`}
+          ariaLabel={`Squared ${color.charAt(0).toUpperCase() + color.slice(1)}`}
         />
       ))}
     </div>
