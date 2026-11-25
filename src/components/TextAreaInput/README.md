@@ -21,4 +21,9 @@ import { BBBTextAreaInput } from '@bigbluebutton/bbb-ui-components-react';
 | `inputRef`      | `React.Ref<HTMLTextAreaElement>`                                  |         | A ref to be forwarded to the underlying `textarea` element.            |
 | `onChange`      | `(event: React.ChangeEvent<HTMLTextAreaElement>) => void`         |         | Callback fired when the value is changed.                              |
 | `onKeyDown`     | `(event: React.KeyboardEvent<HTMLTextAreaElement>) => void`       |         | Callback fired when a key is pressed.                                  |
+| `value` | `string \| readonly string[] \| number` |  | The text in the field, when the app controls it. Use it together with `onChange`. |
+| `defaultValue` | `string \| readonly string[] \| number` |  | The text in the field at first, when the app does not control it. |
+| `disabled` | `boolean` | `false` | When true, the field cannot be used. |
+| `id` | `string` |  | Id of the textarea element, to connect a label to it. |
+| `name` | `string` |  | Name of the field when a form is submitted. |
 | `...props`      | `any`                                                             |         | Any other props will be passed down to the underlying `textarea` element. |

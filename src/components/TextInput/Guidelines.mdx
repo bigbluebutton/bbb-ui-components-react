@@ -30,6 +30,16 @@ Use something else when:
 - **Placeholder:** use it for an example only. It disappears when people type.
 - **Errors:** set `error`, and say how to fix the problem in `helperText`.
 
+## Set and read the text
+
+These work too, although the props list leaves them out:
+
+- `value` and `onChange`: for text that the app keeps. The new text is in `event.target.value`.
+- `defaultValue`: the text at first, when the app does not keep it.
+- `placeholder`, `disabled`, `type` (such as `email`), `id`, `name` and `inputRef`.
+
+<Canvas of={Stories.Controlled} />
+
 ## Accessibility
 
 - Known gap: the label is not connected to the field, so also pass a name with `slotProps`, for example `slotProps={{ htmlInput: { 'aria-label': 'Name' } }}`.
