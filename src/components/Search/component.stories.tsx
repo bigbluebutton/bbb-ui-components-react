@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBSearch from './component';
 
 const meta = {
-  title: 'BBBSearch',
+  title: 'Components/Form/BBBSearch',
+  id: 'bbbsearch',
   component: BBBSearch,
   tags: ['autodocs'],
   argTypes: {

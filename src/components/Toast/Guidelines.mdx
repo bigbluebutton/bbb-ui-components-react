@@ -1,0 +1,42 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBToast guidelines
+
+## When to use
+
+Use BBBToast for a short message about something that just happened, such as a recording starting or a screen share failing. It appears on top of the page and is usually temporary.
+
+Use something else when:
+
+- The message belongs next to the content it explains: use BBBHint.
+- The person must respond before going on: use BBBModal.
+- The message is about a single field: show it with that field, for example with the error state of BBBTextInput.
+
+## Structure
+
+- **Icon:** a round badge that shows the kind of message.
+- **Title:** what happened, in a few words.
+- **Close button:** on the same line as the title.
+- **Separator:** a line between the title and the content.
+- **Content:** details, links or buttons below the title.
+- **Action button:** one button below the content.
+- **Progress bar:** the time left, along the bottom edge.
+
+Every part is optional, but always include a title or content.
+
+<Canvas of={Stories.WithAction} />
+
+## Choose a toast
+
+- **Variant:** choose it by what the message reports. `default` and `info` share a color, so only their icons differ.
+- **How long it stays:** let it close by itself when missing the message does no harm. Turn off `autoClose` when the person needs to see it or act on it, and keep the close button unless the app removes the toast itself.
+- **Size:** use `small` where space is limited, such as chat alerts.
+
+## Accessibility
+
+- `warning` and `error` are announced right away, which can interrupt what is being read. The other variants wait.
+- The icon is not announced, so say what happened in the text, such as "Screenshare failed".
+- The default label of the close button is in English, so always pass a translated one.
