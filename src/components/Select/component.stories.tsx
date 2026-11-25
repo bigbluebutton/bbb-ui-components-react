@@ -1,10 +1,11 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBSelect from './component';
 import MenuItem from '@mui/material/MenuItem';
 
 const meta = {
-  title: 'BBBSelect',
+  title: 'Components/Form/BBBSelect',
+  id: 'bbbselect',
   component: BBBSelect,
   tags: ['autodocs'],
   argTypes: {

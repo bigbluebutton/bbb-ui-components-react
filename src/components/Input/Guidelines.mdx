@@ -1,0 +1,40 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBInput guidelines
+
+## When to use
+
+Use BBBInput for a message that people write and send in one place, such as a chat message. It has its own send button, and grows as they type.
+
+Use something else when:
+
+- The field is part of a form: use BBBTextInput for one line, or BBBTextAreaInput for more.
+- The text filters or finds something: use BBBSearch.
+
+## Structure
+
+- **Label:** optional, above the field.
+- **Field:** grows with the text, up to three rows by default.
+- **Action button:** at the end of the field, with an icon, a label or both.
+- **Extra content:** optional, before or after the button.
+- **Helper text:** optional, below the field. It is also where errors and the sent message appear.
+
+<Canvas of={Stories.Default} />
+
+## Choose an input
+
+- **Button:** use an icon alone for a familiar action such as sending, and a label when the action is not obvious.
+- **Enter key:** it sends by default, and Shift with Enter adds a line. Turn off `submitOnEnter` when people write longer text.
+- **Sent message:** turn on `showSentFeedback` when the result is not visible on screen. It appears as soon as the text is sent, so don't use it for something that can fail later.
+- **Errors:** set `error`, and say what to do in `helperText`.
+
+## Accessibility
+
+- The label names the field. Without a label, pass `aria-label`.
+- Pass `buttonAriaLabel` when the button has only an icon.
+- Pass a translated `sentFeedbackContent`. The default is in English.
+- Known gap: the error state is shown by color only, so always add helper text.
+- Known gap: Enter may send the text while a person is still choosing characters, for example in Japanese.

@@ -1,60 +1,58 @@
 import styled, { css } from 'styled-components';
 import { StyledTypography } from './types';
-import { colorTextDefault, colorTextLight } from '../../stylesheets/palette';
-import {
-  fontSizeDefault, fontSizeSmall,
-  fontSizeXSmall, fontWeightDefault,
-  fontWeightHard, fontWeightLight,
-} from '../../stylesheets/typography';
+import { colorTextDefault, colorTextSecondary } from '../../stylesheets/palette';
+import { textStyles } from '../../stylesheets/textStyles';
 
 const variants = {
   default: css`
     color: ${colorTextDefault};
-    font-size: ${fontSizeDefault};
-    font-style: normal;
-    font-weight: ${fontWeightLight};
-    line-height: normal;
+    ${textStyles.body.default}
   `,
   selected: css`
     color: ${colorTextDefault};
-    font-size: ${fontSizeDefault};
-    font-style: normal;
-    font-weight: ${fontWeightHard};
-    line-height: normal;
+    ${textStyles.body.selected}
   `,
   text2: css`
-    color: ${colorTextLight};
-    font-size: ${fontSizeSmall};
-    font-style: normal;
-    font-weight: ${fontWeightLight};
-    line-height: normal;
+    color: ${colorTextSecondary};
+    ${textStyles.body.text2}
   `,
   text3: css`
-    color: ${colorTextLight};
-    font-size: ${fontSizeXSmall};
-    font-style: normal;
-    font-weight: ${fontWeightLight};
-    line-height: normal;
+    color: ${colorTextSecondary};
+    ${textStyles.body.text3}
   `,
   header: css`
     color: ${colorTextDefault};
-    font-size: ${fontSizeDefault};
-    font-style: normal;
-    font-weight: ${fontWeightHard};
-    line-height: normal;
-    text-transform: uppercase;
+    ${textStyles.heading.panel}
   `,
   button: css`
     color: ${colorTextDefault};
-    font-size: ${fontSizeDefault};
-    font-style: normal;
-    font-weight: ${fontWeightDefault};
-    line-height: normal;
+    ${textStyles.label.button}
+  `,
+  section: css`
+    color: ${colorTextDefault};
+    ${textStyles.heading.section}
+  `,
+  highlight: css`
+    color: ${colorTextDefault};
+    ${textStyles.heading.highlight}
+  `,
+  display: css`
+    color: ${colorTextDefault};
+    ${textStyles.heading.display}
+  `,
+  large: css`
+    color: ${colorTextDefault};
+    ${textStyles.body.large}
+  `,
+  smallLabel: css`
+    color: ${colorTextDefault};
+    ${textStyles.label.small}
   `,
 };
 
 export const TypographyStyled = styled.p<StyledTypography>`
   margin: 0;
   padding: 0;
+  font-style: normal;
   ${({ $variant }) => variants[$variant]}
 `;

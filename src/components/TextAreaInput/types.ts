@@ -1,6 +1,21 @@
 import React from 'react';
 
 export interface TextAreaInputProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  /** The text in the field, when the app controls it. Use it together with `onChange`. */
+  value?: string | readonly string[] | number;
+
+  /** The text in the field at first, when the app does not control it. */
+  defaultValue?: string | readonly string[] | number;
+
+  /** When true, the field cannot be used. @default false */
+  disabled?: boolean;
+
+  /** Id of the textarea element, to connect a label to it. */
+  id?: string;
+
+  /** Name of the field when a form is submitted. */
+  name?: string;
+
   /** Initial number of visible text lines. @default 1 */
   rows?: number;
 

@@ -1,0 +1,46 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBTextInput guidelines
+
+## When to use
+
+Use BBBTextInput for a short answer on one line in a form, such as a name or an email.
+
+Use something else when:
+
+- The answer may need several lines: use BBBTextAreaInput.
+- The text is sent from the field itself: use BBBInput.
+- The text filters or finds something: use BBBSearch.
+- People pick from known options: use BBBSelect.
+
+## Structure
+
+- **Label:** optional, above the field.
+- **Field:** one line, with an optional placeholder.
+- **Helper text:** optional, below the field. It is also where errors appear.
+
+<Canvas of={Stories.WithError} />
+
+## Choose the content
+
+- **Label:** always add one, and name what to enter.
+- **Placeholder:** use it for an example only. It disappears when people type.
+- **Errors:** set `error`, and say how to fix the problem in `helperText`.
+
+## Set and read the text
+
+These work too, although the props list leaves them out:
+
+- `value` and `onChange`: for text that the app keeps. The new text is in `event.target.value`.
+- `defaultValue`: the text at first, when the app does not keep it.
+- `placeholder`, `disabled`, `type` (such as `email`), `id`, `name` and `inputRef`.
+
+<Canvas of={Stories.Controlled} />
+
+## Accessibility
+
+- Known gap: the label is not connected to the field, so also pass a name with `slotProps`, for example `slotProps={{ htmlInput: { 'aria-label': 'Name' } }}`.
+- Known gap: the helper text and the error state are not connected to the field, so they are not announced with it.

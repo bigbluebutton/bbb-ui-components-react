@@ -9,7 +9,7 @@ The `BBBHint` component is used to display informational messages to the user. I
 ### Basic Hint
 
 ```jsx
-import { BBBHint } from 'bbb-ui-components-react';
+import { BBBHint } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBHint label="This is a simple hint." />
 ```
@@ -17,7 +17,7 @@ import { BBBHint } from 'bbb-ui-components-react';
 ### Hint with Title and Close Button
 
 ```jsx
-import { BBBHint } from 'bbb-ui-components-react';
+import { BBBHint } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBHint
   title="Information"
@@ -31,7 +31,7 @@ import { BBBHint } from 'bbb-ui-components-react';
 Without an `open` prop, the hint manages its own visibility and closes itself when the close button is clicked — no external state required.
 
 ```jsx
-import { BBBHint } from 'bbb-ui-components-react';
+import { BBBHint } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBHint label="This is a simple hint." />
 ```
@@ -42,7 +42,7 @@ Pass `open` to drive visibility externally; the hint calls `onRequestClose` inst
 
 ```jsx
 import { useState } from 'react';
-import { BBBHint } from 'bbb-ui-components-react';
+import { BBBHint } from '@bigbluebutton/bbb-ui-components-react';
 
 const [open, setOpen] = useState(true);
 
@@ -58,7 +58,7 @@ const [open, setOpen] = useState(true);
 Pass `hideCloseButton` for hints that shouldn't be manually dismissed — e.g. ones dismissed by interacting with another UI element, or tooltip-style hints with no explicit dismiss action.
 
 ```jsx
-import { BBBHint } from 'bbb-ui-components-react';
+import { BBBHint } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBHint hideCloseButton label="This hint cannot be manually dismissed." />
 ```

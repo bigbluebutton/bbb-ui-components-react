@@ -1,0 +1,42 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBAvatar guidelines
+
+## When to use
+
+Use BBBAvatar to show who a person is, for example in a list of people or next to a message.
+
+Use something else when:
+
+- The picture is not of a person: use an icon or an image.
+- The person can click it: put it inside a button or a link, because the avatar has no action.
+
+## Structure
+
+- **Picture:** the person's image, or their initials when there is none or it fails to load.
+- **Shape:** a circle, or a rounded square for moderators.
+- **Color:** behind the initials, or around the image.
+- **Talking ring:** optional, in the same color.
+- **Tooltip:** the full name, on hover.
+
+<Canvas of={Stories.Default} />
+
+## Choose an avatar
+
+- **Size:** use `small` in dense lists, `medium` in most places and `large` when the person is the focus.
+- **Color:** leave it out when the app has no color for the person. The avatar then picks one from the name, so it stays the same. Use `isYou` for the current person.
+- **Custom color:** make it dark enough, because the initials are always white.
+- **Shape:** use `isModerator` only for moderators, because the shape is how people recognize them.
+
+<Canvas of={Stories.Types} />
+
+## Accessibility
+
+- Show the name next to the avatar whenever there is room. Initials alone may match several people.
+- Say in text that a person is a moderator or is talking. The avatar shows both only visually.
+- An image is announced with the name. Known gap: initials are announced as letters only.
+- Known gap: the tooltip appears on hover only, so it cannot be reached by keyboard.
+- Known gap: the talking ring does not follow the person's reduced motion setting.
