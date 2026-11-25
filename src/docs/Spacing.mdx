@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TokenTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Spacing" id="spacing" />
+
+# Spacing
+
+Use a spacing token for the space around and between elements, instead of a fixed value.
+
+```jsx
+import { spacingMedium } from '@bigbluebutton/bbb-ui-components-react';
+
+const Card = styled.div`
+  padding: ${spacingMedium};
+`;
+```
+
+Unlike colors, a host page cannot override spacing. Pixel values assume the browser's default text size.
+
+{/* BEGIN spacing: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="spacing" caption="Spacing" rows={[
+  { name: 'spacingXSmall', value: '0.25rem (4px)' },
+  { name: 'spacingSmall', value: '0.5rem (8px)' },
+  { name: 'spacingSmallMedium', value: '0.75rem (12px)' },
+  { name: 'spacingMedium', value: '1rem (16px)' },
+  { name: 'spacingMediumLarge', value: '1.25rem (20px)' },
+  { name: 'spacingLarge', value: '1.5rem (24px)' },
+  { name: 'spacingXLarge', value: '2rem (32px)' },
+  { name: 'spacingXXLarge', value: '3rem (48px)' },
+]} />
+
+{/* END spacing */}

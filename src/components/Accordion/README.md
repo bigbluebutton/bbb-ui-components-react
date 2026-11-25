@@ -9,7 +9,7 @@ The `BBBAccordion` component allows you to create collapsible sections of conten
 ### Basic Accordion
 
 ```jsx
-import { BBBAccordion } from 'bbb-ui-components-react';
+import { BBBAccordion } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAccordion title="Click to expand">
   <p>This is the content of the accordion.</p>
@@ -20,7 +20,7 @@ import { BBBAccordion } from 'bbb-ui-components-react';
 ### Accordion with Tooltip
 
 ```jsx
-import { BBBAccordion } from 'bbb-ui-components-react';
+import { BBBAccordion } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAccordion title="Hover for tooltip" tooltipLabel="This is a helpful tooltip!">
   <p>Content for the accordion with a tooltip.</p>
@@ -30,7 +30,7 @@ import { BBBAccordion } from 'bbb-ui-components-react';
 ### Accordion with custom button header
 
 ```jsx
-import { BBBAccordion } from 'bbb-ui-components-react';
+import { BBBAccordion } from '@bigbluebutton/bbb-ui-components-react';
 import { MdFavorite } from 'react-icons/md';
 
 <BBBAccordion title="Hover for tooltip" tooltipLabel="This is a helpful tooltip!" buttonHeader={<MdFavorite>}>
@@ -41,7 +41,7 @@ import { MdFavorite } from 'react-icons/md';
 ### Accordion with a right-aligned button header
 
 ```jsx
-import { BBBAccordion } from 'bbb-ui-components-react';
+import { BBBAccordion } from '@bigbluebutton/bbb-ui-components-react';
 import { MdEdit } from 'react-icons/md';
 
 <BBBAccordion title="Right-aligned" buttonHeader={<MdEdit />} buttonHeaderPosition="right">

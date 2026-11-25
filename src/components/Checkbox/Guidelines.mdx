@@ -1,0 +1,36 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBCheckbox guidelines
+
+## When to use
+
+Use BBBCheckbox to let people pick any number of options, or to agree to something in a form. The choice usually applies when the form is sent.
+
+Use something else when:
+
+- A setting takes effect right away: use BBBToggle.
+- People pick one option from a list: use BBBSelect.
+
+## Structure
+
+- **Box:** square, or round.
+- **Label:** next to the box. Clicking it changes the box.
+- **Helper text:** optional, below the label.
+- **Tooltip:** optional, on hover and keyboard focus.
+
+<Canvas of={Stories.WithHelperText} />
+
+## Choose a checkbox
+
+- **Label:** say what is true when the box is checked, such as "Mirror my webcam". Avoid negatives.
+- **Label position:** keep the label after the box, unless the rows around it do otherwise.
+- **Round:** it looks like a radio button, so people may expect to pick only one. Prefer the square box.
+- **Disabled:** add a `tooltipLabel` that says why. The box then stays reachable by keyboard.
+
+## Accessibility
+
+- The label names the checkbox, and the helper text describes it. Without a label, pass `ariaLabel`.
+- Put what people must know in the helper text rather than the tooltip.
