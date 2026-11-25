@@ -45,7 +45,7 @@ A new prop does **not** require changes to the root `README.md`, `package.json` 
 
 ## Design tokens
 
-Tokens live in `tokens/tokens.json`; `src/stylesheets/*.ts` is generated from it by `npm run tokens`. Edit the JSON, run the script and commit both (see `tokens/README.md`).
+Tokens live in `tokens/tokens.json`; `src/stylesheets/*.ts` and the token lists in `src/docs/*.mdx` are generated from it by `npm run tokens`. Edit the JSON, run the script and commit both (see `tokens/README.md`).
 
 ## Decisions
 

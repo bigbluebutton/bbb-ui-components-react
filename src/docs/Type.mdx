@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { FontSizeTable, FontWeightTable } from '../../.storybook/docs/tokens';
+import { TokenTable } from '../../.storybook/docs/tokens';
 
 <Meta title="Foundation/Type" id="type" />
 
@@ -9,8 +9,25 @@ Use these tokens inside the library to size and weigh text. They are not exporte
 
 ## Size
 
-<FontSizeTable />
+{/* BEGIN font size: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="fontSize" caption="Font size" rows={[
+  { name: 'fontSizeXSmall', value: '0.75rem (12px)' },
+  { name: 'fontSizeSmall', value: '0.875rem (14px)' },
+  { name: 'fontSizeDefault', value: '1rem (16px)' },
+  { name: 'fontSizeBig', value: '1.125rem (18px)' },
+]} />
+
+{/* END font size */}
 
 ## Weight
 
-<FontWeightTable />
+{/* BEGIN font weight: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="fontWeight" caption="Font weight" rows={[
+  { name: 'fontWeightLight', value: '400' },
+  { name: 'fontWeightDefault', value: '600' },
+  { name: 'fontWeightHard', value: '700' },
+]} />
+
+{/* END font weight */}

@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { RadiusTable } from '../../.storybook/docs/tokens';
+import { TokenTable } from '../../.storybook/docs/tokens';
 
 <Meta title="Foundation/Radius" id="radius" />
 
@@ -17,4 +17,11 @@ const Card = styled.div`
 
 Unlike colors, a host page cannot override the radius. Pixel values assume the browser's default text size.
 
-<RadiusTable />
+{/* BEGIN radius: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="radius" caption="Border radius" rows={[
+  { name: 'borderRadiusSmall', value: '0.5rem (8px)' },
+  { name: 'borderRadiusDefault', value: '1rem (16px)' },
+]} />
+
+{/* END radius */}

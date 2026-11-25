@@ -5,23 +5,16 @@ import * as palette from '../../src/stylesheets/palette';
 import * as sizing from '../../src/stylesheets/sizing';
 import * as typography from '../../src/stylesheets/typography';
 
-// Tables for the token pages. They read the generated stylesheets, so a token change shows up here by itself.
+// Tables for the token pages.
 
-type Row = { name: string; value: string; sample: React.ReactNode; cssVars?: string[] };
+type Kind = 'color' | 'spacing' | 'radius' | 'fontSize' | 'fontWeight';
+type TokenRow = { name: string; value: string; cssVars?: string[] };
+type Row = TokenRow & { sample: React.ReactNode };
 
 const cell: React.CSSProperties = {
   padding: '0.5rem 0.75rem', textAlign: 'left', verticalAlign: 'middle', borderBottom: '1px solid #DCE4EC',
 };
 const text: React.CSSProperties = { fontFamily: 'sans-serif', fontSize: '0.875rem', color: '#393C48' };
-
-const cssVarsOf = (value: string) => value.match(/--[\w-]+/g) ?? [];
-// The value used when no CSS variable is set: what is left inside the innermost var().
-const fallbackOf = (value: string): string => {
-  const [, inner] = /^var\([^,]+,\s*(.+)\)$/.exec(value) ?? [];
-  return inner ? fallbackOf(inner) : value;
-};
-const remToPx = (value: string) => parseFloat(value) * 16;
-const withPx = (value: string) => (value.endsWith('rem') ? `${value} (${remToPx(value)}px)` : value);
 
 function Table({ caption, rows }: { caption: string; rows: Row[] }) {
   const hasVars = rows.some((row) => row.cssVars);
@@ -57,63 +50,26 @@ function Table({ caption, rows }: { caption: string; rows: Row[] }) {
 
 const checkerboard = 'repeating-conic-gradient(#B0BDC9 0% 25%, #FFFFFF 0% 50%) 0 0 / 0.75rem 0.75rem';
 
-const colorRow = (name: string, value: string): Row => ({
-  name,
-  value: fallbackOf(value),
-  cssVars: cssVarsOf(value),
-  sample: (
+// The value of a token, with its CSS variables, so that the sample shows what is in use now.
+const tokens: Record<string, string> = { ...palette, ...sizing, ...typography };
+const currentValue = (name: string): string => {
+  const [, group, key] = /^colors\.(\w+)\.(\w+)$/.exec(name) ?? [];
+  return group ? (colors as Record<string, Record<string, string>>)[group][key] : tokens[name];
+};
+
+const samples: Record<Kind, (value: string) => React.ReactNode> = {
+  color: (value) => (
     <div style={{ width: '4rem', height: '2rem', borderRadius: '0.25rem', border: '1px solid #B0BDC9', background: checkerboard, overflow: 'hidden' }}>
       <div style={{ width: '100%', height: '100%', background: value }} />
     </div>
   ),
-});
+  spacing: (value) => <div style={{ width: value, height: '1rem', background: palette.colorBrand1 }} />,
+  radius: (value) => <div style={{ width: '4rem', height: '4rem', borderRadius: value, border: `2px solid ${palette.colorBrand1}` }} />,
+  fontSize: (value) => <span style={{ fontSize: value }}>BigBlueButton</span>,
+  fontWeight: (value) => <span style={{ fontSize: '1rem', fontWeight: value }}>BigBlueButton</span>,
+};
 
-/** Colors of one group of the exported `colors` object. */
-export function ColorTable({ group }: { group: keyof typeof colors }) {
-  const rows = Object.entries(colors[group]).map(([key, value]) => colorRow(`colors.${group}.${key}`, value));
-  return <Table caption={`${group} colors`} rows={rows} />;
-}
-
-/** Colors the library uses that are not in the exported `colors` object. */
-export function OtherColorTable() {
-  const exported = new Set<string>(Object.values(colors).flatMap((group) => Object.values(group)));
-  const rows = Object.entries(palette)
-    .filter(([, value]) => !exported.has(value))
-    .map(([name, value]) => colorRow(name, value));
-  return <Table caption="Other colors" rows={rows} />;
-}
-
-const bySize = ([, a]: [string, string], [, b]: [string, string]) => parseFloat(a) - parseFloat(b);
-const tokensNamed = (module: Record<string, string>, prefix: string) => (
-  Object.entries(module).filter(([name]) => name.startsWith(prefix)).sort(bySize)
-);
-
-export function SpacingTable() {
-  const rows = tokensNamed(sizing, 'spacing').map(([name, value]) => ({
-    name, value: withPx(value), sample: <div style={{ width: value, height: '1rem', background: palette.colorBrand1 }} />,
-  }));
-  return <Table caption="Spacing" rows={rows} />;
-}
-
-export function RadiusTable() {
-  const rows = tokensNamed(sizing, 'borderRadius').map(([name, value]) => ({
-    name,
-    value: withPx(value),
-    sample: <div style={{ width: '4rem', height: '4rem', borderRadius: value, border: `2px solid ${palette.colorBrand1}` }} />,
-  }));
-  return <Table caption="Border radius" rows={rows} />;
-}
-
-export function FontSizeTable() {
-  const rows = tokensNamed(typography, 'fontSize').map(([name, value]) => ({
-    name, value: withPx(value), sample: <span style={{ fontSize: value }}>BigBlueButton</span>,
-  }));
-  return <Table caption="Font size" rows={rows} />;
-}
-
-export function FontWeightTable() {
-  const rows = tokensNamed(typography, 'fontWeight').map(([name, value]) => ({
-    name, value, sample: <span style={{ fontSize: '1rem', fontWeight: value }}>BigBlueButton</span>,
-  }));
-  return <Table caption="Font weight" rows={rows} />;
+/** A list of tokens. `npm run tokens` writes the rows into the page, where agents can read them. */
+export function TokenTable({ kind, caption, rows }: { kind: Kind; caption: string; rows: TokenRow[] }) {
+  return <Table caption={caption} rows={rows.map((row) => ({ ...row, sample: samples[kind](currentValue(row.name)) }))} />;
 }

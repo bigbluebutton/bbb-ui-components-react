@@ -272,7 +272,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "tokens": "node tokens/build.mjs",
-    "tokens:check": "npm run tokens && git diff --exit-code -- src/stylesheets"
+    "tokens:check": "npm run tokens && git diff --exit-code -- src/stylesheets src/docs"
   },
   "author": "Arthur Böckmann Grossi",
   "license": "LGPL-3.0",

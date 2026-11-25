@@ -1,4 +1,6 @@
 // Style Dictionary build: tokens/tokens.json -> src/stylesheets/{palette,sizing,typography,colors}.ts
+// and the token lists in src/docs/*.mdx
+import fs from 'node:fs';
 import path from 'node:path';
 import StyleDictionary from 'style-dictionary';
 
@@ -107,3 +109,60 @@ const sd = new StyleDictionary({
 });
 
 await sd.buildAllPlatforms();
+
+// The token pages in Storybook. Agents read their source, not what they render, so the lists are
+// written out in it, between BEGIN and END comments. The text around them is edited by hand.
+const { allTokens } = await sd.getPlatformTokens('ts');
+
+// The value used when no CSS variable is set: what is left inside the innermost var().
+const fallbackOf = (value) => {
+  const inner = /^var\([^,]+,\s*(.+)\)$/.exec(value)?.[1];
+  return inner ? fallbackOf(inner) : value;
+};
+const withPx = (value) => (value.endsWith('rem') ? `${value} (${parseFloat(value) * 16}px)` : value);
+const bySize = (a, b) => parseFloat(a.$value) - parseFloat(b.$value);
+
+const colorRow = (name) => (t) => ({
+  name: name(t), value: fallbackOf(t.$value), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
+});
+const sizeRow = (t) => ({ name: t.name, value: withPx(t.$value) });
+const sized = (prefix) => allTokens.filter((t) => t.name.startsWith(prefix)).sort(bySize).map(sizeRow);
+
+const colorTokens = allTokens.filter((t) => t.path[0] === 'color');
+const grouped = colorTokens.filter((t) => ext(t).colorsKey);
+const groups = [...new Set(grouped.map((t) => ext(t).colorsKey.split('.')[0]))];
+
+const literal = (row) => `{ ${Object.entries(row)
+  .map(([key, v]) => `${key}: ${Array.isArray(v) ? `[${v.map(quote).join(', ')}]` : quote(v)}`).join(', ')} }`;
+const table = (kind, caption, rows) => (
+  `<TokenTable kind="${kind}" caption="${caption}" rows={[\n${rows.map((r) => `  ${literal(r)},`).join('\n')}\n]} />`
+);
+const title = (s) => s[0].toUpperCase() + s.slice(1);
+
+const lists = {
+  'Color.mdx': {
+    colors: groups.map((g) => `## ${title(g)}\n\n${table('color', `${title(g)} colors`, grouped
+      .filter((t) => ext(t).colorsKey.startsWith(`${g}.`))
+      .map(colorRow((t) => `colors.${ext(t).colorsKey}`)))}`).join('\n\n'),
+    other: table('color', 'Other colors', colorTokens.filter((t) => !ext(t).colorsKey).map(colorRow((t) => t.name))),
+  },
+  'Spacing.mdx': { spacing: table('spacing', 'Spacing', sized('spacing')) },
+  'Radius.mdx': { radius: table('radius', 'Border radius', sized('borderRadius')) },
+  'Type.mdx': {
+    'font size': table('fontSize', 'Font size', sized('fontSize')),
+    'font weight': table('fontWeight', 'Font weight', sized('fontWeight')),
+  },
+};
+
+for (const [file, blocks] of Object.entries(lists)) {
+  const target = path.join(here, '../src/docs', file);
+  let mdx = fs.readFileSync(target, 'utf8');
+  for (const [name, body] of Object.entries(blocks)) {
+    const begin = `{/* BEGIN ${name}: generated from tokens/tokens.json by npm run tokens. Do not edit. */}`;
+    const end = `{/* END ${name} */}`;
+    const [from, to] = [mdx.indexOf(begin), mdx.indexOf(end)];
+    if (from < 0 || to < from) throw new Error(`${file}: the "${name}" BEGIN and END comments are missing`);
+    mdx = `${mdx.slice(0, from + begin.length)}\n\n${body}\n\n${mdx.slice(to)}`;
+  }
+  fs.writeFileSync(target, mdx);
+}

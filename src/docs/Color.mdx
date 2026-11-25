@@ -1,6 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { colors } from '../stylesheets/colors';
-import { ColorTable, OtherColorTable } from '../../.storybook/docs/tokens';
+import { TokenTable } from '../../.storybook/docs/tokens';
 
 <Meta title="Foundation/Color" id="color" />
 
@@ -19,15 +18,109 @@ const Card = styled.div`
 
 To change a color in a host page, set one of its CSS variables. The samples below show the colors in use now. The default value applies when none of the variables is set.
 
-{Object.keys(colors).map((group) => (
-  <section key={group}>
-    <h2 id={group}>{group[0].toUpperCase() + group.slice(1)}</h2>
-    <ColorTable group={group} />
-  </section>
-))}
+{/* BEGIN colors: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+## Background
+
+<TokenTable kind="color" caption="Background colors" rows={[
+  { name: 'colors.background.blue', value: '#E5EFFB', cssVars: ['--color-background-blue', '--color-brand-light'] },
+  { name: 'colors.background.light', value: '#F4F6FA', cssVars: ['--color-background-light', '--color-light-gray'] },
+  { name: 'colors.background.white', value: '#FFFFFF', cssVars: ['--color-background-white', '--color-white', '--color-neutral-white'] },
+]} />
+
+## Border
+
+<TokenTable kind="color" caption="Border colors" rows={[
+  { name: 'colors.border.default', value: '#B0BDC9', cssVars: ['--default-border', '--color-border-default', '--color-neutral-3'] },
+  { name: 'colors.border.error', value: '#DF2721', cssVars: ['--color-border-error', '--color-error'] },
+  { name: 'colors.border.focusRing', value: 'rgba(29, 101, 212, 0.15)', cssVars: ['--color-border-focus-ring'] },
+  { name: 'colors.border.selected', value: '#0F70D7', cssVars: ['--color-border-selected', '--color-primary', '--color-brand-1'] },
+]} />
+
+## Brand
+
+<TokenTable kind="color" caption="Brand colors" rows={[
+  { name: 'colors.brand.brand1', value: '#0F70D7', cssVars: ['--color-primary', '--color-brand-1'] },
+  { name: 'colors.brand.brand2', value: '#0F70D7', cssVars: ['--color-brand-2', '--color-brand-1'] },
+  { name: 'colors.brand.brand3', value: '#0F70D7', cssVars: ['--color-brand-3', '--color-brand-1'] },
+  { name: 'colors.brand.aux', value: '#E5EFFB', cssVars: ['--color-brand-aux', '--color-hover-light', '--color-brand-light'] },
+  { name: 'colors.brand.light', value: '#E5EFFB', cssVars: ['--color-blue-aux', '--color-brand-light'] },
+]} />
+
+## Neutral
+
+<TokenTable kind="color" caption="Neutral colors" rows={[
+  { name: 'colors.neutral.darkGray', value: '#393C48', cssVars: ['--color-dark-gray'] },
+  { name: 'colors.neutral.gray', value: '#4E5A66', cssVars: ['--color-gray'] },
+  { name: 'colors.neutral.lightGray', value: '#F4F6FA', cssVars: ['--color-light-gray'] },
+  { name: 'colors.neutral.neutral2', value: '#717C91', cssVars: ['--color-neutral-2'] },
+  { name: 'colors.neutral.neutral3', value: '#B0BDC9', cssVars: ['--color-neutral-3'] },
+  { name: 'colors.neutral.neutral4', value: '#DCE4EC', cssVars: ['--color-neutral-4'] },
+  { name: 'colors.neutral.white', value: '#FFFFFF', cssVars: ['--color-white', '--color-neutral-white'] },
+]} />
+
+## Semantic
+
+<TokenTable kind="color" caption="Semantic colors" rows={[
+  { name: 'colors.semantic.error', value: '#DF2721', cssVars: ['--color-danger', '--color-error'] },
+  { name: 'colors.semantic.errorDark', value: '#AE1010', cssVars: ['--color-danger-dark', '--color-error-dark'] },
+  { name: 'colors.semantic.success', value: '#2DD36F', cssVars: ['--color-success'] },
+  { name: 'colors.semantic.warning', value: '#F59240', cssVars: ['--color-warning'] },
+]} />
+
+## Hover
+
+<TokenTable kind="color" caption="Hover colors" rows={[
+  { name: 'colors.hover.dark', value: '#0C57A7', cssVars: ['--color-hover-dark'] },
+  { name: 'colors.hover.light', value: '#D4E5FA', cssVars: ['--color-hover-light'] },
+  { name: 'colors.hover.neutral', value: '#DCE4EC', cssVars: ['--color-hover-neutral', '--color-neutral-4'] },
+]} />
+
+## Icon
+
+<TokenTable kind="color" caption="Icon colors" rows={[
+  { name: 'colors.icon.blue', value: '#0F70D7', cssVars: ['--color-icon-blue', '--color-brand-1'] },
+  { name: 'colors.icon.default', value: '#717C91', cssVars: ['--color-icon-default', '--color-neutral-2'] },
+  { name: 'colors.icon.defaultDark', value: 'rgba(255, 255, 255, 0.35)', cssVars: ['--color-icon-default-dark'] },
+  { name: 'colors.icon.white', value: '#FFFFFF', cssVars: ['--color-icon-white', '--color-white', '--color-neutral-white'] },
+]} />
+
+## Overlay
+
+<TokenTable kind="color" caption="Overlay colors" rows={[
+  { name: 'colors.overlay.default', value: 'rgba(0, 0, 0, 0.75)', cssVars: ['--color-overlay'] },
+]} />
+
+## Shadow
+
+<TokenTable kind="color" caption="Shadow colors" rows={[
+  { name: 'colors.shadow.default', value: 'rgba(0, 35, 11, 0.2)', cssVars: ['--color-shadow-default'] },
+]} />
+
+## Text
+
+<TokenTable kind="color" caption="Text colors" rows={[
+  { name: 'colors.text.default', value: '#393C48', cssVars: ['--color-text-default', '--color-dark-gray'] },
+  { name: 'colors.text.light', value: '#717C91', cssVars: ['--color-text-light', '--color-neutral-2'] },
+]} />
+
+## User
+
+<TokenTable kind="color" caption="User colors" rows={[
+  { name: 'colors.user.you', value: '#19237C', cssVars: ['--color-user-you'] },
+]} />
+
+{/* END colors */}
 
 ## Other
 
 These colors are not in the `colors` object. Import them by name from `@bigbluebutton/bbb-ui-components-react`.
 
-<OtherColorTable />
+{/* BEGIN other: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="color" caption="Other colors" rows={[
+  { name: 'colorSuccessDark', value: '#209B51', cssVars: ['--color-success-dark'] },
+  { name: 'colorWarningDark', value: '#D8680B', cssVars: ['--color-warning-dark'] },
+]} />
+
+{/* END other */}
