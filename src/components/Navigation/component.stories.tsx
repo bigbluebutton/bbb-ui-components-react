@@ -1,8 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBNavigation from './component';
 
 const meta = {
-  title: 'BBBNavigation',
+  title: 'Components/Navigation/BBBNavigation',
+  id: 'bbbnavigation',
   component: BBBNavigation,
   tags: ['autodocs'],
   argTypes: {

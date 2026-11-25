@@ -1,0 +1,37 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBSearch guidelines
+
+## When to use
+
+Use BBBSearch to find or filter something as people type, such as a list of participants.
+
+Use something else when:
+
+- The text is saved or sent: use BBBTextInput or BBBInput.
+- People pick from a short list: use BBBSelect.
+
+## Structure
+
+- **Search icon:** at the start.
+- **Field:** one line, with a placeholder.
+- **Clear button:** shows when there is text.
+- **Spinner:** replaces the clear button while results load.
+
+<Canvas of={Stories.Default} />
+
+## Choose a search
+
+- **Placeholder:** say what is searched, such as "Search participants".
+- **Delay:** it waits half a second after the last key. Shorten `debounce` when results are already in the app, and keep it when they come from a server.
+- **Loading:** set `isLoading` when results take time.
+- **Controlled:** when the app sets `value`, it must run the search itself, because `onSearch` is not called.
+
+## Accessibility
+
+- The placeholder names the field, unless you pass `aria-label`. There is no visible label.
+- Announce how many results were found. The field does not.
+- Known gap: the clear button's name is always "Clear search", in English, and cannot be translated.
