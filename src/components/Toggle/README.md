@@ -8,35 +8,35 @@ The `BBBToggle` component provides a flexible toggle switch that can be used for
 
 ### Toggle with label
 ```jsx
-import { BBBToggle } from 'bbb-ui-components-react';
+import { BBBToggle } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToggle label="Enable Notifications" />
 ```
 
 ### Toggle with label and helper text
 ```jsx
-import { BBBToggle } from 'bbb-ui-components-react';
+import { BBBToggle } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToggle label="Enable Notifications" helperText="This is a toggle to enable the notifications." />
 ```
 
 ### Toggle with label and helper text on the left
 ```jsx
-import { BBBToggle } from 'bbb-ui-components-react';
+import { BBBToggle } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToggle label="Enable Notifications" helperText="This is a toggle to enable the notifications." textPosition="left" />
 ```
 
 ### Full-width toggle with the label at the start and the switch at the end
 ```jsx
-import { BBBToggle } from 'bbb-ui-components-react';
+import { BBBToggle } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToggle label="Join muted" helperText="Joining users are muted by default" textPosition="left" fullWidth />
 ```
 
 ### Toggle with label and helper text on the top
 ```jsx
-import { BBBToggle } from 'bbb-ui-components-react';
+import { BBBToggle } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToggle label="Enable Notifications" helperText="This is a toggle to enable the notifications." textPosition="top" />
 ```
@@ -48,7 +48,7 @@ Useful to explain why a disabled toggle can't be changed. The tooltip shows on h
 A disabled toggle with a `tooltipLabel` stays in the tab order so keyboard users can reach the tooltip: the input gets `aria-disabled="true"` instead of the native `disabled` attribute, and clicks, label clicks and Space are ignored. Like a natively disabled input, it is left out of form submission and validation: its `name` and `required` are dropped while it is disabled.
 
 ```jsx
-import { BBBToggle } from 'bbb-ui-components-react';
+import { BBBToggle } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToggle label="Share webcam" disabled tooltipLabel="Webcams are locked by a moderator" />
 ```
