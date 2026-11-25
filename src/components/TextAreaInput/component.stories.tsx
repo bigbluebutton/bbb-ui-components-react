@@ -1,11 +1,32 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBTextAreaInput from './component';
 
 const meta = {
-  title: 'BBBTextAreaInput',
+  title: 'Components/Form/BBBTextAreaInput',
+  id: 'bbbtextareainput',
   component: BBBTextAreaInput,
   tags: ['autodocs'],
   argTypes: {
+    value: {
+      control: 'text',
+      description: 'The text in the field, when the app controls it. Use it together with `onChange`.',
+    },
+    defaultValue: {
+      control: false,
+      description: 'The text in the field at first, when the app does not control it.',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'When true, the field cannot be used.',
+    },
+    id: {
+      control: false,
+      description: 'Id of the textarea element, to connect a label to it.',
+    },
+    name: {
+      control: false,
+      description: 'Name of the field when a form is submitted.',
+    },
     placeholder: {
       control: 'text',
       description: 'Placeholder text shown when textarea is empty.',
