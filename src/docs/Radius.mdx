@@ -1,0 +1,20 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { RadiusTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Radius" id="radius" />
+
+# Radius
+
+Use a radius token to round the corners of an element, instead of a fixed value.
+
+```jsx
+import { borderRadiusSmall } from '@bigbluebutton/bbb-ui-components-react';
+
+const Card = styled.div`
+  border-radius: ${borderRadiusSmall};
+`;
+```
+
+Unlike colors, a host page cannot override the radius. Pixel values assume the browser's default text size.
+
+<RadiusTable />

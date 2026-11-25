@@ -12,7 +12,7 @@ A customizable modal dialog component for React, following the BBB UI design sys
 ## Usage Example
 
 ```tsx
-import { BBBModal } from 'bbb-ui-components-react';
+import { BBBModal } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBModal
   isOpen={isOpen}

@@ -8,14 +8,14 @@ The `BBBNavigation` component provides a customizable button with an icon and a 
 
 ### Basic BBBNavigation Button
 ```jsx
-import { BBBNavigation } from 'bbb-ui-components-react';
+import { BBBNavigation } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBNavigation label="Home" onClick={() => console.log('Navigate to Home')} />
 ```
 
 ### BBBNavigation Button with Custom Icon
 ```jsx
-import { BBBNavigation } from 'bbb-ui-components-react';
+import { BBBNavigation } from '@bigbluebutton/bbb-ui-components-react';
 import { FaHome, MdFavorite } from 'react-icons/fa';
 
 <BBBNavigation label="Home" icon={<FaHome />} onClick={() => console.log('Navigate to Home')} />
@@ -23,7 +23,7 @@ import { FaHome, MdFavorite } from 'react-icons/fa';
 
 ### BBBNavigation Button with Children
 ```jsx
-import { BBBNavigation } from 'bbb-ui-components-react';
+import { BBBNavigation } from '@bigbluebutton/bbb-ui-components-react';
 import { MdFavorite } from 'react-icons/fa';
 
 <BBBNavigation label="Settings" onClick={() => console.log('Toggle Settings')}>

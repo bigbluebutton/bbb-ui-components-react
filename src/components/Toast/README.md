@@ -11,7 +11,7 @@ The `BBBToast` component is the presentational card for transient notifications.
 ### Basic Toast
 
 ```jsx
-import { BBBToast } from 'bbb-ui-components-react';
+import { BBBToast } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToast message="You are muted" />
 ```
@@ -21,7 +21,7 @@ import { BBBToast } from 'bbb-ui-components-react';
 Pass `content` for the description below the title. It shares the title's left edge, so the two read as one block. A divider separates them unless `showSeparator` is `false`.
 
 ```jsx
-import { BBBToast } from 'bbb-ui-components-react';
+import { BBBToast } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToast
   variant="warning"
@@ -37,7 +37,7 @@ Wire `onRequestClose` to remove the card. It fires both when the close button is
 
 ```jsx
 import { useState } from 'react';
-import { BBBToast } from 'bbb-ui-components-react';
+import { BBBToast } from '@bigbluebutton/bbb-ui-components-react';
 
 const [visible, setVisible] = useState(true);
 
@@ -59,7 +59,7 @@ Pass `autoClose={false}` for a toast that persists until it is dismissed manuall
 `onClick` covers the whole card, and the cursor turns into a pointer to show it. Pass `disablePointer` to keep the default cursor anyway, or `disablePointer={false}` to show the pointer on a card without `onClick` — for example when the toast engine closes it on click.
 
 ```jsx
-import { BBBToast } from 'bbb-ui-components-react';
+import { BBBToast } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToast
   small
@@ -87,7 +87,7 @@ Clicks on interactive elements passed in `message` or `content` (links, buttons,
 ### Toast With an Action
 
 ```jsx
-import { BBBToast } from 'bbb-ui-components-react';
+import { BBBToast } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToast
   variant="error"
@@ -103,7 +103,7 @@ import { BBBToast } from 'bbb-ui-components-react';
 `content` takes an arbitrary node, so links, buttons and inline media all render. Use it when a notification needs more than one action — for example a confirmation toast with both a cancel and a confirm button, which `actionLabel` alone does not cover.
 
 ```jsx
-import { BBBToast, BBButton } from 'bbb-ui-components-react';
+import { BBBToast, BBButton } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToast
   icon={false}
@@ -126,7 +126,7 @@ Pass `icon` to replace the icon matched to `variant`, or `icon={false}` to drop 
 
 ```jsx
 import { MdCampaign } from 'react-icons/md';
-import { BBBToast } from 'bbb-ui-components-react';
+import { BBBToast } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToast message="Presenter changed" icon={<MdCampaign />} />
 <BBBToast message="Start recording?" icon={false} />
@@ -181,7 +181,7 @@ The default of `70vh` sits just under that, so the card scrolls before the engin
 When only one region should scroll and the rest of the card should stay put, cap that region instead with `BBBScrollArea`, and raise `maxHeight` so the card itself is not the limit:
 
 ```jsx
-import { BBBToast, BBBScrollArea } from 'bbb-ui-components-react';
+import { BBBToast, BBBScrollArea } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBToast
   message="Uploading presentations"
