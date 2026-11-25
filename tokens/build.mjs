@@ -190,20 +190,19 @@ const target = (t) => tokenOf.get(/^\{(.+)\}$/.exec(t.original.$value)?.[1]);
 
 const colorRow = (figma) => (t) => ({
   name: colorName(t), value: fallbackOf(t.$value), pointsTo: docName(target(t)),
-  ...usage(t), ...(figma && ext(t).figma ? { figma: ext(t).figma.filter(figma) } : {}), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
+  ...usage(t), ...(figma && ext(t).figma?.some(figma) ? { figma: ext(t).figma.filter(figma) } : {}), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
 });
 
-// A color's roles are the groups of its names in Figma. One with no name there has the `role` set for it, or the group
-// it has in `colors` when that is a role too.
+// A color's `roles` say which lists of the Color page it is in. None means that it is only kept for existing apps.
 const ROLES = {
   text: 'Text', icon: 'Icon', surface: 'Background', border: 'Border', action: 'Action', feedback: 'Feedback', shadow: 'Shadow',
 };
-const rolesOf = (t) => {
-  if (t.$deprecated) return [];
-  if (ext(t).figma) return [...new Set(ext(t).figma.map((f) => f.split('/')[0]))];
-  const group = ext(t).role ?? ext(t).colorsKey?.split('.')[0];
-  return t.$description && group in ROLES ? [group] : [];
-};
+for (const t of colorTokens) {
+  const { roles } = ext(t);
+  const unknown = roles?.filter((role) => role !== 'component' && !(role in ROLES));
+  if (!roles || unknown.length) throw new Error(`${t.path.join('.')}: ${roles ? `unknown role ${unknown.join(', ')}` : 'set "roles", or [] if it is only kept for existing apps'}`);
+}
+const rolesOf = (t) => ext(t).roles;
 // The colors named after the role come first in its list.
 const namedFirst = (role) => (a, b) => Number(isNamed(b, role)) - Number(isNamed(a, role));
 const isNamed = (t, role) => [role, ROLES[role].toLowerCase()].includes(t.path[1]);

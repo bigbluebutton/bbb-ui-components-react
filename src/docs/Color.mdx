@@ -184,6 +184,7 @@ The lists are by role, so a color with two roles is in both, and a name can star
 <TokenTable kind="color" caption="Border colors" rows={[
   { name: 'colors.border.default', value: '#B0BDC9', pointsTo: 'colors.neutral.neutral3', purpose: 'Outline of fields and controls.', figma: ['border/default'], cssVars: ['--default-border', '--color-border-default', '--color-neutral-3'] },
   { name: 'colors.border.error', value: '#DF2721', pointsTo: 'palette.red.500', purpose: 'Outline of a field with an error.', figma: ['border/danger'], cssVars: ['--color-border-error', '--color-error'] },
+  { name: 'colors.border.focusRing', value: 'rgba(29, 101, 212, 0.15)', pointsTo: 'palette.alpha.blue-15', purpose: 'Ring around a focused field. Use it together with colors.border.selected, never instead of it.', figma: ['shadow/focus'], cssVars: ['--color-border-focus-ring'] },
   { name: 'colors.border.selected', value: '#0F70D7', pointsTo: 'colors.brand.brand1', purpose: 'Outline of a focused or selected item.', figma: ['border/focus'], cssVars: ['--color-border-selected', '--color-primary', '--color-brand-1'] },
   { name: 'colors.border.subtle', value: '#DCE4EC', pointsTo: 'colors.neutral.neutral4', purpose: 'Dividers.', figma: ['border/subtle'], cssVars: ['--color-border-subtle', '--color-neutral-4'] },
 ]} />
