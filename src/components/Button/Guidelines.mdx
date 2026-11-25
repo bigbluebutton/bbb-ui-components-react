@@ -1,0 +1,158 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBButton guidelines
+
+## When to use
+
+Use BBButton when a person triggers an action, such as sending, saving, joining or closing.
+
+Use something else when:
+
+- The person turns a setting on or off: use BBBToggle.
+- The person selects an option in a list or form: use BBBCheckbox or BBBSelect.
+- The person opens a page or an external address: use a link.
+- The person moves to another view inside the app: use BBBNavigation.
+
+## Choose a button
+
+Answer these in order. Each answer sets one prop, and the default is right unless a question says otherwise.
+
+1. **How important is the action in this view?** The main one is `primary`, an alternative is `secondary`, a lower-emphasis one with a tinted fill is `tertiary`, and one that should stay out of the way is `subtle`. This sets `variant`.
+2. **What does it do to the person's work?** Use `danger` if it removes or ends something, and `neutral` if it should carry no brand color. Otherwise keep `default`. This sets `color`.
+3. **Is there room for a label?** Keep the `default` layout if there is. Use `circle` or `squared` for a familiar icon in a tight space, and `stacked` for an icon with a label below it. This sets `layout`.
+4. **How dense is the area around it?** Keep `md`, or use `sm` in dense areas such as rows and toolbars. This sets `size`.
+
+## Combine buttons
+
+When buttons appear together, for example in a dialog footer:
+
+- **Primary and secondary:** for decisions and forms, such as Save and Cancel.
+- **Primary and subtle:** when one action is optional, such as Continue and Skip step.
+- **Secondary and subtle:** when no action is dominant, such as Cancel and View details.
+- **Danger and secondary:** always when there is risk, such as Delete account and Cancel. Use `primary` with `danger` for the risky action, and `secondary` with `default` for the way out.
+- **Subtle and subtle danger:** to keep lists clean, such as Edit and Delete.
+- **Primary, secondary and subtle:** when there are more than two actions, such as Save, Cancel and View details.
+
+## Variants
+
+Variant sets how much attention a button asks for. Pick it by importance, not by looks. When every button is `primary`, none of them stands out.
+
+### Primary
+
+A solid fill. Use it for the most important action in that context, and make it clearly indicate the next step. Use only one per screen or section, because several compete with each other. Don't use it for secondary or optional actions.
+
+<Canvas of={Stories.Primary} />
+
+### Secondary
+
+An outline on a white background. Use it for an alternative to the main action, such as Cancel, Back or Save draft. It supports other choices without competing with `primary`, and should never draw more attention than it.
+
+<Canvas of={Stories.Secondary} />
+
+### Tertiary
+
+A light tint with no outline. BBBToast uses it, in the `sm` size, for its action button. It is an ordinary button with no on or off state, so use BBBToggle for a setting. Avoid it with `danger` (see Colors).
+
+<Canvas of={Stories.Tertiary} />
+
+### Subtle
+
+Underlined text with no fill or outline until hover. Use it for low-priority actions that must be available without drawing attention, in dense interfaces or where there are many actions. Don't use it for important or critical actions. It looks like a link, so use it for actions and a real link to open a page.
+
+<Canvas of={Stories.Subtle} />
+
+## Colors
+
+Color says what kind of action it is. It works together with `variant`, which says how important the action is.
+
+- `default`: the brand color, except in `subtle`, where it is gray. Use it for most actions.
+- `danger`: red. Use it when the action removes or ends something, because it tells people to pause before they click. Say what will happen in the label too, since some people cannot see the color. Choose the variant by how critical the action is:
+  - `primary`: the main destructive action, such as deleting permanently. Ask for confirmation when needed, and use it sparingly so it keeps its impact.
+  - `secondary`: a destructive action that is not the main one, in dialogs or lists. Don't use it in place of `primary` when the action is critical.
+  - `subtle`: a low-priority destructive action, such as deleting an item in a list or table. Don't use it for a critical action without a confirmation.
+- `neutral`: gray text with no brand color. Use it for controls that should blend into their surroundings. It has no outline, so use it where its position or icon makes clear that it can be clicked.
+
+Two combinations need care:
+
+- `neutral` looks the same in `primary`, `secondary` and `tertiary`. Choose `primary` or `subtle`, and don't use `variant` to rank neutral buttons against each other.
+- `tertiary` with `danger` uses placeholder colors that have not been designed. Use `primary`, `secondary` or `subtle` with `danger` instead.
+
+## States
+
+The button handles these states itself, except `disabled` and `showFeedback`, which you set. There is no loading or selected state.
+
+- **Default:** ready to use.
+- **Hover and pressed:** the fill, outline or text color changes to show that the button responds. Both look the same.
+- **Focus:** a 2px ring in the button's color shows where the keyboard is. It also appears after a click. Never remove it with `className`.
+- **Disabled:** the button turns gray and ignores clicks and the keyboard. Every variant and color gets the same fill, so danger no longer looks like danger. Use it when the action is known but not available yet. Explain why in nearby text, because people cannot hover or focus the button to find out. When the action will never apply, leave the button out.
+- **Click feedback:** replaces the label or icon after a click, for two seconds unless you change `feedbackDuration`. Use it when the result is not visible on screen, such as copying a link. It appears as soon as the button is clicked, so don't use it for an action that can fail later.
+
+<Canvas of={Stories.Disabled} />
+
+<Canvas of={Stories.WithFeedback} />
+
+For work that takes time, show progress next to the button with BBBSpinner. For a setting that stays on, use BBBToggle.
+
+## Layouts
+
+### Default
+
+A label, with optional icons before or after it. Use it unless space or the surrounding pattern calls for another, because a label is clearer than an icon alone. Put an icon that shows the action's meaning in `iconStart`. Use `iconEnd` for one that shows what comes next, such as an arrow.
+
+<Canvas of={Stories.WithStartAndEndIcons} />
+
+### Circle and squared
+
+An icon with no visible label, for familiar actions in tight spaces. Both are the same size, so match the shape of the controls around them and don't mix the two in one group. Add a `tooltipLabel` so people can check the meaning, and an `ariaLabel` to name the button.
+
+<Canvas of={Stories.IconOnlySizes} />
+
+### Stacked
+
+An icon in a fixed box with the label below it, for a short row of large, equal actions. The label is cut off after two lines, so keep it to one or two words. Only the box can be clicked, not the label. `helperIcon` can offer a second action, with limits (see Don't).
+
+<Canvas of={Stories.Stacked} />
+
+## Sizes and width
+
+- `md`: the default. Use it for most buttons, and for anything people may tap.
+- `sm`: less padding and, for icon-only buttons, a smaller box. Use it in dense areas, where space matters more than a large target.
+- `stacked` has one size and ignores `size`.
+- Keep one size within a group.
+
+<Canvas of={Stories.AllSizes} />
+
+Use `fullWidth` in narrow containers, such as a side panel. When a label may not fit, for example once translated, use `labelOverflow="wrap"` to keep all of it visible. Use `labelOverflow="ellipsis"` only when the height must not change. It shows the full label in a tooltip.
+
+<Canvas of={Stories.LabelOverflow} />
+
+## Do
+
+- Use only one `primary` button per screen or section, including dialogs.
+- Start the label with a verb that names the result, such as "Save changes".
+- Use `color="danger"` for actions that remove or end something.
+- Set `type="submit"` on the button that submits a form.
+- Set `hideHelperIcon` on a `stacked` button that has no second action. The helper icon shows by default.
+- Use `fullWidth` and `labelOverflow` before overriding styles with `className`.
+
+## Don't
+
+- Don't use `variant="tertiary"` with `color="danger"`. Its colors are placeholders and have not been designed.
+- Don't rely on `variant` to separate `neutral` buttons. `primary`, `secondary` and `tertiary` look the same in that color.
+- Don't put the reason a button is disabled in its tooltip. A disabled button cannot be hovered or focused.
+- Don't use `helperOnClick` for an action available nowhere else. The helper icon cannot be reached by keyboard.
+
+## Accessibility
+
+- Always pass `ariaLabel` to `circle` and `squared` buttons. They have no visible label, and `tooltipLabel` does not name the button.
+- Don't pass `ariaLabel` to replace a visible label. The visible label is what is announced.
+- Use `ariaLabelledBy` to name the button from another element, and `ariaDescribedBy` to add a description.
+- Click feedback (`showFeedback`) is announced as a status message. Include text in `feedbackContent`, because an icon alone announces nothing useful.
+
+## Decisions
+
+- **The button type defaults to `button`.** A button inside a form must not submit it by accident. Rejected: the browser default of `submit`, because it submits the enclosing form.
+- **Tertiary text is `colors.hover.dark`, not the brand color.** On the light blue fill the brand color is 4.18:1, below the 4.5:1 that text needs. Rejected: the default text color, because the button no longer reads as a brand action.

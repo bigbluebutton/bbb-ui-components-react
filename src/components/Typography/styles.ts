@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { StyledTypography } from './types';
-import { colorTextDefault, colorTextLight } from '../../stylesheets/palette';
+import { colorTextDefault, colorTextSecondary } from '../../stylesheets/palette';
 import {
   fontSizeDefault, fontSizeSmall,
   fontSizeXSmall, fontWeightDefault,
@@ -23,14 +23,14 @@ const variants = {
     line-height: normal;
   `,
   text2: css`
-    color: ${colorTextLight};
+    color: ${colorTextSecondary};
     font-size: ${fontSizeSmall};
     font-style: normal;
     font-weight: ${fontWeightLight};
     line-height: normal;
   `,
   text3: css`
-    color: ${colorTextLight};
+    color: ${colorTextSecondary};
     font-size: ${fontSizeXSmall};
     font-style: normal;
     font-weight: ${fontWeightLight};

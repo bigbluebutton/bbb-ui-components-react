@@ -2,7 +2,7 @@ import { Switch } from '@mui/material';
 import { styled as materialStyled } from '@mui/material/styles';
 import styled, { css } from 'styled-components';
 import {
-  colorBrand1, colorIconDefault, colorTextDefault, colorTextLight, colorWhite,
+  colorBrand1, colorIconDefault, colorTextDefault, colorTextSecondary, colorWhite,
   colorShadowDefault, colorIconDefaultDark, colorNeutral3,
 } from '../../stylesheets/palette';
 import { TEXT_POSITIONS } from './constants';
@@ -85,7 +85,7 @@ export const Title = styled.span<StyledTextProps>`
 `;
 
 export const HelperText = styled.span<StyledTextProps>`
-  color: ${({ $disabled }) => ($disabled ? colorNeutral3 : colorTextLight)};
+  color: ${({ $disabled }) => ($disabled ? colorNeutral3 : colorTextSecondary)};
   font-size: ${fontSizeDefault};
   font-style: normal;
   font-weight: 400;
