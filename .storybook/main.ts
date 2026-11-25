@@ -1,15 +1,25 @@
-import type { StorybookConfig } from "@storybook/react-webpack5";
+import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
-    "@storybook/addon-webpack5-compiler-babel",
     "@storybook/addon-links",
     "@storybook/addon-a11y",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
+    "@storybook/addon-mcp",
+    "@storybook/addon-vitest"
+  ],
+  storySorts: [
+    {
+      order: [
+        'Foundation',
+        'Components',
+        ['Action', 'Form', 'Display', 'Feedback', 'Navigation', 'Overlay'],
+      ],
+    },
   ],
   framework: {
-    name: "@storybook/react-webpack5",
+    name: "@storybook/react-vite",
     options: {},
   },
 };
