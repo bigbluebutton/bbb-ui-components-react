@@ -159,8 +159,8 @@ The lists are by role, so a color with two roles is in both, and a name can star
 <TokenTable kind="color" caption="Icon colors" rows={[
   { name: 'colors.icon.blue', value: '#0F70D7', pointsTo: 'palette.blue.500', purpose: 'Icons in the brand color.', figma: ['icon/brand'], cssVars: ['--color-icon-blue', '--color-brand-1'] },
   { name: 'colors.icon.default', value: '#717C91', pointsTo: 'colors.neutral.neutral2', purpose: 'Icons on a light background.', figma: ['icon/default'], cssVars: ['--color-icon-default', '--color-neutral-2'] },
-  { name: 'colors.icon.defaultDark', value: 'rgba(255, 255, 255, 0.35)', pointsTo: 'palette.alpha.white-35', purpose: 'Icons on a dark background.', cssVars: ['--color-icon-default-dark'] },
-  { name: 'colors.icon.white', value: '#FFFFFF', pointsTo: 'colors.neutral.white', purpose: 'Icons on the brand color.', figma: ['icon/on-brand'], cssVars: ['--color-icon-white', '--color-white', '--color-neutral-white'] },
+  { name: 'colors.icon.defaultDark', value: 'rgba(255, 255, 255, 0.35)', pointsTo: 'palette.alpha.white-35', purpose: 'Secondary icons in dark mode.', cssVars: ['--color-icon-default-dark'] },
+  { name: 'colors.icon.white', value: '#FFFFFF', pointsTo: 'colors.neutral.white', purpose: 'Icons on the brand color or on a dark background.', figma: ['icon/on-brand'], cssVars: ['--color-icon-white', '--color-white', '--color-neutral-white'] },
 ]} />
 
 ### Background
@@ -171,9 +171,9 @@ The lists are by role, so a color with two roles is in both, and a name can star
   { name: 'colors.background.white', value: '#FFFFFF', pointsTo: 'colors.neutral.white', purpose: 'Panels, cards and modals.', figma: ['surface/default'], cssVars: ['--color-background-white', '--color-white', '--color-neutral-white'] },
   { name: 'colors.background.inverse', value: '#393C48', pointsTo: 'palette.gray.500', purpose: 'Tooltips and labels over video.', figma: ['surface/inverse'], cssVars: ['--color-background-inverse'] },
   { name: 'colors.background.room', value: '#181A23', pointsTo: 'palette.night.800', purpose: 'The dark background of the meeting room.', figma: ['surface/room'], cssVars: ['--color-background-room'] },
-  { name: 'colors.background.roomOverlay', value: 'rgba(255, 255, 255, 0.15)', pointsTo: 'palette.alpha.white-15', purpose: 'Translucent layer on the room background.', figma: ['surface/overlay'], cssVars: ['--color-background-room-overlay'] },
-  { name: 'colors.background.roomOverlayStrong', value: '#334150', pointsTo: 'palette.night.600', purpose: 'Solid, stronger layer on the room background.', figma: ['surface/overlay-strong'], cssVars: ['--color-background-room-overlay-strong'] },
-  { name: 'colors.background.video', value: '#001428', pointsTo: 'palette.night.900', purpose: 'Behind a video.', figma: ['surface/video'], cssVars: ['--color-background-video'] },
+  { name: 'colors.background.roomOverlay', value: 'rgba(255, 255, 255, 0.15)', pointsTo: 'palette.alpha.white-15', purpose: 'Buttons on the room background.', figma: ['surface/overlay'], cssVars: ['--color-background-room-overlay'] },
+  { name: 'colors.background.roomOverlayStrong', value: '#334150', pointsTo: 'palette.night.600', purpose: 'Hover and focus on the room background.', figma: ['surface/overlay-strong'], cssVars: ['--color-background-room-overlay-strong'] },
+  { name: 'colors.background.video', value: '#001428', pointsTo: 'palette.night.900', purpose: 'Video tile when the camera is off.', figma: ['surface/video'], cssVars: ['--color-background-video'] },
   { name: 'colors.hover.light', value: '#D4E5FA', pointsTo: 'palette.blue.50', purpose: 'Hover on an item with a light brand background.', figma: ['surface/brand-hover'], cssVars: ['--color-hover-light'] },
   { name: 'colors.hover.neutral', value: '#DCE4EC', pointsTo: 'colors.neutral.neutral4', purpose: 'Neutral hover on a surface.', figma: ['surface/hover'], cssVars: ['--color-hover-neutral', '--color-neutral-4'] },
   { name: 'colors.overlay.default', value: 'rgba(0, 0, 0, 0.75)', pointsTo: 'palette.alpha.black-75', purpose: 'Layer behind a modal.', figma: ['surface/modal-overlay'], cssVars: ['--color-overlay'] },
@@ -260,7 +260,7 @@ Each one is for a single part of the app. For anything else, use a semantic colo
 ### Video
 
 <TokenTable kind="color" caption="Video colors" rows={[
-  { name: 'colors.video.surface', value: '#F4F6FA', pointsTo: 'palette.gray.25', purpose: 'Light surface of a video. For the area behind a video, use colors.background.video.', figma: ['component/video/surface'], cssVars: ['--color-video-surface'] },
+  { name: 'colors.video.surface', value: '#F4F6FA', pointsTo: 'palette.gray.25', purpose: 'Light surface of a video. For the tile when the camera is off, use colors.background.video.', figma: ['component/video/surface'], cssVars: ['--color-video-surface'] },
   { name: 'colors.video.overlay', value: '#000000', pointsTo: 'palette.black', purpose: 'Layer over a video.', figma: ['component/video/overlay'], cssVars: ['--color-video-overlay'] },
 ]} />
 
