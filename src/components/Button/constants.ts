@@ -10,7 +10,7 @@ import {
   colorNeutral3,
   colorBackgroundLight,
   colorBorderSelected,
-  colorTextLight,
+  colorTextSecondary,
   colorIconDefault,
   colorGray,
   colorBrandAux,
@@ -139,7 +139,7 @@ const CSS_COLOR_PROPERTIES: CSSColorPropertiesType = {
   },
   tertiary: {
     default: {
-      color: colorBrand1,
+      color: colorHoverDark,
       background: colorBackgroundBlue,
       border: false,
       hoverColor: colorHoverDark,
@@ -170,18 +170,18 @@ const CSS_COLOR_PROPERTIES: CSSColorPropertiesType = {
   },
   subtle: {
     default: {
-      color: colorTextLight,
+      color: colorTextSecondary,
       iconColor: colorIconDefault,
       background: 'transparent',
       border: false,
-      hoverColor: colorTextLight,
+      hoverColor: colorTextSecondary,
       hoverBackground: colorLightGray,
       hoverBorder: false,
       outline: colorIconDefault,
     },
     danger: {
       color: colorError,
-      background: false,
+      background: 'transparent',
       border: false,
       hoverColor: colorErrorDark,
       hoverBackground: colorLightGray,

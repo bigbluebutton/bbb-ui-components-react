@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Checkbox as MuiCheckbox } from '@mui/material';
 import {
-  colorTextDefault, colorTextLight, colorBrand1, colorNeutral3,
+  colorTextDefault, colorTextSecondary, colorBrand1, colorNeutral3,
 } from '../../stylesheets/palette';
 import { fontSizeDefault, fontSizeSmall } from '../../stylesheets/typography';
 import { borderRadiusSmall, spacingSmall } from '../../stylesheets/sizing';
@@ -41,7 +41,7 @@ export const Label = styled.label<StyledLabelProps>`
 `;
 
 export const HelperText = styled.label<StyledLabelProps>`
-  color: ${({ $disabled }) => ($disabled ? colorNeutral3 : colorTextLight)};
+  color: ${({ $disabled }) => ($disabled ? colorNeutral3 : colorTextSecondary)};
   font-size: ${fontSizeSmall};
   font-style: normal;
   font-weight: 400;

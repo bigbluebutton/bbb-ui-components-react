@@ -9,7 +9,7 @@ The `BBBSelect` component is a customizable select input that wraps the Material
 ### Basic Select
 
 ```jsx
-import { BBBSelect } from 'bbb-ui-components-react';
+import { BBBSelect } from '@bigbluebutton/bbb-ui-components-react';
 import MenuItem from '@mui/material/MenuItem';
 
 <BBBSelect title="Choose an option" defaultValue="">
@@ -25,7 +25,7 @@ import MenuItem from '@mui/material/MenuItem';
 ### Select with Icon
 
 ```jsx
-import { BBBSelect } from 'bbb-ui-components-react';
+import { BBBSelect } from '@bigbluebutton/bbb-ui-components-react';
 import MenuItem from '@mui/material/MenuItem';
 import { MdFilterList } from 'react-icons/md';
 
