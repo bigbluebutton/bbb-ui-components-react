@@ -8,21 +8,21 @@ The `BBBTextInput` component provides a styled, single-line text input field tha
 
 ### Text Input with label and placeholder
 ```jsx
-import { BBBTextInput } from 'bbb-ui-components-react';
+import { BBBTextInput } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBTextInput label="Username" placeholder="Enter your username" />
 ```
 
 ### Text Input with label, placeholder and a helper text
 ```jsx
-import { BBBTextInput } from 'bbb-ui-components-react';
+import { BBBTextInput } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBTextInput label="Username" placeholder="Enter your username" helperText="Write here your username" />
 ```
 
 ### Text Input with label and placeholder and error state
 ```jsx
-import { BBBTextInput } from 'bbb-ui-components-react';
+import { BBBTextInput } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBTextInput error label="Username" placeholder="Enter your username" />
 ```
