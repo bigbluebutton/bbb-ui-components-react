@@ -7,7 +7,7 @@ A loading spinner component for indicating background activity or loading states
 ## Usage Example
 
 ```jsx
-import { BBBSpinner } from 'bbb-ui-components-react';
+import { BBBSpinner } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBSpinner />
 <BBBSpinner size={32} />

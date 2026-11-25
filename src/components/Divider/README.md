@@ -7,7 +7,7 @@ The `BBBDivider` component is a simple horizontal line used to separate content.
 ## Usage Example
 
 ```jsx
-import { BBBDivider } from 'bbb-ui-components-react';
+import { BBBDivider } from '@bigbluebutton/bbb-ui-components-react';
 
 <div>
   <span>Content above</span>

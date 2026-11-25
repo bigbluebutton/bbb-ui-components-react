@@ -9,7 +9,7 @@ The `BBButton` component is a versatile button that supports multiple layouts an
 ### Standard Button
 
 ```jsx
-import { BBButton } from 'bbb-ui-components-react';
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBButton label="Click Here" onClick={() => (console.log('clicked'))}/>
 ```
@@ -17,7 +17,7 @@ import { BBButton } from 'bbb-ui-components-react';
 ### Standard Button with Icon Before or After the label
 
 ```jsx
-import { BBButton } from 'bbb-ui-components-react';
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react';
 import { MdSettings } from 'react-icons/md';
 
 <BBButton label="Click Here" iconStart={<MdSettings />} onClick={() => (console.log('clicked'))}/>
@@ -27,7 +27,7 @@ import { MdSettings } from 'react-icons/md';
 ### Circular Button
 
 ```jsx
-import { BBButton } from 'bbb-ui-components-react';
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react';
 import { MdFavorite } from 'react-icons/md';
 
 <BBButton layout="circle" icon={<MdFavorite />} tooltipLabel="Favorite" onClick={() => (console.log('clicked'))}/>
@@ -36,7 +36,7 @@ import { MdFavorite } from 'react-icons/md';
 ### Squared Button
 
 ```jsx
-import { BBButton } from 'bbb-ui-components-react';
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react';
 import { MdSend } from 'react-icons/md';
 
 <BBButton layout="squared" icon={<MdSend />} ariaLabel="Send" onClick={() => (console.log('clicked'))}/>
@@ -45,7 +45,7 @@ import { MdSend } from 'react-icons/md';
 ### Stacked Button
 
 ```jsx
-import { BBButton } from 'bbb-ui-components-react';
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react';
 import { MdPlayArrow } from 'react-icons/md';
 
 <BBButton layout="stacked" icon={<MdPlayArrow size={30} />} label="Settings" onClick={() => (console.log('clicked'))}/>
@@ -56,7 +56,7 @@ import { MdPlayArrow } from 'react-icons/md';
 `BBButton` renders `type="button"` by default, so it never submits an enclosing `<form>`. Pass `type="submit"` to opt in:
 
 ```jsx
-import { BBButton } from 'bbb-ui-components-react';
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react';
 
 <form onSubmit={handleSubmit}>
   <BBButton type="submit" label="Save" onClick={() => (console.log('clicked'))}/>
@@ -66,7 +66,7 @@ import { BBButton } from 'bbb-ui-components-react';
 ### Full-width Button
 
 ```jsx
-import { BBButton } from 'bbb-ui-components-react';
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBButton label="Share" fullWidth onClick={() => (console.log('clicked'))}/>
 ```
@@ -81,7 +81,7 @@ import { BBButton } from 'bbb-ui-components-react';
 
 ```jsx
 import styled from 'styled-components';
-import { BBButton } from 'bbb-ui-components-react';
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react';
 
 const RoomActionButton = styled(BBButton)`
   flex: 1 1 10rem;
@@ -97,7 +97,7 @@ const RoomActionButton = styled(BBButton)`
 
 ```jsx
 import styled from 'styled-components';
-import { BBButton } from 'bbb-ui-components-react';
+import { BBButton } from '@bigbluebutton/bbb-ui-components-react';
 
 const FooterButton = styled(BBButton)`
   min-width: 8.5rem;

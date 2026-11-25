@@ -7,7 +7,7 @@ The `BBBTypography` component is used to display text with different styles and 
 ## Usage
 
 ```jsx
-import { BBBTypography } from 'bbb-ui-components-react';
+import { BBBTypography } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBTypography variant="header">This is a header</BBBTypography>
 <BBBTypography variant="default">This is a default text.</BBBTypography>

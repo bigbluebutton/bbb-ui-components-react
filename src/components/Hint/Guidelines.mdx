@@ -1,0 +1,38 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBHint guidelines
+
+## When to use
+
+Use BBBHint for a tip or short explanation that sits in the page, next to the content it is about.
+
+Use something else when:
+
+- Something just happened and the message is temporary: use BBBToast.
+- The person must respond before going on: use BBBModal.
+- The message reports a problem or a warning: BBBHint has a single style, so it does not look more urgent.
+
+## Structure
+
+- **Icon:** an information icon at the start. It can be replaced.
+- **Title:** optional, in bold.
+- **Label:** the hint itself, and the only required part. It sits next to the icon, or below the title when there is one.
+- **Extra content:** optional, after the label.
+- **Close button:** at the end of the first line.
+
+<Canvas of={Stories.Uncontrolled} />
+
+## Choose a hint
+
+- **Title:** leave it out when the label is one short line. Add it when the label needs a heading.
+- **Closing:** keep the close button when the hint is only useful once. Remove it when the hint must stay in view.
+- **Showing it again:** the hint closes itself, and comes back when it is next rendered. Set `open` when the app needs to remember that it was closed or show it again.
+
+## Accessibility
+
+- The hint is a polite status message, so it does not interrupt what is being read.
+- Put everything important in the title and label. The icon is not announced.
+- Known gap: the close button's name is always "Close", in English, and cannot be translated.
