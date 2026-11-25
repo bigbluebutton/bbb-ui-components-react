@@ -5,8 +5,8 @@ import { TypographyProps } from './types';
 /**
  * A typography component that standardizes text styles across the app.
  *
- * This component provides multiple semantic variants (header, default, label, helper)
- * and allows overriding the rendered HTML element via the `as` prop.
+ * Each variant applies a text style from the tokens, and a text color. It renders a `p`, unless the `as` prop
+ * says otherwise.
  *
  */
 const Typography: React.FC<TypographyProps> = ({

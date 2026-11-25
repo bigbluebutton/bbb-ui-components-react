@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import BBButton from './component';
 import {
   MdFavorite, MdMoreVert, MdSettings, MdCheckCircle, MdContentCopy,
@@ -24,7 +24,8 @@ import {
 } from './constants';
 
 const meta = {
-  title: 'BBButton',
+  title: 'Components/Action/BBButton',
+  id: 'bbbutton',
   component: BBButton,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],
@@ -298,6 +299,7 @@ export const Circle: Story = {
           key={color}
           color={color}
           tooltipLabel={`Circle ${color.charAt(0).toUpperCase() + color.slice(1)}`}
+          ariaLabel={`Circle ${color.charAt(0).toUpperCase() + color.slice(1)}`}
         />
       ))}
     </div>
@@ -321,6 +323,7 @@ export const Squared: Story = {
           key={color}
           color={color}
           tooltipLabel={`Squared ${color.charAt(0).toUpperCase() + color.slice(1)}`}
+          ariaLabel={`Squared ${color.charAt(0).toUpperCase() + color.slice(1)}`}
         />
       ))}
     </div>

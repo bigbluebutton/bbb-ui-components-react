@@ -11,7 +11,7 @@ tick dots, and a value tooltip.
 ### Slider with a label
 
 ```jsx
-import { BBBSlider } from 'bbb-ui-components-react';
+import { BBBSlider } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBSlider label="Brightness" defaultValue={50} />
 ```
@@ -19,7 +19,7 @@ import { BBBSlider } from 'bbb-ui-components-react';
 ### Volume, where the number matters
 
 ```jsx
-import { BBBSlider } from 'bbb-ui-components-react';
+import { BBBSlider } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBSlider
   label="Volume"
@@ -37,7 +37,7 @@ import { BBBSlider } from 'bbb-ui-components-react';
 ### Brightness, where the number does not matter
 
 ```jsx
-import { BBBSlider } from 'bbb-ui-components-react';
+import { BBBSlider } from '@bigbluebutton/bbb-ui-components-react';
 import { MdBrightnessLow, MdBrightnessHigh } from 'react-icons/md';
 
 <BBBSlider
@@ -55,7 +55,7 @@ import { MdBrightnessLow, MdBrightnessHigh } from 'react-icons/md';
 ### Discrete stages with labels only
 
 ```jsx
-import { BBBSlider } from 'bbb-ui-components-react';
+import { BBBSlider } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBSlider
   label="Webcam grid size"

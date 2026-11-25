@@ -1,10 +1,11 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBTypography from './component';
 import { TYPOGRAPHY_VARIANTS } from './constants';
 
 const meta = {
-  title: 'BBBTypography',
+  title: 'Foundation/BBBTypography',
+  id: 'bbbtypography',
   component: BBBTypography,
   tags: ['autodocs'],
   argTypes: {
@@ -15,11 +16,11 @@ const meta = {
     variant: {
       control: 'select',
       options: TYPOGRAPHY_VARIANTS,
-      description: 'Typography variant (e.g., header, default). Use values from component constants if available.',
+      description: 'Typography variant (e.g., header, default) controlling the applied text style.',
     },
     as: {
       control: 'text',
-      description: 'HTML element to render as (e.g., h1, p, span).',
+      description: 'HTML element to render as (e.g., h1, p, span), in place of `p`.',
     },
   },
 } satisfies Meta<typeof BBBTypography>;
