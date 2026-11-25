@@ -31,3 +31,30 @@ Unlike colors, a host page cannot override spacing. Pixel values assume the brow
 ]} />
 
 {/* END spacing */}
+
+## Padding
+
+Use these for what you build yourself. The library's components set their own padding, so don't change it.
+
+- **Panel:** `spacingLarge` on all sides.
+- **Card:** `spacingMedium`.
+- **Actions bar:** `spacingMedium`.
+- **Menu item:** no vertical padding, and `spacingMedium` (compact) or `spacingLarge` (large) at the sides.
+- **Tooltip:** `spacingXSmall` vertical, `spacingSmall` at the sides.
+- **Badge:** no vertical padding, `spacingSmallMedium` at the sides.
+
+The larger the surface, the larger its padding. Use the same padding on all sides unless the element is listed above with different ones, and the same padding every time an element is repeated.
+
+## Gaps
+
+The gap shows how closely things are related: the less related, the larger the gap. Don't use one gap for items and for the groups they belong to, because people can no longer see the groups.
+
+- **Short icon and its text:** `spacingXSmall`.
+- **Items of one list or group, such as options:** `spacingSmall`.
+- **Section title and its content:** `spacingSmallMedium`.
+- **Buttons in an actions bar or a modal footer:** `spacingMedium`.
+- **Groups, and panels side by side:** `spacingMedium`.
+- **Sections inside a panel or modal:** `spacingLarge`.
+- **Page blocks:** `spacingXXLarge`.
+
+When nothing here fits, use `spacingMedium`. When two values fit, prefer a multiple of 8px.
