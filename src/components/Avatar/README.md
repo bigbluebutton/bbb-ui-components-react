@@ -8,63 +8,63 @@ The `BBBAvatar` component renders a user's avatar image, falling back to their i
 
 ### Avatar with image
 ```jsx
-import { BBBAvatar } from 'bbb-ui-components-react';
+import { BBBAvatar } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAvatar name="Arthur Kaminski" avatarUrl={user.avatar} />
 ```
 
 ### Avatar with initials fallback
 ```jsx
-import { BBBAvatar } from 'bbb-ui-components-react';
+import { BBBAvatar } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAvatar name="Arthur Kaminski" />
 ```
 
 ### Avatar with a custom color
 ```jsx
-import { BBBAvatar } from 'bbb-ui-components-react';
+import { BBBAvatar } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAvatar name="Arthur Kaminski" color="#0F70D7" />
 ```
 
 ### Medium avatar
 ```jsx
-import { BBBAvatar } from 'bbb-ui-components-react';
+import { BBBAvatar } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAvatar name="Arthur Kaminski" size="medium" />
 ```
 
 ### Large avatar
 ```jsx
-import { BBBAvatar } from 'bbb-ui-components-react';
+import { BBBAvatar } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAvatar name="Arthur Kaminski" size="large" />
 ```
 
 ### Moderator avatar
 ```jsx
-import { BBBAvatar } from 'bbb-ui-components-react';
+import { BBBAvatar } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAvatar name="Arthur Kaminski" isModerator />
 ```
 
 ### Current user's avatar
 ```jsx
-import { BBBAvatar } from 'bbb-ui-components-react';
+import { BBBAvatar } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAvatar name="Arthur Kaminski" isYou />
 ```
 
 ### Talking indicator
 ```jsx
-import { BBBAvatar } from 'bbb-ui-components-react';
+import { BBBAvatar } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAvatar name="Arthur Kaminski" isTalking />
 ```
 
 ### Avatar without the hover tooltip
 ```jsx
-import { BBBAvatar } from 'bbb-ui-components-react';
+import { BBBAvatar } from '@bigbluebutton/bbb-ui-components-react';
 
 <BBBAvatar name="Arthur Kaminski" disableTooltip />
 ```
