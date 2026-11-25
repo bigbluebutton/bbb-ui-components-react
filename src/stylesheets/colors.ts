@@ -1,71 +1,62 @@
+// Generated from tokens/tokens.json by `npm run tokens`. Do not edit.
 import {
-  colorNeutral2, colorNeutral3, colorNeutral4, colorWhite, colorLightGray, colorGray, colorDarkGray,
-  colorBrand1, colorBrand2, colorBrand3, colorBrandLight, colorBrandAux,
-  colorSuccess, colorWarning, colorError, colorErrorDark,
-  colorBackgroundWhite, colorBackgroundLight, colorBackgroundBlue,
-  colorBorderDefault, colorBorderSelected, colorBorderError, colorBorderFocusRing,
-  colorTextDefault, colorTextLight,
-  colorIconDefault, colorIconBlue, colorIconWhite, colorIconDefaultDark,
-  colorHoverDark, colorHoverLight, colorHoverNeutral,
-  colorOverlay,
-  colorShadowDefault,
-  colorUserYou,
+  colorBackgroundBlue, colorBackgroundLight, colorBackgroundWhite, colorBorderDefault, colorBorderError, colorBorderFocusRing, colorBorderSelected, colorBrand1, colorBrand2, colorBrand3, colorBrandAux, colorBrandLight, colorDarkGray, colorError, colorErrorDark, colorGray, colorHoverDark, colorHoverLight, colorHoverNeutral, colorIconBlue, colorIconDefault, colorIconDefaultDark, colorIconWhite, colorLightGray, colorNeutral2, colorNeutral3, colorNeutral4, colorOverlay, colorShadowDefault, colorSuccess, colorTextDefault, colorTextLight, colorUserYou, colorWarning, colorWhite,
 } from './palette';
 
 export const colors = {
-  neutral: {
-    neutral2: colorNeutral2,
-    neutral3: colorNeutral3,
-    neutral4: colorNeutral4,
-    white: colorWhite,
-    lightGray: colorLightGray,
-    gray: colorGray,
-    darkGray: colorDarkGray,
+  background: {
+    blue: colorBackgroundBlue,
+    light: colorBackgroundLight,
+    white: colorBackgroundWhite,
+  },
+  border: {
+    default: colorBorderDefault,
+    error: colorBorderError,
+    focusRing: colorBorderFocusRing,
+    selected: colorBorderSelected,
   },
   brand: {
     brand1: colorBrand1,
     brand2: colorBrand2,
     brand3: colorBrand3,
-    light: colorBrandLight,
     aux: colorBrandAux,
+    light: colorBrandLight,
+  },
+  neutral: {
+    darkGray: colorDarkGray,
+    gray: colorGray,
+    lightGray: colorLightGray,
+    neutral2: colorNeutral2,
+    neutral3: colorNeutral3,
+    neutral4: colorNeutral4,
+    white: colorWhite,
   },
   semantic: {
-    success: colorSuccess,
-    warning: colorWarning,
     error: colorError,
     errorDark: colorErrorDark,
-  },
-  background: {
-    white: colorBackgroundWhite,
-    light: colorBackgroundLight,
-    blue: colorBackgroundBlue,
-  },
-  border: {
-    default: colorBorderDefault,
-    selected: colorBorderSelected,
-    error: colorBorderError,
-    focusRing: colorBorderFocusRing,
-  },
-  text: {
-    default: colorTextDefault,
-    light: colorTextLight,
-  },
-  icon: {
-    default: colorIconDefault,
-    blue: colorIconBlue,
-    white: colorIconWhite,
-    defaultDark: colorIconDefaultDark,
+    success: colorSuccess,
+    warning: colorWarning,
   },
   hover: {
     dark: colorHoverDark,
     light: colorHoverLight,
     neutral: colorHoverNeutral,
   },
+  icon: {
+    blue: colorIconBlue,
+    default: colorIconDefault,
+    defaultDark: colorIconDefaultDark,
+    white: colorIconWhite,
+  },
   overlay: {
     default: colorOverlay,
   },
   shadow: {
     default: colorShadowDefault,
+  },
+  text: {
+    default: colorTextDefault,
+    light: colorTextLight,
   },
   user: {
     you: colorUserYou,
