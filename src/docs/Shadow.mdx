@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TokenTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Shadow" id="shadow" />
+
+# Shadow
+
+A shadow shows what sits above the page. The more an element covers, the stronger its shadow. Use a shadow token instead of a fixed value.
+
+```jsx
+import { shadowFloating } from '@bigbluebutton/bbb-ui-components-react';
+
+const Menu = styled.div`
+  box-shadow: ${shadowFloating};
+`;
+```
+
+- Use one shadow per surface. The strongest belongs to the element on top.
+- Don't put a shadow on an element that is part of the page, such as a card in a list.
+- Don't make a shadow stronger on a dark background, where it is barely visible. Let the contrast of the surface separate it, with a border if needed.
+
+A host page can change the color of a shadow, but not its size. `shadowWhiteboard` is different: tldraw sets the whole shadow, and its default value applies where tldraw does not. The components do not all use these tokens yet.
+
+{/* BEGIN shadow: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="shadow" caption="Shadow" rows={[
+  { name: 'shadowSubtle', value: '0 2px 4px 0 rgba(0, 35, 11, 0.2)', purpose: 'Small raised controls, such as a slider thumb or a send button.', figma: ['Shadow/1 · Subtle'], cssVars: ['--color-shadow-default'] },
+  { name: 'shadowFloating', value: '0 2px 12px 0 rgba(0, 35, 11, 0.2)', purpose: 'Menus, open lists and tooltips.', figma: ['Shadow/2 · Floating'], cssVars: ['--color-shadow-default'] },
+  { name: 'shadowHighlight', value: '0 4px 16px 0 rgba(0, 35, 11, 0.2)', purpose: 'Notifications over video.', figma: ['Shadow/3 · Highlight'], cssVars: ['--color-shadow-default'] },
+  { name: 'shadowModal', value: '4px 8px 8px 0 rgba(0, 0, 0, 0.2)', purpose: 'Modals and dialogs.', figma: ['Shadow/4 · Modal'], cssVars: ['--color-shadow-strong'] },
+  { name: 'shadowWhiteboard', value: '0 0 2px 0 rgba(0, 0, 0, 0.16), 0 2px 3px 0 rgba(0, 0, 0, 0.24), 0 2px 6px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px #FFFFFF', purpose: 'Panels and buttons on the whiteboard, so that they match the ones of tldraw.', figma: ['Shadow/Whiteboard (tldraw)'], cssVars: ['--tl-shadow-2'] },
+  { name: 'shadowFocus', value: '0 0 0 3px rgba(29, 101, 212, 0.15)', purpose: 'Ring around a focused field. Use it together with the colors.border.selected outline, never instead of it.', figma: ['Focus/Ring'], cssVars: ['--color-border-focus-ring'] },
+]} />
+
+{/* END shadow */}

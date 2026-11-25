@@ -5,7 +5,7 @@ import {
   colorBorderError,
   colorBorderFocusRing,
   colorTextDefault,
-  colorTextLight,
+  colorTextSecondary,
   colorError,
   colorSuccess,
 } from '../../stylesheets/palette';
@@ -74,7 +74,7 @@ export const TextArea = styled.textarea`
   padding: 0;
 
   &::placeholder {
-    color: ${colorTextLight};
+    color: ${colorTextSecondary};
   }
 
   &:disabled {

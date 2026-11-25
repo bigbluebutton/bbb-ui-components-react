@@ -5,4 +5,9 @@ export const TYPOGRAPHY_VARIANTS = [
   'text3',
   'header',
   'button',
+  'section',
+  'highlight',
+  'display',
+  'large',
+  'smallLabel',
 ] as const;

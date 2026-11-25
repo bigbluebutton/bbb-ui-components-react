@@ -1,10 +1,11 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBTypography from './component';
 import { TYPOGRAPHY_VARIANTS } from './constants';
 
 const meta = {
-  title: 'BBBTypography',
+  title: 'Foundation/BBBTypography',
+  id: 'bbbtypography',
   component: BBBTypography,
   tags: ['autodocs'],
   argTypes: {
@@ -15,11 +16,11 @@ const meta = {
     variant: {
       control: 'select',
       options: TYPOGRAPHY_VARIANTS,
-      description: 'Typography variant (e.g., header, default). Use values from component constants if available.',
+      description: 'Typography variant (e.g., header, default) controlling the applied text style.',
     },
     as: {
       control: 'text',
-      description: 'HTML element to render as (e.g., h1, p, span).',
+      description: 'HTML element to render as (e.g., h1, p, span), in place of `p`.',
     },
   },
 } satisfies Meta<typeof BBBTypography>;
@@ -44,6 +45,21 @@ export const Header: Story = { args: { variant: 'header', children: 'Header text
 
 /** Renders text using the button variant, matching the typography used inside buttons. */
 export const ButtonText: Story = { args: { variant: 'button', children: 'Button label text' } };
+
+/** Renders the heading of a group inside a panel or modal. */
+export const Section: Story = { args: { variant: 'section', as: 'h3', children: 'Notifications' } };
+
+/** Renders a highlight title, such as the one of an empty state. Use one per screen. */
+export const Highlight: Story = { args: { variant: 'highlight', as: 'h2', children: 'No shared notes yet' } };
+
+/** Renders a large number, such as a timer. Not for text. */
+export const Display: Story = { args: { variant: 'display', children: '05:00' } };
+
+/** Renders the text of a large menu. */
+export const Large: Story = { args: { variant: 'large', children: 'Large menu item' } };
+
+/** Renders a small label, such as a badge or a counter. */
+export const SmallLabel: Story = { args: { variant: 'smallLabel', as: 'span', children: '12 users' } };
 
 /** Compares every available variant side by side. */
 export const AllVariants: Story = {

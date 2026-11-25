@@ -14,6 +14,6 @@ export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   /** Typography variant (e.g., header, default) controlling the applied text style. @default 'default' */
   variant?: TypographyVariants;
 
-  /** HTML element to render as (e.g., h1, p, span), overriding the variant's default element. */
+  /** HTML element to render as (e.g., h1, p, span), in place of `p`. @default 'p' */
   as?: React.ElementType;
 }
