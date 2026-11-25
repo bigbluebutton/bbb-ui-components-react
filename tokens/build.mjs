@@ -1,4 +1,4 @@
-// Style Dictionary build: tokens/tokens.json -> src/stylesheets/{palette,sizing,typography,shadows,colors}.ts
+// Style Dictionary build: tokens/tokens.json -> src/stylesheets/{palette,sizing,typography,textStyles,shadows,colors}.ts
 // and the token lists in src/docs/*.mdx
 import fs from 'node:fs';
 import path from 'node:path';
@@ -105,6 +105,34 @@ StyleDictionary.registerFormat({
   },
 });
 
+// A text style: the names of the tokens it is made of, read from its references. Its font family is for design tools,
+// because the components take the font from the app.
+const textStyleOf = (t) => ({
+  ...Object.fromEntries(['fontSize', 'fontWeight'].map((key) => [key, (
+    t.original.$value[key].slice(1, -1).split(/[.-]/)
+      .map((w, i) => (i === 0 ? w : /^x+$/.test(w) ? w.toUpperCase() : w[0].toUpperCase() + w.slice(1))).join('')
+  )])),
+  ...(ext(t).textTransform ? { textTransform: ext(t).textTransform } : {}),
+});
+
+StyleDictionary.registerFormat({
+  name: 'bbb/ts/textStyles',
+  format: ({ dictionary }) => {
+    const groups = {};
+    const used = new Set();
+    for (const t of dictionary.allTokens) {
+      const { fontSize, fontWeight, textTransform } = textStyleOf(t);
+      used.add(fontSize).add(fontWeight);
+      const props = [`fontSize: ${fontSize}`, `fontWeight: ${fontWeight}`, "lineHeight: 'normal'"];
+      if (textTransform) props.push(`textTransform: ${quote(textTransform)}`);
+      (groups[t.path[1]] ??= []).push(`    ${t.path[2]}: { ${props.join(', ')} },`);
+    }
+    const body = Object.entries(groups).map(([g, lines]) => `  ${g}: {\n${lines.join('\n')}\n  },`).join('\n');
+    return `${header}import {\n  ${[...used].join(', ')},\n} from './typography';\n\n`
+      + `export const textStyles = {\n${body}\n} as const;\n\nexport type TextStyles = typeof textStyles;\n`;
+  },
+});
+
 const valueTransforms = ['bbb/color/css', 'bbb/dimension', 'bbb/fontWeight', 'bbb/fontFamily', 'bbb/shadow', 'bbb/css-var-chain'];
 
 const sd = new StyleDictionary({
@@ -122,6 +150,7 @@ const sd = new StyleDictionary({
           format: 'bbb/ts/module',
           filter: (t) => MODULES[t.path[0]] === m,
         })),
+        { destination: 'textStyles.ts', format: 'bbb/ts/textStyles', filter: (t) => t.path[0] === 'text-style' },
         { destination: 'colors.ts', format: 'bbb/ts/colors', filter: (t) => t.path[0] === 'color' },
       ],
     },
@@ -202,6 +231,15 @@ const swatches = (rows, caption) => (
 const swatch = (t) => ({ name: docName(t), value: fallbackOf(t.$value), ...(ext(t).figma ? { figma: ext(t).figma } : {}) });
 const title = (s) => s[0].toUpperCase() + s.slice(1);
 
+const textStyleGroups = [...new Set(allTokens.filter((t) => t.path[0] === 'text-style').map((t) => t.path[1]))];
+const textStyleRow = (t) => {
+  const { fontSize, fontWeight } = textStyleOf(t);
+  return {
+    name: `textStyles.${t.path[1]}.${t.path[2]}`, size: fontSize, weight: fontWeight, ...usage(t),
+    ...(ext(t).variant ? { variant: ext(t).variant } : {}),
+  };
+};
+
 const lists = {
   'Color.mdx': {
     chain: `<ColorChain steps={[\n${chain.map((t) => `  ${literal({ name: docName(t), value: fallbackOf(t.$value), purpose: t.$description ?? '' })},`).join('\n')}\n]} />`,
@@ -224,6 +262,8 @@ const lists = {
     'font family': table('fontFamily', 'Font family', sized('fontFamily')),
     'font size': table('fontSize', 'Font size', sized('fontSize')),
     'font weight': table('fontWeight', 'Font weight', sized('fontWeight')),
+    'text styles': textStyleGroups.map((g) => `### ${title(g)}\n\n<TextStyles caption="${title(g)} text styles" rows={[\n${allTokens
+      .filter((t) => t.path[0] === 'text-style' && t.path[1] === g).map((t) => `  ${literal(textStyleRow(t))},`).join('\n')}\n]} />`).join('\n\n'),
   },
 };
 

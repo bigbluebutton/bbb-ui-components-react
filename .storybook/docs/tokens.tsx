@@ -5,6 +5,7 @@ import { colors } from '../../src/stylesheets/colors';
 import * as palette from '../../src/stylesheets/palette';
 import * as shadows from '../../src/stylesheets/shadows';
 import * as sizing from '../../src/stylesheets/sizing';
+import { textStyles } from '../../src/stylesheets/textStyles';
 import * as typography from '../../src/stylesheets/typography';
 
 // Tables for the token pages.
@@ -212,11 +213,17 @@ export function SpacingExample({ padding, steps }: { padding: string; steps: { p
   );
 }
 
-type TextStyle = { name: string; size: string; weight: string; use: string; variant?: React.ComponentProps<typeof BBBTypography>['variant'] };
+type TextStyle = { name: string; size: string; weight: string; purpose?: string; figma?: string[]; variant?: React.ComponentProps<typeof BBBTypography>['variant'] };
 
-/** Text styles. One with a variant is shown with BBBTypography itself, so that the sample cannot differ from it. */
+const textStyle = (name: string): React.CSSProperties => {
+  const [, group, key] = name.split('.');
+  const style = (textStyles as Record<string, Record<string, React.CSSProperties>>)[group]?.[key];
+  if (!style) throw new Error(`Unknown text style: ${name}`);
+  return style;
+};
+
+/** Text styles, written by `npm run tokens`. One with a variant is shown with BBBTypography itself, so that the sample cannot differ from it. */
 export function TextStyles({ caption, rows }: { caption: string; rows: TextStyle[] }) {
-  const hasVariant = rows.some((row) => row.variant);
   return (
     <Unstyled>
       <div style={{ overflowX: 'auto', margin: '1rem 0 2rem' }}>
@@ -224,7 +231,8 @@ export function TextStyles({ caption, rows }: { caption: string; rows: TextStyle
           <thead>
             <tr>
               <th scope="col" style={cell}>Sample</th>
-              {hasVariant && <th scope="col" style={cell}>BBBTypography variant</th>}
+              <th scope="col" style={cell}>Text style</th>
+              <th scope="col" style={cell}>BBBTypography variant</th>
               <th scope="col" style={cell}>Points to</th>
               <th scope="col" style={cell}>Use it for</th>
               <th scope="col" style={cell}>Figma name</th>
@@ -236,12 +244,13 @@ export function TextStyles({ caption, rows }: { caption: string; rows: TextStyle
                 <td style={{ ...cell, fontFamily: typography.fontFamily }}>
                   {row.variant
                     ? <BBBTypography variant={row.variant} as="span">BigBlueButton</BBBTypography>
-                    : <span style={{ fontSize: valueOf(row.size), fontWeight: valueOf(row.weight), color: colors.text.default }}>BigBlueButton</span>}
+                    : <span style={{ ...textStyle(row.name), color: colors.text.default }}>BigBlueButton</span>}
                 </td>
-                {hasVariant && <td style={cell}><code>{row.variant}</code></td>}
+                <td style={cell}><code>{row.name}</code></td>
+                <td style={cell}>{row.variant && <code>{row.variant}</code>}</td>
                 <td style={cell}><div><code>{row.size}</code></div><div><code>{row.weight}</code></div></td>
-                <td style={cell}>{row.use}</td>
-                <td style={cell}>{row.name}</td>
+                <td style={cell}>{row.purpose}</td>
+                <td style={cell}>{row.figma?.join(', ')}</td>
               </tr>
             ))}
           </tbody>
