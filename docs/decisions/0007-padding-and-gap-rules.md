@@ -10,6 +10,7 @@ A token's purpose is one line, so it cannot cover every case. In a test, an agen
 ## Decision
 
 - The Spacing page says which token to use for the padding of common elements and for the gap between them. The values come from the Figma file.
+- The gap between large groups on a page, outside a panel or modal, is `spacingXLarge`. Figma gives it that purpose but has no rule for it, so agents could not tell it from the 16px between groups.
 - When no rule fits, the gap is `spacingMedium`.
 - The rules are for what people build with the library. Components keep their own padding.
 
