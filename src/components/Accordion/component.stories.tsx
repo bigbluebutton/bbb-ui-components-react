@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBAccordion from './component';
 import {
   TOOLTIP_PLACEMENT_VALUES,
@@ -12,7 +12,8 @@ import { MdEdit } from 'react-icons/md';
 import Typography from '../Typography/component';
 
 const meta = {
-  title: 'BBBAccordion',
+  title: 'Components/Display/BBBAccordion',
+  id: 'bbbaccordion',
   component: BBBAccordion,
   tags: ['autodocs'],
   argTypes: {

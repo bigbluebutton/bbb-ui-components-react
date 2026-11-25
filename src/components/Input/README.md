@@ -8,7 +8,7 @@ The `BBBInput` component provides a labeled, auto-growing text field with an inl
 
 ### Basic usage — text field with a submit icon button
 ```jsx
-import { BBBInput } from 'bbb-ui-components-react';
+import { BBBInput } from '@bigbluebutton/bbb-ui-components-react';
 import { MdSend } from 'react-icons/md';
 
 <BBBInput

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBModal from './component';
 import { BBBTypography } from '../Typography';
 import { BBButton } from '../Button';
@@ -11,7 +11,8 @@ import { BBBHint } from '../Hint';
 import MenuItem from '@mui/material/MenuItem';
 
 const meta = {
-  title: 'BBBModal',
+  title: 'Components/Overlay/BBBModal',
+  id: 'bbbmodal',
   component: BBBModal,
   tags: ['autodocs'],
   parameters: {

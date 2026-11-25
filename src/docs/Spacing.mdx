@@ -1,0 +1,90 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { SpacingExample, SpacingRules, TokenTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Spacing" id="spacing" />
+
+# Spacing
+
+Use a spacing token for the space around and between elements, instead of a fixed value.
+
+```jsx
+import { spacingMedium } from '@bigbluebutton/bbb-ui-components-react';
+
+const Card = styled.div`
+  padding: ${spacingMedium};
+`;
+```
+
+## How spacing works
+
+1. **The scale** is one set of sizes, as tokens. Spacing has no semantic or component tokens, as color has.
+2. **The rules** give each size its role: the padding inside an element, and the gap between two.
+
+In this panel, the more closely two parts are related, the smaller the gap between them.
+
+<SpacingExample padding="spacingLarge" steps={[
+  { part: 'Section title', gap: 'spacingSmallMedium' },
+  { part: 'Option', gap: 'spacingSmall' },
+  { part: 'Another option', gap: 'spacingLarge' },
+  { part: 'Next section title' },
+]} />
+
+Choose a size by where it goes, not by how it looks:
+
+- **Space inside an element:** see [Padding](#padding).
+- **Space between elements:** see [Gaps](#gaps).
+- **Nothing there fits:** use `spacingMedium`. When two sizes fit, prefer a multiple of 8px.
+
+## Scale
+
+Look a size up here after you have found it in the rules. The names are as in code, with the one in Figma beside each.
+
+{/* BEGIN spacing: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="spacing" caption="Spacing" rows={[
+  { name: 'spacing0', value: '0px', purpose: 'No space.', figma: ['spacing/0'] },
+  { name: 'spacingXSmall', value: '0.25rem (4px)', purpose: 'Minimum space, such as between a short icon and its text, or the vertical padding of pills and tooltips.', figma: ['spacing/xsmall'] },
+  { name: 'spacingSmall', value: '0.5rem (8px)', purpose: 'Between related items, such as list items, menu items and icons in a group.', figma: ['spacing/small'] },
+  { name: 'spacingSmallMedium', value: '0.75rem (12px)', purpose: 'Between a title and its content inside a section.', figma: ['spacing/small-medium'] },
+  { name: 'spacingMedium', value: '1rem (16px)', purpose: 'Padding of medium components, such as fields and cards, and the default space between elements.', figma: ['spacing/medium'] },
+  { name: 'spacingMediumLarge', value: '1.25rem (20px)', purpose: 'Occasional use. Prefer spacingMedium or spacingLarge.', figma: ['spacing/medium-large'] },
+  { name: 'spacingLarge', value: '1.5rem (24px)', purpose: 'Padding of panels and modals, and the space between sections.', figma: ['spacing/large'] },
+  { name: 'spacingXLarge', value: '2rem (32px)', purpose: 'Between large groups.', figma: ['spacing/xlarge'] },
+  { name: 'spacingXXLarge', value: '3rem (48px)', purpose: 'Between page blocks.', figma: ['spacing/xxlarge'] },
+]} />
+
+{/* END spacing */}
+
+## Padding
+
+Use these for what you build yourself. The library's components set their own padding, so don't change it.
+
+<SpacingRules kind="padding" caption="Padding" rows={[
+  { use: 'Panel', token: 'spacingLarge' },
+  { use: 'Card', token: 'spacingMedium' },
+  { use: 'Actions bar', token: 'spacingMedium' },
+  { use: 'Menu item, compact', vertical: 'spacing0', sides: 'spacingMedium' },
+  { use: 'Menu item, large', vertical: 'spacing0', sides: 'spacingLarge' },
+  { use: 'Tooltip', vertical: 'spacingXSmall', sides: 'spacingSmall' },
+  { use: 'Badge', vertical: 'spacing0', sides: 'spacingSmallMedium' },
+]} />
+
+The larger the surface, the larger its padding. Use the same padding on all sides unless the element is listed above with different ones, and the same padding every time an element is repeated.
+
+## Gaps
+
+The gap shows how closely things are related: the less related, the larger the gap. Don't use one gap for items and for the groups they belong to, because people can no longer see the groups.
+
+<SpacingRules kind="gap" caption="Gaps" rows={[
+  { use: 'Short icon and its text', token: 'spacingXSmall' },
+  { use: 'Items of one list or group, such as options', token: 'spacingSmall' },
+  { use: 'Section title and its content', token: 'spacingSmallMedium' },
+  { use: 'Buttons in an actions bar or a modal footer', token: 'spacingMedium' },
+  { use: 'Groups, and panels side by side', token: 'spacingMedium' },
+  { use: 'Sections inside a panel or modal', token: 'spacingLarge' },
+  { use: 'Page blocks', token: 'spacingXXLarge' },
+]} />
+
+## Theming
+
+Unlike colors, a host page cannot override spacing. Pixel values assume the browser's default text size.
