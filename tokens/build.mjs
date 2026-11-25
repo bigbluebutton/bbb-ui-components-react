@@ -133,13 +133,16 @@ const fallbackOf = (value) => {
 const withPx = (value) => (value.endsWith('rem') ? `${value} (${parseFloat(value) * 16}px)` : value);
 const bySize = (a, b) => parseFloat(a.$value) - parseFloat(b.$value);
 
-// When to use the token. Left out when that has not been decided.
-const purpose = (t) => (t.$description ? { purpose: t.$description } : {});
+// When to use the token, left out when that has not been decided, and its names in Figma.
+const usage = (t) => ({
+  ...(t.$description ? { purpose: t.$description } : {}),
+  ...(ext(t).figma ? { figma: ext(t).figma } : {}),
+});
 
 const colorRow = (name) => (t) => ({
-  name: name(t), value: fallbackOf(t.$value), ...purpose(t), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
+  name: name(t), value: fallbackOf(t.$value), ...usage(t), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
 });
-const sizeRow = (t) => ({ name: t.name, value: withPx(t.$value), ...purpose(t) });
+const sizeRow = (t) => ({ name: t.name, value: withPx(t.$value), ...usage(t) });
 const sized = (prefix) => allTokens.filter((t) => t.name.startsWith(prefix)).sort(bySize).map(sizeRow);
 
 const colorTokens = allTokens.filter((t) => t.path[0] === 'color');
@@ -165,7 +168,7 @@ const lists = {
   'Shadow.mdx': {
     shadow: table('shadow', 'Shadow', allTokens.filter((t) => t.path[0] === 'shadow').map((t) => ({
       // The default value of the color, in place of its var() chain.
-      name: t.name, value: t.$value.replace(/var\(.+\)$/, fallbackOf), ...purpose(t), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
+      name: t.name, value: t.$value.replace(/var\(.+\)$/, fallbackOf), ...usage(t), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
     }))),
   },
   'Type.mdx': {

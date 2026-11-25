@@ -25,30 +25,30 @@ Choose a color by what it is for, not by how it looks. A color with no purpose l
 ## Background
 
 <TokenTable kind="color" caption="Background colors" rows={[
-  { name: 'colors.background.blue', value: '#E5EFFB', purpose: 'Light highlight, such as a selected item.', cssVars: ['--color-background-blue', '--color-brand-light'] },
-  { name: 'colors.background.light', value: '#F4F6FA', purpose: 'Secondary areas, such as action bars and fields.', cssVars: ['--color-background-light', '--color-light-gray'] },
-  { name: 'colors.background.white', value: '#FFFFFF', purpose: 'Panels, cards and modals.', cssVars: ['--color-background-white', '--color-white', '--color-neutral-white'] },
-  { name: 'colors.background.inverse', value: '#393C48', purpose: 'Tooltips and labels over video.', cssVars: ['--color-background-inverse'] },
-  { name: 'colors.background.room', value: '#181A23', purpose: 'The dark background of the meeting room.', cssVars: ['--color-background-room'] },
-  { name: 'colors.background.roomOverlay', value: 'rgba(255, 255, 255, 0.15)', purpose: 'Translucent layer on the room background.', cssVars: ['--color-background-room-overlay'] },
-  { name: 'colors.background.roomOverlayStrong', value: '#334150', purpose: 'Solid, stronger layer on the room background.', cssVars: ['--color-background-room-overlay-strong'] },
-  { name: 'colors.background.video', value: '#001428', purpose: 'Behind a video.', cssVars: ['--color-background-video'] },
+  { name: 'colors.background.blue', value: '#E5EFFB', purpose: 'Light highlight, such as a selected item.', figma: ['surface/brand-subtle'], cssVars: ['--color-background-blue', '--color-brand-light'] },
+  { name: 'colors.background.light', value: '#F4F6FA', purpose: 'Secondary areas, such as action bars and fields.', figma: ['surface/subtle'], cssVars: ['--color-background-light', '--color-light-gray'] },
+  { name: 'colors.background.white', value: '#FFFFFF', purpose: 'Panels, cards and modals.', figma: ['surface/default'], cssVars: ['--color-background-white', '--color-white', '--color-neutral-white'] },
+  { name: 'colors.background.inverse', value: '#393C48', purpose: 'Tooltips and labels over video.', figma: ['surface/inverse'], cssVars: ['--color-background-inverse'] },
+  { name: 'colors.background.room', value: '#181A23', purpose: 'The dark background of the meeting room.', figma: ['surface/room'], cssVars: ['--color-background-room'] },
+  { name: 'colors.background.roomOverlay', value: 'rgba(255, 255, 255, 0.15)', purpose: 'Translucent layer on the room background.', figma: ['surface/overlay'], cssVars: ['--color-background-room-overlay'] },
+  { name: 'colors.background.roomOverlayStrong', value: '#334150', purpose: 'Solid, stronger layer on the room background.', figma: ['surface/overlay-strong'], cssVars: ['--color-background-room-overlay-strong'] },
+  { name: 'colors.background.video', value: '#001428', purpose: 'Behind a video.', figma: ['surface/video'], cssVars: ['--color-background-video'] },
 ]} />
 
 ## Border
 
 <TokenTable kind="color" caption="Border colors" rows={[
-  { name: 'colors.border.default', value: '#B0BDC9', purpose: 'Outline of fields and controls.', cssVars: ['--default-border', '--color-border-default', '--color-neutral-3'] },
-  { name: 'colors.border.error', value: '#DF2721', purpose: 'Outline of a field with an error.', cssVars: ['--color-border-error', '--color-error'] },
-  { name: 'colors.border.focusRing', value: 'rgba(29, 101, 212, 0.15)', purpose: 'Ring around a focused field. Use it together with colors.border.selected, never instead of it.', cssVars: ['--color-border-focus-ring'] },
-  { name: 'colors.border.selected', value: '#0F70D7', purpose: 'Outline of a focused or selected item.', cssVars: ['--color-border-selected', '--color-primary', '--color-brand-1'] },
-  { name: 'colors.border.subtle', value: '#DCE4EC', purpose: 'Dividers.', cssVars: ['--color-border-subtle', '--color-neutral-4'] },
+  { name: 'colors.border.default', value: '#B0BDC9', purpose: 'Outline of fields and controls.', figma: ['border/default'], cssVars: ['--default-border', '--color-border-default', '--color-neutral-3'] },
+  { name: 'colors.border.error', value: '#DF2721', purpose: 'Outline of a field with an error.', figma: ['border/danger'], cssVars: ['--color-border-error', '--color-error'] },
+  { name: 'colors.border.focusRing', value: 'rgba(29, 101, 212, 0.15)', purpose: 'Ring around a focused field. Use it together with colors.border.selected, never instead of it.', figma: ['shadow/focus'], cssVars: ['--color-border-focus-ring'] },
+  { name: 'colors.border.selected', value: '#0F70D7', purpose: 'Outline of a focused or selected item.', figma: ['border/focus'], cssVars: ['--color-border-selected', '--color-primary', '--color-brand-1'] },
+  { name: 'colors.border.subtle', value: '#DCE4EC', purpose: 'Dividers.', figma: ['border/subtle'], cssVars: ['--color-border-subtle', '--color-neutral-4'] },
 ]} />
 
 ## Brand
 
 <TokenTable kind="color" caption="Brand colors" rows={[
-  { name: 'colors.brand.brand1', value: '#0F70D7', purpose: 'Main actions, links and highlighted text.', cssVars: ['--color-primary', '--color-brand-1'] },
+  { name: 'colors.brand.brand1', value: '#0F70D7', purpose: 'Main actions, links and highlighted text.', figma: ['action/primary', 'text/brand'], cssVars: ['--color-primary', '--color-brand-1'] },
   { name: 'colors.brand.brand2', value: '#0F70D7', cssVars: ['--color-brand-2', '--color-brand-1'] },
   { name: 'colors.brand.brand3', value: '#0F70D7', cssVars: ['--color-brand-3', '--color-brand-1'] },
   { name: 'colors.brand.aux', value: '#E5EFFB', cssVars: ['--color-brand-aux', '--color-hover-light', '--color-brand-light'] },
@@ -70,55 +70,55 @@ Choose a color by what it is for, not by how it looks. A color with no purpose l
 ## Semantic
 
 <TokenTable kind="color" caption="Semantic colors" rows={[
-  { name: 'colors.semantic.error', value: '#DF2721', purpose: 'Errors and destructive actions, such as leaving or ending.', cssVars: ['--color-danger', '--color-error'] },
-  { name: 'colors.semantic.errorDark', value: '#AE1010', purpose: 'Hover on a destructive action.', cssVars: ['--color-danger-dark', '--color-error-dark'] },
-  { name: 'colors.semantic.success', value: '#2DD36F', purpose: 'Success, such as a good connection.', cssVars: ['--color-success'] },
-  { name: 'colors.semantic.warning', value: '#F59240', purpose: 'Warnings.', cssVars: ['--color-warning'] },
+  { name: 'colors.semantic.error', value: '#DF2721', purpose: 'Errors and destructive actions, such as leaving or ending.', figma: ['action/danger', 'feedback/danger', 'text/danger'], cssVars: ['--color-danger', '--color-error'] },
+  { name: 'colors.semantic.errorDark', value: '#AE1010', purpose: 'Hover on a destructive action.', figma: ['action/danger-hover'], cssVars: ['--color-danger-dark', '--color-error-dark'] },
+  { name: 'colors.semantic.success', value: '#2DD36F', purpose: 'Success, such as a good connection.', figma: ['feedback/success'], cssVars: ['--color-success'] },
+  { name: 'colors.semantic.warning', value: '#F59240', purpose: 'Warnings.', figma: ['feedback/warning'], cssVars: ['--color-warning'] },
 ]} />
 
 ## Hover
 
 <TokenTable kind="color" caption="Hover colors" rows={[
-  { name: 'colors.hover.dark', value: '#0C57A7', purpose: 'Hover on a main action filled with the brand color.', cssVars: ['--color-hover-dark'] },
-  { name: 'colors.hover.light', value: '#D4E5FA', purpose: 'Hover on an item with a light brand background.', cssVars: ['--color-hover-light'] },
-  { name: 'colors.hover.neutral', value: '#DCE4EC', purpose: 'Neutral hover on a surface.', cssVars: ['--color-hover-neutral', '--color-neutral-4'] },
+  { name: 'colors.hover.dark', value: '#0C57A7', purpose: 'Hover on a main action filled with the brand color.', figma: ['action/primary-hover'], cssVars: ['--color-hover-dark'] },
+  { name: 'colors.hover.light', value: '#D4E5FA', purpose: 'Hover on an item with a light brand background.', figma: ['surface/brand-hover'], cssVars: ['--color-hover-light'] },
+  { name: 'colors.hover.neutral', value: '#DCE4EC', purpose: 'Neutral hover on a surface.', figma: ['surface/hover'], cssVars: ['--color-hover-neutral', '--color-neutral-4'] },
 ]} />
 
 ## Icon
 
 <TokenTable kind="color" caption="Icon colors" rows={[
-  { name: 'colors.icon.blue', value: '#0F70D7', purpose: 'Icons in the brand color.', cssVars: ['--color-icon-blue', '--color-brand-1'] },
-  { name: 'colors.icon.default', value: '#717C91', purpose: 'Icons on a light background.', cssVars: ['--color-icon-default', '--color-neutral-2'] },
+  { name: 'colors.icon.blue', value: '#0F70D7', purpose: 'Icons in the brand color.', figma: ['icon/brand'], cssVars: ['--color-icon-blue', '--color-brand-1'] },
+  { name: 'colors.icon.default', value: '#717C91', purpose: 'Icons on a light background.', figma: ['icon/default'], cssVars: ['--color-icon-default', '--color-neutral-2'] },
   { name: 'colors.icon.defaultDark', value: 'rgba(255, 255, 255, 0.35)', purpose: 'Icons on a dark background.', cssVars: ['--color-icon-default-dark'] },
-  { name: 'colors.icon.white', value: '#FFFFFF', purpose: 'Icons on the brand color.', cssVars: ['--color-icon-white', '--color-white', '--color-neutral-white'] },
+  { name: 'colors.icon.white', value: '#FFFFFF', purpose: 'Icons on the brand color.', figma: ['icon/on-brand'], cssVars: ['--color-icon-white', '--color-white', '--color-neutral-white'] },
 ]} />
 
 ## Overlay
 
 <TokenTable kind="color" caption="Overlay colors" rows={[
-  { name: 'colors.overlay.default', value: 'rgba(0, 0, 0, 0.75)', purpose: 'Layer behind a modal.', cssVars: ['--color-overlay'] },
+  { name: 'colors.overlay.default', value: 'rgba(0, 0, 0, 0.75)', purpose: 'Layer behind a modal.', figma: ['surface/modal-overlay'], cssVars: ['--color-overlay'] },
 ]} />
 
 ## Shadow
 
 <TokenTable kind="color" caption="Shadow colors" rows={[
-  { name: 'colors.shadow.default', value: 'rgba(0, 35, 11, 0.2)', purpose: 'Shadow of elements that sit above the page, such as menus.', cssVars: ['--color-shadow-default'] },
-  { name: 'colors.shadow.strong', value: 'rgba(0, 0, 0, 0.2)', purpose: 'Shadow of toolbars and modals.', cssVars: ['--color-shadow-strong'] },
+  { name: 'colors.shadow.default', value: 'rgba(0, 35, 11, 0.2)', purpose: 'Shadow of elements that sit above the page, such as menus.', figma: ['shadow/default'], cssVars: ['--color-shadow-default'] },
+  { name: 'colors.shadow.strong', value: 'rgba(0, 0, 0, 0.2)', purpose: 'Shadow of toolbars and modals.', figma: ['shadow/strong'], cssVars: ['--color-shadow-strong'] },
 ]} />
 
 ## Text
 
 <TokenTable kind="color" caption="Text colors" rows={[
-  { name: 'colors.text.default', value: '#393C48', purpose: 'Main text.', cssVars: ['--color-text-default', '--color-dark-gray'] },
-  { name: 'colors.text.light', value: '#717C91', purpose: 'Supporting text and captions.', cssVars: ['--color-text-light', '--color-neutral-2'] },
-  { name: 'colors.text.onBrand', value: '#FFFFFF', purpose: 'Text on the brand color.', cssVars: ['--color-text-on-brand', '--color-white', '--color-neutral-white'] },
-  { name: 'colors.text.onDark', value: '#FFFFFF', purpose: 'Text on the dark room background.', cssVars: ['--color-text-on-dark'] },
+  { name: 'colors.text.default', value: '#393C48', purpose: 'Main text.', figma: ['text/primary'], cssVars: ['--color-text-default', '--color-dark-gray'] },
+  { name: 'colors.text.light', value: '#717C91', purpose: 'Supporting text and captions.', figma: ['text/secondary'], cssVars: ['--color-text-light', '--color-neutral-2'] },
+  { name: 'colors.text.onBrand', value: '#FFFFFF', purpose: 'Text on the brand color.', figma: ['text/on-brand'], cssVars: ['--color-text-on-brand', '--color-white', '--color-neutral-white'] },
+  { name: 'colors.text.onDark', value: '#FFFFFF', purpose: 'Text on the dark room background.', figma: ['text/on-dark'], cssVars: ['--color-text-on-dark'] },
 ]} />
 
 ## User
 
 <TokenTable kind="color" caption="User colors" rows={[
-  { name: 'colors.user.you', value: '#19237C', purpose: 'Avatar of the person using the app.', cssVars: ['--color-user-you'] },
+  { name: 'colors.user.you', value: '#19237C', purpose: 'Avatar of the person using the app.', figma: ['user/you'], cssVars: ['--color-user-you'] },
 ]} />
 
 {/* END colors */}
@@ -130,8 +130,8 @@ These colors are not in the `colors` object. Import them by name from `@bigblueb
 {/* BEGIN other: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
 
 <TokenTable kind="color" caption="Other colors" rows={[
-  { name: 'colorSuccessDark', value: '#209B51', purpose: 'Fill behind a white icon or text that reports success.', cssVars: ['--color-success-dark'] },
-  { name: 'colorWarningDark', value: '#D8680B', purpose: 'Fill behind a white icon or text that reports a warning.', cssVars: ['--color-warning-dark'] },
+  { name: 'colorSuccessDark', value: '#209B51', purpose: 'Fill behind a white icon or text that reports success.', figma: ['feedback/success-dark'], cssVars: ['--color-success-dark'] },
+  { name: 'colorWarningDark', value: '#D8680B', purpose: 'Fill behind a white icon or text that reports a warning.', figma: ['feedback/warning-dark'], cssVars: ['--color-warning-dark'] },
 ]} />
 
 {/* END other */}
