@@ -4,7 +4,7 @@
 
 | Path | What |
 |---|---|
-| `tokens.json` | Primitives (`palette`), semantic colors (`color`), spacing, radius, font size and weight |
+| `tokens.json` | Primitives (`palette`), semantic colors (`color`), spacing, radius, shadow, font size and weight |
 | `build.mjs` | [Style Dictionary](https://styledictionary.com/) config: names, value transforms, the `var(--name, fallback)` chain |
 
 To change a token, edit `tokens.json`, run `npm run tokens` and commit both. CI runs `npm run tokens:check`, which fails when `src/stylesheets` or `src/docs` does not match `tokens.json`.

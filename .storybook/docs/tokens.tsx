@@ -2,12 +2,13 @@ import React from 'react';
 import { Unstyled } from '@storybook/addon-docs/blocks';
 import { colors } from '../../src/stylesheets/colors';
 import * as palette from '../../src/stylesheets/palette';
+import * as shadows from '../../src/stylesheets/shadows';
 import * as sizing from '../../src/stylesheets/sizing';
 import * as typography from '../../src/stylesheets/typography';
 
 // Tables for the token pages.
 
-type Kind = 'color' | 'spacing' | 'radius' | 'fontSize' | 'fontWeight';
+type Kind = 'color' | 'spacing' | 'radius' | 'shadow' | 'fontSize' | 'fontWeight';
 type TokenRow = { name: string; value: string; purpose?: string; cssVars?: string[] };
 type Row = TokenRow & { sample: React.ReactNode };
 
@@ -53,7 +54,7 @@ function Table({ caption, rows }: { caption: string; rows: Row[] }) {
 const checkerboard = 'repeating-conic-gradient(#B0BDC9 0% 25%, #FFFFFF 0% 50%) 0 0 / 0.75rem 0.75rem';
 
 // The value of a token, with its CSS variables, so that the sample shows what is in use now.
-const tokens: Record<string, string> = { ...palette, ...sizing, ...typography };
+const tokens: Record<string, string> = { ...palette, ...sizing, ...shadows, ...typography };
 const currentValue = (name: string): string => {
   const [, group, key] = /^colors\.(\w+)\.(\w+)$/.exec(name) ?? [];
   return group ? (colors as Record<string, Record<string, string>>)[group][key] : tokens[name];
@@ -67,6 +68,7 @@ const samples: Record<Kind, (value: string) => React.ReactNode> = {
   ),
   spacing: (value) => <div style={{ width: value, height: '1rem', background: palette.colorBrand1 }} />,
   radius: (value) => <div style={{ width: '4rem', height: '4rem', borderRadius: value, border: `2px solid ${palette.colorBrand1}` }} />,
+  shadow: (value) => <div style={{ width: '4rem', height: '3rem', margin: '0.5rem', borderRadius: sizing.borderRadiusSmall, background: palette.colorBackgroundWhite, boxShadow: value }} />,
   fontSize: (value) => <span style={{ fontSize: value }}>BigBlueButton</span>,
   fontWeight: (value) => <span style={{ fontSize: '1rem', fontWeight: value }}>BigBlueButton</span>,
 };

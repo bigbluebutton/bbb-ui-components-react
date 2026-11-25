@@ -1,4 +1,4 @@
-// Style Dictionary build: tokens/tokens.json -> src/stylesheets/{palette,sizing,typography,colors}.ts
+// Style Dictionary build: tokens/tokens.json -> src/stylesheets/{palette,sizing,typography,shadows,colors}.ts
 // and the token lists in src/docs/*.mdx
 import fs from 'node:fs';
 import path from 'node:path';
@@ -8,7 +8,7 @@ const here = import.meta.dirname;
 
 const NS = 'org.bigbluebutton';
 const ext = (token) => token.$extensions?.[NS] ?? {};
-const MODULES = { color: 'palette', spacing: 'sizing', border: 'sizing', font: 'typography' };
+const MODULES = { color: 'palette', spacing: 'sizing', border: 'sizing', font: 'typography', shadow: 'shadows' };
 
 // color.brand.1 -> colorBrand1, spacing.xx-large -> spacingXXLarge (lodash camelCase would give spacingXxLarge)
 StyleDictionary.registerTransform({
@@ -60,6 +60,17 @@ StyleDictionary.registerTransform({
   transform: (token) => ext(token).cssVars.reduceRight((acc, v) => `var(${v}, ${acc})`, token.$value),
 });
 
+// The color is already a CSS value, with its own var() chain.
+StyleDictionary.registerTransform({
+  name: 'bbb/shadow',
+  type: 'value',
+  transitive: true,
+  filter: (token) => token.$type === 'shadow' && typeof token.$value === 'object',
+  transform: ({ $value: { offsetX, offsetY, blur, spread, color } }) => (
+    `${[offsetX, offsetY, blur, spread].map((d) => (d.value ? `${d.value}${d.unit}` : '0')).join(' ')} ${color}`
+  ),
+});
+
 const header = '// Generated from tokens/tokens.json by `npm run tokens`. Do not edit.\n';
 const quote = (v) => `'${v.replaceAll("'", "\\'")}'`;
 
@@ -85,7 +96,7 @@ StyleDictionary.registerFormat({
   },
 });
 
-const valueTransforms = ['bbb/color/css', 'bbb/dimension', 'bbb/fontWeight', 'bbb/css-var-chain'];
+const valueTransforms = ['bbb/color/css', 'bbb/dimension', 'bbb/fontWeight', 'bbb/css-var-chain', 'bbb/shadow'];
 
 const sd = new StyleDictionary({
   source: [path.join(here, 'tokens.json')],
@@ -97,7 +108,7 @@ const sd = new StyleDictionary({
       transforms: ['bbb/name/ts', ...valueTransforms],
       buildPath: path.join(here, '../src/stylesheets/'),
       files: [
-        ...['palette', 'sizing', 'typography'].map((m) => ({
+        ...['palette', 'sizing', 'typography', 'shadows'].map((m) => ({
           destination: `${m}.ts`,
           format: 'bbb/ts/module',
           filter: (t) => MODULES[t.path[0]] === m,
@@ -151,6 +162,12 @@ const lists = {
   },
   'Spacing.mdx': { spacing: table('spacing', 'Spacing', sized('spacing')) },
   'Radius.mdx': { radius: table('radius', 'Border radius', sized('borderRadius')) },
+  'Shadow.mdx': {
+    shadow: table('shadow', 'Shadow', allTokens.filter((t) => t.path[0] === 'shadow').map((t) => ({
+      // The default value of the color, in place of its var() chain.
+      name: t.name, value: t.$value.replace(/var\(.+\)$/, fallbackOf), ...purpose(t), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
+    }))),
+  },
   'Type.mdx': {
     'font size': table('fontSize', 'Font size', sized('fontSize')),
     'font weight': table('fontWeight', 'Font weight', sized('fontWeight')),
