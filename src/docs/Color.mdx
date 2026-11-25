@@ -192,8 +192,10 @@ The lists are by role, so a color with two roles is in both, and a name can star
 
 <TokenTable kind="color" caption="Action colors" rows={[
   { name: 'colors.brand.brand1', value: '#0F70D7', pointsTo: 'palette.blue.500', purpose: 'Main actions, links and highlighted text.', figma: ['action/primary'], cssVars: ['--color-primary', '--color-brand-1'] },
+  { name: 'colors.brand.aux', value: '#E5EFFB', pointsTo: 'palette.blue.25', purpose: 'Hover background of neutral buttons, except subtle ones.', cssVars: ['--color-brand-aux', '--color-hover-light', '--color-brand-light'] },
   { name: 'colors.semantic.error', value: '#DF2721', pointsTo: 'palette.red.500', purpose: 'Errors and destructive actions, such as leaving or ending.', figma: ['action/danger'], cssVars: ['--color-danger', '--color-error'] },
   { name: 'colors.semantic.errorDark', value: '#AE1010', pointsTo: 'palette.red.600', purpose: 'Hover on a destructive action.', figma: ['action/danger-hover'], cssVars: ['--color-danger-dark', '--color-error-dark'] },
+  { name: 'colors.neutral.gray', value: '#4E5A66', pointsTo: 'palette.gray.350', purpose: 'Label of neutral buttons.', cssVars: ['--color-gray'] },
   { name: 'colors.hover.dark', value: '#0C57A7', pointsTo: 'palette.blue.600', purpose: 'Hover on a main action filled with the brand color. Also the text of a tertiary button.', figma: ['action/primary-hover'], cssVars: ['--color-hover-dark'] },
 ]} />
 
@@ -271,17 +273,15 @@ Each one is for a single part of the app. For anything else, use a semantic colo
 
 ## Kept for existing apps
 
-Don't choose these for new work. They stay so that apps that use them keep working. Where a purpose names another color, use that one. The others have no agreed role yet.
+Don't choose these for new work. They stay so that apps that use them keep working. Where a purpose names another color, use that one.
 
 {/* BEGIN kept: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
 
 <TokenTable kind="color" caption="Kept for existing apps" rows={[
-  { name: 'colors.brand.brand2', value: '#0F70D7', pointsTo: 'palette.blue.500', cssVars: ['--color-brand-2', '--color-brand-1'] },
-  { name: 'colors.brand.brand3', value: '#0F70D7', pointsTo: 'palette.blue.500', cssVars: ['--color-brand-3', '--color-brand-1'] },
-  { name: 'colors.brand.aux', value: '#E5EFFB', pointsTo: 'palette.blue.25', cssVars: ['--color-brand-aux', '--color-hover-light', '--color-brand-light'] },
-  { name: 'colors.brand.light', value: '#E5EFFB', pointsTo: 'palette.blue.25', cssVars: ['--color-blue-aux', '--color-brand-light'] },
+  { name: 'colors.brand.brand2', value: '#0F70D7', pointsTo: 'palette.blue.500', purpose: 'Don\'t use. Same as colors.brand.brand1 by default.', cssVars: ['--color-brand-2', '--color-brand-1'] },
+  { name: 'colors.brand.brand3', value: '#0F70D7', pointsTo: 'palette.blue.500', purpose: 'Don\'t use. Same as colors.brand.brand1 by default.', cssVars: ['--color-brand-3', '--color-brand-1'] },
+  { name: 'colors.brand.light', value: '#E5EFFB', pointsTo: 'palette.blue.25', purpose: 'Don\'t use. Use colors.background.blue, the same color by default.', cssVars: ['--color-blue-aux', '--color-brand-light'] },
   { name: 'colors.neutral.darkGray', value: '#393C48', pointsTo: 'palette.gray.500', purpose: 'Base value. Prefer colors.text.default for text.', cssVars: ['--color-dark-gray'] },
-  { name: 'colors.neutral.gray', value: '#4E5A66', pointsTo: 'palette.gray.350', cssVars: ['--color-gray'] },
   { name: 'colors.neutral.lightGray', value: '#F4F6FA', pointsTo: 'palette.gray.25', purpose: 'Base value. Prefer colors.background.light for backgrounds.', cssVars: ['--color-light-gray'] },
   { name: 'colors.neutral.neutral1', value: '#616C80', pointsTo: 'palette.gray.300', purpose: 'Base value. Prefer colors.text.secondary.', cssVars: ['--color-neutral-1'] },
   { name: 'colors.neutral.neutral2', value: '#717C91', pointsTo: 'palette.gray.200', purpose: 'Base value. Prefer colors.icon.default.', cssVars: ['--color-neutral-2'] },

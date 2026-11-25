@@ -193,15 +193,15 @@ const colorRow = (figma) => (t) => ({
   ...usage(t), ...(figma && ext(t).figma ? { figma: ext(t).figma.filter(figma) } : {}), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
 });
 
-// A color's roles are the groups of its names in Figma. One with no name there keeps the group it has in `colors`,
-// when that is a role too.
+// A color's roles are the groups of its names in Figma. One with no name there has the `role` set for it, or the group
+// it has in `colors` when that is a role too.
 const ROLES = {
   text: 'Text', icon: 'Icon', surface: 'Background', border: 'Border', action: 'Action', feedback: 'Feedback', shadow: 'Shadow',
 };
 const rolesOf = (t) => {
   if (t.$deprecated) return [];
   if (ext(t).figma) return [...new Set(ext(t).figma.map((f) => f.split('/')[0]))];
-  const group = ext(t).colorsKey?.split('.')[0];
+  const group = ext(t).role ?? ext(t).colorsKey?.split('.')[0];
   return t.$description && group in ROLES ? [group] : [];
 };
 // The colors named after the role come first in its list.

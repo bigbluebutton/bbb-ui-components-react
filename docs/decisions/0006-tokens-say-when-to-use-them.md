@@ -12,6 +12,8 @@ The token lists gave each token's name and value, not its purpose. People and AI
 - A token's purpose is its `$description` in `tokens/tokens.json`. `npm run tokens` writes it into the token lists.
 - The first purposes come from the Figma file, reworded for this library. Values and names do not change.
 - A token without an agreed purpose has no `$description`, and the lists show that.
+- A color with no name in Figma gets its purpose from the components that use it: `colors.brand.aux` and `colors.neutral.gray` are for neutral buttons.
+- A color that no component needs is marked "Don't use", and stays exported: `colors.brand.brand2`, `colors.brand.brand3` and `colors.brand.light`.
 
 ## Alternatives
 
