@@ -105,6 +105,15 @@ The following table lists the supported CSS variables for color overriding, extr
 | `--color-overlay`          | No                         | rgba(0, 0, 0, 0.75) |
 | `--color-shadow-default`   | No                         | rgb(0 35 11 / 20%) |
 | `--color-user-you`         | No                         | #19237C      |
+| `--color-background-inverse` | No                         | #393C48 |
+| `--color-background-room` | No                         | #181A23 |
+| `--color-background-room-overlay` | No                         | rgba(255, 255, 255, 0.15) |
+| `--color-background-room-overlay-strong` | No                         | #334150 |
+| `--color-background-video` | No                         | #001428 |
+| `--color-border-subtle` | No                         | #DCE4EC |
+| `--color-shadow-strong` | No                         | rgba(0, 0, 0, 0.2) |
+| `--color-text-on-brand` | No                         | #FFFFFF |
+| `--color-text-on-dark` | No                         | #FFFFFF |
 
 **Example Usage**:
 ```css

@@ -1,6 +1,6 @@
 // Generated from tokens/tokens.json by `npm run tokens`. Do not edit.
 import {
-  colorBackgroundBlue, colorBackgroundLight, colorBackgroundWhite, colorBorderDefault, colorBorderError, colorBorderFocusRing, colorBorderSelected, colorBrand1, colorBrand2, colorBrand3, colorBrandAux, colorBrandLight, colorDarkGray, colorError, colorErrorDark, colorGray, colorHoverDark, colorHoverLight, colorHoverNeutral, colorIconBlue, colorIconDefault, colorIconDefaultDark, colorIconWhite, colorLightGray, colorNeutral2, colorNeutral3, colorNeutral4, colorOverlay, colorShadowDefault, colorSuccess, colorTextDefault, colorTextLight, colorUserYou, colorWarning, colorWhite,
+  colorBackgroundBlue, colorBackgroundLight, colorBackgroundWhite, colorBackgroundInverse, colorBackgroundRoom, colorBackgroundRoomOverlay, colorBackgroundRoomOverlayStrong, colorBackgroundVideo, colorBorderDefault, colorBorderError, colorBorderFocusRing, colorBorderSelected, colorBorderSubtle, colorBrand1, colorBrand2, colorBrand3, colorBrandAux, colorBrandLight, colorDarkGray, colorError, colorErrorDark, colorGray, colorHoverDark, colorHoverLight, colorHoverNeutral, colorIconBlue, colorIconDefault, colorIconDefaultDark, colorIconWhite, colorLightGray, colorNeutral2, colorNeutral3, colorNeutral4, colorOverlay, colorShadowDefault, colorShadowStrong, colorSuccess, colorTextDefault, colorTextLight, colorTextOnBrand, colorTextOnDark, colorUserYou, colorWarning, colorWhite,
 } from './palette';
 
 export const colors = {
@@ -8,12 +8,18 @@ export const colors = {
     blue: colorBackgroundBlue,
     light: colorBackgroundLight,
     white: colorBackgroundWhite,
+    inverse: colorBackgroundInverse,
+    room: colorBackgroundRoom,
+    roomOverlay: colorBackgroundRoomOverlay,
+    roomOverlayStrong: colorBackgroundRoomOverlayStrong,
+    video: colorBackgroundVideo,
   },
   border: {
     default: colorBorderDefault,
     error: colorBorderError,
     focusRing: colorBorderFocusRing,
     selected: colorBorderSelected,
+    subtle: colorBorderSubtle,
   },
   brand: {
     brand1: colorBrand1,
@@ -53,10 +59,13 @@ export const colors = {
   },
   shadow: {
     default: colorShadowDefault,
+    strong: colorShadowStrong,
   },
   text: {
     default: colorTextDefault,
     light: colorTextLight,
+    onBrand: colorTextOnBrand,
+    onDark: colorTextOnDark,
   },
   user: {
     you: colorUserYou,
