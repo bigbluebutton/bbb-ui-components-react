@@ -1,60 +1,38 @@
 import styled, { css } from 'styled-components';
 import { StyledTypography } from './types';
 import { colorTextDefault, colorTextSecondary } from '../../stylesheets/palette';
-import {
-  fontSizeDefault, fontSizeSmall,
-  fontSizeXSmall, fontWeightDefault,
-  fontWeightHard, fontWeightLight,
-} from '../../stylesheets/typography';
+import { textStyles } from '../../stylesheets/textStyles';
 
 const variants = {
   default: css`
     color: ${colorTextDefault};
-    font-size: ${fontSizeDefault};
-    font-style: normal;
-    font-weight: ${fontWeightLight};
-    line-height: normal;
+    ${textStyles.body.default}
   `,
   selected: css`
     color: ${colorTextDefault};
-    font-size: ${fontSizeDefault};
-    font-style: normal;
-    font-weight: ${fontWeightHard};
-    line-height: normal;
+    ${textStyles.body.selected}
   `,
   text2: css`
     color: ${colorTextSecondary};
-    font-size: ${fontSizeSmall};
-    font-style: normal;
-    font-weight: ${fontWeightLight};
-    line-height: normal;
+    ${textStyles.body.text2}
   `,
   text3: css`
     color: ${colorTextSecondary};
-    font-size: ${fontSizeXSmall};
-    font-style: normal;
-    font-weight: ${fontWeightLight};
-    line-height: normal;
+    ${textStyles.body.text3}
   `,
   header: css`
     color: ${colorTextDefault};
-    font-size: ${fontSizeDefault};
-    font-style: normal;
-    font-weight: ${fontWeightHard};
-    line-height: normal;
-    text-transform: uppercase;
+    ${textStyles.heading.panel}
   `,
   button: css`
     color: ${colorTextDefault};
-    font-size: ${fontSizeDefault};
-    font-style: normal;
-    font-weight: ${fontWeightDefault};
-    line-height: normal;
+    ${textStyles.label.button}
   `,
 };
 
 export const TypographyStyled = styled.p<StyledTypography>`
   margin: 0;
   padding: 0;
+  font-style: normal;
   ${({ $variant }) => variants[$variant]}
 `;
