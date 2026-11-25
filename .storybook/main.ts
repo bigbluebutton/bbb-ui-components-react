@@ -12,6 +12,7 @@ const config: StorybookConfig = {
   storySorts: [
     {
       order: [
+        'Introduction',
         'Foundation',
         'Components',
         ['Action', 'Form', 'Display', 'Feedback', 'Navigation', 'Overlay'],

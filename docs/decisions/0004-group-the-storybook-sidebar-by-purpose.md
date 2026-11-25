@@ -9,7 +9,7 @@ The sidebar listed all 19 components in one flat, alphabetical list. It did not 
 
 ## Decision
 
-- Two top-level sections: Foundation and Components.
+- Two top-level sections: Foundation and Components, after an Introduction page that explains them.
 - Foundation holds Divider and Typography, and later the token and layout pages.
 - Components are grouped by purpose: Action, Form, Display, Feedback, Navigation and Overlay.
 - Each component sets an explicit story `id`, its export name in lowercase, so moving it between groups never changes its links.
