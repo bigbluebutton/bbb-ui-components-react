@@ -8,7 +8,7 @@ import * as typography from '../../src/stylesheets/typography';
 // Tables for the token pages.
 
 type Kind = 'color' | 'spacing' | 'radius' | 'fontSize' | 'fontWeight';
-type TokenRow = { name: string; value: string; cssVars?: string[] };
+type TokenRow = { name: string; value: string; purpose?: string; cssVars?: string[] };
 type Row = TokenRow & { sample: React.ReactNode };
 
 const cell: React.CSSProperties = {
@@ -27,6 +27,7 @@ function Table({ caption, rows }: { caption: string; rows: Row[] }) {
               <th scope="col" style={cell}>Sample</th>
               <th scope="col" style={cell}>Token</th>
               <th scope="col" style={cell}>{hasVars ? 'Default value' : 'Value'}</th>
+              <th scope="col" style={cell}>Use it for</th>
               {hasVars && <th scope="col" style={cell}>CSS variables, first one set wins</th>}
             </tr>
           </thead>
@@ -36,6 +37,7 @@ function Table({ caption, rows }: { caption: string; rows: Row[] }) {
                 <td style={cell}>{row.sample}</td>
                 <td style={cell}><code>{row.name}</code></td>
                 <td style={cell}>{row.value}</td>
+                <td style={cell}>{row.purpose ?? 'Not decided yet'}</td>
                 {hasVars && (
                   <td style={cell}>{row.cssVars?.map((v) => <div key={v}><code>{v}</code></div>)}</td>
                 )}

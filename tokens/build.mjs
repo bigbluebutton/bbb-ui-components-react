@@ -61,7 +61,7 @@ StyleDictionary.registerTransform({
 });
 
 const header = '// Generated from tokens/tokens.json by `npm run tokens`. Do not edit.\n';
-const quote = (v) => `'${v}'`;
+const quote = (v) => `'${v.replaceAll("'", "\\'")}'`;
 
 StyleDictionary.registerFormat({
   name: 'bbb/ts/module',
@@ -122,10 +122,13 @@ const fallbackOf = (value) => {
 const withPx = (value) => (value.endsWith('rem') ? `${value} (${parseFloat(value) * 16}px)` : value);
 const bySize = (a, b) => parseFloat(a.$value) - parseFloat(b.$value);
 
+// When to use the token. Left out when that has not been decided.
+const purpose = (t) => (t.$description ? { purpose: t.$description } : {});
+
 const colorRow = (name) => (t) => ({
-  name: name(t), value: fallbackOf(t.$value), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
+  name: name(t), value: fallbackOf(t.$value), ...purpose(t), cssVars: t.$value.match(/--[\w-]+/g) ?? [],
 });
-const sizeRow = (t) => ({ name: t.name, value: withPx(t.$value) });
+const sizeRow = (t) => ({ name: t.name, value: withPx(t.$value), ...purpose(t) });
 const sized = (prefix) => allTokens.filter((t) => t.name.startsWith(prefix)).sort(bySize).map(sizeRow);
 
 const colorTokens = allTokens.filter((t) => t.path[0] === 'color');
