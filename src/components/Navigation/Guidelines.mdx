@@ -1,0 +1,36 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBNavigation guidelines
+
+## When to use
+
+Use BBBNavigation to move to another view inside the app. The default arrow points back, so it suits returning to the previous view.
+
+Use something else when:
+
+- The person triggers an action, such as saving or sending: use BBButton.
+- The person opens a page or an external address: use a link.
+- The content opens in place: use BBBAccordion.
+
+## Structure
+
+- **Icon:** at the start, in the brand color. It is an arrow that points back, and flips in right-to-left languages. It can be replaced.
+- **Label:** where the person will go.
+- **Extra content:** optional, at the end.
+
+<Canvas of={Stories.Default} />
+
+## Choose the content
+
+- **Label:** name the place, such as "Settings", and keep it short.
+- **Icon:** keep the arrow for going back. Replace it when moving forward or to a named place.
+- **Extra content:** use it for something to look at, such as an icon or a count. Don't put buttons or links in it, because the whole component is a button.
+
+## Accessibility
+
+- The label names the button. Pass `ariaLabel` only when that is not enough, and start it with the label's words.
+- There is no selected state, so it does not show which view is open.
+- Known gap: inside a form it submits the form, because its type cannot be set.
