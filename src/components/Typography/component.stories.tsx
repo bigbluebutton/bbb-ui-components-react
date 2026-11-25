@@ -16,11 +16,11 @@ const meta = {
     variant: {
       control: 'select',
       options: TYPOGRAPHY_VARIANTS,
-      description: 'Typography variant (e.g., header, default). Use values from component constants if available.',
+      description: 'Typography variant (e.g., header, default) controlling the applied text style.',
     },
     as: {
       control: 'text',
-      description: 'HTML element to render as (e.g., h1, p, span).',
+      description: 'HTML element to render as (e.g., h1, p, span), in place of `p`.',
     },
   },
 } satisfies Meta<typeof BBBTypography>;
