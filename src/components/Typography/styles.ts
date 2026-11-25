@@ -28,6 +28,26 @@ const variants = {
     color: ${colorTextDefault};
     ${textStyles.label.button}
   `,
+  section: css`
+    color: ${colorTextDefault};
+    ${textStyles.heading.section}
+  `,
+  highlight: css`
+    color: ${colorTextDefault};
+    ${textStyles.heading.highlight}
+  `,
+  display: css`
+    color: ${colorTextDefault};
+    ${textStyles.heading.display}
+  `,
+  large: css`
+    color: ${colorTextDefault};
+    ${textStyles.body.large}
+  `,
+  smallLabel: css`
+    color: ${colorTextDefault};
+    ${textStyles.label.small}
+  `,
 };
 
 export const TypographyStyled = styled.p<StyledTypography>`

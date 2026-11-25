@@ -13,12 +13,13 @@ import { BBBTypography } from '@bigbluebutton/bbb-ui-components-react';
 <BBBTypography variant="default">This is a default text.</BBBTypography>
 <BBBTypography variant="selected">This is a selected text.</BBBTypography>
 <BBBTypography variant="button" as="span">This is a button text.</BBBTypography>
+<BBBTypography variant="section" as="h3">This is a section heading.</BBBTypography>
 ```
 
 ## Props
 
 | Prop      | Type                                                               | Default   | Description                                                     |
 | --------- | ------------------------------------------------------------------ | --------- | --------------------------------------------------------------- |
-| `variant` | `default` \| `selected` \| `text2` \| `text3` \| `header` \| `button` | `default` | Defines the style of the text.                                  |
+| `variant` | `default` \| `selected` \| `text2` \| `text3` \| `header` \| `button` \| `section` \| `highlight` \| `display` \| `large` \| `smallLabel` | `default` | Defines the style of the text.                                  |
 | `as`      | `React.ElementType`                                                | `p`       | Defines the HTML element to be rendered.                        |
 | `children`| `React.ReactNode`                                                  | -         | The content of the component.                                   |
