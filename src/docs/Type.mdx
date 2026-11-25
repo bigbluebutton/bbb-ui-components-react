@@ -1,13 +1,37 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { TokenTable } from '../../.storybook/docs/tokens';
+import { TextStyles, TokenTable, TypeChain } from '../../.storybook/docs/tokens';
 
 <Meta title="Foundation/Type" id="type" />
 
 # Type
 
-Use these tokens inside the library to size and weigh text. They are not exported from the package. In a product screen, use [BBBTypography](?path=/docs/bbbtypography--docs), which applies them for you. Pixel values assume the browser's default text size.
+Use [BBBTypography](?path=/docs/bbbtypography--docs) for text, instead of setting its size and weight.
 
-## Family
+```jsx
+import { BBBTypography } from '@bigbluebutton/bbb-ui-components-react';
+
+<BBBTypography variant="header">Participants</BBBTypography>
+```
+
+## How type works
+
+1. **Tokens** are single values: a family, a size or a weight. They are for code inside the library, and are not exported.
+2. **Text styles** combine a size and a weight, and give them a role, such as panel titles.
+3. **Components** apply a style for you. BBBTypography has a variant for each style it supports, and other components, such as BBButton, style their own text.
+
+In this example, two tokens make the style for panel titles.
+
+<TypeChain tokens={['fontSizeDefault', 'fontWeightHard']} style="Heading/Panel, in uppercase" variant="header" />
+
+Choose a style by what the text is for, not by its size:
+
+- Start with the `default` variant.
+- Use a variant as it is. Don't adjust its size or weight.
+- Never use a token, or copy its value, in a product screen.
+
+## Tokens
+
+### Family
 
 {/* BEGIN font family: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
 
@@ -19,7 +43,7 @@ Use these tokens inside the library to size and weigh text. They are not exporte
 
 The components do not set the font. They take it from the app, except for some fields.
 
-## Size
+### Size
 
 {/* BEGIN font size: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
 
@@ -35,7 +59,7 @@ The components do not set the font. They take it from the app, except for some f
 
 {/* END font size */}
 
-## Weight
+### Weight
 
 {/* BEGIN font weight: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
 
@@ -47,20 +71,33 @@ The components do not set the font. They take it from the app, except for some f
 
 {/* END font weight */}
 
-## Text styles in Figma
+## Text styles
 
-A style sets the size and weight together. Use the BBBTypography variant where there is one, and don't adjust its size or weight.
+The line height is automatic.
 
-- **Heading/Panel:** 16px, bold, uppercase. Panel and modal headers. BBBTypography `header`.
-- **Heading/Section:** 16px, semibold. Groups inside panels and modals. No variant yet.
-- **Body/Default:** 16px, regular. Default text, list and navigation items. BBBTypography `default`.
-- **Body/Selected:** 16px, bold. Active items and card titles. BBBTypography `selected`.
-- **Body/Text 2:** 14px, regular, secondary text color. Labels, descriptions and chat messages. BBBTypography `text2`.
-- **Body/Text 3:** 12px, regular, secondary text color. Times and marks. BBBTypography `text3`.
-- **Label/Button:** 16px, semibold. Buttons and tabs. BBBTypography `button`.
-- **Label/Small:** 12px, semibold. Names on video tiles, small badges and counters. No variant yet.
-- **Heading/Display:** 32px, semibold. Timers and durations, numbers only. Live only, no variant.
-- **Heading/Highlight:** 24px, bold. Empty states and highlight titles, one per screen. Live only, no variant.
-- **Body/Large:** 20px, regular. Large menus and captions over video. Live only, no variant.
+### In BBBTypography
 
-The line height is automatic. When in doubt, start with Body/Default.
+<TextStyles caption="Text styles in BBBTypography" rows={[
+  { variant: 'default', size: 'fontSizeDefault', weight: 'fontWeightLight', use: 'Default text, list and navigation items.', name: 'Body/Default' },
+  { variant: 'selected', size: 'fontSizeDefault', weight: 'fontWeightHard', use: 'Active items and card titles.', name: 'Body/Selected' },
+  { variant: 'text2', size: 'fontSizeSmall', weight: 'fontWeightLight', use: 'Labels, descriptions and chat messages. In the secondary text color.', name: 'Body/Text 2' },
+  { variant: 'text3', size: 'fontSizeXSmall', weight: 'fontWeightLight', use: 'Times and marks. In the secondary text color.', name: 'Body/Text 3' },
+  { variant: 'header', size: 'fontSizeDefault', weight: 'fontWeightHard', use: 'Panel and modal headers. In uppercase.', name: 'Heading/Panel' },
+  { variant: 'button', size: 'fontSizeDefault', weight: 'fontWeightDefault', use: 'Buttons and tabs.', name: 'Label/Button' },
+]} />
+
+### Only in Figma
+
+These have no variant yet, so don't choose them for a product screen.
+
+<TextStyles caption="Text styles only in Figma" rows={[
+  { size: 'fontSizeDefault', weight: 'fontWeightDefault', use: 'Groups inside panels and modals.', name: 'Heading/Section' },
+  { size: 'fontSizeXSmall', weight: 'fontWeightDefault', use: 'Names on video tiles, small badges and counters.', name: 'Label/Small' },
+  { size: 'fontSizeDisplay', weight: 'fontWeightDefault', use: 'Live only. Timers and durations, numbers only.', name: 'Heading/Display' },
+  { size: 'fontSizeXLarge', weight: 'fontWeightHard', use: 'Live only. Empty states and highlight titles, one per screen.', name: 'Heading/Highlight' },
+  { size: 'fontSizeLarge', weight: 'fontWeightLight', use: 'Live only. Large menus and captions over video.', name: 'Body/Large' },
+]} />
+
+## Theming
+
+A host page sets the font, and cannot override sizes or weights. Pixel values assume the browser's default text size.

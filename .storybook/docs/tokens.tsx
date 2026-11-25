@@ -1,5 +1,6 @@
 import React from 'react';
 import { Unstyled } from '@storybook/addon-docs/blocks';
+import { BBBTypography } from '../../src/components/Typography';
 import { colors } from '../../src/stylesheets/colors';
 import * as palette from '../../src/stylesheets/palette';
 import * as shadows from '../../src/stylesheets/shadows';
@@ -76,8 +77,8 @@ const samples: Record<Kind, (value: string) => React.ReactNode> = {
   radius: (value) => <div style={{ width: '4rem', height: '4rem', borderRadius: value, border: `2px solid ${palette.colorBrand1}` }} />,
   shadow: (value) => <div style={{ width: '4rem', height: '3rem', margin: '0.5rem', borderRadius: sizing.borderRadiusSmall, background: palette.colorBackgroundWhite, boxShadow: value }} />,
   fontFamily: (value) => <span style={{ fontFamily: value, fontSize: '1rem' }}>BigBlueButton</span>,
-  fontSize: (value) => <span style={{ fontSize: value }}>BigBlueButton</span>,
-  fontWeight: (value) => <span style={{ fontSize: '1rem', fontWeight: value }}>BigBlueButton</span>,
+  fontSize: (value) => <span style={{ fontFamily: typography.fontFamily, fontSize: value }}>BigBlueButton</span>,
+  fontWeight: (value) => <span style={{ fontFamily: typography.fontFamily, fontSize: '1rem', fontWeight: value }}>BigBlueButton</span>,
 };
 
 /** A list of tokens. `npm run tokens` writes the rows into the page, where agents can read them. */
@@ -126,6 +127,148 @@ export function ColorChain({ steps }: { steps: Swatch[] }) {
             <div style={swatchText}><code>{step.name}</code></div>
             <div style={swatchText}>{step.purpose || step.value}</div>
           </li>
+        ))}
+      </ol>
+    </Unstyled>
+  );
+}
+
+type RuleRow = { use: string; token?: string; vertical?: string; sides?: string };
+
+const valueOf = (name: string) => {
+  const value = currentValue(name);
+  if (!value) throw new Error(`Unknown token: ${name}`);
+  return value;
+};
+
+/** Which spacing token to use where. `token` is for all sides, or for a gap. */
+export function SpacingRules({ kind, caption, rows }: { kind: 'padding' | 'gap'; caption: string; rows: RuleRow[] }) {
+  const box = { height: '1.25rem', width: '2.5rem', background: colors.background.white, border: '1px solid #B0BDC9' };
+  return (
+    <Unstyled>
+      <div style={{ overflowX: 'auto', margin: '1rem 0 2rem' }}>
+        <table style={{ ...text, width: '100%', borderCollapse: 'collapse' }} aria-label={caption}>
+          <thead>
+            <tr>
+              <th scope="col" style={cell}>Sample</th>
+              <th scope="col" style={cell}>{kind === 'gap' ? 'Between' : 'Inside'}</th>
+              <th scope="col" style={cell}>Token</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(({ use, token, vertical = token, sides = token }) => (
+              <tr key={use}>
+                <td style={cell}>
+                  {kind === 'gap' ? (
+                    <div style={{ display: 'inline-flex', background: colors.brand.brand1 }}>
+                      <div style={box} />
+                      <div style={{ width: valueOf(token ?? '') }} />
+                      <div style={box} />
+                    </div>
+                  ) : (
+                    <div style={{ display: 'inline-block', background: colors.brand.brand1, padding: `${valueOf(vertical ?? '')} ${valueOf(sides ?? '')}` }}>
+                      <div style={box} />
+                    </div>
+                  )}
+                </td>
+                <td style={cell}>{use}</td>
+                <td style={cell}>
+                  {token ? <code>{token}</code> : (
+                    <>
+                      <div><code>{vertical}</code> vertical</div>
+                      <div><code>{sides}</code> at the sides</div>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Unstyled>
+  );
+}
+
+/** A panel that marks the space between its parts. Each step is a part, with the token of the gap below it. */
+export function SpacingExample({ padding, steps }: { padding: string; steps: { part: string; gap?: string }[] }) {
+  const mark = { ...text, fontSize: '0.75rem' };
+  return (
+    <Unstyled>
+      <div style={{ display: 'inline-block', margin: '1rem 0 2rem', border: '1px solid #B0BDC9', borderRadius: sizing.borderRadiusDefault, background: colors.background.blue, padding: valueOf(padding) }}>
+        <div style={{ ...mark, marginBottom: '0.25rem' }}>Panel padding: <code>{padding}</code></div>
+        {steps.map(({ part, gap }) => (
+          <div key={part}>
+            <div style={{ ...text, background: colors.background.white, border: '1px solid #DCE4EC', padding: '0.25rem 0.75rem', width: '20rem', maxWidth: '100%', boxSizing: 'border-box' }}>{part}</div>
+            {gap && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', height: valueOf(gap) }}>
+                <div style={{ width: '20rem', height: '100%', background: colors.brand.brand1 }} />
+                <code style={{ ...mark, lineHeight: 0 }}>{gap}</code>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </Unstyled>
+  );
+}
+
+type TextStyle = { name: string; size: string; weight: string; use: string; variant?: React.ComponentProps<typeof BBBTypography>['variant'] };
+
+/** Text styles. One with a variant is shown with BBBTypography itself, so that the sample cannot differ from it. */
+export function TextStyles({ caption, rows }: { caption: string; rows: TextStyle[] }) {
+  const hasVariant = rows.some((row) => row.variant);
+  return (
+    <Unstyled>
+      <div style={{ overflowX: 'auto', margin: '1rem 0 2rem' }}>
+        <table style={{ ...text, width: '100%', borderCollapse: 'collapse' }} aria-label={caption}>
+          <thead>
+            <tr>
+              <th scope="col" style={cell}>Sample</th>
+              {hasVariant && <th scope="col" style={cell}>BBBTypography variant</th>}
+              <th scope="col" style={cell}>Points to</th>
+              <th scope="col" style={cell}>Use it for</th>
+              <th scope="col" style={cell}>Figma name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.name}>
+                <td style={{ ...cell, fontFamily: typography.fontFamily }}>
+                  {row.variant
+                    ? <BBBTypography variant={row.variant} as="span">BigBlueButton</BBBTypography>
+                    : <span style={{ fontSize: valueOf(row.size), fontWeight: valueOf(row.weight), color: colors.text.default }}>BigBlueButton</span>}
+                </td>
+                {hasVariant && <td style={cell}><code>{row.variant}</code></td>}
+                <td style={cell}><div><code>{row.size}</code></div><div><code>{row.weight}</code></div></td>
+                <td style={cell}>{row.use}</td>
+                <td style={cell}>{row.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Unstyled>
+  );
+}
+
+/** An example of how a text style is made of tokens. */
+export function TypeChain({ tokens: names, style, variant }: { tokens: string[]; style: string; variant: TextStyle['variant'] }) {
+  const column = (heading: string, body: React.ReactNode) => (
+    <li style={{ flex: '1 1 12rem' }}>
+      <div style={{ ...text, fontWeight: 600, marginBottom: '0.5rem' }}>{heading}</div>
+      {body}
+    </li>
+  );
+  return (
+    <Unstyled>
+      <ol style={{ ...text, display: 'flex', flexWrap: 'wrap', gap: '1rem', listStyle: 'none', margin: '1rem 0 2rem', padding: 0 }}>
+        {column('Tokens', names.map((name) => <div key={name}><code>{name}</code> {valueOf(name)}</div>))}
+        {column('→ Text style', style)}
+        {column('→ Component', (
+          <>
+            <div style={{ fontFamily: typography.fontFamily }}><BBBTypography variant={variant}>Panel title</BBBTypography></div>
+            <code>{`<BBBTypography variant="${variant}">`}</code>
+          </>
         ))}
       </ol>
     </Unstyled>

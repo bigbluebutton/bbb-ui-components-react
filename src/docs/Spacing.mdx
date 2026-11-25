@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { TokenTable } from '../../.storybook/docs/tokens';
+import { SpacingExample, SpacingRules, TokenTable } from '../../.storybook/docs/tokens';
 
 <Meta title="Foundation/Spacing" id="spacing" />
 
@@ -15,7 +15,29 @@ const Card = styled.div`
 `;
 ```
 
-Unlike colors, a host page cannot override spacing. Pixel values assume the browser's default text size.
+## How spacing works
+
+1. **The scale** is one set of sizes, as tokens. Spacing has no semantic or component tokens, as color has.
+2. **The rules** give each size its role: the padding inside an element, and the gap between two.
+
+In this panel, the more closely two parts are related, the smaller the gap between them.
+
+<SpacingExample padding="spacingLarge" steps={[
+  { part: 'Section title', gap: 'spacingSmallMedium' },
+  { part: 'Option', gap: 'spacingSmall' },
+  { part: 'Another option', gap: 'spacingLarge' },
+  { part: 'Next section title' },
+]} />
+
+Choose a size by where it goes, not by how it looks:
+
+- **Space inside an element:** see [Padding](#padding).
+- **Space between elements:** see [Gaps](#gaps).
+- **Nothing there fits:** use `spacingMedium`. When two sizes fit, prefer a multiple of 8px.
+
+## Scale
+
+Look a size up here after you have found it in the rules. The names are as in code, with the one in Figma beside each.
 
 {/* BEGIN spacing: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
 
@@ -37,12 +59,15 @@ Unlike colors, a host page cannot override spacing. Pixel values assume the brow
 
 Use these for what you build yourself. The library's components set their own padding, so don't change it.
 
-- **Panel:** `spacingLarge` on all sides.
-- **Card:** `spacingMedium`.
-- **Actions bar:** `spacingMedium`.
-- **Menu item:** no vertical padding, and `spacingMedium` (compact) or `spacingLarge` (large) at the sides.
-- **Tooltip:** `spacingXSmall` vertical, `spacingSmall` at the sides.
-- **Badge:** no vertical padding, `spacingSmallMedium` at the sides.
+<SpacingRules kind="padding" caption="Padding" rows={[
+  { use: 'Panel', token: 'spacingLarge' },
+  { use: 'Card', token: 'spacingMedium' },
+  { use: 'Actions bar', token: 'spacingMedium' },
+  { use: 'Menu item, compact', vertical: 'spacing0', sides: 'spacingMedium' },
+  { use: 'Menu item, large', vertical: 'spacing0', sides: 'spacingLarge' },
+  { use: 'Tooltip', vertical: 'spacingXSmall', sides: 'spacingSmall' },
+  { use: 'Badge', vertical: 'spacing0', sides: 'spacingSmallMedium' },
+]} />
 
 The larger the surface, the larger its padding. Use the same padding on all sides unless the element is listed above with different ones, and the same padding every time an element is repeated.
 
@@ -50,12 +75,16 @@ The larger the surface, the larger its padding. Use the same padding on all side
 
 The gap shows how closely things are related: the less related, the larger the gap. Don't use one gap for items and for the groups they belong to, because people can no longer see the groups.
 
-- **Short icon and its text:** `spacingXSmall`.
-- **Items of one list or group, such as options:** `spacingSmall`.
-- **Section title and its content:** `spacingSmallMedium`.
-- **Buttons in an actions bar or a modal footer:** `spacingMedium`.
-- **Groups, and panels side by side:** `spacingMedium`.
-- **Sections inside a panel or modal:** `spacingLarge`.
-- **Page blocks:** `spacingXXLarge`.
+<SpacingRules kind="gap" caption="Gaps" rows={[
+  { use: 'Short icon and its text', token: 'spacingXSmall' },
+  { use: 'Items of one list or group, such as options', token: 'spacingSmall' },
+  { use: 'Section title and its content', token: 'spacingSmallMedium' },
+  { use: 'Buttons in an actions bar or a modal footer', token: 'spacingMedium' },
+  { use: 'Groups, and panels side by side', token: 'spacingMedium' },
+  { use: 'Sections inside a panel or modal', token: 'spacingLarge' },
+  { use: 'Page blocks', token: 'spacingXXLarge' },
+]} />
 
-When nothing here fits, use `spacingMedium`. When two values fit, prefer a multiple of 8px.
+## Theming
+
+Unlike colors, a host page cannot override spacing. Pixel values assume the browser's default text size.
