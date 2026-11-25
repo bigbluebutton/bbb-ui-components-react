@@ -1,8 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BBBTextAreaInput from './component';
 
 const meta = {
-  title: 'BBBTextAreaInput',
+  title: 'Components/Form/BBBTextAreaInput',
+  id: 'bbbtextareainput',
   component: BBBTextAreaInput,
   tags: ['autodocs'],
   argTypes: {

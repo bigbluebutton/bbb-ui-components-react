@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TokenTable } from '../../.storybook/docs/tokens';
+
+<Meta title="Foundation/Type" id="type" />
+
+# Type
+
+Use these tokens inside the library to size and weigh text. They are not exported from the package. In a product screen, use [BBBTypography](?path=/docs/bbbtypography--docs), which applies them for you. Pixel values assume the browser's default text size.
+
+## Size
+
+{/* BEGIN font size: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="fontSize" caption="Font size" rows={[
+  { name: 'fontSizeXSmall', value: '0.75rem (12px)', purpose: 'Minimum supporting text and small labels. Nothing smaller.', figma: ['font/size/xsmall'] },
+  { name: 'fontSizeSmall', value: '0.875rem (14px)', purpose: 'Labels, descriptions and secondary text.', figma: ['font/size/small'] },
+  { name: 'fontSizeDefault', value: '1rem (16px)', purpose: 'Default text, panel titles and buttons.', figma: ['font/size/default'] },
+  { name: 'fontSizeBig', value: '1.125rem (18px)', purpose: 'Used by BBBToggle, BBBSlider and BBBToast. Elsewhere prefer fontSizeDefault.', figma: ['font/size/big'] },
+]} />
+
+{/* END font size */}
+
+## Weight
+
+{/* BEGIN font weight: generated from tokens/tokens.json by npm run tokens. Do not edit. */}
+
+<TokenTable kind="fontWeight" caption="Font weight" rows={[
+  { name: 'fontWeightLight', value: '400', purpose: 'Running text.', figma: ['font/weight/regular'] },
+  { name: 'fontWeightDefault', value: '600', purpose: 'Buttons, section titles and labels.', figma: ['font/weight/semibold'] },
+  { name: 'fontWeightHard', value: '700', purpose: 'Panel titles and selected items. Not for emphasis inside running text.', figma: ['font/weight/bold'] },
+]} />
+
+{/* END font weight */}
