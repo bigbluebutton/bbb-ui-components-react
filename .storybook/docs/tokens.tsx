@@ -8,7 +8,7 @@ import * as typography from '../../src/stylesheets/typography';
 
 // Tables for the token pages.
 
-type Kind = 'color' | 'spacing' | 'radius' | 'shadow' | 'fontSize' | 'fontWeight';
+type Kind = 'color' | 'spacing' | 'radius' | 'shadow' | 'fontFamily' | 'fontSize' | 'fontWeight';
 type TokenRow = { name: string; value: string; purpose?: string; figma?: string[]; cssVars?: string[] };
 type Row = TokenRow & { sample: React.ReactNode };
 
@@ -72,6 +72,7 @@ const samples: Record<Kind, (value: string) => React.ReactNode> = {
   spacing: (value) => <div style={{ width: value, height: '1rem', background: palette.colorBrand1 }} />,
   radius: (value) => <div style={{ width: '4rem', height: '4rem', borderRadius: value, border: `2px solid ${palette.colorBrand1}` }} />,
   shadow: (value) => <div style={{ width: '4rem', height: '3rem', margin: '0.5rem', borderRadius: sizing.borderRadiusSmall, background: palette.colorBackgroundWhite, boxShadow: value }} />,
+  fontFamily: (value) => <span style={{ fontFamily: value, fontSize: '1rem' }}>BigBlueButton</span>,
   fontSize: (value) => <span style={{ fontSize: value }}>BigBlueButton</span>,
   fontWeight: (value) => <span style={{ fontSize: '1rem', fontWeight: value }}>BigBlueButton</span>,
 };

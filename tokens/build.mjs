@@ -50,6 +50,13 @@ StyleDictionary.registerTransform({
   transform: (token) => String(token.$value),
 });
 
+StyleDictionary.registerTransform({
+  name: 'bbb/fontFamily',
+  type: 'value',
+  filter: (token) => token.$type === 'fontFamily',
+  transform: (token) => [token.$value].flat().map((f) => (f.includes(' ') ? `"${f}"` : f)).join(', '),
+});
+
 // Runtime override layer: wrap the resolved value in the token's CSS var chain.
 // Transitive, so an alias to another semantic token nests inside that token's own chain.
 StyleDictionary.registerTransform({
@@ -98,7 +105,7 @@ StyleDictionary.registerFormat({
   },
 });
 
-const valueTransforms = ['bbb/color/css', 'bbb/dimension', 'bbb/fontWeight', 'bbb/shadow', 'bbb/css-var-chain'];
+const valueTransforms = ['bbb/color/css', 'bbb/dimension', 'bbb/fontWeight', 'bbb/fontFamily', 'bbb/shadow', 'bbb/css-var-chain'];
 
 const sd = new StyleDictionary({
   source: [path.join(here, 'tokens.json')],
@@ -174,6 +181,7 @@ const lists = {
     }))),
   },
   'Type.mdx': {
+    'font family': table('fontFamily', 'Font family', sized('fontFamily')),
     'font size': table('fontSize', 'Font size', sized('fontSize')),
     'font weight': table('fontWeight', 'Font weight', sized('fontWeight')),
   },
