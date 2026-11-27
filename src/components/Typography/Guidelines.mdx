@@ -1,0 +1,64 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBTypography guidelines
+
+## When to use
+
+Use BBBTypography for text you place yourself on a screen, such as titles, descriptions and labels, instead of setting a size and weight.
+
+Use something else when:
+
+- The text is part of another component, such as the label of BBButton or the title of BBBModal: that component styles its own text.
+- You style the text of another element in styled-components: use `textStyles` and a color from `colors.text` (see the [Type](?path=/docs/type--docs) page).
+
+## Choose a variant
+
+Choose it by what the text is for, not by its size. Each variant applies one text style and a text color, the default one unless it says secondary.
+
+- **Body text**
+  - `default`: text, list and navigation items.
+  - `selected`: active items and card titles.
+  - `text2`: labels, descriptions, options and chat messages. Secondary color.
+  - `text3`: times, numeric field labels and marks. Secondary color.
+  - `large`: large menus and captions over video.
+- **Headings**
+  - `header`: panel and modal headers, in uppercase.
+  - `section`: groups inside panels and modals.
+  - `highlight`: empty states and highlight titles, one per screen.
+  - `display`: timers and durations, numbers only.
+- **Labels**
+  - `button`: buttons and tabs.
+  - `smallLabel`: names on video tiles, small badges and counters.
+
+<Canvas of={Stories.AllVariants} />
+
+## Choose the element
+
+`variant` sets how the text looks, and `as` sets what it is. It renders a `p` unless you pass `as`.
+
+- Pass a heading element (`h1` to `h6`) for a title, so that screen readers can list it. Pick the level by the page's outline, not by the variant.
+- Pass `span` for text inside a line, such as a counter next to a name.
+- For the label of a form field, use the label of the field component, such as BBBTextInput.
+
+<Canvas of={Stories.Section} />
+
+## Do
+
+- Use `header` once at the top of a panel or modal, and `section` for the groups below it.
+- Write `header` text in normal case. The style turns it to uppercase, and screen readers read it as written.
+- Use `display` only for numbers, such as `05:00`.
+
+## Don't
+
+- Don't use `selected` or `header` to make words stand out inside running text. Bold is for titles and selected items.
+- Don't use `button` for text that cannot be clicked.
+- Don't change the color with `style` or `className` to make text secondary. Use `text2` or `text3`.
+- Don't pick a variant only because of its size. If no variant fits what the text is for, ask for a new one.
+
+## Accessibility
+
+- The secondary color of `text2` and `text3` is at least 4.5:1 on the white, light and blue backgrounds. Don't put them on a darker background or over video.
+- The font comes from the app. Load Nunito Sans with the 400, 600 and 700 weights.

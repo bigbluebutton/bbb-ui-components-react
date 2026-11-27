@@ -19,7 +19,7 @@ Component folder/file names are **raw** PascalCase (`Button`, `Input`, `Navigati
 | `component.tsx` | always | Component implementation. |
 | `styles.ts` | always | styled-components, using `$`-prefixed transient props (internal, not part of the public API). |
 | `index.ts` | always | `export { default as BBB<Name> } from './component';` |
-| `component.stories.tsx` | always | Storybook stories: `title: 'BBB<Name>'`, `tags: ['autodocs']`, an `argTypes` entry with a `description` per public prop, and a one-line JSDoc comment above every named story export describing what that story demonstrates. |
+| `component.stories.tsx` | always | Storybook stories: `title: '<Group>/BBB<Name>'` with a group from `docs/decisions/0004-*`, `id: 'bbb<name>'` (the export name in lowercase, so links survive a regroup), `tags: ['autodocs']`, an `argTypes` entry with a `description` per public prop, and a one-line JSDoc comment above every named story export describing what that story demonstrates. |
 | `README.md` | always | Usage examples + a Props table (`Property \| Type \| Default \| Description`). |
 | `assets/example.png` | conventional | Demo screenshot referenced by the README as `![Demo](assets/example.png)`. Most components have one; add it when you can. |
 | `types.ts` | if the component takes props | The public `<Name>Props` type/interface. Document every field with a single-line JSDoc comment (see "Prop JSDoc conventions" below). Internal styled-components prop interfaces (`Styled*Props`, `$`-prefixed fields) don't need JSDoc — they aren't public API. |
@@ -43,6 +43,14 @@ Component folder/file names are **raw** PascalCase (`Button`, `Input`, `Navigati
 
 A new prop does **not** require changes to the root `README.md`, `package.json` `exports`, or `webpack.config.babel.js` — those only change when adding a whole new component.
 
+## Design tokens
+
+Tokens live in `tokens/tokens.json`; `src/stylesheets/*.ts` and the token lists in `src/docs/*.mdx` are generated from it by `npm run tokens`. Edit the JSON, run the script and commit both (see `tokens/README.md`).
+
+## Decisions
+
+Before changing how something looks or behaves, read `docs/decisions/` and the component's `## Decisions` section, if it has one. When a change makes or reverses a design decision, record it in the same pull request (see `docs/decisions/README.md` for what counts).
+
 ## Commit conventions
 
 Commits follow Conventional Commits: `type(scope): subject`.
@@ -52,3 +60,17 @@ Commits follow Conventional Commits: `type(scope): subject`.
 - Changes spanning multiple components (tooling, lint config, cross-cutting docs) can omit the scope, e.g. `chore(ci): ...`, `docs: ...`.
 
 Examples: `feat(BBBToggle): add indeterminate state`, `fix(BBButton): ...`, `docs(BBBTypography): add stories for every typography variant`.
+
+<!-- BEGIN:storybook-skills -->
+<!-- Storybook updates this section on upgrade. Remove both markers to keep your own edits. -->
+
+## Storybook
+
+For every change to how the UI looks (you create, change, or delete a component, story, style, theme, or design token), follow these steps in order. Each step has a Storybook skill. First invoke the skills of all the steps, before you edit any file. Then follow each skill at its step.
+
+1. `component-docs`: look up the components to reuse, with their props and usage examples, before you edit any file. Also when the user asks about a component's props, API, or usage.
+2. `write-stories`: every component you create or change gets stories.
+3. `test-stories`: run the story tests after every change, the way this skill says, never with a `package.json` test script, and fix what fails. Also when the user asks to run or fix story tests.
+4. `ui-review`: publish a review that shows the user what changed, as your last step. Also when the user asks to see components or stories.
+
+<!-- END:storybook-skills -->

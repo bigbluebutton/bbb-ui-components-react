@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 import {
   colorBackgroundWhite, colorBrand1, colorShadowDefault,
-  colorTextDefault, colorTextLight,
+  colorTextDefault, colorTextSecondary,
 } from '../../stylesheets/palette';
 import {
   borderRadiusSmall, spacingMediumLarge,
@@ -156,7 +156,7 @@ export const Message = styled.div<StyledTextProps>`
 `;
 
 export const Content = styled.div<StyledTextProps>`
-  color: ${colorTextLight};
+  color: ${colorTextSecondary};
   font-size: ${({ $small }) => ($small ? fontSizeXSmall : fontSizeSmall)};
   font-weight: ${fontWeightLight};
   line-height: normal;
