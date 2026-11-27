@@ -1,0 +1,32 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './component.stories';
+
+<Meta of={Stories} name="Guidelines" />
+
+# BBBDivider guidelines
+
+## When to use
+
+Use BBBDivider to separate two parts of a panel, modal or toast when spacing alone does not make the break clear, for example above a footer when the content scrolls.
+
+Use something else when:
+
+- The parts are already apart: leave the space, using the gap rules on the [Spacing](?path=/docs/spacing--docs) page. A line is not needed between every item.
+- The parts are panels or cards: their own background or border separates them.
+- You need a line inside a modal or toast: BBBModal has `showDividers` and BBBToast has `showSeparator`, so you do not need to add one.
+
+## Structure
+
+A single part: a 1px horizontal line in `colors.border.default`, as wide as its container. It has no margin, so the space around it comes from its parent.
+
+<Canvas of={Stories.Default} />
+
+## Use it
+
+- **Space:** put it inside a flex or grid container and let the container's `gap` set the space on each side. The same space above and below keeps the line centered between the parts.
+- **Width:** it fills its container. To keep it away from the edges, put it inside the container's padding.
+- **Direction:** it is horizontal only. There is no vertical divider yet.
+
+## Accessibility
+
+- It is an `hr`, so screen readers announce it as a separator. Use it only where the content really changes, and use a border in styles for a line that is only decoration.
